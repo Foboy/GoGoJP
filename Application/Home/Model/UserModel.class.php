@@ -18,8 +18,7 @@ class UserModel extends Model {
 				'user_name' => '小李子',
 				'password' => md5 ( '111111' ),
 				'email' => '653260669@qq.com' 
-		)
-		;
+		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
 			return $this->find ( $pid );

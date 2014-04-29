@@ -1,0 +1,108 @@
+/*公共*/
+.graycolor {
+	color: #888;
+}
+
+.whitecolor {
+	color: #fff;
+}
+
+.margin_top {
+	margin-top: 15px;
+}
+
+.margin_left {
+	margin-left: 15px;
+}
+
+a {
+	cursor: pointer;
+}
+
+.padding_null {
+	padding: 0px;
+}
+
+.padding_rightnull {
+	padding-right: 0px;
+}
+
+.padding_leftnull {
+	padding-left: 0px;
+}
+
+.titlefont {
+	font-weight: 200;
+	color: #428BCA;
+}
+
+@font-face {
+	font-style: normal;
+	font-weight: 300;
+}
+
+@font-face {
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: normal;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: italic;
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: italic;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: italic;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Kaushan Script';
+	font-style: normal;
+	font-weight: 400;
+}
+
+/*登陆*/
+.footer_info {
+	height: 40px;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.showerror .ng-invalid {
+	border-color: #fa787e;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: #fa787e;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #1ABC9C;
+}
+
+/*Flot Chart Containers*/
+
+ .flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
