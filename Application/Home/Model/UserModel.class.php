@@ -3,10 +3,13 @@
 namespace Home\Model;
 
 use Think\Model;
+use Common\Common\DataResult;
+use Common\Common\ErrorType;
 
 class UserModel extends Model {
 	protected $tableName = 'user';
-	public function add() {
+	public function addmodel() {
+		$result = new DataResult ();
 		$data = array (
 				/* 'user_name' => I ( 'user_name' ),
 				'password' => md5 ( I ( 'password' ) ),
@@ -21,11 +24,16 @@ class UserModel extends Model {
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
-			return $this->find ( $pid );
+			$result->Data = $this->find ( $pid );
+			$result->ErrorMessage = '新增成功';
 		} else {
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '新增失败';
 		}
+		return $result;
 	}
-	public function update($userid) {
+	public function updatemodel($userid) {
+		$result = new DataResult ();
 		$data = array (
 				'user_name' => 'ThinkPHP',
 				'password' => md5 ( '111111' ),
@@ -37,30 +45,37 @@ class UserModel extends Model {
 		);
 		// 注意判断条件使用恒等式
 		if ($this->where ( 'user_id=' . $userid )->save ( $data ) !== false) {
-			return '更新成功';
+			$result->Data = $this->find ( $userid );
+			$result->ErrorMessage = '更新成功';
 		} else {
-			return '更新失败';
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '更新成功';
 		}
-	}
-	public function delete($userid) {
-		$result = $this->where ( 'user_id=' . $userid )->delete ();
-		if ($result == 1) {
-			return '删除成功';
-		} else {
-			return '删除失败';
-		}
-	}
-	public function get($userid) {
-			// 第一种方式写sql
-			/*
-		 * $Data = new Model (); $result = $Data->query ( 'select * from gogojp_user where user_id='.$userid ); return $result;
-		 */
-			// 第二种方式orm
-		$result = $this->find ( $userid );
 		return $result;
 	}
-	public function search(){
-		$result = $this->select ();
+	public function deletemodel($userid) {
+		$result = new DataResult ();
+		if ($this->where ( 'user_id=' . $userid )->delete () == 1) {
+			$result->ErrorMessage = '删除成功';
+		} else {
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '删除失败';
+		}
+		return $result;
+	}
+	public function getmodel($userid) {
+		$result=new DataResult();
+		// 第一种方式写sql
+		/*
+		 * $Data = new Model (); $result = $Data->query ( 'select * from gogojp_user where user_id='.$userid ); return $result;
+		 */
+		// 第二种方式orm
+		$result->Data = $this->find ( $userid );
+		return $result;
+	}
+	public function searchmodel() {
+		$result=new DataResult();
+		$result->Data = $this->select ();
 		return $result;
 	}
 }
