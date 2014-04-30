@@ -8,18 +8,15 @@
       config(['$provide', function ($provide) {
           var resturls = {};
           resturls.base = "http://localhost:8080/GoGoJP/index.php";
-          resturls.excelbaseurl = "http://localhost/FinancialSystem/application/excelHandle/";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
           };
           resturls.addpage = function (name, url) {
               resturls[name] = resturls.base + url;
           };
-
-
           // 主模块
           resturls.add("GetCurrentUser", "user/getCurrentUser");
-          resturls.add("Login", "user/login");
+          resturls.add("Login", "Home/Index/login");
           $provide.constant('$resturls', resturls);
 
       } ]);

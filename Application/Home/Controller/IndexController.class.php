@@ -4,6 +4,8 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Home\Model\UserModel;
+use Common\Common\DataResult;
+use Common\Common\ErrorType;
 
 class IndexController extends Controller {
 	public function index() {
@@ -48,5 +50,22 @@ class IndexController extends Controller {
 		$Users = new UserModel ();
 		$result=$Users->searchmodel();
 		$this->ajaxReturn ( $result );
+	}
+	
+	public function login(){
+		$result =new DataResult();
+		$account=I('user_name','','htmlspecialchars');
+		$password=I('password');
+		if (!isset ($account) or empty ($account)) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $password ) or empty ( $password )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$this->ajaxReturn($result);
+		}
+		$User=new UserModel();
+		$result=$User->userLogin($account,md5($password));
+		$this->ajaxReturn($result);
 	}
 }

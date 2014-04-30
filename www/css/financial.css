@@ -83,18 +83,6 @@ a {
 	text-align: center;
 }
 
-.showerror .ng-invalid {
-	border-color: #fa787e;
-}
-
-.ng-invalid.ng-dirty {
-	border-color: #fa787e;
-}
-
-.ng-valid.ng-dirty {
-	border-color: #1ABC9C;
-}
-
 /*Flot Chart Containers*/
 
  .flot-chart {

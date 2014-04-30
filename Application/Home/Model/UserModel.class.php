@@ -64,7 +64,7 @@ class UserModel extends Model {
 		return $result;
 	}
 	public function getmodel($userid) {
-		$result=new DataResult();
+		$result = new DataResult ();
 		// 第一种方式写sql
 		/*
 		 * $Data = new Model (); $result = $Data->query ( 'select * from gogojp_user where user_id='.$userid ); return $result;
@@ -74,8 +74,32 @@ class UserModel extends Model {
 		return $result;
 	}
 	public function searchmodel() {
-		$result=new DataResult();
+		$result = new DataResult ();
 		$result->Data = $this->select ();
+		return $result;
+	}
+	public function userLogin($account, $password) {
+		$result = new DataResult ();
+		$condition = array (
+				'user_name' => $account,
+				'password' => $password 
+		);
+		$data = $this->where ( $condition )->select ();
+		if ($data) {
+			$result->Data = $data;
+			$result->ErrorMessage = '登陆成功';
+			// 写入session
+			session ( array (
+					'user_logged_in' => true,
+					'user_id' => $data->user_id,
+					'user_name' => $data->user_name 
+			) );
+			cookie($name);
+			var_dump ( session );
+		} else {
+			$result->Error = ErrorType::LoginFailed;
+			$result->ErrorMessage = '密码或账号不正确';
+		}
 		return $result;
 	}
 }
