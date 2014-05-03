@@ -1,4 +1,4 @@
-﻿<div class="wrapper row-offcanvas row-offcanvas-left">
+<div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
     <div class="left-side sidebar-offcanvas">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -23,15 +23,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#/recommend">
+                    <a href="#/slideshow">
                         <i class="fa fa-bar-chart-o"></i>
-                        <span>推荐管理</span>
+                        <span>幻灯片管理</span>
                     </a>
                 </li>
                 <li>
                     <a href="#/product">
                         <i class="fa fa-bar-chart-o"></i>
-                        <span>商品管理</span>
+                        <span>商品列表</span>
                     </a>
                 </li>
                 <li>
@@ -43,7 +43,13 @@
                 <li>
                     <a href="#/customerservice">
                         <i class="fa fa-bar-chart-o"></i>
-                        <span>客户咨询</span>
+                        <span>客服服务</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/homerecommend">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>首页推荐管理</span>
                     </a>
                 </li>
                 <li class="treeview">
