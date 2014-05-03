@@ -55,6 +55,7 @@ class IndexController extends Controller {
 	public function login(){
 		$result =new DataResult();
 		$account=I('user_name','','htmlspecialchars');
+		var_dump($account);
 		$password=I('password');
 		if (!isset ($account) or empty ($account)) {
 			$result->Error=ErrorType::RequestParamsFailed;

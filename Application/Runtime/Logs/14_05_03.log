@@ -1,0 +1,83 @@
+[ 2014-05-03T15:32:09+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ç¬¬ 52 è¡Œ.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.014001s ]
+SQL: SELECT * FROM `gogojp_user` WHERE ( `user_name` = 'test' ) AND ( `password` = '96e79218965eb72c92a549dd5a330112' )  [ RunTime:0.000000s ]
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 94 è¡Œ.
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 95 è¡Œ.
+NOTIC: [8] A session had already been started - ignoring session_start() D:\Apache24\htdocs\GoGoJP\ThinkPHP\Common\functions.php ç¬¬ 1168 è¡Œ.
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 98 è¡Œ.
+
+[ 2014-05-03T15:35:16+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ç¬¬ 52 è¡Œ.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `gogojp_user` WHERE ( `user_name` = 'test' ) AND ( `password` = '96e79218965eb72c92a549dd5a330112' )  [ RunTime:0.001000s ]
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 94 è¡Œ.
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 95 è¡Œ.
+NOTIC: [8] A session had already been started - ignoring session_start() D:\Apache24\htdocs\GoGoJP\ThinkPHP\Common\functions.php ç¬¬ 1168 è¡Œ.
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 98 è¡Œ.
+
+[ 2014-05-03T15:36:24+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ç¬¬ 52 è¡Œ.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `gogojp_user` WHERE ( `user_name` = 'test' ) AND ( `password` = '96e79218965eb72c92a549dd5a330112' )  [ RunTime:0.000000s ]
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 94 è¡Œ.
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php ç¬¬ 95 è¡Œ.
+NOTIC: [8] A session had already been started - ignoring session_start() D:\Apache24\htdocs\GoGoJP\ThinkPHP\Common\functions.php ç¬¬ 1168 è¡Œ.
+
+[ 2014-05-03T15:51:32+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 38 è¡Œ.
+
+[ 2014-05-03T15:52:42+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 38 è¡Œ.
+
+[ 2014-05-03T15:52:57+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php ç¬¬ 38 è¡Œ.
+
+[ 2014-05-03T15:56:33+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ç¬¬ 52 è¡Œ.
+NOTIC: [2] mysql_connect():  D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php ç¬¬ 52 è¡Œ.
+ERR: ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓÐÕýÈ·´ð¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓÐ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
+
+

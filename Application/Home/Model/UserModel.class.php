@@ -18,7 +18,7 @@ class UserModel extends Model {
 				'realname' => I ( 'realname' ),
 				'sex' => 1,
 				'mobile' => I ( 'mobile' )  */
-				'user_name' => '小李子',
+				'user_name' => 'test',
 				'password' => md5 ( '111111' ),
 				'email' => '653260669@qq.com' 
 		);
@@ -94,8 +94,10 @@ class UserModel extends Model {
 					'user_id' => $data->user_id,
 					'user_name' => $data->user_name 
 			) );
-			cookie($name);
-			var_dump ( session );
+			/* cookie('gogojp',array(
+				'user_id'=>$data->user_id
+			)); */
+			var_export(session());
 		} else {
 			$result->Error = ErrorType::LoginFailed;
 			$result->ErrorMessage = '密码或账号不正确';
