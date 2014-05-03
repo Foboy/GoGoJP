@@ -21,9 +21,10 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
         return {
             'response': function (response) {
                 if (response && typeof response.data === 'object') {
+                    console.log(response);
                     if (response.data.Error == 11) {
                         $.scojs_message('非法访问', $.scojs_message.TYPE_ERROR);
-                        setTimeout(function () { window.location.href = 'login.html'; }, 3000);
+                        setTimeout(function () { window.location.href = 'login.html'; }, 1500);
                     }
                 }
                 return response || $q.when(response);
