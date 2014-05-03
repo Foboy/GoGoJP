@@ -3,18 +3,16 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     $routeProvider
     .when('/recommend', { template: '', controller: function () { } })
     .when('/product', { template: '', controller: function () { } })
-         .when('/order', { template: '', controller: function () { } })
-         .when('/customerservice', { template: '', controller: function () { } })
-         
-         .otherwise({ redirectTo: '/home' });
+    .when('/order', { template: '', controller: function () { } })
+    .when('/customerservice', { template: '', controller: function () { } })
+    .otherwise({ redirectTo: '/home' });
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
          .state('main.home', { url: '/home', templateUrl: 'partials/home.html', controller: DataStatisticsCtrl })
-           .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: function () { } })
+         .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: function () { } })
          .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: function () { } })
-         .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } })
-       ;
+         .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } });
         
 
 
