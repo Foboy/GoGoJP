@@ -79,13 +79,13 @@
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="javascrpt:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
-                            <span>Jane Doe <i class="caret"></i></span>
+                            <span>{{currentuser.user_name}} <i class="caret"></i></span>
                             <ul class="dropdown-menu">
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="" class="btn btn-default btn-flat">退出登录</a>
+                                        <a ng-click="LoginOut()" class="btn btn-default btn-flat">退出登录</a>
                                     </div>
                                 </li>
                             </ul>

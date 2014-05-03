@@ -8,7 +8,7 @@ use Common\Common\ErrorType;
 
 class UserModel extends Model {
 	protected $tableName = 'user';
-	public function addmodel() {
+	public function addModel() {
 		$result = new DataResult ();
 		$data = array (
 				/* 'user_name' => I ( 'user_name' ),
@@ -32,7 +32,7 @@ class UserModel extends Model {
 		}
 		return $result;
 	}
-	public function updatemodel($userid) {
+	public function updateModel($userid) {
 		$result = new DataResult ();
 		$data = array (
 				'user_name' => 'ThinkPHP',
@@ -53,7 +53,7 @@ class UserModel extends Model {
 		}
 		return $result;
 	}
-	public function deletemodel($userid) {
+	public function deleteModel($userid) {
 		$result = new DataResult ();
 		if ($this->where ( 'user_id=' . $userid )->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
@@ -63,7 +63,7 @@ class UserModel extends Model {
 		}
 		return $result;
 	}
-	public function getmodel($userid) {
+	public function getModel($userid) {
 		$result = new DataResult ();
 		// 第一种方式写sql
 		/*
@@ -73,7 +73,7 @@ class UserModel extends Model {
 		$result->Data = $this->find ( $userid );
 		return $result;
 	}
-	public function searchmodel() {
+	public function searchModel() {
 		$result = new DataResult ();
 		$result->Data = $this->select ();
 		return $result;
@@ -89,14 +89,12 @@ class UserModel extends Model {
 			$result->Data = $data;
 			$result->ErrorMessage = '登陆成功';
 			// 写入session
-			session ('gogojp', array (
-					'user_logged_in' => true,
-					'user_id' => $data['user_id'],
-					'user_name' => $data['user_name']
-			) );
-			/* cookie('gogojp',array(
+			session('user_id',$data['user_id']);
+			session('user_logged_in',true);
+			session('user_name',$data['user_name']);
+			cookie('gogojp_c',array(
 				'user_id'=>$data->user_id
-			)); */
+			));
 		} else {
 			$result->Error = ErrorType::LoginFailed;
 			$result->ErrorMessage = '密码或账号不正确';

@@ -16,8 +16,9 @@
               resturls[name] = resturls.base + url;
           };
           // 主模块
-          resturls.add("GetCurrentUser", "user/getCurrentUser");
-          resturls.add("Login", "Home/Index/login");
+          resturls.add("GetCurrentUser", "Home/Index/getCurrentUser");
+          resturls.add("Login", "Home/Index/login");//登录
+          resturls.add("LoginOut", "Home/Index/loginOut");//退出登录
           $provide.constant('$resturls', resturls);
 
       } ]);

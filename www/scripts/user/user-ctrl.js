@@ -1,8 +1,8 @@
 ﻿function UserMainCtrl($scope, $http, $location, $routeParams, $resturls) {
-    $scope.UserLogin = function (User) {
+    $scope.UserLogin = function () {
         if ($scope.LoginForm.$valid) {
             $scope.showerror = false;
-            $http.post($resturls["Login"], { user_name: User.user_name, password: User.password }).success(function (result) {
+            $http.post($resturls["Login"], { user_name: $scope.User.user_name, password: $scope.User.password }).success(function (result) {
                 if (result.Error == 0) {
                     window.location.href = 'index.html';
                 }
