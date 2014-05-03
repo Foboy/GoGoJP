@@ -7,8 +7,8 @@
     angular.module('ngRestUrls', ['ng']).
       config(['$provide', function ($provide) {
           var resturls = {};
-          //resturls.base = "http://localhost:8080/GoGoJP/index.php";
-          resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
+          resturls.base = "http://localhost:8080/GoGoJP/index.php";
+         // resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
           };

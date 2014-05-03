@@ -3,9 +3,11 @@
         if ($scope.LoginForm.$valid) {
             $scope.showerror = false;
             $http.post($resturls["Login"], { user_name: User.user_name, password: User.password }).success(function (result) {
-                console.log(result);
+                if (result.Error == 0) {
+                    window.location.href = 'index.html';
+                }
             }).error(function (data, status, headers, config) {
-                alert(result.ErrorMessage);
+                $.scojs_message('登录账户或密码错误', $.scojs_message.TYPE_ERROR);
             })
         } else {
             $scope.showerror = true;

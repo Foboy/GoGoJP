@@ -18,7 +18,7 @@ class UserModel extends Model {
 				'realname' => I ( 'realname' ),
 				'sex' => 1,
 				'mobile' => I ( 'mobile' )  */
-				'user_name' => 'test',
+				'user_name' => 'ppt',
 				'password' => md5 ( '111111' ),
 				'email' => '653260669@qq.com' 
 		);
@@ -84,20 +84,19 @@ class UserModel extends Model {
 				'user_name' => $account,
 				'password' => $password 
 		);
-		$data = $this->where ( $condition )->select ();
+		$data = $this->where ( $condition )->find();
 		if ($data) {
 			$result->Data = $data;
 			$result->ErrorMessage = '登陆成功';
 			// 写入session
-			session ( array (
+			session ('gogojp', array (
 					'user_logged_in' => true,
-					'user_id' => $data->user_id,
-					'user_name' => $data->user_name 
+					'user_id' => $data['user_id'],
+					'user_name' => $data['user_name']
 			) );
 			/* cookie('gogojp',array(
 				'user_id'=>$data->user_id
 			)); */
-			var_export(session());
 		} else {
 			$result->Error = ErrorType::LoginFailed;
 			$result->ErrorMessage = '密码或账号不正确';
