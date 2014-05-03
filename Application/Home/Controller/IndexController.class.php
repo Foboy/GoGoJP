@@ -43,6 +43,10 @@ class IndexController extends Controller {
 		if(session('user_id')){
 		$result=$User->getModel(session('user_id'));
 		}
+		else 
+		{
+			$result->Error=ErrorType::Unlogin;
+		}
 		$this->ajaxReturn($result);
 	}
 }
