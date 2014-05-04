@@ -5,6 +5,7 @@ namespace Home\Model;
 use Think\Model;
 use Common\Common\DataResult;
 use Common\Common\ErrorType;
+use Think\Db\Driver\Pdo;
 
 class UserModel extends Model {
 	protected $tableName = 'user';
@@ -65,13 +66,27 @@ class UserModel extends Model {
 	}
 	public function getModel($userid) {
 		$result = new DataResult ();
-		// 第一种方式写sql
-		/*
+		$User = new Pdo ( );
+		$result->Data = $User->query ( "select *  from gogojp_user where user_id=:user_id", array (
+				":user_id" => $userid
+		) );
+		
+		/* 第一种方式写sql
 		 * $Data = new Model (); $result = $Data->query ( 'select * from gogojp_user where user_id='.$userid ); return $result;
 		 */
-		// 第二种方式orm
-		$result->Data = $this->find ( $userid );
-		return $result;
+		
+		/*第二种方式orm
+		 * $result = $Data->query ( 'select * from gogojp_user where user_id=:user_id', array ( ':userid' => $userid ) );
+		*/
+		
+		// $result->Data = $this->find ( $userid );
+		
+		// pdo
+		//$conn = new pdo ();
+		// $conn->query('select * from gogojp_user  where user_id=:user_id',array(":user_id"=>1));
+		
+		
+	   return $result; 
 	}
 	public function searchModel() {
 		$result = new DataResult ();
@@ -84,17 +99,17 @@ class UserModel extends Model {
 				'user_name' => $account,
 				'password' => $password 
 		);
-		$data = $this->where ( $condition )->find();
+		$data = $this->where ( $condition )->find ();
 		if ($data) {
 			$result->Data = $data;
 			$result->ErrorMessage = '登陆成功';
 			// 写入session
-			session('user_id',$data['user_id']);
-			session('user_logged_in',true);
-			session('user_name',$data['user_name']);
-			cookie('gogojp_c',array(
-				'user_id'=>$data->user_id
-			));
+			session ( 'user_id', $data ['user_id'] );
+			session ( 'user_logged_in', true );
+			session ( 'user_name', $data ['user_name'] );
+			cookie ( 'gogojp_c', array (
+					'user_id' => $data->user_id 
+			) );
 		} else {
 			$result->Error = ErrorType::LoginFailed;
 			$result->ErrorMessage = '密码或账号不正确';
