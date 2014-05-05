@@ -10,7 +10,7 @@ class OrderController extends Controller {
     {
     	$model=new OrderModel();
       $result =	$model->searchModelByPages(1, 0, 10);
-      return $result;
+      $this->ajaxReturn($result);
     }
 
 }
