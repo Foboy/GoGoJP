@@ -70,12 +70,11 @@ class ProductModel extends Model {
 	}
 	// 根据条件分页模糊查询商品列表
 	public function searchProductByCondition($catid, $prodcut_name, $pageIndex, $pageSize) {
-		$prodcut_name='韩';
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$likename = " '%" . $prodcut_name . "%'  ";
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or t.product_name=:prodcut_name) order by t.create_time desc limit $lastPageNum,$pageSize", array (
+		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or ''=:prodcut_name) order by t.create_time desc limit $lastPageNum,$pageSize", array (
 				':catid' => $catid,
 				':prodcut_name' => $prodcut_name 
 		) );

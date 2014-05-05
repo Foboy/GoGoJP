@@ -10,19 +10,6 @@ use Common\Common\ErrorType;
 
 class PictureModel extends Model {
 	protected $tableName = 'sys_picture_management';
-	// 获取图片管理表中分页数据
-	public function searchByPage($pageIndex, $pageSize) {
-		$result = new PageDataResult ();
-		$lastPageNum = $pageIndex * $pageSize;
-		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by create_time desc limit $lastPageNum,$pageSize" );
-		$totalcount = $conn->query ( "select count(*) from gogojp_sys_picture_management order by create_time" )[0]['count(*)'];
-		$result->pageindex = $pageIndex;
-		$result->pagesize = $pageSize;
-		$result->Data = $objects;
-		$result->totalcount = $totalcount;
-		return $result;
-	}
 	// 增加表中数据
 	public function addModel($title, $bigPic, $smallPic, $albumId) {
 		$result = new DataResult ();
@@ -71,6 +58,19 @@ class PictureModel extends Model {
 			$result->Error = ErrorType::Failed;
 			$result->ErrorMessage = '更新成功';
 		}
+		return $result;
+	}
+	// 获取图片管理表中分页数据
+	public function searchByPage($pageIndex, $pageSize) {
+		$result = new PageDataResult ();
+		$lastPageNum = $pageIndex * $pageSize;
+		$conn = new Pdo ();
+		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by create_time desc limit $lastPageNum,$pageSize" );
+		$totalcount = $conn->query ( "select count(*) from gogojp_sys_picture_management order by create_time" )[0]['count(*)'];
+		$result->pageindex = $pageIndex;
+		$result->pagesize = $pageSize;
+		$result->Data = $objects;
+		$result->totalcount = $totalcount;
 		return $result;
 	}
 }

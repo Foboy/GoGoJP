@@ -28,7 +28,7 @@ CREATE TABLE `gogojp_album` (
   `album_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '合辑id 主键自增',
   `album_name` varchar(80) DEFAULT NULL COMMENT '合辑名称',
   `album_cover` varchar(120) DEFAULT NULL COMMENT '合辑封面',
-  `album_desciption` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
+  `album_description` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
   `album_sign` varchar(30) DEFAULT NULL COMMENT '合辑标签',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`album_id`)
@@ -300,7 +300,7 @@ CREATE TABLE `gogojp_productcategory` (
 
 LOCK TABLES `gogojp_productcategory` WRITE;
 /*!40000 ALTER TABLE `gogojp_productcategory` DISABLE KEYS */;
-INSERT INTO `gogojp_productcategory` VALUES (1,'服饰内衣',0,'2014-05-05 06:25:25',1),(2,'运动户外',0,'2014-05-05 06:25:54',1),(3,'女士上装',1,'2014-05-05 06:26:24',1),(4,'男士内裤',1,'2014-05-05 06:29:51',1);
+INSERT INTO `gogojp_productcategory` VALUES (1,'服饰内衣',0,'2014-05-05 06:25:25',1),(2,'运动户外',0,'2014-05-05 06:25:54',1),(3,'女士上装',1,'2014-05-05 06:26:24',1),(4,'男士内裤',1,'2014-05-05 06:29:51',1),(5,'女士碎花上装',3,'2014-05-05 07:57:24',1);
 /*!40000 ALTER TABLE `gogojp_productcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,6 +335,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425');
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,4 +440,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-05 15:10:23
+-- Dump completed on 2014-05-05 17:55:52
