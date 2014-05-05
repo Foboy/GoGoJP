@@ -1,0 +1,188 @@
+[ 2014-05-05T15:51:36+08:00 ] 127.0.0.1 /GoGoJP/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.051003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-05-05T15:52:00+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchMainCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `gogojp_productcategory` WHERE ( parentid>0 )  [ RunTime:0.001000s ]
+
+[ 2014-05-05T15:52:12+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchMainCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `gogojp_productcategory` WHERE ( parentid>0 )  [ RunTime:0.000000s ]
+
+[ 2014-05-05T15:53:12+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchMainCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `gogojp_productcategory` WHERE ( parentid=0 )  [ RunTime:0.000000s ]
+
+[ 2014-05-05T16:04:25+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchSubcategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `gogojp_productcategory` WHERE ( parentid=1 )  [ RunTime:0.000000s ]
+
+[ 2014-05-05T16:05:05+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,10 [ RunTime:0.000000s ]
+SQL: select count(*) from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-05T16:06:00+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,10 [ RunTime:0.000000s ]
+SQL: select count(*) from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-05T17:26:27+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%韩%'   or t.product_name=:prodcut_name) order by t.create_time desc limit 0,10[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 韩
+)
+ ] [ RunTime:0.001000s ]
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%韩%'   or t.product_name=:prodcut_name) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 韩
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-05T17:27:16+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%韩%'   or t.product_name=:prodcut_name) order by t.create_time desc limit 0,10[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 韩
+)
+ ] [ RunTime:0.002001s ]
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%韩%'   or t.product_name=:prodcut_name) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 韩
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-05T17:36:17+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/Album/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.055003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2014-05-05T17:36:40+08:00 ] 127.0.0.1 /GoGoJP/index.php/?url=home/Album/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: CONTENT_TYPE D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Controller.class.php 第 38 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

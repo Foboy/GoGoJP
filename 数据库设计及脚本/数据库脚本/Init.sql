@@ -300,6 +300,7 @@ CREATE TABLE `gogojp_productcategory` (
 
 LOCK TABLES `gogojp_productcategory` WRITE;
 /*!40000 ALTER TABLE `gogojp_productcategory` DISABLE KEYS */;
+INSERT INTO `gogojp_productcategory` VALUES (1,'服饰内衣',0,'2014-05-05 06:25:25',1),(2,'运动户外',0,'2014-05-05 06:25:54',1),(3,'女士上装',1,'2014-05-05 06:26:24',1),(4,'男士内裤',1,'2014-05-05 06:29:51',1);
 /*!40000 ALTER TABLE `gogojp_productcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,6 +324,7 @@ CREATE TABLE `gogojp_productinfo` (
   `product_description` varchar(2000) DEFAULT NULL COMMENT '商品简介',
   `product_count` int(11) DEFAULT NULL COMMENT '库存量',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `product_num` varchar(50) NOT NULL COMMENT '商品货号',
   PRIMARY KEY (`productid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -437,4 +439,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-04 23:55:28
+-- Dump completed on 2014-05-05 15:10:23
