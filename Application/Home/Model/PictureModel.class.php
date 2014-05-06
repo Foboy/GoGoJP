@@ -60,13 +60,20 @@ class PictureModel extends Model {
 		}
 		return $result;
 	}
+	// 根据主键id获取某个专辑信息
+	public function getModel($picId) {
+		$result = new DataResult ();
+		$result->Data = $this->where ( 'picid=%d', $picId )->select ();
+		return $result;
+	}
 	// 获取图片管理表中分页数据
 	public function searchByPage($pageIndex, $pageSize) {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$conn = new Pdo ();
 		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by create_time desc limit $lastPageNum,$pageSize" );
-		$totalcount = $conn->query ( "select count(*) from gogojp_sys_picture_management order by create_time" )[0]['count(*)'];
+		$data = $conn->query ( "select count(*) totalcout from gogojp_sys_picture_management order by create_time" );
+		$totalcount=$data[0]['totalcout'];
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;
 		$result->Data = $objects;
