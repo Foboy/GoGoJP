@@ -56,7 +56,8 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope
   $scope.orderstatus=[
                     {"id":1,"name":"未付款"},
                           {"id":2,"name":"已付款"},
-                          {"id":3,"name":"已完成"}
+                          {"id":3,"name":"缺货，已退款"},
+                          {"id":4,"name":"交易结束"}
                           ];
   $scope.ChooseOrderStatus=function(data)
   {
@@ -64,7 +65,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope
   	$scope.status_id=data.id;
 //	$scope.tag_sr_text=data.name;
 //	$("#tag_sr").removeClass("hidden");
-  	
+  	alert($scope.status_id);
   };
   
   
