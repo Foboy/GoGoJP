@@ -69,9 +69,10 @@ class AlbumModel extends Model {
 			$objects = $conn->query ( "select * from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
 					':album_name' => $album_name
 			) );
-			$totalcount = $conn->query ( "select count(*) from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) ", array (
+			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) ", array (
 					':album_name' => $album_name
-			) )[0]['count(*)'];
+			) );
+			$totalcount=$data[0]['totalcout'];
 			$result->pageindex = $pageIndex;
 			$result->pagesize = $pageSize;
 			$result->Data = $objects;
@@ -80,9 +81,10 @@ class AlbumModel extends Model {
 			$objects = $conn->query ( "select * from gogojp_album where (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
 					':album_name' => $album_name
 			) );
-			$totalcount = $conn->query ( "select count(*) from gogojp_album where (album_name like $likename or ''=:album_name)", array (
+			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (album_name like $likename or ''=:album_name)", array (
 					':album_name' => $album_name
-			) )[0]['count(*)'];
+			) );
+			$totalcount=$data[0]['totalcout'];
 			$result->pageindex = $pageIndex;
 			$result->pagesize = $pageSize;
 			$result->Data = $objects;
@@ -91,4 +93,3 @@ class AlbumModel extends Model {
 		return $result;
 	}
 }
-?>

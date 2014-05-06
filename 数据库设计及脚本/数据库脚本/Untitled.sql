@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.5.25
+-- Server version	5.6.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -166,12 +166,12 @@ DROP TABLE IF EXISTS `gogojp_customer_advisory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_customer_advisory` (
+  `advisory_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
   `customer_id` int(11) DEFAULT NULL COMMENT '客户id',
   `customer_account` varchar(25) DEFAULT NULL COMMENT '客户账号',
   `customer_nickname` varchar(20) DEFAULT NULL COMMENT '客户昵称',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `isread` tinyint(4) DEFAULT '0' COMMENT '是否已读 (0:未读 1:已读)',
-  `advisory_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
   PRIMARY KEY (`advisory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户咨询';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -193,11 +193,11 @@ DROP TABLE IF EXISTS `gogojp_message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_message` (
+  `messageid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
   `form_userid` int(11) DEFAULT NULL COMMENT '消息发问人',
   `to_userid` int(11) DEFAULT NULL COMMENT '消息接收人id',
   `content` varchar(1000) DEFAULT NULL COMMENT '发送消息内容',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `messageid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
   `advisory_id` int(11) DEFAULT NULL COMMENT '咨询表相关的外键',
   PRIMARY KEY (`messageid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户聊天记录';
@@ -220,7 +220,7 @@ DROP TABLE IF EXISTS `gogojp_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_order` (
-  `orderid` int(25) NOT NULL COMMENT '订单编号',
+  `orderid` int(25) NOT NULL AUTO_INCREMENT COMMENT '订单编号',
   `user_id` int(11) DEFAULT NULL COMMENT '用户标示   主键',
   `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '订单产生时间',
   `order_freight` decimal(10,2) DEFAULT NULL COMMENT '订单运费',
@@ -254,6 +254,7 @@ DROP TABLE IF EXISTS `gogojp_orderitem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_orderitem` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
   `user_id` int(11) DEFAULT NULL COMMENT '用户编号',
   `orderid` int(25) DEFAULT NULL COMMENT '订单编号 外键',
   `productid` bigint(20) DEFAULT NULL COMMENT '商品编号',
@@ -263,7 +264,6 @@ CREATE TABLE `gogojp_orderitem` (
   `big_pic` varchar(256) DEFAULT NULL COMMENT '商品放大的图片',
   `small_pic` varchar(256) DEFAULT NULL COMMENT '商品缩率图',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='订单项目信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -285,13 +285,13 @@ DROP TABLE IF EXISTS `gogojp_productcategory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_productcategory` (
-  `catid` int(11) NOT NULL COMMENT '类别编号',
+  `catid` int(11) NOT NULL AUTO_INCREMENT COMMENT '类别编号',
   `cat_name` varchar(20) DEFAULT NULL COMMENT '类别名称',
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '类别是否禁用 （0:禁用 1:启用）',
   PRIMARY KEY (`catid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ DROP TABLE IF EXISTS `gogojp_productinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_productinfo` (
-  `productid` bigint(20) NOT NULL COMMENT '商品编号',
+  `productid` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品编号',
   `catid` int(11) DEFAULT NULL COMMENT '类别编号  外键',
   `sign` varchar(50) DEFAULT NULL COMMENT '商品标签',
   `product_name` varchar(128) DEFAULT NULL COMMENT '商品名称',
@@ -326,7 +326,7 @@ CREATE TABLE `gogojp_productinfo` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `product_num` varchar(50) NOT NULL COMMENT '商品货号',
   PRIMARY KEY (`productid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品信息表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -440,4 +440,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-05 17:55:52
+-- Dump completed on 2014-05-06 12:08:08

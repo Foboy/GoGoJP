@@ -15,7 +15,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: function () { } })
          .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add.html', controller: function () { } })
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
-         .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: function () { } })
+         .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
          .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } });
         
 
