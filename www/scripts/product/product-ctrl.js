@@ -9,50 +9,50 @@
         $scope.parameters = decodeURIComponent($routeParams.parameters || "");
     }
     //客户
-    $scope.loadClientSortList = function (pageIndex, parameters) {
-        var pageSize = 5;
+    $scope.LoadProductSortList = function (pageIndex, parameters) {
+        var pageSize = 1;
         if (pageIndex == 0) pageIndex = 1;
         switch ($scope.sort) {
             case 'product':
-                //$http.post($resturls["LoadOwnCustomersList"], { rank_id: 0, name: parameters, phone: parameters, sex: 0, pageindex: pageIndex - 1, pagesize: pageSize }).success(function (result) {
-                //    if (result.Error == 0) {
-                //        $scope.ownclients = result.Data;
-                //        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#client/' + $scope.sorts + '/{0}' + '/{1}', encodeURIComponent(parameters));
-                //    } else {
-                //        $scope.ownclients = [];
-                //        $parent.pages = utilities.paging(0, pageIndex, pageSize);
-                //    }
-                //});
+                $http.post($resturls["LoadProdcut"], { catid: 0, product_name: '', product_num: '', pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+                    if (result.Error == 0) {
+                        $scope.Prodcuts = result.Data;
+                        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#product/' + $scope.sort + '/{0}');
+                    } else {
+                        $scope.Prodcuts = [];
+                        $parent.pages = utilities.paging(0, pageIndex, pageSize);
+                    }
+                });
                 break;
             case 'album':
-                //$http.post($resturls["LoadGoGoCustomerList"], { rank_id: 0, name: parameters, phone: parameters, sex: 0, type: 3, pageindex: pageIndex - 1, pagesize: pageSize }).success(function (result) {
-                //    if (result.Error == 0) {
-                //        $scope.gogoclients = result.Data;
-                //        $parent.gogocustomerActpageIndex = pageIndex;
-                //        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#client/' + $scope.sorts + '/{0}' + '/{1}', encodeURIComponent(parameters));
-                //    } else {
-                //        $scope.gogoclients = [];
-                //        $parent.pages = utilities.paging(0, pageIndex, pageSize);
-                //    }
-                //});
+                $http.post($resturls["LoadProdcutAlbum"], { rank_id: 0, name: parameters, phone: parameters, sex: 0, type: 3, pageindex: pageIndex - 1, pagesize: pageSize }).success(function (result) {
+                    if (result.Error == 0) {
+                        $scope.gogoclients = result.Data;
+                        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#client/' + $scope.sorts + '/{0}' + '/{1}', encodeURIComponent(parameters));
+                    } else {
+                        $scope.gogoclients = [];
+                        $parent.pages = utilities.paging(0, pageIndex, pageSize);
+                    }
+                });
                 break;
             case 'category':
-                //$http.post($resturls["LoadGoGoCustomerList"], { rank_id: 0, name: parameters, phone: parameters, sex: 0, type: 3, pageindex: pageIndex - 1, pagesize: pageSize }).success(function (result) {
-                //    if (result.Error == 0) {
-                //        $scope.gogoclients = result.Data;
-                //        $parent.gogocustomerActpageIndex = pageIndex;
-                //        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#client/' + $scope.sorts + '/{0}' + '/{1}', encodeURIComponent(parameters));
-                //    } else {
-                //        $scope.gogoclients = [];
-                //        $parent.pages = utilities.paging(0, pageIndex, pageSize);
-                //    }
-                //});
+                //分类列表
+                $http.post($resturls["LoadProdcutCategory"], { pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+                    if (result.Error == 0) {
+                        $scope.ProdcutCategorys = result.Data;
+                        $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#product/' + $scope.sort + '/{0}');
+                    } else {
+                        $scope.gogoclients = [];
+                        $parent.ProdcutCategorys = utilities.paging(0, pageIndex, pageSize);
+                    }
+                });
                 break;
         }
     }
-    $scope.loadClientSortList($routeParams.pageIndex || 1, $routeParams.parameters || '');
+    $scope.LoadProductSortList($routeParams.pageIndex || 1, $routeParams.parameters || '');
     $scope.SearchClientSortList = function (condtion) {
         $scope.loadClientSortList(1, condtion);
         $rootScope.searchText = $scope.text;
     }
+   
 }

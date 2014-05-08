@@ -530,3 +530,1993 @@ SQL: select *  from gogojp_user where user_id=:user_id[ Array
 )
  ] [ RunTime:0.001000s ]
 
+[ 2014-05-08T12:04:02+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.007001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:04:54+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:05:56+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:13:36+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `gogojp_user` WHERE ( `user_name` = 'test' ) AND ( `password` = '96e79218965eb72c92a549dd5a330112' ) LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Trying to get property of non-object D:\Apache24\htdocs\GoGoJP\Application\Home\Model\UserModel.class.php 第 110 行.
+
+[ 2014-05-08T12:13:36+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:39:51+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.008001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:39:51+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.016001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.002001s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:43:37+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:43:37+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:44:10+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001001s ]
+
+[ 2014-05-08T12:44:10+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:44:38+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.007001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001001s ]
+
+[ 2014-05-08T12:44:38+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:45:11+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:45:11+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.008001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:46:04+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:46:04+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:46:31+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:46:31+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.007001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:35+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:36+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:39+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:39+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:46+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:49:46+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,5 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:24+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:24+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:50:52+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:52+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:55+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:56+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:57+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001001s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:58+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:50:59+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:00+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:00+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:01+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:30+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:30+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001001s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:33+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:51:33+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:34+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:35+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:36+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:37+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:37+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:38+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:40+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001001s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:40+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:41+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:51:42+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:44+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:51:44+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:51:45+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:51:46+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:46+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:47+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:47+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:54+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:51:54+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:52:16+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:52:18+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:52:19+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.003001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:32+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.007000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:32+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:53:37+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:42+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:53:44+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:46+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:47+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:48+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:49+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:53:51+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:53:52+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:53+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:54+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:55+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:53:58+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:54:01+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:54:03+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:54:04+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:54:05+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:54:06+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T12:54:06+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T12:57:33+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:01:03+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:06:13+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.007000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:06:17+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:07:55+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:07:56+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:07:57+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 3,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:07:57+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 4,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:07:59+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:08:01+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:08:02+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:11:39+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:12:18+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:12:18+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:12:22+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.000000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:12:23+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 0,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:12:24+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 1,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:12:24+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/ProductCategory/searchProductCategory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productcategory` [ RunTime:0.004001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit 2,1 [ RunTime:0.001000s ]
+SQL: select count(*) totalcount from gogojp_productcategory order by create_time [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:13:30+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.005001s ]
+NOTIC: [2] Missing argument 5 for Home\Model\ProductModel::searchProductByCondition(), called in D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php on line 39 and defined D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 72 行.
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 74 行.
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 78 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc limit 0,[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc limit 0,[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+)
+ ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 0
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 0
+)
+ ]
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 88 行.
+
+[ 2014-05-08T14:14:29+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:14:29+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.007000s ]
+NOTIC: [2] Missing argument 5 for Home\Model\ProductModel::searchProductByCondition(), called in D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php on line 39 and defined D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 72 行.
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 74 行.
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 78 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc limit 0,[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 0
+)
+ ] [ RunTime:0.000000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ [ SQL语句 ] : select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc limit 0,[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 0
+)
+ ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 0
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%0%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 0
+)
+ ]
+NOTIC: [8] Undefined variable: pageSize D:\Apache24\htdocs\GoGoJP\Application\Home\Model\ProductModel.class.php 第 89 行.
+
+[ 2014-05-08T14:16:30+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:16:30+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.001000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:18:53+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:18:54+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.001000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:21:44+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.006000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:21:45+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.007000s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.001000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:23:23+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:23:23+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.001000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:24:08+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:24:08+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.001000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:24:22+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.005000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:24:22+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Product/searchProductByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_productinfo` [ RunTime:0.005001s ]
+NOTIC: [8] Undefined variable: prodcut_name D:\Apache24\htdocs\GoGoJP\Application\Home\Controller\ProductController.class.php 第 40 行.
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like  '%%'   or ''=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc limit 0,1[ Array
+(
+    [:catid] => 0
+    [:prodcut_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+NOTIC: [2] PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 125 行.
+SQL: select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ] [ RunTime:0.000000s ]
+ERR: :
+ [ SQL语句 ] : select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like  '%%'   or t.product_name=:prodcut_name) and (t.product_num like  '%%'   or ''=:product_num) order by t.create_time desc [ Array
+(
+    [:catid] => 0
+    [:product_name] => 
+    [:product_num] => 
+)
+ ]
+
+[ 2014-05-08T14:29:26+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Album/searchAlbumByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_album` [ RunTime:0.007000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from gogojp_album where (album_name like  '%%'   or ''=:album_name) limit 0,10[ Array
+(
+    [:album_name] => 
+)
+ ] [ RunTime:0.001000s ]
+SQL: select count(*) totalcout from gogojp_album where (album_name like  '%%'   or ''=:album_name)[ Array
+(
+    [:album_name] => 
+)
+ ] [ RunTime:0.001000s ]
+
+[ 2014-05-08T14:29:34+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.004000s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.000000s ]
+
+[ 2014-05-08T14:29:34+08:00 ] 127.0.0.1 /GoGoJP/index.php?url=Home/Album/searchAlbumByCondition
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_album` [ RunTime:0.006001s ]
+NOTIC: [8] Undefined offset: 1 D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 63 行.
+NOTIC: [8] Undefined index: DB_DSN D:\Apache24\htdocs\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+SQL: select * from gogojp_album where (album_name like  '%%'   or ''=:album_name) limit 0,10[ Array
+(
+    [:album_name] => 
+)
+ ] [ RunTime:0.000000s ]
+SQL: select count(*) totalcout from gogojp_album where (album_name like  '%%'   or ''=:album_name)[ Array
+(
+    [:album_name] => 
+)
+ ] [ RunTime:0.001000s ]
+

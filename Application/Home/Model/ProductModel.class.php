@@ -69,18 +69,21 @@ class ProductModel extends Model {
 		return $result;
 	}
 	// 根据条件分页模糊查询商品列表
-	public function searchProductByCondition($catid, $prodcut_name, $pageIndex, $pageSize) {
+	public function searchProductByCondition($catid, $product_name,$product_num, $pageIndex, $pageSize) {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
-		$likename = " '%" . $prodcut_name . "%'  ";
+		$likename = " '%" . $product_name . "%'  ";
+		$likenum= " '%" . $product_num . "%'  ";
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or ''=:prodcut_name) order by t.create_time desc limit $lastPageNum,$pageSize", array (
+		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or ''=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc limit $lastPageNum,$pageSize", array (
 				':catid' => $catid,
-				':prodcut_name' => $prodcut_name 
+				':prodcut_name' => $product_name,
+				':product_num'=>$product_num
 		) );
-		$totalcount = $conn->query ( "select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like $likename or t.product_name=:prodcut_name) order by t.create_time desc ", array (
+		$totalcount = $conn->query ( "select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like $likename or t.product_name=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc ", array (
 				':catid' => $catid,
-				':prodcut_name' => $prodcut_name 
+				':product_name' => $product_name,
+				':product_num'=>$product_num 
 		) )[0]['count(*)'];
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;
