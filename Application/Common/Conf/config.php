@@ -1,7 +1,7 @@
 <?php
 return array (
 		// '配置项'=>'配置值'
-		'DB_TYPE' => 'pdo', // 数据库类型
+		'DB_TYPE' => 'mysql', // 数据库类型
 		'DB_HOST'=>'127.0.0.1',
 		'DB_Name'=>'gogojp',
 		'DB_USER' => 'root', // 用户名

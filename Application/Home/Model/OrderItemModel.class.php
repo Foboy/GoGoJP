@@ -1,6 +1,10 @@
-
 <?php
 
+/**
+ * @author yangchao
+ * @email:66954011@qq.com
+ * @date: 2014/5/8 16:06:27
+ */
 namespace Home\Model;
 
 use Think\Model;
@@ -12,18 +16,18 @@ use Common\Common\ErrorType;
 class OrderitemModel extends Model {
 	protected $tableName = 'orderitem';
 	// 增加表中数据
-	public function addModel($user_id,$orderid,$productid,$buynumber,$prodcut_price,$product_name,$big_pic,$small_pic,$create_time) {
+	public function addModel($order_no, $productid, $buynumber, $prodcut_price, $product_name, $pic_url, $create_time, $type_remark, $product_num) {
 		$result = new DataResult ();
 		$data = array (
-':user_id' => $user_id,
-                   ':orderid' => $orderid,
-                   ':productid' => $productid,
-                   ':buynumber' => $buynumber,
-                   ':prodcut_price' => $prodcut_price,
-                   ':product_name' => $product_name,
-                   ':big_pic' => $big_pic,
-                   ':small_pic' => $small_pic,
-                   ':create_time' => $create_time
+				':order_no' => $order_no,
+				':productid' => $productid,
+				':buynumber' => $buynumber,
+				':prodcut_price' => $prodcut_price,
+				':product_name' => $product_name,
+				':pic_url' => $pic_url,
+				':create_time' => $create_time,
+				':type_remark' => $type_remark,
+				':product_num' => $product_num 
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -47,19 +51,19 @@ class OrderitemModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($id,$user_id,$orderid,$productid,$buynumber,$prodcut_price,$product_name,$big_pic,$small_pic,$create_time) {
+	public function updateModel($id, $order_no, $productid, $buynumber, $prodcut_price, $product_name, $pic_url, $create_time, $type_remark, $product_num) {
 		$result = new DataResult ();
 		$data = array (
-':id' => $id,
-                   ':user_id' => $user_id,
-                   ':orderid' => $orderid,
-                   ':productid' => $productid,
-                   ':buynumber' => $buynumber,
-                   ':prodcut_price' => $prodcut_price,
-                   ':product_name' => $product_name,
-                   ':big_pic' => $big_pic,
-                   ':small_pic' => $small_pic,
-                   ':create_time' => $create_time
+				':id' => $id,
+				':order_no' => $order_no,
+				':productid' => $productid,
+				':buynumber' => $buynumber,
+				':prodcut_price' => $prodcut_price,
+				':product_name' => $product_name,
+				':pic_url' => $pic_url,
+				':create_time' => $create_time,
+				':type_remark' => $type_remark,
+				':product_num' => $product_num 
 		);
 		// 注意判断条件使用恒等式
 		if ($this->where ( 'id=%d', $id )->save ( $data ) !== false) {
@@ -78,51 +82,51 @@ class OrderitemModel extends Model {
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($user_id,$orderid,$productid,$buynumber,$prodcut_price,$product_name,$big_pic,$small_pic,$create_time, $pageindex, $pagesize) {
+	public function searchByPage($order_no, $productid, $buynumber, $prodcut_price, $product_name, $pic_url, $create_time, $type_remark, $product_num, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select id,user_id,orderid,productid,buynumber,prodcut_price,product_name,big_pic,small_pic,create_time from gogojp_orderitem where  ( user_id = :user_id or :user_id=0 ) 
- and  ( orderid = :orderid or :orderid=0 ) 
+		$objects = $conn->query ( " select id,order_no,productid,buynumber,prodcut_price,product_name,pic_url,create_time,type_remark,product_num from gogojp_orderitem where  ( order_no = :order_no or :order_no='' ) 
  and  ( productid = :productid or :productid=0 )  
  and  ( buynumber = :buynumber or :buynumber=0 ) 
  and  ( prodcut_price = :prodcut_price or :prodcut_price='' ) 
  and  ( product_name = :product_name or :product_name='' ) 
- and  ( big_pic = :big_pic or :big_pic='' ) 
- and  ( small_pic = :small_pic or :small_pic='' ) 
+ and  ( pic_url = :pic_url or :pic_url='' ) 
  and  ( create_time = :create_time or :create_time='' ) 
+ and  ( type_remark = :type_remark or :type_remark='' ) 
+ and  ( product_num = :product_num or :product_num='' ) 
  limit $lastpagenum,$pagesize", array (
-':user_id' => $user_id,
-                   ':orderid' => $orderid,
-                   ':productid' => $productid,
-                   ':buynumber' => $buynumber,
-                   ':prodcut_price' => $prodcut_price,
-                   ':product_name' => $product_name,
-                   ':big_pic' => $big_pic,
-                   ':small_pic' => $small_pic,
-                   ':create_time' => $create_time
-			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_orderitem where  ( user_id = :user_id or :user_id=0 ) 
- and  ( orderid = :orderid or :orderid=0 ) 
+				':order_no' => $order_no,
+				':productid' => $productid,
+				':buynumber' => $buynumber,
+				':prodcut_price' => $prodcut_price,
+				':product_name' => $product_name,
+				':pic_url' => $pic_url,
+				':create_time' => $create_time,
+				':type_remark' => $type_remark,
+				':product_num' => $product_num 
+		) );
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_orderitem where  ( order_no = :order_no or :order_no='' ) 
  and  ( productid = :productid or :productid=0 ) 
  and  ( buynumber = :buynumber or :buynumber=0 ) 
  and  ( prodcut_price = :prodcut_price or :prodcut_price='' ) 
  and  ( product_name = :product_name or :product_name='' ) 
- and  ( big_pic = :big_pic or :big_pic='' ) 
- and  ( small_pic = :small_pic or :small_pic='' ) 
+ and  ( pic_url = :pic_url or :pic_url='' ) 
  and  ( create_time = :create_time or :create_time='' ) 
+ and  ( type_remark = :type_remark or :type_remark='' ) 
+ and  ( product_num = :product_num or :product_num='' ) 
 ", array (
-':user_id' => $user_id,
-                   ':orderid' => $orderid,
-                   ':productid' => $productid,
-                   ':buynumber' => $buynumber,
-                   ':prodcut_price' => $prodcut_price,
-                   ':product_name' => $product_name,
-                   ':big_pic' => $big_pic,
-                   ':small_pic' => $small_pic,
-                   ':create_time' => $create_time
-			)  );
-		$totalcount=$data[0]['totalcout'];
+				':order_no' => $order_no,
+				':productid' => $productid,
+				':buynumber' => $buynumber,
+				':prodcut_price' => $prodcut_price,
+				':product_name' => $product_name,
+				':pic_url' => $pic_url,
+				':create_time' => $create_time,
+				':type_remark' => $type_remark,
+				':product_num' => $product_num 
+		) );
+		$totalcount = $data [0] ['totalcout'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;
