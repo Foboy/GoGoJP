@@ -33,10 +33,9 @@ class ProductController extends Controller {
 	public function searchProductByCondition() {
 		$Product = new ProductModel ();
 		$catid=I('catid',0);
-		$product_name=I('product_name','','htmlspecialchars');
-		$product_num=I('product_num','','htmlspecialchars');
+		$keyname=I('keyname','','htmlspecialchars');
 		$pageIndex = I ('pageIndex', 0 );
 		$pageSize = I ('pageSize', 10 );
-		$this->ajaxReturn ( $Product->searchProductByCondition($catid,$product_name,$product_num,$pageIndex,$pageSize));
+		$this->ajaxReturn ( $Product->searchProductByCondition($catid,$keyname,$pageIndex,$pageSize));
 	}
 }

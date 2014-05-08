@@ -69,26 +69,25 @@ class ProductModel extends Model {
 		return $result;
 	}
 	// 根据条件分页模糊查询商品列表
-	public function searchProductByCondition($catid, $product_name,$product_num, $pageIndex, $pageSize) {
+	public function searchProductByCondition($catid, $keyname, $pageIndex, $pageSize) {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
-		$likename = " '%" . $product_name . "%'  ";
-		$likenum= " '%" . $product_num . "%'  ";
+		$skey = " (1=1) ";
+		if (! empty ( $keyname )) {
+			$skey = " ( ( t.product_name like '%$keyname%' )  or  ( t.product_num  like '%$keyname%' ) )";
+		}
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or ''=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc limit $lastPageNum,$pageSize", array (
-				':catid' => $catid,
-				':prodcut_name' => $product_name,
-				':product_num'=>$product_num
+	 
+		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and $skey order by t.create_time desc limit $lastPageNum,$pageSize", array (
+				':catid' => $catid 
 		) );
-		$data = $conn->query ("select count(*) as totalcount from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and (t.product_name like $likename or ''=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc ", array (
-				':catid' => $catid,
-				':prodcut_name' => $product_name,
-				':product_num'=>$product_num
+		$data = $conn->query ( "select count(*) as totalcount from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and $skey order by t.create_time desc ", array (
+				':catid' => $catid 
 		) );
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;
 		$result->Data = $objects;
-		$result->totalcount = $data[0]['totalcount'];
+		$result->totalcount = $data [0] ['totalcount'];
 		return $result;
 	}
 }
