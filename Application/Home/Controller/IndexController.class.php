@@ -41,7 +41,7 @@ class IndexController extends Controller {
 		$result=new DataResult();
 		$User=new UserModel();
 		if(session('user_id')){
-		$result=$User->getModel(session('user_id'));
+		$result->Data=$User->getModel(session('user_id'));
 		}
 		else 
 		{
