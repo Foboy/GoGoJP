@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,13 +26,14 @@ DROP TABLE IF EXISTS `gogojp_album`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_album` (
   `album_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '合辑id 主键自增',
-  `album_name` varchar(80) DEFAULT NULL COMMENT '合辑名称',
+  `album_name` varchar(80) NOT NULL COMMENT '合辑名称',
   `album_cover` varchar(120) DEFAULT NULL COMMENT '合辑封面',
   `album_description` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
   `album_sign` varchar(30) DEFAULT NULL COMMENT '合辑标签',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `album_status` tinyint(4) DEFAULT '1' COMMENT '专辑状态 1:显示可用 2：禁用',
   PRIMARY KEY (`album_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +42,7 @@ CREATE TABLE `gogojp_album` (
 
 LOCK TABLES `gogojp_album` WRITE;
 /*!40000 ALTER TABLE `gogojp_album` DISABLE KEYS */;
+INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-08 06:56:00',1);
 /*!40000 ALTER TABLE `gogojp_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,16 +321,17 @@ CREATE TABLE `gogojp_productinfo` (
   `productid` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品编号',
   `catid` int(11) DEFAULT NULL COMMENT '类别编号  外键',
   `sign` varchar(50) DEFAULT NULL COMMENT '商品标签',
-  `product_name` varchar(128) DEFAULT NULL COMMENT '商品名称',
+  `product_name` varchar(128) NOT NULL COMMENT '商品名称',
   `unit` varchar(11) DEFAULT NULL COMMENT '商品单位',
-  `old_price` decimal(10,2) DEFAULT NULL COMMENT '市场价',
-  `new_price` decimal(10,2) DEFAULT NULL COMMENT '商品现价',
+  `old_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '市场价',
+  `new_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '商品现价',
   `small_pic` varchar(100) DEFAULT NULL COMMENT '缩率图',
   `big_pic` varchar(100) DEFAULT NULL COMMENT '放大的图片',
   `product_description` varchar(2000) DEFAULT NULL COMMENT '商品简介',
   `product_count` int(11) DEFAULT NULL COMMENT '库存量',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `product_num` varchar(50) NOT NULL COMMENT '商品货号',
+  `product_status` tinyint(4) DEFAULT '1' COMMENT '商品上架状态 1：上架 2：下架',
   PRIMARY KEY (`productid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -339,7 +342,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425');
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-08 14:38:43
+-- Dump completed on 2014-05-08 15:41:13
