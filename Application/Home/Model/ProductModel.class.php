@@ -80,11 +80,12 @@ class ProductModel extends Model {
 				':prodcut_name' => $product_name,
 				':product_num'=>$product_num
 		) );
-		$totalcount = $conn->query ( "select count(*) from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like $likename or t.product_name=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc ", array (
+		$data = $conn->query ( "select count(*) totalcout from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=1 or 0=:catid) and (t.product_name like $likename or t.product_name=:prodcut_name) and (t.product_num like $likenum or ''=:product_num) order by t.create_time desc ", array (
 				':catid' => $catid,
 				':product_name' => $product_name,
 				':product_num'=>$product_num 
-		) )[0]['count(*)'];
+		) );
+		$totalcount=$data[0]['totalcout'];
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;
 		$result->Data = $objects;
