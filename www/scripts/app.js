@@ -7,7 +7,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/addproduct', { template: '', controller: function () { } })
     .when('/editproduct/:prodcutid', { template: '', controller: function () { } })
     .when('/customerservice', { template: '', controller: function () { } })
-    .when('/oitem/:orderid', { template: '', controller: function () { } })
+    .when('/orderitem/:orderid', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
@@ -17,7 +17,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add.html', controller: function () { } })
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
-         .state('main.order.orderitem', { url: '/oitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
+         .state('main.orderitem', { url: '/orderitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
          .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } });
 
 
@@ -59,7 +59,9 @@ function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls) {
     //登录
     $http.post($resturls["GetCurrentUser"], {}).success(function (result) {
         if (result.Error == 0) {
-            $scope.currentuser = result.Data;
+            if (result.Data.length > 0) {
+                $scope.currentuser = result.Data[0];
+            }
         } else {
             $scope.currentuser = {};
         }
