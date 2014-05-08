@@ -65,9 +65,8 @@ class UserModel extends Model {
 		return $result;
 	}
 	public function getModel($userid) {
-		$result = new DataResult ();
 		$User = new Pdo ( );
-		$result->Data = $User->query ( "select *  from gogojp_user where user_id=:user_id", array (
+		$result= $User->query ( "select *  from gogojp_user where user_id=:user_id", array (
 				":user_id" => $userid
 		) );
 		
