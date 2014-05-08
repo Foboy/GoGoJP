@@ -37,6 +37,6 @@ class ProductController extends Controller {
 		$product_num=I('product_num','','htmlspecialchars');
 		$pageIndex = I ('pageIndex', 0 );
 		$pageSize = I ('pageSize', 10 );
-		$this->ajaxReturn ( $Product->searchProductByCondition($catid,$prodcut_name,$product_num,$pageIndex,$pageSize));
+		$this->ajaxReturn ( $Product->searchProductByCondition($catid,$product_name,$product_num,$pageIndex,$pageSize));
 	}
 }

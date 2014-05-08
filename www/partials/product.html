@@ -29,31 +29,26 @@
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-default dropdown-toggle"
                                     data-toggle="dropdown">
-                                    女装类别
+                                    {{Choose_MainCategory==null?'一级类别':Choose_MainCategory.cat_name}}
 							<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a>123</a></li>
-                                    <li><a>123</a></li>
-                                    <li ng-repeat="status in orderstatus">
-                                        <a ng-click="ChooseOrderStatus(status)"></a>
+                                    <li ng-repeat="MainCategory in MainCategorys">
+                                        <a ng-click="ChooseMainCategory(MainCategory)">{{MainCategory.cat_name}}</a>
                                     </li>
 
                                 </ul>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-5" ng-show="secondshow">
                                 <button type="button" class="btn btn-default dropdown-toggle"
                                     data-toggle="dropdown">
-                                    二级类别
+                                    {{Choose_SubCategory==null?'二级类别':Choose_SubCategory.cat_name}} 
 							<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a>245</a></li>
-                                    <li><a>789</a></li>
-                                    <li ng-repeat="status in orderstatus">
-                                        <a ng-click="ChooseOrderStatus(status)"></a>
+                                    <li ng-repeat="SubCategory in SubCategorys">
+                                        <a ng-click="ChooseSubCategory(SubCategory)">{{SubCategory.cat_name}}</a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -98,10 +93,11 @@
                                 <tr ng-repeat="Prodcut in Prodcuts">
                                     <td>{{Prodcut.product_num}}</td>
                                     <td>{{Prodcut.product_name}}</td>
-                                    <td><img  src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px"/></td>
+                                    <td>
+                                        <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px" /></td>
                                     <td>{{Prodcut.create_time}}</td>
                                     <td>{{Prodcut.category_name}}</td>
-                                    <td>上架</td>
+                                    <td>{{Prodcut.product_status==1?'上架':'下架'}}</td>
                                     <td><a ng-click="edit()">编辑</a></td>
                                 </tr>
 
@@ -123,7 +119,7 @@
                         <div class=" margin_top col-sm-4">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class="control-label col-md-4">订单时间范围</label>
+                                    <label class="control-label col-md-4">添加时间</label>
                                     <div class="input-group  col-md-8">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -171,12 +167,13 @@
                                     <th>显示</th>
                                     <th>合辑操作</th>
                                 </tr>
-                                <tr ng-repeat="bill in shopBills">
-                                    <td>{{bill.lakala_order_no}}</td>
-                                    <td>{{bill.shop_name}}</td>
-                                    <td>{{bill.username}}</td>
-                                    <td>{{bill.nickname}}</td>
-                                    <td>{{bill.Type}}</td>
+                                <tr ng-repeat="Album in Albums">
+                                    <td>{{Album.album_name}}</td>
+                                    <td>
+                                        <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px" /></td>
+                                    <td>{{Album.create_time}}</td>
+                                    <td>{{Album.album_status==1?'显示':'禁用'}}</td>
+                                    <td><a ng-click="edit()">编辑</a></td>
                                 </tr>
                             </tbody>
                         </table>
