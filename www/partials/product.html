@@ -2,10 +2,10 @@
 <div class="content-header">
     <h5>
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_1" data-toggle="tab">商品列表</a></li>
-            <li class=""><a href="#tab_2" data-toggle="tab">商品合辑</a></li>
-            <li class=""><a href="#tab_2" data-toggle="tab">商品分类</a></li>
-            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加主分类</a></li>
+            <li ng-class="sorts=='product'?'active':''"><a ng-href="#/client/gogocustomer/" data-toggle="tab">商品列表</a></li>
+            <li ng-class="sorts=='album'?'active':''"><a ng-href="#/client/gogocustomer/" data-toggle="tab">商品合辑</a></li>
+            <li ng-class="sorts=='category'?'active':''"><a ng-href="#/client/gogocustomer/" data-toggle="tab">商品分类</a></li>
+            <li ng-show="" class="pull-right"><a ng-click="add()" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加主分类</a></li>
         </ul>
     </h5>
 </div>
