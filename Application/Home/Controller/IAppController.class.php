@@ -1,7 +1,16 @@
 <?php
+
+namespace Home\Controller;
+
 use Think\Controller;
+use Home\Model\AreaModel;
+use Home\Model\ShippingaddressModel;
+
 class IAppController extends Controller
 {
+	public function index(){
+		$this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>[ 您现在访问的是Home模块的Iapp控制器 ]</div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
+	}
 	//获取首页海报
 	public function getPoster()
 	{}
@@ -11,7 +20,7 @@ class IAppController extends Controller
 	//增加点击率
 	public function addClickNums()
 	{}
-	//获取购物车数据
+	//获取购物车数据s
 	public function seachShoppingCartInfoByUserId()
 	{
 		
@@ -21,16 +30,31 @@ class IAppController extends Controller
 	{}
 	//获取身份信息
 	public function searchProvince()
-	{}
+	{
+		$AreaModel = new AreaModel ();
+		$this->ajaxReturn($AreaModel->searchByPid(0));
+	}
 	//通过省份获取城市
 	public function searchCityByProvince()
-	{}
+	{
+		$AreaModel = new AreaModel ();
+		$pid=I('pid');
+		$this->ajaxReturn($AreaModel->searchByPid($pid));
+	}
 	//通过城市获取县
 	public function searchCountyByCity()
-	{}
+	{
+		$AreaModel = new AreaModel ();
+		$pid=I('pid');
+		$this->ajaxReturn($AreaModel->searchByPid($pid));
+	}
 	//查询用户配送地址
 	public function searchAddrs()
-	{}
+	{
+		$Address=new ShippingaddressModel();
+		$user_id=I('userid');
+		$this->ajaxReturn($Address->searchUserAddress($user_id));
+	}
 	//删除配送地址
 	public function delAddr()
 	{}
