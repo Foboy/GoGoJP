@@ -24,6 +24,10 @@
           resturls.add("LoadProdcut", "Home/Product/searchProductByCondition");//根据筛选条件分页查询商品列表
           resturls.add("LoadProdcutAlbum", "Home/Album/searchAlbumByCondition");//根据筛选条件分页插叙商品专辑列表
           resturls.add("LoadProdcutCategory", "Home/ProductCategory/searchProductCategory");//分页查询分类列表(包括上下级关系)
+          
+          // 订单模块
+          resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
+          
           $provide.constant('$resturls', resturls);
 
       } ]);

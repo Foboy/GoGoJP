@@ -60,25 +60,11 @@ class OrderModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-public function updateModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status) {
+public function updateModel($order_no,$order_status,$order_status_update_time,$logistics_status) {
 		$result = new DataResult ();
 		$data = array (
-                   ':order_no' => $order_no,
-                   ':user_id' => $user_id,
-                   ':user_account' => $user_account,
-                   ':order_time' => $order_time,
-                   ':order_freight' => $order_freight,
-                   ':order_totalprice' => $order_totalprice,
-                   ':order_payment' => $order_payment,
                    ':order_status' => $order_status,
                    ':order_status_update_time' => $order_status_update_time,
-                   ':order_receive_address' => $order_receive_address,
-                   ':order_receive_name' => $order_receive_name,
-                   ':order_receive_mobile' => $order_receive_mobile,
-                   ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode,
-                   ':remark' => $remark,
-                   ':order_pay_account' => $order_pay_account,
                    ':logistics_status' => $logistics_status
 		);
 		// 注意判断条件使用恒等式
@@ -110,17 +96,19 @@ public function updateModel($order_no,$user_id,$user_account,$order_time,$order_
 			$timespan = "  and order_time between $order_time1 and $order_time2 ";
 		}
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select * from gogojp_order 
+		$sql=" select * from gogojp_order 
 				where  $skey
  $timespan
- and  ( order_status = :order_status or :order_status='' ) 
- limit $lastpagenum,$pagesize", array (
+ and  ( order_status = :order_status or :order_status=0 ) 
+ limit $lastpagenum,$pagesize";
+		$objects = $conn->query ( $sql, array (
 				':order_status' => $order_status 
 		) );
+		//print $sql;
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_order 
 				where  $skey
 $timespan
- and  ( order_status = :order_status or :order_status='' ) 
+ and  ( order_status = :order_status or :order_status=0 ) 
 ", array (
 				':order_status' => $order_status 
 		) );
