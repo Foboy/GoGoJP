@@ -220,19 +220,23 @@ DROP TABLE IF EXISTS `gogojp_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_order` (
-  `orderid` int(25) NOT NULL AUTO_INCREMENT COMMENT '订单编号',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户标示   主键',
+  `orderid` int(25) NOT NULL AUTO_INCREMENT,
+  `order_no` varchar(45) NOT NULL COMMENT '订单编号',
+  `user_id` int(11) NOT NULL COMMENT '用户标示   主键',
+  `user_account` varchar(45) NOT NULL COMMENT '购买账号',
   `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '订单产生时间',
-  `order_freight` decimal(10,2) DEFAULT NULL COMMENT '订单运费',
-  `order_totalprice` decimal(10,2) DEFAULT NULL COMMENT '订单总价',
-  `order_payment` tinyint(4) DEFAULT NULL COMMENT '支付方式 1：支付宝 ',
-  `order_status` tinyint(4) DEFAULT NULL COMMENT '订单状态 0：未处理 1：已处理  2：已发货',
+  `order_freight` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单运费',
+  `order_totalprice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单总价',
+  `order_payment` tinyint(4) NOT NULL COMMENT '支付方式 1：支付宝 ',
+  `order_status` tinyint(4) NOT NULL COMMENT '订单状态 1：未处理 2：已处理  3：已发货',
   `order_status_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '订单状态修改时间',
-  `order_receive_address` varchar(50) DEFAULT NULL COMMENT '订单收货地址字符串',
-  `order_receive_name` varchar(20) DEFAULT NULL COMMENT '订单收货人名字',
+  `order_receive_address` varchar(50) NOT NULL COMMENT '订单收货地址字符串',
+  `order_receive_name` varchar(20) NOT NULL COMMENT '订单收货人名字',
   `order_receive_mobile` int(11) DEFAULT NULL COMMENT '订单接收人手机',
   `order_receive_phone` varchar(20) DEFAULT NULL COMMENT '订单接收人座机',
   `order_receive_postcode` varchar(10) DEFAULT NULL COMMENT '订单接受人邮编',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `order_pay_account` varchar(45) NOT NULL COMMENT '支付账号',
   PRIMARY KEY (`orderid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户订单';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -255,15 +259,15 @@ DROP TABLE IF EXISTS `gogojp_orderitem`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_orderitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户编号',
-  `orderid` int(25) DEFAULT NULL COMMENT '订单编号 外键',
-  `productid` bigint(20) DEFAULT NULL COMMENT '商品编号',
-  `buynumber` int(11) DEFAULT NULL COMMENT '购买商品数量',
-  `prodcut_price` decimal(10,2) DEFAULT NULL COMMENT '购买时商品单价 ',
-  `product_name` varchar(128) DEFAULT NULL COMMENT '商品名称',
-  `big_pic` varchar(256) DEFAULT NULL COMMENT '商品放大的图片',
-  `small_pic` varchar(256) DEFAULT NULL COMMENT '商品缩率图',
+  `order_no` varchar(45) NOT NULL COMMENT '订单编号 外键',
+  `productid` bigint(20) NOT NULL COMMENT '商品编号',
+  `buynumber` int(11) NOT NULL DEFAULT '1' COMMENT '购买商品数量',
+  `prodcut_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '购买时商品单价 ',
+  `product_name` varchar(128) NOT NULL COMMENT '商品名称',
+  `pic_url` varchar(256) DEFAULT NULL COMMENT '商品放大的图片',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type_remark` varchar(90) NOT NULL COMMENT '属性备注',
+  `product_num` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='订单项目信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -440,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-06 12:08:08
+-- Dump completed on 2014-05-08 14:38:43

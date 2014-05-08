@@ -81,6 +81,12 @@ class ShippingaddressModel extends Model {
 		$result->Data = $this->where ( 'shipping_id=%d', $shipping_id )->select ();
 		return $result;
 	}
+	// 根据主键id获取某个专辑信息
+	public function searchUserAddress($user_id) {
+		$result = new DataResult ();
+		$result->Data = $this->where ( 'user_id=%d', $user_id )->select ();
+		return $result;
+	}
 	// 获取图片管理表中分页数据
 	public function searchByPage($receive_name,$receive_address,$receive_mobile,$user_id,$receive_postcode,$receive_phone,$province_id,$city_id,$county_id,$country_id,$create_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
