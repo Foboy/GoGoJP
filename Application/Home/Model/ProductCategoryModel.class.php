@@ -71,8 +71,8 @@ class ProductCategoryModel extends Model {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$conn = new Pdo();
-		$objects = $conn->query ( "select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time limit $lastPageNum,$pageSize" );
-		$data = $conn->query ( "select count(*) totalcount from gogojp_productcategory order by create_time" );
+		$objects = $conn->query ( "select g.*,c.cat_name as parent_name from gogojp_productcategory g left join (select cat_name,catid from gogojp_productcategory ) as c on g.parentid=c.catid order by create_time desc limit $lastPageNum,$pageSize" );
+		$data = $conn->query ( "select count(*) totalcount from gogojp_productcategory order by create_time desc" );
 		$totalcount=$data[0]['totalcount'];
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;

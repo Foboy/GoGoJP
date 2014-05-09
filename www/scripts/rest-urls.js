@@ -26,6 +26,8 @@
           resturls.add("LoadProdcutCategory", "Home/ProductCategory/searchProductCategory");//分页查询分类列表(包括上下级关系)
           resturls.add("LoadMainCategory", "Home/ProductCategory/searchMainCategory");/* 获取主分类列表信息 */
           resturls.add("LoadSubCategory", "Home/ProductCategory/searchSubcategory");//根据主类id获取子分类
+          resturls.add("AddCategory", "Home/ProductCategory/addProductCategory");//添加分类
+          resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
