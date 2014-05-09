@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller {
 		$ProductCategory = new ProductCategoryModel ();
 		$catid = I ( 'catid' );
 		$cat_name = I ( 'cat_name', '', 'htmlspecialchars' );//必填字段
-		$status = I ( 'status' ); // 默认启用
+		$status = I ( 'status',1 ); // 默认启用
 		$this->ajaxReturn ( $ProductCategory->updateModel ( $catid, $cat_name, $status ) );
 	}
 	//获取摸个分类信息
