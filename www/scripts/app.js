@@ -7,7 +7,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/addproduct', { template: '', controller: function () { } })
     .when('/editproduct/:prodcutid', { template: '', controller: function () { } })
     .when('/customerservice', { template: '', controller: function () { } })
-    .when('/oitem/:orderid', { template: '', controller: function () { } })
+    .when('/oitem/:order_no?/:order_time?', { template: '', controller: function () { } })
     .when('/order/:pageIndex?', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
