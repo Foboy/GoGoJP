@@ -42,7 +42,8 @@ class OrderitemModel extends Model {
 	// 删除表中数据
 	public function deleteModel($id) {
 		$result = new DataResult ();
-		if ($this->where ( 'id=%d', $id )->delete () == 1) {
+		$map['id']=$id;
+		if ($this->where ( $map )->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -66,7 +67,8 @@ class OrderitemModel extends Model {
 				':product_num' => $product_num 
 		);
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'id=%d', $id )->save ( $data ) !== false) {
+		$map['id']=$id;
+		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $id );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -78,7 +80,8 @@ class OrderitemModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($id) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'id=%d', $id )->select ();
+		$map['id']=$id;
+		$result->Data = $this->where ( $map)->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据

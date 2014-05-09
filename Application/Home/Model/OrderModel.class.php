@@ -51,7 +51,8 @@ class OrderModel extends Model {
 	// 删除表中数据
 	public function deleteModel($order_no) {
 		$result = new DataResult ();
-		if ($this->where ( 'order_no=%d', $order_no )->delete () == 1) {
+		$map['order_no']=$order_no;
+		if ($this->where ($map)->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -67,8 +68,9 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
                    ':order_status_update_time' => $order_status_update_time,
                    ':logistics_status' => $logistics_status
 		);
+		$map['order_no']=$order_no;
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'order_no=%d', $order_no )->save ( $data ) !== false) {
+		if ($this->where ($map)->save ( $data ) !== false) {
 			$result->Data = $this->find ( $order_no );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -80,7 +82,8 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 	// 根据主键id获取某个专辑信息
 	public function getModel($order_no) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'order_no=%d', $order_no )->select ();
+		$map['order_no']=$order_no;
+		$result->Data = $this->where ( $map )->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
