@@ -7,7 +7,7 @@
     angular.module('ngRestUrls', ['ng']).
       config(['$provide', function ($provide) {
           var resturls = {};
-          resturls.base = "/index.php";
+          resturls.base = "/gogojp/index.php";
          // resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
@@ -29,6 +29,10 @@
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
+          resturls.add("getOrder", "Home/Order/getOrder");//获取单个订单
+          resturls.add("searchOrderItem", "Home/Order/searchOrderItem");//查询订单
+          resturls.add("updateOrderStatus", "Home/Order/updateOrderStatus");//修改订单状态
+          resturls.add("updateLogisticsStatus", "Home/Order/updateLogisticsStatus");//修改物流状态
           
           $provide.constant('$resturls', resturls);
 
