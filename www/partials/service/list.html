@@ -11,19 +11,19 @@
                                         <i class="fa fa-calendar"></i>
                                     </div>
                                     <input type="text" id="reservation"
-                                        ng-model="orderlistinfo.daterange" class="form-control ">
+                                        ng-model="chatlistdaterange" class="form-control ">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="margin_top col-sm-4">
                         <div class="input-group pull-left">
-                            <input type="text" ng-model="orderlistinfo.skey"
-                                placeholder="模糊查询(聊天内容)" class="form-control "
+                            <input type="text" ng-model="chatlistsearchkey"
+                                placeholder="模糊查询(账户或昵称)" class="form-control "
                                 name="table_search">
                             <div class="input-group-btn">
                                 <button class="btn btn-default btn-flat"
-                                    ng-click="SearchOrderList()">
+                                    ng-click="searchChat()">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
@@ -53,14 +53,14 @@
                                 <th>是否已读</th>
                                 <th>操作</th>
                             </tr>
-                            <tr ng-repeat="msg in msglist">
-                                <td>{{msg.nickname}}</td>
-                                <td>{{msg.nickname}}</td>
-                                <td>{{msg.nickname}}</td>
-                                <td>{{msg.nickname}}</td>
+                            <tr ng-repeat="chat in chatlist">
+                                <td>{{chat.nickname}}</td>
+                                <td>{{chat.nickname}}</td>
+                                <td>{{chat.nickname}}</td>
+                                <td>{{chat.nickname}}</td>
                                 <td>
-                                    <a ng-href="#/customerservice/chat/{{msg.id}}">回复</a>
-                                    <a ng-href="#/customerservice/histories/{{msg.id}}">查看历史记录</a>
+                                    <a ng-href="#/customerservice/chat/{{chat.id}}">回复</a>
+                                    <a ng-href="#/customerservice/histories/{{chat.id}}">查看历史记录</a>
                                 </td>
                             </tr>
 

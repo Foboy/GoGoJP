@@ -17,6 +17,19 @@ class CustomerAdvisoryModel extends Model {
 	public function addModel($customer_id,$customer_account,$customer_nickname,$create_time,$isread) {
 		$result = new DataResult ();
 		$data = array (
+				':customer_account' => $customer_account,
+				':customer_nickname' => $customer_nickname,
+				':create_time' => $create_time,
+				':isread' => $isread
+		);
+		// 注意判断条件使用恒等式
+		$map['customer_id']=$customer_id;
+		if ($this->where ($map )->save ( $data ) !== false) {
+			$result->Error = ErrorType::Success;
+			$result->ErrorMessage = '更新成功';
+			return $result;
+		}
+		$data = array (
 ':customer_id' => $customer_id,
                    ':customer_account' => $customer_account,
                    ':customer_nickname' => $customer_nickname,
@@ -75,33 +88,28 @@ class CustomerAdvisoryModel extends Model {
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($customer_id,$customer_account,$customer_nickname,$create_time,$isread, $pageindex, $pagesize) {
+	public function searchByPage($customer_account,$customer_nickname,$begin_time,$end_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select advisory_id,customer_id,customer_account,customer_nickname,create_time,isread from gogojp_customer_advisory where  ( customer_id = :customer_id or :customer_id=0 ) 
- and  ( customer_account = :customer_account or :customer_account='' ) 
- and  ( customer_nickname = :customer_nickname or :customer_nickname='' ) 
- and  ( create_time = :create_time or :create_time='' ) 
- and  ( isread = :isread or :isread='' ) 
+		$objects = $conn->query ( " select advisory_id,customer_id,customer_account,customer_nickname,create_time,isread from gogojp_customer_advisory where  ( customer_id = :customer_id or :customer_id=0 )
+ and  ('$customer_account'='' or customer_account like '%$customer_account%')
+ and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+ and  ( create_time >= :begin_time or :begin_time=0 )
+ and  ( create_time <= :end_time or :end_time=0 )
+ order by isread asc,create_time desc
  limit $lastpagenum,$pagesize", array (
-':customer_id' => $customer_id,
-                   ':customer_account' => $customer_account,
-                   ':customer_nickname' => $customer_nickname,
-                   ':create_time' => $create_time,
-                   ':isread' => $isread
+                   ':begin_time' => $begin_time,
+ 				   ':end_time' => $end_time
 			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_customer_advisory where  ( customer_id = :customer_id or :customer_id=0 ) 
- and  ( customer_account = :customer_account or :customer_account='' ) 
- and  ( customer_nickname = :customer_nickname or :customer_nickname='' ) 
- and  ( create_time = :create_time or :create_time='' ) 
- and  ( isread = :isread or :isread='' ) 
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_customer_advisory where  ( customer_id = :customer_id or :customer_id=0 )
+ and  ('$customer_account'='' or customer_account like '%$customer_account%')
+ and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+ and  ( create_time >= :begin_time or :begin_time=0 )
+ and  ( create_time <= :end_time or :end_time=0 )
 ", array (
-':customer_id' => $customer_id,
-                   ':customer_account' => $customer_account,
-                   ':customer_nickname' => $customer_nickname,
-                   ':create_time' => $create_time,
-                   ':isread' => $isread
+                   ':begin_time' => $begin_time,
+ 				   ':end_time' => $end_time
 			)  );
 		$totalcount=$data[0]['totalcout'];
 		$result->pageindex = $pageindex;

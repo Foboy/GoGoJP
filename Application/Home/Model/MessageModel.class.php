@@ -14,14 +14,13 @@ use Common\Common\ErrorType;
 class MessageModel extends Model {
 	protected $tableName = 'message';
 	// 增加表中数据
-	public function addModel($form_userid,$to_userid,$content,$create_time,$advisory_id) {
+	public function addModel($form_userid,$to_userid,$content,$create_time) {
 		$result = new DataResult ();
 		$data = array (
 ':form_userid' => $form_userid,
                    ':to_userid' => $to_userid,
                    ':content' => $content,
-                   ':create_time' => $create_time,
-                   ':advisory_id' => $advisory_id
+                   ':create_time' => $create_time
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -79,11 +78,11 @@ class MessageModel extends Model {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select messageid,form_userid,to_userid,content,create_time,advisory_id from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 ) 
- and  ( to_userid = :to_userid or :to_userid=0 ) 
- and  ( content = :content or :content='' ) 
- and  ( create_time = :create_time or :create_time='' ) 
- and  ( advisory_id = :advisory_id or :advisory_id=0 ) 
+		$objects = $conn->query ( " select messageid,form_userid,to_userid,content,create_time,advisory_id from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 )
+ and  ( to_userid = :to_userid or :to_userid=0 )
+ and  ( content = :content or :content='' )
+ and  ( create_time = :create_time or :create_time='' )
+ and  ( advisory_id = :advisory_id or :advisory_id=0 )
  limit $lastpagenum,$pagesize", array (
 ':form_userid' => $form_userid,
                    ':to_userid' => $to_userid,
@@ -91,11 +90,11 @@ class MessageModel extends Model {
                    ':create_time' => $create_time,
                    ':advisory_id' => $advisory_id
 			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 ) 
- and  ( to_userid = :to_userid or :to_userid=0 ) 
- and  ( content = :content or :content='' ) 
- and  ( create_time = :create_time or :create_time='' ) 
- and  ( advisory_id = :advisory_id or :advisory_id=0 ) 
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 )
+ and  ( to_userid = :to_userid or :to_userid=0 )
+ and  ( content = :content or :content='' )
+ and  ( create_time = :create_time or :create_time='' )
+ and  ( advisory_id = :advisory_id or :advisory_id=0 )
 ", array (
 ':form_userid' => $form_userid,
                    ':to_userid' => $to_userid,
