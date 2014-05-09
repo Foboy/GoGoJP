@@ -1,15 +1,17 @@
-
 <?php
-
+/**
+ * @author yangchao
+ * @email:66954011@qq.com
+ * @date: 2014/5/9 11:52:34
+ */
 namespace Home\Model;
-
 use Think\Model;
 use Common\Common\PageDataResult;
 use Think\Db\Driver\Pdo;
 use Common\Common\DataResult;
 use Common\Common\ErrorType;
 
-class AdvisoryModel extends Model {
+class CustomerAdvisoryModel extends Model {
 	protected $tableName = 'customer_advisory';
 	// 增加表中数据
 	public function addModel($customer_id,$customer_account,$customer_nickname,$create_time,$isread) {
@@ -34,7 +36,8 @@ class AdvisoryModel extends Model {
 	// 删除表中数据
 	public function deleteModel($advisory_id) {
 		$result = new DataResult ();
-		if ($this->where ( 'advisory_id=%d', $advisory_id )->delete () == 1) {
+        $map['advisory_id']=$advisory_id;
+		if ($this->where ($map)->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -54,7 +57,8 @@ class AdvisoryModel extends Model {
                    ':isread' => $isread
 		);
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'advisory_id=%d', $advisory_id )->save ( $data ) !== false) {
+        $map['advisory_id']=$advisory_id;
+		if ($this->where ($map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $advisory_id );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -66,7 +70,8 @@ class AdvisoryModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($advisory_id) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'advisory_id=%d', $advisory_id )->select ();
+        $map['advisory_id']=$advisory_id;
+		$result->Data = $this->where ($map )->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
