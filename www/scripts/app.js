@@ -21,7 +21,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add-product.html', controller: function () { } })
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
-         .state('main.orderitem', { url: '/orderitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
+         .state('main.orderitem', { url: '/oitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
          .state('main.customerservice', { url: '/customerservice', templateUrl: 'partials/customerservice.html', controller: ServiceMainCtrl })
          .state('main.customerservice.list', { url: "/list*path", templateUrl: 'partials/service/list.html', controller: ServiceListCtrl })
          .state('main.customerservice.chat', { url: "/chat*path", templateUrl: 'partials/service/chat.html', controller: ServiceChatCtrl })

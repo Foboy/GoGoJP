@@ -25,37 +25,35 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 							moment().endOf('month') ],
 					'上个月' : [ moment().subtract('month', 1).startOf('month'),
 							moment().subtract('month', 1).endOf('month') ]
-				},
-				startDate : moment().subtract('days', 29),
-				endDate : moment()
+				}
 			}, function(start, end) {
+				
 				$scope.stime = start / 1000;
 				$scope.etime = end / 1000;
 			});
 	$scope.SearchOrderList = function(pageIndex) {
 		if (!$scope.orderlistinfo)
 			$scope.orderlistinfo = [];
-		if (!pageIndex)
-			pageIndex = 0;
+	    var pageSize = 10;
+        if (pageIndex == 0) pageIndex = 1;
 
 		$http.post($resturls["LoadOrder"], {
 			stime : $scope.stime,
 			etime : $scope.etime,
 			keyname : $scope.orderlistinfo.skey,
 			order_status : $scope.status_id,
-			pageindex : pageIndex,
+			pageindex : pageIndex-1,
 			pagesize : 10
 		}).success(
 				function(result) {
 					if (result.Error == 0) {
 						//console.log(result.Data);
 						$scope.orderList = result.Data;
-						$parent.pages = utilities.paging(result.totalcount,
-								pageIndex + 1, 10, '#home/order/' + '{0}');
+		                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#order'  + '/{0}');
+				
 					} else {
-						// $scope.shopBills = [];
-						$parent.pages = utilities.paging(0, pageIndex + 1, 10);
-					}
+						$scope.orderList = [];
+					       $parent.pages = utilities.paging(0, pageIndex, pageSize);					}
 				});
 	}
 
@@ -105,9 +103,8 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}
 		return name;
 	}
-
 	if ($routeParams.pageIndex)
-		$scope.SearchOrderList($routeParams.pageIndex - 1);
+		$scope.SearchOrderList($routeParams.pageIndex || 1);
 	else
 		$scope.SearchOrderList();
 }

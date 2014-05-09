@@ -7,7 +7,7 @@
     angular.module('ngRestUrls', ['ng']).
       config(['$provide', function ($provide) {
           var resturls = {};
-          resturls.base = "/GoGoJP/index.php";
+          resturls.base = "/gogojp/index.php";
          // resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
@@ -20,6 +20,9 @@
           resturls.add("Login", "Home/Index/login");//登录
           resturls.add("LoginOut", "Home/Index/loginOut");//退出登录
 
+          //客户咨询
+          resturls.add("ChatList", "Home/Chat/chatList");//咨询列表
+
           // 产品模块（产品，产品合辑，产品分类）
           resturls.add("LoadProdcut", "Home/Product/searchProductByCondition");//根据筛选条件分页查询商品列表
           resturls.add("LoadProdcutAlbum", "Home/Album/searchAlbumByCondition");//根据筛选条件分页插叙商品专辑列表
@@ -31,6 +34,10 @@
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
+          resturls.add("getOrder", "Home/Order/getOrder");//获取单个订单
+          resturls.add("searchOrderItem", "Home/Order/searchOrderItem");//查询订单
+          resturls.add("updateOrderStatus", "Home/Order/updateOrderStatus");//修改订单状态
+          resturls.add("updateLogisticsStatus", "Home/Order/updateLogisticsStatus");//修改物流状态
           
           $provide.constant('$resturls', resturls);
 

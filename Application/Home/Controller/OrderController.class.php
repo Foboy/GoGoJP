@@ -13,6 +13,7 @@ use Common\Common\DataResult;
 use Common\Common\ErrorType;
 use Common\Common\LogisticsStatus;
 use Common\Common\OrderStatus;
+use Home\Model\OrderitemModel;
 
 class OrderController extends Controller {
 	public function index() {
@@ -163,6 +164,19 @@ class OrderController extends Controller {
 		$result = $Order->updateModel ( $order_no, OrderStatus::paid,time(), $logistics_status );
 		$this->ajaxReturn ( $result );
 	}
+	//修改付款时间
+	public function updatePaytime() {
+		$result = new DataResult ();
+		$Order = new OrderModel ();
+		$order_no = I ( 'order_no' );
+		
+		if (! isset ( $order_no ) or empty ( $order_no )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Order->updatePaytime ( $order_no, time() );
+		$this->ajaxReturn ( $result );
+	}
 	// 获取单个
 	public function getOrder() {
 		$result = new DataResult ();
@@ -175,7 +189,18 @@ class OrderController extends Controller {
 		$result = $Order->getModel ( $order_no );
 		$this->ajaxReturn ( $result );
 	}
-	
+	// 获取单个
+	public function searchOrderItem() {
+		$result = new DataResult ();
+		$OrderItem = new OrderitemModel();
+		$order_no = I ( 'order_no' );
+		if (! isset ( $order_no ) or empty ( $order_no )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $OrderItem->searchItemByOrderNO ( $order_no );
+		$this->ajaxReturn ( $result );
+	}
 	// 分页查询列表
 	public function searchOrder() {
 		$result = new DataResult ();

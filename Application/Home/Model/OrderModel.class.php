@@ -17,7 +17,7 @@ class OrderModel extends Model {
 	protected $tableName = 'order';
 
 	// 增加表中数据
-	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status) {
+	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status,$pay_time) {
 		$result = new DataResult ();
 		$data = array (
 ':order_no' => $order_no,
@@ -36,7 +36,8 @@ class OrderModel extends Model {
                    ':order_receive_postcode' => $order_receive_postcode,
                    ':remark' => $remark,
                    ':order_pay_account' => $order_pay_account,
-                   ':logistics_status' => $logistics_status
+                   ':logistics_status' => $logistics_status,
+				':pay_time'=>$pay_time
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -79,11 +80,29 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		}
 		return $result;
 	}
+	// 修改付款时间
+	public function updatePaytime($order_no,$pay_time) {
+		$result = new DataResult ();
+		$data = array (
+				':order_status' => 2,
+				':pay_time' => $pay_time
+		);
+		$map['order_no']=$order_no;
+		// 注意判断条件使用恒等式
+		if ($this->where ($map)->save ( $data ) !== false) {
+			$result->Data = $this->find ( $order_no );
+			$result->ErrorMessage = '更新成功';
+		} else {
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '更新成功';
+		}
+		return $result;
+	}
 	// 根据主键id获取某个专辑信息
 	public function getModel($order_no) {
 		$result = new DataResult ();
 		$map['order_no']=$order_no;
-		$result->Data = $this->where ( $map )->select ();
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
@@ -108,14 +127,16 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 				':order_status' => $order_status 
 		) );
 		//print $sql;
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_order 
+		$totalsql=" select count(*) totalcount  from gogojp_order 
 				where  $skey
 $timespan
  and  ( order_status = :order_status or :order_status=0 ) 
-", array (
+";
+		//print $totalsql;
+		$data = $conn->query ( $totalsql, array (
 				':order_status' => $order_status 
 		) );
-		$totalcount = $data [0] ['totalcout'];
+		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;

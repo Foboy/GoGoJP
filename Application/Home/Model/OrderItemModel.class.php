@@ -78,9 +78,9 @@ class OrderitemModel extends Model {
 		return $result;
 	}
 	// 根据主键id获取某个专辑信息
-	public function getModel($id) {
+	public function searchItemByOrderNO($order_no) {
 		$result = new DataResult ();
-		$map['id']=$id;
+		$map['order_no']=$order_no;
 		$result->Data = $this->where ( $map)->select ();
 		return $result;
 	}
