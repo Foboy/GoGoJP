@@ -9,4 +9,5 @@ class LogisticsStatus
 	const overseas_send = 3;
 	const home_arrive = 4;
 	const home_send = 5;
+	const success=6;
 }

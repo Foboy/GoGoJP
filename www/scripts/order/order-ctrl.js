@@ -44,17 +44,17 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 			keyname : $scope.orderlistinfo.skey,
 			order_status : $scope.status_id,
 			pageindex : pageIndex,
-			pagesize : 10
+			pagesize : 3
 		}).success(
 				function(result) {
 					if (result.Error == 0) {
 						console.log(result.Data);
 						$scope.orderList = result.Data;
 						$parent.pages = utilities.paging(result.totalcount,
-								pageIndex + 1, 10, '#home/order/' + '{0}');
+								pageIndex + 1, 3, '#home/order/' + '{0}');
 					} else {
 						// $scope.shopBills = [];
-						$parent.pages = utilities.paging(0, pageIndex + 1, 10);
+						$parent.pages = utilities.paging(0, pageIndex + 1, 3);
 					}
 				});
 	}
