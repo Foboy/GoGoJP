@@ -9,6 +9,9 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/customerservice', { template: '', controller: function () { } })
     .when('/oitem/:order_no?/:order_time?', { template: '', controller: function () { } })
     .when('/order/:pageIndex?', { template: '', controller: function () { } })
+    .when('/customerservice/list/:pageIndex?', { template: '', controller: function () { } })
+    .when('/customerservice/chat/:customerId?', { template: '', controller: function () { } })
+    .when('/customerservice/histories/:customerId?', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
@@ -18,8 +21,11 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add.html', controller: function () { } })
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
-         .state('main.orderitem', { url: '/oitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
-         .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } });
+         .state('main.orderitem', { url: '/orderitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
+         .state('main.customerservice', { url: '/customerservice', templateUrl: 'partials/customerservice.html', controller: ServiceMainCtrl })
+         .state('main.customerservice.list', { url: "/list*path", templateUrl: 'partials/service/list.html', controller: ServiceListCtrl })
+         .state('main.customerservice.chat', { url: "/chat*path", templateUrl: 'partials/service/chat.html', controller: ServiceChatCtrl })
+         .state('main.customerservice.histories', { url: "/histories*path", templateUrl: 'partials/service/histories.html', controller: ServiceHistoriesCtrl });
 
 
 
@@ -69,7 +75,6 @@ function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls) {
     });
     // unix时间戳转化为 eg:'2014-04-08'
     $scope.timestamptostr = function (timestamp) {
-        timestamp = timestamp + '';
         if (timestamp.indexOf('-') == -1) {
             var month = 0;
             var day = 0;
