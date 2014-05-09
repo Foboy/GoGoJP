@@ -7,6 +7,9 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/addproduct', { template: '', controller: function () { } })
     .when('/editproduct/:prodcutid', { template: '', controller: function () { } })
     .when('/customerservice', { template: '', controller: function () { } })
+    .when('/customerservice/list/:pageIndex?', { template: '', controller: function () { } })
+    .when('/customerservice/chat/:customerId?', { template: '', controller: function () { } })
+    .when('/customerservice/histories/:customerId?', { template: '', controller: function () { } })
     .when('/orderitem/:orderid', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
@@ -18,7 +21,10 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
          .state('main.orderitem', { url: '/orderitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
-         .state('main.customerservice', { url: '/customerservice*path', templateUrl: 'partials/customerservice.html', controller: function () { } });
+         .state('main.customerservice', { url: '/customerservice', templateUrl: 'partials/customerservice.html', controller: ServiceMainCtrl })
+         .state('main.customerservice.list', { url: "/list*path", templateUrl: 'partials/service/list.html', controller: ServiceListCtrl })
+         .state('main.customerservice.chat', { url: "/chat*path", templateUrl: 'partials/service/chat.html', controller: ServiceChatCtrl })
+         .state('main.customerservice.histories', { url: "/histories*path", templateUrl: 'partials/service/histories.html', controller: ServiceHistoriesCtrl });
 
 
 

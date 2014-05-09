@@ -1,10 +1,50 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
+﻿                    <!-- START ALERTS AND CALLOUTS -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Chat box -->
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h3 class="box-title"><i class="fa fa-comments-o"></i>您正在和 小伙伴们 聊天</h3>
+                                    <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                                        <div class="btn-group" data-toggle="btn-toggle" >
+                                            <a href="javascript:void(0)" class="btn btn-default btn-sm active">聊天</a>                                            
+                                            <a ng-href="#/customerservice/histories/{{chat_customerid}}" class="btn btn-default btn-sm">聊天记录</a>
+                                        </div>
+                                        <a href="#/customerservice/list" class="btn btn-default btn-sm">
+                                            <i class="fa fa-reply"></i>
+                                            返回列表</a>
+                                    </div>
+                                </div>
 
-</body>
-</html>
+                                <div>
+                                   <div class="box-body chat" id="service-chat-box">
+                                    <!-- chat item -->
+                                    <div class="item" ng-repeat="chatitem in chatlist">
+                                        <img src="img/avatar.png" alt="user image" ng-class="chatitem.self?'offline':'online'"/>
+                                        <p class="message">
+                                            <a href="#" class="name">
+                                                <span>{{chatitem.nickname}}</span>
+                                                <small class="text-muted"><i class="fa fa-clock-o"></i> <span>{{chatitem.time}}</span></small>
+                                            </a>
+                                        </p>
+                                        <div class="attachment">
+                                            <p>
+                                                  {{chatitem.msg}}
+                                            </p>
+                                        </div><!-- /.attachment -->
+                                    </div><!-- /.item --> 
+                                    </div><!-- /.chat -->
+                                </div>
+ 
+                                <div class="box-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="请输入回复信息..." ng-model="replyMessage" />
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-success" ng-click="sendMsg()">发送</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.box (chat box) -->
+                        </div><!-- /.col -->
+                    </div> <!-- /.row -->
+                    <!-- END ALERTS AND CALLOUTS -->

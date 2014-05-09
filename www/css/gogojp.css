@@ -94,3 +94,16 @@ a {
     width: 100%;
     height: 100%;
 }
+
+/*Service Chat Rewrite*/
+.box .chat .item > .message {
+    margin-right: 55px;
+}
+.box .chat .item > .attachment {
+    margin-right: 65px;
+    background:none;
+    background-color:none;
+}
+.box .chat .item > .attachment > p {
+    font-style:normal;
+}
