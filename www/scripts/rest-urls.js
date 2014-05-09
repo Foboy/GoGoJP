@@ -7,7 +7,7 @@
     angular.module('ngRestUrls', ['ng']).
       config(['$provide', function ($provide) {
           var resturls = {};
-          resturls.base = "/index.php";
+          resturls.base = "/gogojp/index.php";
          // resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
@@ -29,9 +29,15 @@
           resturls.add("LoadProdcutCategory", "Home/ProductCategory/searchProductCategory");//分页查询分类列表(包括上下级关系)
           resturls.add("LoadMainCategory", "Home/ProductCategory/searchMainCategory");/* 获取主分类列表信息 */
           resturls.add("LoadSubCategory", "Home/ProductCategory/searchSubcategory");//根据主类id获取子分类
+          resturls.add("AddCategory", "Home/ProductCategory/addProductCategory");//添加分类
+          resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
+          resturls.add("getOrder", "Home/Order/getOrder");//获取单个订单
+          resturls.add("searchOrderItem", "Home/Order/searchOrderItem");//查询订单
+          resturls.add("updateOrderStatus", "Home/Order/updateOrderStatus");//修改订单状态
+          resturls.add("updateLogisticsStatus", "Home/Order/updateLogisticsStatus");//修改物流状态
           
           $provide.constant('$resturls', resturls);
 

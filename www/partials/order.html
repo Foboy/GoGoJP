@@ -87,7 +87,9 @@
 								<td>{{order.order_totalprice}}</td>
 								<td>{{order.order_freight}}</td>
 								<td>{{ChangeOrderStatusIDtoName(order.order_status)}}</td>
-								<td><a href="#oitem/{{order.order_no}}/{{order.order_time}}">查看</a></td>
+								<td>
+									<a href="#oitem/{{order.order_no}}/{{order.order_time}}">查看</a>
+								</td>
 
 							</tr>
 
@@ -96,18 +98,11 @@
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer clearfix">
-					<ul class="pagination pagination-sm no-margin pull-right">
-						<li ng-repeat="page in pages | filter:'pre'">
-							<a ng-href="{{page.url}}">«</a>
-						</li>
-						<li ng-class="{{page.active}}?'active':''"
-							ng-repeat="page in pages | filter:'page'">
-							<a ng-href="{{page.url}}">{{page.index}}</a>
-						</li>
-						<li ng-repeat="page in pages | filter:'next'">
-							<a ng-href="{{page.url}}">»</a>
-						</li>
-					</ul>
+	        <ul class="pagination pagination-sm no-margin pull-right">
+            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
+            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
+            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
+        </ul>
 				</div>
 			</div>
 

@@ -88,7 +88,7 @@
     }
     //商品类别
     $scope.LoadProductCategoryList = function (pageIndex) {
-        var pageSize = 1;
+        var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         $http.post($resturls["LoadProdcutCategory"], { pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
@@ -135,7 +135,22 @@
         $rootScope.R_AlbumKey = $scope.AlbumKey;
         $scope.LoadAlbumList(1);
     }
-
+    //弹出添加主分类模态框
+    $scope.ShowAddMainCategoryMoadl = function () {
+        $("#maincatmodal").modal('show');
+        $scope.MainCategory = { Name: '', Status: 1 };
+    }
+    //弹出添加子类模态框
+    $scope.ShowAddSubCategoryModal = function (data) {
+        $("#subcatmodal").modal('show');
+        $scope.ParentCategoryName = data.cat_name;
+        $scope.SubCategory = { Name: '', Status: 1, ParentId: data.catid };
+    }
+    //弹出编辑类别模态框
+    $scope.ShowEditCategoryModal = function (data) {
+        $("#editcatmodal").modal('show');
+        $scope.Categroy = data;
+    }
     var $parent = $scope.$parent;
     $scope.sort = $routeParams.sort;
     if (!$scope.sort) {
@@ -156,5 +171,61 @@
             //分类列表
             $scope.LoadProductCategoryList($routeParams.pageIndex || 1);
             break;
+    }
+}
+function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    //添加主分类
+    $scope.AddMainCategory = function (data) {
+        if ($scope.AddMainCategoryForm.$valid) {
+            $http.post($resturls["AddCatrgory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status }).success(function (result) {
+                $("#maincatmodal").modal('hide');
+                if (result.Error == 0) {
+                    $scope.LoadProductCategoryList(1);
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //添加子分类
+    $scope.AddSubCategory = function (data) {
+        if ($scope.AddSubCategoryForm.$valid) {
+            $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status }).success(function (result) {
+                $("#subcatmodal").modal('hide');
+                if (result.Error == 0) {
+                    $scope.LoadProductCategoryList(1);
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //编辑分类
+    $scope.EidtCategory = function (data) {
+        if ($scope.EditCategoryForm.$valid) {
+            $http.post($resturls["EditCategory"], { catid: data.catid, cat_name: data.cat_name, status: data.status }).success(function (result) {
+                $("#editcatmodal").modal('hide');
+                if (result.Error == 0) {
+                    $scope.LoadProductCategoryList(1);
+                    $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
     }
 }

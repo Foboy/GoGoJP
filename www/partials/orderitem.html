@@ -3,203 +3,275 @@
 <div class="content-header">
 	<h1>订单详情</h1>
 	<ol class="breadcrumb">
-                        <li><a href="#order/"><i class="fa fa-dashboard"></i> 订单列表</a></li>
-                        
-                    </ol>
+		<li>
+			<a href="#order/">
+				<i class="fa fa-dashboard"></i>
+				订单列表
+			</a>
+		</li>
+
+	</ol>
 </div>
 
 <!-- Main content -->
-<div class="content invoice">                    
-                  
-                    <!-- info row -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p class="lead">基本信息</p>
-                            <div class="table-responsive col-xs-6">
-                                <table class="table">
-                                    <tbody>
-                                     <tr>
-                                        <th>订单号:</th>
-                                        <td>{{order_no}}</td>
-                                    </tr>
-                                     <tr>
-                                        <th>购买账号:</th>
-                                        <td>15988723145</td>
-                                    </tr>
-                                    <tr>
-                                        <th >订单状态:</th>
-                                        <td>已付款</td>
-                                    </tr>
-                                   
-                                    <tr>
-                                        <th>当前物流状态:</th>
-                                        <td>已发货</td>
-                                    </tr>
-                                    
-                                </tbody></table>
-                            </div>
-                                 <div class="table-responsive col-xs-6">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                        <th>下单时间:</th>
-                                        <td>{{order_time}}</td>
-                                    </tr>
-                                                   <tr>
-                                        <th>支付方式:</th>
-                                        <td>支付宝</td>
-                                    </tr>
-                                    <tr>
-                                        <th >第三方支付账号:</th>
-                                        <td>zqmytin@gmail.com</td>
-                                    </tr>
-                                   
-                                    <tr>
-                                        <th>付款时间:</th>
-                                        <td>2014-06-01 19：00</td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div><!-- /.col -->
-                        
-                    </div><!-- /.row -->
- <div class="row">
-                        <div class="col-xs-12">
-                            <p class="lead">收货人地址</p>
-                            <div class="table-responsive col-xs-6">
-                                <table class="table">
-                                    <tbody>
-                                     <tr>
-                                        <th>姓名:</th>
-                                        <td>奥巴马</td>
-                                    </tr>
-                                     <tr>
-                                        <th>地址:</th>
-                                        <td>成都成华区</td>
-                                    </tr>
-                                    <tr>
-                                        <th >手机:</th>
-                                        <td>13800138000</td>
-                                    </tr>
-                                   
-                                    
-                                    
-                                </tbody></table>
-                            </div>
-                                 <div class="table-responsive col-xs-6">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                        <th>邮编:</th>
-                                        <td>611441</td>
-                                    </tr>
-                                                   <tr>
-                                        <th>固定电话:</th>
-                                        <td>028-88888888</td>
-                                    </tr>
-                                    <tr>
-                                        <th ></th>
-                                        <td></td>
-                                    </tr>
-                                   
-                                   
-                                </tbody></table>
-                            </div>
-                        </div><!-- /.col -->
-                        
-                    </div><!-- /.row -->
-                    <!-- Table row -->
-                    <div class="row">
-                        <div class="col-xs-12 table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Qty</th>
-                                        <th>Product</th>
-                                        <th>Serial #</th>
-                                        <th>Description</th>
-                                        <th>Subtotal</th>
-                                    </tr>                                    
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Call of Duty</td>
-                                        <td>455-981-221</td>
-                                        <td>El snort testosterone trophy driving gloves handsome</td>
-                                        <td>$64.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Need for Speed IV</td>
-                                        <td>247-925-726</td>
-                                        <td>Wes Anderson umami biodiesel</td>
-                                        <td>$50.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Monsters DVD</td>
-                                        <td>735-845-642</td>
-                                        <td>Terry Richardson helvetica tousled street art master</td>
-                                        <td>$10.70</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Grown Ups Blue Ray</td>
-                                        <td>422-568-642</td>
-                                        <td>Tousled lomo letterpress</td>
-                                        <td>$25.99</td>
-                                    </tr>
-                                </tbody>
-                            </table>                            
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+<div class="content invoice">
 
-                    <div class="row">
-                        <!-- accepted payments column -->
-                        <div class="col-xs-6">
-                            <p class="lead">Payment Methods:</p>
-                            <img alt="Visa" src="../../img/credit/visa.png">
-                            <img alt="Mastercard" src="../../img/credit/mastercard.png">
-                            <img alt="American Express" src="../../img/credit/american-express.png">
-                            <img alt="Paypal" src="../../img/credit/paypal2.png">
-                            <p style="margin-top: 10px;" class="text-muted well well-sm no-shadow">
-                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                            </p>
-                        </div><!-- /.col -->
-                        <div class="col-xs-6">
-                            <p class="lead">Amount Due 2/22/2014</p>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody><tr>
-                                        <th style="width:50%">Subtotal:</th>
-                                        <td>$250.30</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tax (9.3%)</th>
-                                        <td>$10.34</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shipping:</th>
-                                        <td>$5.80</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total:</th>
-                                        <td>$265.24</td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+	<!-- info row -->
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="lead">基本信息</p>
+			<div class="table-responsive col-xs-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>订单号:</th>
+							<td>{{order_no}}</td>
+						</tr>
+						<tr>
+							<th>购买账号:</th>
+							<td>{{order.user_account}}</td>
+						</tr>
+						<tr>
+							<th>订单状态:</th>
+							<td>{{ChangeOrderStatusIDtoName(order.order_status)}}</td>
+						</tr>
 
-                    <!-- this row will not appear when printing -->
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <button onclick="window.print();" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
-                            <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>  
-                            <button style="margin-right: 5px;" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Generate PDF</button>
-                        </div>
-                    </div>
-                </div>
+						<tr>
+							<th>当前物流状态:</th>
+							<td>{{ChangeLogisticsStatusIDtoName(order.logistics_status)}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive col-xs-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>下单时间:</th>
+							<td>{{order_time}}</td>
+						</tr>
+						<tr>
+							<th>支付方式:</th>
+							<td>{{ChangePaymentIdToName(order.order_payment)}}</td>
+						</tr>
+						<tr>
+							<th>第三方支付账号:</th>
+							<td>{{order.order_pay_account}}</td>
+						</tr>
+
+						<tr>
+							<th>付款时间:</th>
+							<td>{{order.pay_time}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /.col -->
+
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="lead">收货人地址</p>
+			<div class="table-responsive col-xs-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>姓名:</th>
+							<td>{{order.order_receive_name}}</td>
+						</tr>
+						<tr>
+							<th>地址:</th>
+							<td>{{order.order_receive_address}}</td>
+						</tr>
+						<tr>
+							<th>手机:</th>
+							<td>{{order.order_receive_mobile}}</td>
+						</tr>
+
+
+
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive col-xs-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>邮编:</th>
+							<td>{{order.order_receive_postcode}}</td>
+						</tr>
+						<tr>
+							<th>固定电话:</th>
+							<td>{{order.order_receive_phone}}</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td></td>
+						</tr>
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /.col -->
+
+	</div>
+	<!-- /.row -->
+	<!-- Table row -->
+	<div class="row">
+		<div class="col-xs-12 table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>货号</th>
+						<th>商品图片</th>
+						<th>商品名称</th>
+						<th>价格</th>
+						<th>数量</th>
+						<th>合计</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  ng-repeat="item in orderItems">
+						<td>1</td>
+						<td>20141548972</td>
+						<td><img width="50px" height="40px" src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg"></td>
+						<td>阿迪达斯运动鞋</td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						</td>
+						<td>1
+						<td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						<td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>20141548972</td>
+						<td><img width="50px" height="40px" src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg"></td>
+						<td>阿迪达斯运动鞋</td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						</td>
+						<td>1
+						<td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						<td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>20141548972</td>
+						<td><img width="50px" height="40px" src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg"></td>
+						<td>阿迪达斯运动鞋</td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						</td>
+						<td>1
+						<td>
+						<td>
+							<i class="fa fa-fw fa-cny"></i>
+							64.50元
+						<td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<!-- accepted payments column -->
+		<div class="col-xs-6">
+			<p class="lead">客户留言</p>
+			<p style="margin-top: 10px;"
+				class="text-muted well well-sm no-shadow">
+				{{order.remark}}</p>
+		</div>
+		<!-- /.col -->
+		<div class="col-xs-6">
+			<p class="lead">费用信息</p>
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th style="width: 50%">订单金额:</th>
+							<td>
+								<i class="fa fa-fw fa-cny"></i>
+								{{order.order_totalprice-order.order_freight}}元
+							</td>
+						</tr>
+						<tr>
+							<th>邮费</th>
+							<td>
+								<i class="fa fa-fw fa-cny"></i>
+								{{order.order_freight}}元
+							</td>
+						</tr>
+						<tr>
+							<th>合计:</th>
+							<td>
+								<i class="fa fa-fw fa-cny"></i>
+								{{order.order_totalprice}}元
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="lead">操作</p>
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th class="col-xs-2">当前物流状态:</th>
+							<td class="col-xs-8">
+								<button class="btn btn-info" style="margin-left: 10px;">未发货</button>
+								<button class="btn btn-success disabled"
+									style="margin-left: 10px;">国外代购中</button>
+
+								<button class="btn btn-info" style="margin-left: 10px;">国外物流运转中</button>
+								<button class="btn btn-info" style="margin-left: 10px;">已到达国内</button>
+								<button class="btn btn-info" style="margin-left: 10px;">国内物流运转中</button>
+								<button class="btn btn-info" style="margin-left: 10px;">已签收</button>
+							</td>
+						</tr>
+						<tr>
+							<th class="col-xs-2">订单状态操作:</th>
+							<td class="col-xs-8">
+								<button class="btn btn-info" style="margin-left: 10px;">未付款</button>
+								<button class="btn btn-info" style="margin-left: 10px;">已付款</button>
+								<button class="btn btn-info" style="margin-left: 10px;">缺货，已退货</button>
+								<button class="btn btn-info" style="margin-left: 10px;">交易结束</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<!-- /.col -->
+
+	</div>
+	<!-- /.row -->
+</div>
 <!-- /.content -->
 
