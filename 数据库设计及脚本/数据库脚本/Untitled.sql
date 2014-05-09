@@ -33,7 +33,7 @@ CREATE TABLE `gogojp_album` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_status` tinyint(4) DEFAULT '1' COMMENT '专辑状态 1:显示可用 2：禁用',
   PRIMARY KEY (`album_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `gogojp_album` (
 
 LOCK TABLES `gogojp_album` WRITE;
 /*!40000 ALTER TABLE `gogojp_album` DISABLE KEYS */;
-INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-08 06:56:00',1);
+INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-07 06:56:00',1),(2,'韩国重口味合辑',NULL,'重口味系列','鞭打','2014-05-07 13:30:22',1);
 /*!40000 ALTER TABLE `gogojp_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,10 +292,10 @@ DROP TABLE IF EXISTS `gogojp_productcategory`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_productcategory` (
   `catid` int(11) NOT NULL AUTO_INCREMENT COMMENT '类别编号',
-  `cat_name` varchar(20) DEFAULT NULL COMMENT '类别名称',
+  `cat_name` varchar(20) NOT NULL COMMENT '类别名称',
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `status` tinyint(4) DEFAULT '0' COMMENT '类别是否禁用 （0:禁用 1:启用）',
+  `status` tinyint(4) DEFAULT '1' COMMENT '类别是否禁用 （ 1:启用 2：禁用）',
   PRIMARY KEY (`catid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -333,7 +333,7 @@ CREATE TABLE `gogojp_productinfo` (
   `product_num` varchar(50) NOT NULL COMMENT '商品货号',
   `product_status` tinyint(4) DEFAULT '1' COMMENT '商品上架状态 1：上架 2：下架',
   PRIMARY KEY (`productid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,7 +342,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1);
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,1,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-08 12:53:59','1399270425',1);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-08 15:41:13
+-- Dump completed on 2014-05-09 10:46:09
