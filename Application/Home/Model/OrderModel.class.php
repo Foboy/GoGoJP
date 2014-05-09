@@ -20,24 +20,24 @@ class OrderModel extends Model {
 	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status,$pay_time) {
 		$result = new DataResult ();
 		$data = array (
-':order_no' => $order_no,
-                   ':user_id' => $user_id,
-                   ':user_account' => $user_account,
-                   ':order_time' => $order_time,
-                   ':order_freight' => $order_freight,
-                   ':order_totalprice' => $order_totalprice,
-                   ':order_payment' => $order_payment,
-                   ':order_status' => $order_status,
-                   ':order_status_update_time' => $order_status_update_time,
-                   ':order_receive_address' => $order_receive_address,
-                   ':order_receive_name' => $order_receive_name,
-                   ':order_receive_mobile' => $order_receive_mobile,
-                   ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode,
-                   ':remark' => $remark,
-                   ':order_pay_account' => $order_pay_account,
-                   ':logistics_status' => $logistics_status,
-				':pay_time'=>$pay_time
+'order_no' => $order_no,
+                   'user_id' => $user_id,
+                   'user_account' => $user_account,
+                   'order_time' => $order_time,
+                   'order_freight' => $order_freight,
+                   'order_totalprice' => $order_totalprice,
+                   'order_payment' => $order_payment,
+                   'order_status' => $order_status,
+                   'order_status_update_time' => $order_status_update_time,
+                   'order_receive_address' => $order_receive_address,
+                   'order_receive_name' => $order_receive_name,
+                   'order_receive_mobile' => $order_receive_mobile,
+                   'order_receive_phone' => $order_receive_phone,
+                   'order_receive_postcode' => $order_receive_postcode,
+                   'remark' => $remark,
+                   'order_pay_account' => $order_pay_account,
+                   'logistics_status' => $logistics_status,
+				'pay_time'=>$pay_time
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -65,9 +65,9 @@ class OrderModel extends Model {
 public function updateModel($order_no,$order_status,$order_status_update_time,$logistics_status) {
 		$result = new DataResult ();
 		$data = array (
-                   ':order_status' => $order_status,
-                   ':order_status_update_time' => $order_status_update_time,
-                   ':logistics_status' => $logistics_status
+                   'order_status' => $order_status,
+                   'order_status_update_time' => $order_status_update_time,
+                   'logistics_status' => $logistics_status
 		);
 		$map['order_no']=$order_no;
 		// 注意判断条件使用恒等式
@@ -84,8 +84,8 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 	public function updatePaytime($order_no,$pay_time) {
 		$result = new DataResult ();
 		$data = array (
-				':order_status' => 2,
-				':pay_time' => $pay_time
+				'order_status' => 2,
+				'pay_time' => $pay_time
 		);
 		$map['order_no']=$order_no;
 		// 注意判断条件使用恒等式
