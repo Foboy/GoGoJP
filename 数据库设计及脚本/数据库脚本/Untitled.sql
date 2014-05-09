@@ -26,13 +26,14 @@ DROP TABLE IF EXISTS `gogojp_album`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_album` (
   `album_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '合辑id 主键自增',
-  `album_name` varchar(80) DEFAULT NULL COMMENT '合辑名称',
+  `album_name` varchar(80) NOT NULL COMMENT '合辑名称',
   `album_cover` varchar(120) DEFAULT NULL COMMENT '合辑封面',
   `album_description` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
   `album_sign` varchar(30) DEFAULT NULL COMMENT '合辑标签',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `album_status` tinyint(4) DEFAULT '1' COMMENT '专辑状态 1:显示可用 2：禁用',
   PRIMARY KEY (`album_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +42,7 @@ CREATE TABLE `gogojp_album` (
 
 LOCK TABLES `gogojp_album` WRITE;
 /*!40000 ALTER TABLE `gogojp_album` DISABLE KEYS */;
+INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-07 06:56:00',1),(2,'韩国重口味合辑',NULL,'重口味系列','鞭打','2014-05-07 13:30:22',1);
 /*!40000 ALTER TABLE `gogojp_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,21 +222,26 @@ DROP TABLE IF EXISTS `gogojp_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_order` (
-  `orderid` int(25) NOT NULL AUTO_INCREMENT COMMENT '订单编号',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户标示   主键',
+  `orderid` int(25) NOT NULL AUTO_INCREMENT,
+  `order_no` varchar(45) NOT NULL COMMENT '订单编号',
+  `user_id` int(11) NOT NULL COMMENT '用户标示   主键',
+  `user_account` varchar(45) NOT NULL COMMENT '购买账号',
   `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '订单产生时间',
-  `order_freight` decimal(10,2) DEFAULT NULL COMMENT '订单运费',
-  `order_totalprice` decimal(10,2) DEFAULT NULL COMMENT '订单总价',
-  `order_payment` tinyint(4) DEFAULT NULL COMMENT '支付方式 1：支付宝 ',
-  `order_status` tinyint(4) DEFAULT NULL COMMENT '订单状态 0：未处理 1：已处理  2：已发货',
+  `order_freight` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单运费',
+  `order_totalprice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单总价',
+  `order_payment` tinyint(4) NOT NULL COMMENT '支付方式 1：支付宝 ',
+  `order_status` tinyint(4) NOT NULL COMMENT '订单状态 1：未处理 2：已处理  3：已发货',
   `order_status_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '订单状态修改时间',
-  `order_receive_address` varchar(50) DEFAULT NULL COMMENT '订单收货地址字符串',
-  `order_receive_name` varchar(20) DEFAULT NULL COMMENT '订单收货人名字',
+  `order_receive_address` varchar(50) NOT NULL COMMENT '订单收货地址字符串',
+  `order_receive_name` varchar(20) NOT NULL COMMENT '订单收货人名字',
   `order_receive_mobile` int(11) DEFAULT NULL COMMENT '订单接收人手机',
   `order_receive_phone` varchar(20) DEFAULT NULL COMMENT '订单接收人座机',
   `order_receive_postcode` varchar(10) DEFAULT NULL COMMENT '订单接受人邮编',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `order_pay_account` varchar(45) NOT NULL COMMENT '支付账号',
+  `logistics_status` int(11) NOT NULL DEFAULT '1' COMMENT '物流状态：1：未发货 2：国外代购中 3：国外物流中转中 4：已到达国内 5：国内物流转运中 6：已签收',
   PRIMARY KEY (`orderid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户订单';
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='用户订单';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,6 +250,7 @@ CREATE TABLE `gogojp_order` (
 
 LOCK TABLES `gogojp_order` WRITE;
 /*!40000 ALTER TABLE `gogojp_order` DISABLE KEYS */;
+INSERT INTO `gogojp_order` VALUES (1,'dd34343545',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1),(2,'dd12314356',1,'123213213','2014-05-09 03:03:27',8.00,324.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3),(3,'dd67577657',1,'123213213','2014-05-09 03:03:27',8.00,22.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4),(4,'dd56765756',1,'123213213','2014-05-09 03:03:27',8.00,54.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3),(5,'dd87787875',1,'123213213','2014-05-09 03:03:27',8.00,567.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5),(6,'dd54654654',1,'123213213','2014-05-09 03:03:27',8.00,56.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2),(7,'dd54645645',1,'123213213','2014-05-09 03:03:27',8.00,86.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6),(8,'dd56756765',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1),(9,'dd34535435',1,'123213213','2014-05-09 03:03:27',8.00,686.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2),(10,'dd67585855',1,'123213213','2014-05-09 03:03:27',8.00,7879.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3),(11,'dd98394298',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4),(12,'dd49835000',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5),(13,'dd09070699',1,'123213213','2014-05-09 03:03:27',8.00,98.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6),(14,'dd86054022',1,'123213213','2014-05-09 03:03:27',8.00,45.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1),(15,'dd45894088',1,'123213213','2014-05-09 03:03:27',8.00,34.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4);
 /*!40000 ALTER TABLE `gogojp_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,15 +263,15 @@ DROP TABLE IF EXISTS `gogojp_orderitem`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_orderitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的自增主键',
-  `user_id` int(11) DEFAULT NULL COMMENT '用户编号',
-  `orderid` int(25) DEFAULT NULL COMMENT '订单编号 外键',
-  `productid` bigint(20) DEFAULT NULL COMMENT '商品编号',
-  `buynumber` int(11) DEFAULT NULL COMMENT '购买商品数量',
-  `prodcut_price` decimal(10,2) DEFAULT NULL COMMENT '购买时商品单价 ',
-  `product_name` varchar(128) DEFAULT NULL COMMENT '商品名称',
-  `big_pic` varchar(256) DEFAULT NULL COMMENT '商品放大的图片',
-  `small_pic` varchar(256) DEFAULT NULL COMMENT '商品缩率图',
+  `order_no` varchar(45) NOT NULL COMMENT '订单编号 外键',
+  `productid` bigint(20) NOT NULL COMMENT '商品编号',
+  `buynumber` int(11) NOT NULL DEFAULT '1' COMMENT '购买商品数量',
+  `prodcut_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '购买时商品单价 ',
+  `product_name` varchar(128) NOT NULL COMMENT '商品名称',
+  `pic_url` varchar(256) DEFAULT NULL COMMENT '商品放大的图片',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type_remark` varchar(90) NOT NULL COMMENT '属性备注',
+  `product_num` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='订单项目信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -286,10 +294,10 @@ DROP TABLE IF EXISTS `gogojp_productcategory`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_productcategory` (
   `catid` int(11) NOT NULL AUTO_INCREMENT COMMENT '类别编号',
-  `cat_name` varchar(20) DEFAULT NULL COMMENT '类别名称',
+  `cat_name` varchar(20) NOT NULL COMMENT '类别名称',
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `status` tinyint(4) DEFAULT '0' COMMENT '类别是否禁用 （0:禁用 1:启用）',
+  `status` tinyint(4) DEFAULT '1' COMMENT '类别是否禁用 （ 1:启用 2：禁用）',
   PRIMARY KEY (`catid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -315,18 +323,19 @@ CREATE TABLE `gogojp_productinfo` (
   `productid` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品编号',
   `catid` int(11) DEFAULT NULL COMMENT '类别编号  外键',
   `sign` varchar(50) DEFAULT NULL COMMENT '商品标签',
-  `product_name` varchar(128) DEFAULT NULL COMMENT '商品名称',
+  `product_name` varchar(128) NOT NULL COMMENT '商品名称',
   `unit` varchar(11) DEFAULT NULL COMMENT '商品单位',
-  `old_price` decimal(10,2) DEFAULT NULL COMMENT '市场价',
-  `new_price` decimal(10,2) DEFAULT NULL COMMENT '商品现价',
+  `old_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '市场价',
+  `new_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '商品现价',
   `small_pic` varchar(100) DEFAULT NULL COMMENT '缩率图',
   `big_pic` varchar(100) DEFAULT NULL COMMENT '放大的图片',
   `product_description` varchar(2000) DEFAULT NULL COMMENT '商品简介',
   `product_count` int(11) DEFAULT NULL COMMENT '库存量',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `product_num` varchar(50) NOT NULL COMMENT '商品货号',
+  `product_status` tinyint(4) DEFAULT '1' COMMENT '商品上架状态 1：上架 2：下架',
   PRIMARY KEY (`productid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -335,7 +344,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425');
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,1,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-08 12:53:59','1399270425',1);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,4 +449,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-06 12:08:08
+-- Dump completed on 2014-05-09 11:09:11

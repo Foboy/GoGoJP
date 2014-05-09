@@ -1,6 +1,10 @@
-
 <?php
 
+/**
+ * @author yangchao
+ * @email:66954011@qq.com
+ * @date: 2014/5/8 12:34:10
+ */
 namespace Home\Model;
 
 use Think\Model;
@@ -11,11 +15,14 @@ use Common\Common\ErrorType;
 
 class OrderModel extends Model {
 	protected $tableName = 'order';
+
 	// 增加表中数据
-	public function addModel($user_id,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode) {
+	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status) {
 		$result = new DataResult ();
 		$data = array (
-':user_id' => $user_id,
+':order_no' => $order_no,
+                   ':user_id' => $user_id,
+                   ':user_account' => $user_account,
                    ':order_time' => $order_time,
                    ':order_freight' => $order_freight,
                    ':order_totalprice' => $order_totalprice,
@@ -26,7 +33,10 @@ class OrderModel extends Model {
                    ':order_receive_name' => $order_receive_name,
                    ':order_receive_mobile' => $order_receive_mobile,
                    ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode
+                   ':order_receive_postcode' => $order_receive_postcode,
+                   ':remark' => $remark,
+                   ':order_pay_account' => $order_pay_account,
+                   ':logistics_status' => $logistics_status
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -39,9 +49,10 @@ class OrderModel extends Model {
 		return $result;
 	}
 	// 删除表中数据
-	public function deleteModel($orderid) {
+	public function deleteModel($order_no) {
 		$result = new DataResult ();
-		if ($this->where ( 'orderid=%d', $orderid )->delete () == 1) {
+		$map['order_no']=$order_no;
+		if ($this->where ($map)->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -50,26 +61,17 @@ class OrderModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($orderid,$user_id,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode) {
+public function updateModel($order_no,$order_status,$order_status_update_time,$logistics_status) {
 		$result = new DataResult ();
 		$data = array (
-':orderid' => $orderid,
-                   ':user_id' => $user_id,
-                   ':order_time' => $order_time,
-                   ':order_freight' => $order_freight,
-                   ':order_totalprice' => $order_totalprice,
-                   ':order_payment' => $order_payment,
                    ':order_status' => $order_status,
                    ':order_status_update_time' => $order_status_update_time,
-                   ':order_receive_address' => $order_receive_address,
-                   ':order_receive_name' => $order_receive_name,
-                   ':order_receive_mobile' => $order_receive_mobile,
-                   ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode
+                   ':logistics_status' => $logistics_status
 		);
+		$map['order_no']=$order_no;
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'orderid=%d', $orderid )->save ( $data ) !== false) {
-			$result->Data = $this->find ( $orderid );
+		if ($this->where ($map)->save ( $data ) !== false) {
+			$result->Data = $this->find ( $order_no );
 			$result->ErrorMessage = '更新成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -78,69 +80,42 @@ class OrderModel extends Model {
 		return $result;
 	}
 	// 根据主键id获取某个专辑信息
-	public function getModel($orderid) {
+	public function getModel($order_no) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'orderid=%d', $orderid )->select ();
+		$map['order_no']=$order_no;
+		$result->Data = $this->where ( $map )->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($user_id,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode, $pageindex, $pagesize) {
+	public function searchByPage($keyname, $order_time1, $order_time2, $order_status, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
+		$skey = " 1=1 ";
+		if (! empty ( $keyname )) {
+			$skey = " (( order_no like '%$keyname%' )  or  ( user_account like '%$keyname%' )) ";
+		}
+		$timespan = " ";
+		if (! empty ( $order_time1 ) and ! empty ( $order_time2 )) {
+			$timespan = "  and order_time between $order_time1 and $order_time2 ";
+		}
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select orderid,user_id,order_time,order_freight,order_totalprice,order_payment,order_status,order_status_update_time,order_receive_address,order_receive_name,order_receive_mobile,order_receive_phone,order_receive_postcode from gogojp_order where  ( user_id = :user_id or :user_id=0 ) 
- and  ( order_time = :order_time or :order_time='' ) 
- and  ( order_freight = :order_freight or :order_freight='' ) 
- and  ( order_totalprice = :order_totalprice or :order_totalprice='' ) 
- and  ( order_payment = :order_payment or :order_payment='' ) 
- and  ( order_status = :order_status or :order_status='' ) 
- and  ( order_status_update_time = :order_status_update_time or :order_status_update_time='' ) 
- and  ( order_receive_address = :order_receive_address or :order_receive_address='' ) 
- and  ( order_receive_name = :order_receive_name or :order_receive_name='' ) 
- and  ( order_receive_mobile = :order_receive_mobile or :order_receive_mobile=0 ) 
- and  ( order_receive_phone = :order_receive_phone or :order_receive_phone='' ) 
- and  ( order_receive_postcode = :order_receive_postcode or :order_receive_postcode='' ) 
- limit $lastpagenum,$pagesize", array (
-':user_id' => $user_id,
-                   ':order_time' => $order_time,
-                   ':order_freight' => $order_freight,
-                   ':order_totalprice' => $order_totalprice,
-                   ':order_payment' => $order_payment,
-                   ':order_status' => $order_status,
-                   ':order_status_update_time' => $order_status_update_time,
-                   ':order_receive_address' => $order_receive_address,
-                   ':order_receive_name' => $order_receive_name,
-                   ':order_receive_mobile' => $order_receive_mobile,
-                   ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode
-			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_order where  ( user_id = :user_id or :user_id=0 ) 
- and  ( order_time = :order_time or :order_time='' ) 
- and  ( order_freight = :order_freight or :order_freight='' ) 
- and  ( order_totalprice = :order_totalprice or :order_totalprice='' ) 
- and  ( order_payment = :order_payment or :order_payment='' ) 
- and  ( order_status = :order_status or :order_status='' ) 
- and  ( order_status_update_time = :order_status_update_time or :order_status_update_time='' ) 
- and  ( order_receive_address = :order_receive_address or :order_receive_address='' ) 
- and  ( order_receive_name = :order_receive_name or :order_receive_name='' ) 
- and  ( order_receive_mobile = :order_receive_mobile or :order_receive_mobile=0 ) 
- and  ( order_receive_phone = :order_receive_phone or :order_receive_phone='' ) 
- and  ( order_receive_postcode = :order_receive_postcode or :order_receive_postcode='' ) 
+		$sql=" select * from gogojp_order 
+				where  $skey
+ $timespan
+ and  ( order_status = :order_status or :order_status=0 ) 
+ limit $lastpagenum,$pagesize";
+		$objects = $conn->query ( $sql, array (
+				':order_status' => $order_status 
+		) );
+		//print $sql;
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_order 
+				where  $skey
+$timespan
+ and  ( order_status = :order_status or :order_status=0 ) 
 ", array (
-':user_id' => $user_id,
-                   ':order_time' => $order_time,
-                   ':order_freight' => $order_freight,
-                   ':order_totalprice' => $order_totalprice,
-                   ':order_payment' => $order_payment,
-                   ':order_status' => $order_status,
-                   ':order_status_update_time' => $order_status_update_time,
-                   ':order_receive_address' => $order_receive_address,
-                   ':order_receive_name' => $order_receive_name,
-                   ':order_receive_mobile' => $order_receive_mobile,
-                   ':order_receive_phone' => $order_receive_phone,
-                   ':order_receive_postcode' => $order_receive_postcode
-			)  );
-		$totalcount=$data[0]['totalcout'];
+				':order_status' => $order_status 
+		) );
+		$totalcount = $data [0] ['totalcout'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;

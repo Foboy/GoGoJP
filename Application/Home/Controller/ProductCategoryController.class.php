@@ -42,7 +42,7 @@ class ProductCategoryController extends Controller {
 	//根据主类id获取子分类
 	public function searchSubcategory(){
 		$ProductCategory = new ProductCategoryModel ();
-		$catid=I('cat_id');
+		$catid=I('catid');
 		$this->ajaxReturn($ProductCategory->searchSubcategory($catid));
 	}
 	// 分页查询分类列表(包括上下级关系)

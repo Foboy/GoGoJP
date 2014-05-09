@@ -66,10 +66,10 @@ class AlbumModel extends Model {
 		if (! empty ( $start_time )) {
 			$start_time=date('Y-m-d h:i:s',$start_time);
 			$end_time=date('Y-m-d h:i:s',$end_time);
-			$objects = $conn->query ( "select * from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
+			$objects = $conn->query ( "select * from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
 					':album_name' => $album_name
 			) );
-			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) ", array (
+			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) ", array (
 					':album_name' => $album_name
 			) );
 			$totalcount=$data[0]['totalcout'];

@@ -2,9 +2,9 @@
 <div class="content-header">
     <h5>
         <ul class="nav nav-tabs">
-            <li ng-class="sort=='product'?'active':''"><a ng-href="#/product/product/" >商品列表</a></li>
-            <li ng-class="sort=='album'?'active':''"><a ng-href="#/product/album/" >商品合辑</a></li>
-            <li ng-class="sort=='category'?'active':''"><a ng-href="#/product/category/" >商品分类</a></li>
+            <li ng-class="sort=='product'?'active':''"><a ng-href="#/product/product/">商品列表</a></li>
+            <li ng-class="sort=='album'?'active':''"><a ng-href="#/product/album/">商品合辑</a></li>
+            <li ng-class="sort=='category'?'active':''"><a ng-href="#/product/category/">商品分类</a></li>
             <li ng-show="sort=='category'?true:false" class="pull-right"><a ng-click="add()" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加主分类</a></li>
         </ul>
     </h5>
@@ -12,7 +12,7 @@
 <!-- Main content -->
 <div class="content">
     <!--商品列表start-->
-    <div>
+    <div class="row" ng-show="sort=='product'?true:false">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-primary collapsed-box">
@@ -29,43 +29,38 @@
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-default dropdown-toggle"
                                     data-toggle="dropdown">
-                                    女装类别
+                                    {{Choose_MainCategory==null?'一级类别':Choose_MainCategory.cat_name}}
 							<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a>123</a></li>
-                                    <li><a>123</a></li>
-                                    <li ng-repeat="status in orderstatus">
-                                        <a ng-click="ChooseOrderStatus(status)"></a>
+                                    <li ng-repeat="MainCategory in MainCategorys">
+                                        <a ng-click="ChooseMainCategory(MainCategory)">{{MainCategory.cat_name}}</a>
                                     </li>
 
                                 </ul>
                             </div>
-                            <div class="col-sm-5">
+                            <div class="col-sm-5" ng-show="secondshow">
                                 <button type="button" class="btn btn-default dropdown-toggle"
                                     data-toggle="dropdown">
-                                    二级类别
+                                    {{Choose_SubCategory==null?'二级类别':Choose_SubCategory.cat_name}} 
 							<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a>245</a></li>
-                                    <li><a>789</a></li>
-                                    <li ng-repeat="status in orderstatus">
-                                        <a ng-click="ChooseOrderStatus(status)"></a>
+                                    <li ng-repeat="SubCategory in SubCategorys">
+                                        <a ng-click="ChooseSubCategory(SubCategory)">{{SubCategory.cat_name}}</a>
                                     </li>
-
                                 </ul>
                             </div>
                         </div>
 
                         <div class="margin_top col-sm-4">
                             <div class="input-group pull-left">
-                                <input type="text" ng-model="orderlistinfo.skey"
+                                <input type="text" ng-model="ProductKey"
                                     placeholder="模糊查询(商品货号,商品名称)" class="form-control "
                                     name="table_search">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default btn-flat"
-                                        ng-click="SearchOrderList()">
+                                        ng-click="SearchProductList()">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </div>
@@ -95,26 +90,19 @@
                                     <th>上架</th>
                                     <th>商品操作</th>
                                 </tr>
-                                <tr ng-repeat="bill in shopBills">
-                                    <td>{{bill.lakala_order_no}}</td>
-                                    <td>{{bill.shop_name}}</td>
-                                    <td>{{bill.username}}</td>
-                                    <td>{{bill.nickname}}</td>
-                                    <td>{{bill.Type}}</td>
-                                    <td>{{bill.lakala_order_no}}</td>
-                                    <td>{{bill.shop_name}}</td>
+                                <tr ng-repeat="Prodcut in Prodcuts">
+                                    <td>{{Prodcut.product_num}}</td>
+                                    <td>{{Prodcut.product_name}}</td>
+                                    <td>
+                                        <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px" /></td>
+                                    <td>{{Prodcut.create_time}}</td>
+                                    <td>{{Prodcut.category_name}}</td>
+                                    <td>{{Prodcut.product_status==1?'上架':'下架'}}</td>
+                                    <td><a ng-click="edit()">编辑</a></td>
                                 </tr>
 
                             </tbody>
                         </table>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
-                            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
-                            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -123,7 +111,7 @@
     <!--商品列表end-->
 
     <!--商品合辑start-->
-    <div>
+    <div class="row" ng-show="sort=='album'?true:false">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-primary collapsed-box">
@@ -131,25 +119,25 @@
                         <div class=" margin_top col-sm-4">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class="control-label col-md-4">订单时间范围</label>
+                                    <label class="control-label col-md-4">添加时间</label>
                                     <div class="input-group  col-md-8">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" id="reservation"
-                                            ng-model="orderlistinfo.daterange" class="form-control ">
+                                        <input type="text" id="albumtime"  
+                                            class="form-control ">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="margin_top col-sm-4">
                             <div class="input-group pull-left">
-                                <input type="text" ng-model="orderlistinfo.skey"
+                                <input type="text" ng-model="AlbumKey"
                                     placeholder="模糊查询(合辑名称)" class="form-control "
                                     name="table_search">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default btn-flat"
-                                        ng-click="SearchOrderList()">
+                                        ng-click="SearchAlbumList()">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </div>
@@ -179,23 +167,16 @@
                                     <th>显示</th>
                                     <th>合辑操作</th>
                                 </tr>
-                                <tr ng-repeat="bill in shopBills">
-                                    <td>{{bill.lakala_order_no}}</td>
-                                    <td>{{bill.shop_name}}</td>
-                                    <td>{{bill.username}}</td>
-                                    <td>{{bill.nickname}}</td>
-                                    <td>{{bill.Type}}</td>
+                                <tr ng-repeat="Album in Albums">
+                                    <td>{{Album.album_name}}</td>
+                                    <td>
+                                        <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px" /></td>
+                                    <td>{{Album.create_time}}</td>
+                                    <td>{{Album.album_status==1?'显示':'禁用'}}</td>
+                                    <td><a ng-click="edit()">编辑</a></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
-                            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
-                            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -204,7 +185,7 @@
     <!--商品合辑end-->
 
     <!--商品分类start-->
-    <div>
+    <div class="row" ng-show="sort=='category'?true:false">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -217,27 +198,29 @@
                                     <th>是否启用</th>
                                     <th>操作</th>
                                 </tr>
-                                <tr ng-repeat="bill in shopBills">
-                                    <td>{{bill.lakala_order_no}}</td>
-                                    <td>{{bill.shop_name}}</td>
-                                    <td>{{bill.username}}</td>
-                                    <td>{{bill.nickname}}</td>
+                                <tr ng-repeat="ProdcutCategory in ProdcutCategorys">
+                                    <td>{{ProdcutCategory.cat_name}}</td>
+                                    <td>{{ProdcutCategory.parent_name==null?'-':ProdcutCategory.parent_name}}</td>
+                                    <td>{{ProdcutCategory.status==1?'启用':'禁用'}}</td>
+                                    <td>{{ProdcutCategory.username}}</td>
+                                    <td><a>编辑</a> | <a>添加子类</a></td>
                                 </tr>
 
                             </tbody>
                         </table>
                     </div>
                     <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
-                            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
-                            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <ul class="pagination pagination-sm no-margin pull-right">
+            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
+            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
+            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
+        </ul>
     </div>
     <!--商品分类end-->
 </div>

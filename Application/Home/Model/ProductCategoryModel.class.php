@@ -35,8 +35,9 @@ class ProductCategoryModel extends Model {
 				'cat_name' => $cat_name,
 				'status' => $status
 		);
+		$map['catid']=$catid;
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'catid=%d', $catid )->save ( $data ) !== false) {
+		if ($this->where ($map)->save ( $data ) !== false) {
 			$result->Data = $this->find ( $catid );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -48,7 +49,8 @@ class ProductCategoryModel extends Model {
 	//根据类别id获取某个类别信息
 	public function getModel($catid){
 		$result = new DataResult ();
-		$result->Data=$this->where('catid=%d',$catid)->select();
+		$map['catid']=$catid;
+		$result->Data=$this->where($map)->select();
 		return $result;
 	}
 	//获取主类信息
@@ -60,7 +62,8 @@ class ProductCategoryModel extends Model {
 	//根据主类id获取子分类
 	public function searchSubcategory($catid){
 		$result=new DataResult();
-		$result->Data=$this->where('parentid=%d',$catid)->select();
+		$map['parentid']=$catid;
+		$result->Data=$this->where($map)->select();
 		return $result;
 	}
 	/*  分页查询分类列表(包括上下级关系) */
