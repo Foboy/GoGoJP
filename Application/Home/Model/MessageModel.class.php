@@ -17,10 +17,9 @@ class MessageModel extends Model {
 	public function addModel($form_userid,$to_userid,$content,$create_time) {
 		$result = new DataResult ();
 		$data = array (
-':form_userid' => $form_userid,
-                   ':to_userid' => $to_userid,
-                   ':content' => $content,
-                   ':create_time' => $create_time
+'form_userid' => $form_userid,
+                   'to_userid' => $to_userid,
+                   'content' => $content
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {

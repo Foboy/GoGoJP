@@ -5,8 +5,8 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls) {
     $parent = $scope.$parent;
     var create_time1, create_time2;
 
-    create_time1 = $parent.list_begin_time || 0;
-    create_time2 = $parent.list_end_time || 0;
+    create_time1 = $parent.list_begin_time || '';
+    create_time2 = $parent.list_end_time || '';
     $scope.chatlistdaterange = $parent.list_date_range || '';
     $scope.chatlistsearchkey = $parent.list_search_key || '';
 
@@ -35,7 +35,7 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls) {
     $scope.loadChatList = function (pageIndex) {
         var pageSize = 1;
         if (pageIndex == 0) pageIndex = 1;
-        $http.post($resturls["ChatList"], { begintime: create_time1 || 0, endtime: create_time2 || 0, searchkey: $scope.chatlistsearchkey || '', pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+        $http.post($resturls["ChatList"], { begintime: create_time1 || '', endtime: create_time2 || '', searchkey: $scope.chatlistsearchkey || '', pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.chatlist = result.Data;
                 $scope.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#customerservice/list/{0}');
