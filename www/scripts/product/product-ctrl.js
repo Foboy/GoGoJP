@@ -135,7 +135,11 @@
         $rootScope.R_AlbumKey = $scope.AlbumKey;
         $scope.LoadAlbumList(1);
     }
-
+    //弹出添加主分类模态框
+    $scope.ShowAddMainCategoryMoadl = function () {
+        $("#maincatmodal").modal('show');
+        $scope.MainCategory = { Name: '', Status: 1 };
+    }
     var $parent = $scope.$parent;
     $scope.sort = $routeParams.sort;
     if (!$scope.sort) {
@@ -156,5 +160,30 @@
             //分类列表
             $scope.LoadProductCategoryList($routeParams.pageIndex || 1);
             break;
+    }
+}
+function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.AddMainCategory = function (data) {
+        if ($scope.AddMainCategoryForm.$valid) {
+            $http.post($resturls["AddOwnCustomer"], { name: data.Name, sex: data.Sex, phone: data.Phone, birthday: data.TimeStamp, remark: data.Remark }).success(function (result) {
+                $("#addcustomermodal").modal('hide');
+                if (result.Error == 0) {
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                    $scope.loadClientSortList($routeParams.pageIndex || 1, $routeParams.parameters || '');
+                    if (choselevel.ID != 0) {
+                        $http.post($resturls["SetCustomerRank"], { rank_id: choselevel.ID, from_type: result.from_type, customer_id: result.ID }).success(function (result) {
+                            console.log(result);
+                        });
+                    }
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+
+            $scope.showerror = true;
+        }
     }
 }
