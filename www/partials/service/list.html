@@ -54,10 +54,10 @@
                                 <th>操作</th>
                             </tr>
                             <tr ng-repeat="chat in chatlist">
-                                <td>{{chat.nickname}}</td>
-                                <td>{{chat.nickname}}</td>
-                                <td>{{chat.nickname}}</td>
-                                <td>{{chat.nickname}}</td>
+                                <td>{{chat.customer_account}}</td>
+                                <td>{{chat.customer_nickname}}</td>
+                                <td>{{chat.create_time}}</td>
+                                <td>{{chat.isread}}</td>
                                 <td>
                                     <a ng-href="#/customerservice/chat/{{chat.id}}">回复</a>
                                     <a ng-href="#/customerservice/histories/{{chat.id}}">查看历史记录</a>
