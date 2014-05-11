@@ -55,7 +55,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}).success(
 				function(result) {
 					if (result.Error == 0) {
-						//console.log(result.Data);
+						//console.log(pageIndex);
 						$scope.orderList = result.Data;
 		                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#order'  + '/{0}');
 		            	
@@ -114,9 +114,6 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}
 		return name;
 	}
-	if ($routeParams.pageIndex)
 		$scope.SearchOrderList($routeParams.pageIndex || 1);
-	else
-		$scope.SearchOrderList();
 
 }
