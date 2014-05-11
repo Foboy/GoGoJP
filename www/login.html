@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="bg-black" ng-app="gogojp">
+<html ng-app="gogojp">
 <head>
     <meta charset="UTF-8">
     <title>GO日本后台管理系统</title>
@@ -48,7 +48,7 @@
         }
     </style>
 </head>
-<body class="bg-black" ng-controller="UserMainCtrl">
+<body  ng-controller="UserMainCtrl">
     <div class="form-box">
         <div class="header">
             GO日本后台管理系统
@@ -65,7 +65,7 @@
                     <input type="checkbox" name="remember_me" />记住我 
                 </div>
             </div>
-            <div class="footer">
+            <div class="bg-gray footer">
                 <button type="button" ng-click="UserLogin()" class="btn bg-olive btn-block">
                     登陆
                 </button>
