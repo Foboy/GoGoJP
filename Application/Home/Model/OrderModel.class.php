@@ -110,7 +110,7 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$skey = " 1=1 ";
-		if (! empty ( $keyname )) {
+		if ($keyname!="") {
 			$skey = " (( order_no like '%$keyname%' )  or  ( user_account like '%$keyname%' )) ";
 		}
 		$timespan = " ";
@@ -126,7 +126,7 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		$objects = $conn->query ( $sql, array (
 				':order_status' => $order_status 
 		) );
-		//print $sql;
+		//print $keyname;
 		$totalsql=" select count(*) totalcount  from gogojp_order 
 				where  $skey
 $timespan

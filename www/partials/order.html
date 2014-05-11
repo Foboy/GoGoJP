@@ -30,6 +30,7 @@
 							</div>
 							<input type="text" id="reservation"
 								ng-model="orderlistinfo.daterange" class="form-control ">
+								<span class="input-group-addon" ng-click="cleantime()"><i class="fa fa-times-circle" ng-click="cleantime()"></i></span>
 						</div>
 					</div>
 				</div>
@@ -63,6 +64,7 @@
 					<table class="table table-hover">
 						<tbody>
 							<tr>
+							<th>序号</th>
 								<th>订单号</th>
 								<th>下单时间</th>
 								<th>购买账号</th>
@@ -72,6 +74,7 @@
 								<th>操作</th>
 							</tr>
 							<tr ng-repeat="order in orderList">
+							<td>{{$index+1}}</td>
 								<td>{{order.order_no}}</td>
 								<td>{{order.order_time}}</td>
 								<td>{{order.user_account}}</td>

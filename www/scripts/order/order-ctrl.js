@@ -31,6 +31,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 				
 				$scope.stime = start / 1000;
 				$scope.etime = end / 1000;
+				$scope.SearchOrderList($routeParams.pageIndex || 1);
 			});
 	$scope.SearchOrderList = function(pageIndex) {
 		if (!$scope.orderlistinfo)
@@ -42,12 +43,16 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
         var etime="";
   
         stime = $scope.timestamptostr($scope.stime);
-		etime = $scope.timestamptostr($scope.etime+24*3600);
-    
+        if($scope.etime!="")
+        	{
+        	etime = $scope.timestamptostr($scope.etime+24*3600);
+        	}
+	
+	
         
 		$http.post($resturls["LoadOrder"], {
-			stime : $scope.timestamptostr($scope.stime),
-			etime : $scope.timestamptostr($scope.etime+24*3600),
+			stime :stime,
+			etime :etime,
 			keyname : $scope.orderlistinfo.skey,
 			order_status : $scope.status_id,
 			pageindex : pageIndex-1,
@@ -95,6 +100,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 			$scope.order_status = data.name;
 		}
 		$scope.status_id = data.id;
+		$scope.SearchOrderList($routeParams.pageIndex || 1);
 	};
 	$scope.ChangeOrderStatusIDtoName = function(id) {
 		var name = "未知";
@@ -114,6 +120,13 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}
 		return name;
 	}
+	$scope.cleantime = function()
+	{
+		$scope.stime = "";
+		$scope.etime = "";
+		$("#reservation").val("");
 		$scope.SearchOrderList($routeParams.pageIndex || 1);
+	}
+	$scope.SearchOrderList($routeParams.pageIndex || 1);
 
 }
