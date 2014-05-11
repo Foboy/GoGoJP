@@ -7,54 +7,45 @@
 <div class="content">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="box box-primary collapsed-box">
-				<div class="box-header form-group">
-					<div class=" margin_top col-sm-4">
-						<div class="form-horizontal">
-							<div class="form-group">
-								<label class="control-label col-md-4">订单时间范围</label>
-								<div class="input-group  col-md-8">
-									<div class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									</div>
-									<input type="text" id="reservation"
-										ng-model="orderlistinfo.daterange" class="form-control ">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="margin_top btn-group btn-group-sm col-sm-4">
-						<button type="button" class="btn btn-default dropdown-toggle"
-							data-toggle="dropdown">
-							{{order_status}}
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li ng-repeat="status in orderstatus">
-								<a ng-click="ChooseOrderStatus(status)">{{status.name}}</a>
-							</li>
+			<div class="margin_top btn-group btn-group-sm col-sm-4">
+				<button type="button" class="btn btn-sm btn-default btn-flat dropdown-toggle"
+					data-toggle="dropdown">
+					{{order_status}}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="status in orderstatus">
+						<a ng-click="ChooseOrderStatus(status)">{{status.name}}</a>
+					</li>
 
-						</ul>
-					</div>
-					<div class="margin_top col-sm-4">
-						<div class="input-group pull-left">
-							<input type="text" ng-model="orderlistinfo.skey"
-								placeholder="模糊查询(订单号，购买账号)" class="form-control "
-								name="table_search">
-							<div class="input-group-btn">
-								<button class="btn btn-default btn-flat"
-									ng-click="SearchOrderList()">
-									<i class="fa fa-search"></i>
-								</button>
+				</ul>
+			</div>
+			<div class=" margin_top col-sm-4">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-md-4">订单时间范围</label>
+						<div class="input-group  col-md-8">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
 							</div>
+							<input type="text" id="reservation"
+								ng-model="orderlistinfo.daterange" class="form-control ">
 						</div>
 					</div>
 				</div>
-
-				<!-- /.box-header -->
-
-				<!-- body -->
-				<div class="box-footer" style="display: none;"></div>
+			</div>
+			<div class="margin_top col-sm-4">
+				<div class="input-group pull-left">
+					<input type="text" ng-model="orderlistinfo.skey"
+						placeholder="模糊查询(订单号，购买账号)" class="form-control "
+						name="table_search">
+					<div class="input-group-btn">
+						<button class="btn btn-default btn-flat"
+							ng-click="SearchOrderList($routeParams.pageIndex || 1)">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</div>
 			</div>
 
 		</div>
