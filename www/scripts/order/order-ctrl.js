@@ -7,7 +7,8 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		$scope.orderlistinfo = [];
 
 	 $scope.orderlistinfo.daterange = "";
-	$scope.orderlistinfo.skey = "";
+	 if(!$scope.orderlistinfo)
+	   $scope.orderlistinfo.skey = "";
 
 	$scope.stime = "";
 	$scope.etime = "";
@@ -57,7 +58,10 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 						//console.log(result.Data);
 						$scope.orderList = result.Data;
 		                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#order'  + '/{0}');
-				
+		            	
+		                
+		                $rootScope.orderlistinfo = $scope.orderlistinfo;
+		            	//console.log($rootScope.orderlistinfo);
 					} else {
 						$scope.orderList = [];
 					       $parent.pages = utilities.paging(0, pageIndex, pageSize);					}
@@ -114,4 +118,5 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		$scope.SearchOrderList($routeParams.pageIndex || 1);
 	else
 		$scope.SearchOrderList();
+
 }
