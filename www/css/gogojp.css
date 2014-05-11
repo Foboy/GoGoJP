@@ -35,6 +35,9 @@ a {
 	font-weight: 200;
 	color: #428BCA;
 }
+.bg-logo{
+	background-color: #2E3239;
+}
 
 @font-face {
 	font-style: normal;
