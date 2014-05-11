@@ -115,7 +115,7 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		}
 		$timespan = " ";
 		if (! empty ( $order_time1 ) and ! empty ( $order_time2 )) {
-			$timespan = "  and order_time between $order_time1 and $order_time2 ";
+			$timespan = "  and order_time between '$order_time1' and '$order_time2' ";
 		}
 		$conn = new Pdo ();
 		$sql=" select * from gogojp_order 

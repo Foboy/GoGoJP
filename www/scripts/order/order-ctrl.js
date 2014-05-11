@@ -6,7 +6,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 	if (!$scope.orderlistinfo)
 		$scope.orderlistinfo = [];
 
-	// $scope.orderlistinfo.daterange = "";
+	 $scope.orderlistinfo.daterange = "";
 	$scope.orderlistinfo.skey = "";
 
 	$scope.stime = "";
@@ -36,10 +36,17 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 			$scope.orderlistinfo = [];
 	    var pageSize = 10;
         if (pageIndex == 0) pageIndex = 1;
-
+   
+        var stime="";
+        var etime="";
+  
+        stime = $scope.timestamptostr($scope.stime);
+		etime = $scope.timestamptostr($scope.etime+24*3600);
+    
+        
 		$http.post($resturls["LoadOrder"], {
-			stime : $scope.stime,
-			etime : $scope.etime,
+			stime : $scope.timestamptostr($scope.stime),
+			etime : $scope.timestamptostr($scope.etime+24*3600),
 			keyname : $scope.orderlistinfo.skey,
 			order_status : $scope.status_id,
 			pageindex : pageIndex-1,
