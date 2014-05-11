@@ -3,6 +3,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     $routeProvider
     .when('/recommend', { template: '', controller: function () { } })
     .when('/product/:sort?/:pageIndex?', { template: '', controller: function () { } })
+    .when('/product/category', { template: '', controller: function () { } })
     .when('/order', { template: '', controller: function () { } })
     .when('/addproduct', { template: '', controller: function () { } })
     .when('/editproduct/:prodcutid', { template: '', controller: function () { } })
@@ -17,7 +18,8 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
          .state('main.home', { url: '/home', templateUrl: 'partials/home.html', controller: DataStatisticsCtrl })
          .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: function () { } })
-         .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: ProductMainCtrl })
+         .state('main.product', { url: '/product', templateUrl: 'partials/product.html', controller: ProductMainCtrl })
+         .state('main.product.category', { url: '/category*path', templateUrl: 'partials/product/category.html', controller: function(){} })
          .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add-product.html', controller: function () { } })
          .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit.html', controller: function () { } })
          .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
