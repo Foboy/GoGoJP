@@ -86,7 +86,7 @@
         });
 
     }
-   
+
     //选择父类别
     $scope.ChooseMainCategory = function (MainCategory) {
         $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
@@ -122,7 +122,7 @@
         $rootScope.R_AlbumKey = $scope.AlbumKey;
         $scope.LoadAlbumList(1);
     }
-    
+
     var $parent = $scope.$parent;
     $scope.sort = $routeParams.sort;
     if (!$scope.sort) {
@@ -143,13 +143,13 @@
     $scope.AddProduct = function () {
         window.location.href = '#/addproduct';
     }
-   
+
 }
 function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     //添加主分类
     $scope.AddMainCategory = function (data) {
         if ($scope.AddMainCategoryForm.$valid) {
-            $http.post($resturls["AddCatrgory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status }).success(function (result) {
+            $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: 0, status: data.Status, level: data.level }).success(function (result) {
                 $("#maincatmodal").modal('hide');
                 if (result.Error == 0) {
                     $scope.LoadProductCategoryList(1);
@@ -167,7 +167,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //添加子分类
     $scope.AddSubCategory = function (data) {
         if ($scope.AddSubCategoryForm.$valid) {
-            $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status }).success(function (result) {
+            $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status, level: data.level }).success(function (result) {
                 $("#subcatmodal").modal('hide');
                 if (result.Error == 0) {
                     $scope.LoadProductCategoryList(1);
@@ -200,17 +200,18 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
             $scope.showerror = true;
         }
     }
-   
+
 }
 function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     //商品类别
     $scope.LoadProductCategoryList = function (pageIndex) {
+        var $parent = $scope.$parent;
         var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         $http.post($resturls["LoadProdcutCategory"], { pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.ProdcutCategorys = result.Data;
-                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#product/' + $scope.sort + '/{0}');
+                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#category/' + '{0}');
             } else {
                 $scope.gogoclients = [];
                 $parent.ProdcutCategorys = utilities.paging(0, pageIndex, pageSize);
@@ -220,13 +221,13 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
     //弹出添加主分类模态框
     $scope.ShowAddMainCategoryMoadl = function () {
         $("#maincatmodal").modal('show');
-        $scope.MainCategory = { Name: '', Status: 1 };
+        $scope.MainCategory = { Name: '', Status: 1, level: 0 };
     }
     //弹出添加子类模态框
     $scope.ShowAddSubCategoryModal = function (data) {
         $("#subcatmodal").modal('show');
         $scope.ParentCategoryName = data.cat_name;
-        $scope.SubCategory = { Name: '', Status: 1, ParentId: data.catid };
+        $scope.SubCategory = { Name: '', Status: 1, ParentId: data.catid, level: data.level };
     }
     //弹出编辑类别模态框
     $scope.ShowEditCategoryModal = function (data) {
@@ -234,6 +235,17 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
         $scope.Categroy = data;
     }
     $scope.LoadProductCategoryList($routeParams.pageIndex || 1);
+    $scope.CatNameFormat = function (data) {
+        var str = '';
+        if (data != null) {
+            str = '|-';
+            for (var i = 1; i < data.level; i++) {
+                str = str + '|-';
+            }
+            str = str + data.cat_name;
+        }
+        return str;
+    }
 }
 
 function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
