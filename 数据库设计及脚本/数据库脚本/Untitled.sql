@@ -302,7 +302,7 @@ CREATE TABLE `gogojp_productcategory` (
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `status` tinyint(4) DEFAULT '1' COMMENT '类别是否禁用 （ 1:启用 2：禁用）',
-  `level` int(11) NOT NULL DEFAULT '1' COMMENT '分类层级',
+  `level` int(11) NOT NULL COMMENT '分类层级',
   PRIMARY KEY (`catid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -478,4 +478,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-11 23:03:48
+-- Dump completed on 2014-05-11 23:11:30
