@@ -39,7 +39,7 @@ class PictureManagementController extends Controller {
 							'file' => '@' . $src ,
 							'fileObjName'=>'file'
 					);
-					UpLoad::UploadByCURL ( $data, $url );
+					PictureManagementController::UploadByCURL ( $data, $url );
 				}
 			} else {
 				echo 'Invalid file type.';
