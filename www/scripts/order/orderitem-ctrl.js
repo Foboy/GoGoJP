@@ -18,18 +18,18 @@ function OrderItemCtrl($scope, $http, $location, $routeParams, $resturls,
 		for ( var i = 1; i <= 4; i++) {
 			if (i == $scope.order_status) {
 			
-				$('#OrderStatus' + $scope.order_status).attr('class','btn btn-success disabled');
+				$('#OrderStatus' + $scope.order_status).attr('class','btn btn-success btn-flat disabled');
 			} else {
-				$('#OrderStatus' + i).attr('class','btn btn-info');
+				$('#OrderStatus' + i).attr('class','btn btn-info btn-flat');
 			}
 		}
 		for ( var i = 1; i <= 6; i++) {
 			if (i == $scope.logistics_status) {
 				$('#LogisticsStatus' + $scope.logistics_status).attr('class',
-						'btn btn-success disabled');
+						'btn btn-success btn-flat disabled');
 			} else {
 				$('#LogisticsStatus' + i).attr('class',
-						'btn btn-info');
+						'btn btn-info btn-flat');
 			}
 		}
 	}
@@ -73,9 +73,9 @@ function OrderItemCtrl($scope, $http, $location, $routeParams, $resturls,
 						for ( var i = 1; i <= 4; i++) {
 							if (i == id) {
 							
-								$('#OrderStatus' + id).attr('class','btn btn-success disabled');
+								$('#OrderStatus' + id).attr('class','btn btn-success btn-flat disabled');
 							} else {
-								$('#OrderStatus' + i).attr('class','btn btn-info');
+								$('#OrderStatus' + i).attr('class','btn btn-info btn-flat');
 							}
 						}
 
@@ -96,10 +96,10 @@ function OrderItemCtrl($scope, $http, $location, $routeParams, $resturls,
 						for ( var i = 1; i <= 6; i++) {
 							if (i == id) {
 								$('#LogisticsStatus' + id).attr('class',
-										'btn btn-success disabled');
+										'btn btn-success btn-flat disabled');
 							} else {
 								$('#LogisticsStatus' + i).attr('class',
-										'btn btn-info');
+										'btn btn-info btn-flat');
 							}
 						}
 
