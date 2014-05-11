@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -302,8 +302,9 @@ CREATE TABLE `gogojp_productcategory` (
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `status` tinyint(4) DEFAULT '1' COMMENT '类别是否禁用 （ 1:启用 2：禁用）',
+  `level` int(11) NOT NULL DEFAULT '1' COMMENT '分类层级',
   PRIMARY KEY (`catid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +313,7 @@ CREATE TABLE `gogojp_productcategory` (
 
 LOCK TABLES `gogojp_productcategory` WRITE;
 /*!40000 ALTER TABLE `gogojp_productcategory` DISABLE KEYS */;
-INSERT INTO `gogojp_productcategory` VALUES (1,'服饰内衣',0,'2014-05-05 06:25:25',1),(2,'运动户外',0,'2014-05-05 06:25:54',1),(3,'女士上装',1,'2014-05-05 06:26:24',1),(4,'男士内裤',1,'2014-05-05 06:29:51',1),(5,'女士碎花上装',3,'2014-05-05 07:57:24',1),(6,'11',5,'2014-05-11 06:40:51',2);
+INSERT INTO `gogojp_productcategory` VALUES (1,'男装',0,'2014-05-11 08:41:25',1,1),(2,'女装',0,'2014-05-11 08:41:25',1,1),(5,'T恤',1,'2014-05-11 15:02:15',1,2),(4,'连衣裙',2,'2014-05-11 15:02:15',1,2),(3,'衬衫',1,'2014-05-11 15:02:15',1,2),(6,'棉布',5,'2014-05-11 15:02:15',1,3),(7,'真丝',5,'2014-05-11 15:02:15',1,3),(8,'低价',7,'2014-05-11 15:02:15',1,4);
 /*!40000 ALTER TABLE `gogojp_productcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,7 +349,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,1,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-08 12:53:59','1399270425',1);
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,2,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-11 08:43:33','1399270425',1);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,6 +444,30 @@ LOCK TABLES `gogojp_user` WRITE;
 INSERT INTO `gogojp_user` VALUES (1,'test','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-27 13:42:01'),(2,'ThinkPHP','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-29 07:13:33'),(14,'小李子','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-04-30 05:56:06'),(12,'ThinkPHP','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-29 08:17:02'),(13,'小李子','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-04-30 05:55:40'),(15,'ppt','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-05-03 09:06:18'),(16,'ppt','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-05-03 09:25:15');
 /*!40000 ALTER TABLE `gogojp_user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tmplst`
+--
+
+DROP TABLE IF EXISTS `tmplst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tmplst` (
+  `catid` int(11) DEFAULT NULL,
+  `nLevel` int(11) DEFAULT NULL,
+  `sCort` varchar(8000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tmplst`
+--
+
+LOCK TABLES `tmplst` WRITE;
+/*!40000 ALTER TABLE `tmplst` DISABLE KEYS */;
+INSERT INTO `tmplst` VALUES (1,0,'0'),(2,0,'0'),(5,1,'05'),(4,1,'04'),(3,1,'03'),(6,2,'056');
+/*!40000 ALTER TABLE `tmplst` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -453,4 +478,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-11 16:00:58
+-- Dump completed on 2014-05-11 23:03:48
