@@ -49,6 +49,20 @@ class CustomerAdvisoryModel extends Model {
 		}
 		return $result;
 	}
+
+	public function updateReadState($customer_id,$isread) {
+		$result = new DataResult ();
+		$data = array (
+				'isread' => $isread
+		);
+			$map['customer_id']=$customer_id;
+			if ($this->where ($map )->save ( $data ) !== false) {
+				$result->Error = ErrorType::Success;
+				$result->ErrorMessage = '更新成功';
+			}
+		return $result;
+	}
+
 	// 删除表中数据
 	public function deleteModel($advisory_id) {
 		$result = new DataResult ();

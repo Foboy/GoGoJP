@@ -19,17 +19,17 @@
                                 <div>
                                    <div class="box-body chat" id="service-chat-box">
                                     <!-- chat item -->
-                                    <div class="item" ng-repeat="chatitem in chatlist">
+                                    <div class="item" ng-repeat="chatitem in msglist">
                                         <img src="img/avatar.png" alt="user image" ng-class="chatitem.self?'offline':'online'"/>
                                         <p class="message">
                                             <a href="#" class="name">
                                                 <span>{{chatitem.nickname}}</span>
-                                                <small class="text-muted"><i class="fa fa-clock-o"></i> <span>{{chatitem.time}}</span></small>
+                                                <small class="text-muted"><i class="fa fa-clock-o"></i> <span>{{chatitem.create_time}}</span></small>
                                             </a>
                                         </p>
                                         <div class="attachment">
                                             <p>
-                                                  {{chatitem.msg}}
+                                                  {{chatitem.content}}
                                             </p>
                                         </div><!-- /.attachment -->
                                     </div><!-- /.item --> 
