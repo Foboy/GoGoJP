@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.5.25
+-- Server version	5.6.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -415,6 +415,30 @@ LOCK TABLES `gogojp_sys_picture_management` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gogojp_tags`
+--
+
+DROP TABLE IF EXISTS `gogojp_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gogojp_tags` (
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(90) NOT NULL,
+  `create_time` bigint(64) DEFAULT NULL COMMENT '标签表',
+  PRIMARY KEY (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gogojp_tags`
+--
+
+LOCK TABLES `gogojp_tags` WRITE;
+/*!40000 ALTER TABLE `gogojp_tags` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gogojp_tags` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gogojp_user`
 --
 
@@ -468,39 +492,6 @@ LOCK TABLES `tmplst` WRITE;
 INSERT INTO `tmplst` VALUES (1,0,'0'),(2,0,'0'),(5,1,'05'),(4,1,'04'),(3,1,'03'),(6,2,'056');
 /*!40000 ALTER TABLE `tmplst` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'gogojp'
---
-/*!50003 DROP FUNCTION IF EXISTS `getChildLst` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `getChildLst`(rootId int) RETURNS varchar(1000) CHARSET utf8
-BEGIN
-   DECLARE sTemp VARCHAR(1000);
-   DECLARE sTempChd VARCHAR(1000);
-
-   SET sTemp = '$';
-  SET sTempChd =cast(rootId as CHAR);
-
-  WHILE sTempChd is not null DO
-     SET sTemp = concat(sTemp,',',sTempChd);
-    SELECT group_concat(catid) INTO sTempChd FROM gogojp_productcategory where FIND_IN_SET(parentid,sTempChd)>0 ;
-   END WHILE;
-  RETURN sTemp;
- END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -511,4 +502,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-12 10:23:16
+-- Dump completed on 2014-05-12 14:15:23
