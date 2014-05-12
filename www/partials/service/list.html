@@ -57,10 +57,10 @@
                                 <td>{{chat.customer_account}}</td>
                                 <td>{{chat.customer_nickname}}</td>
                                 <td>{{chat.create_time}}</td>
-                                <td>{{chat.isread==1?'否':'是'}}</td>
+                                <td ng-class="chat.isread==0?'text-red':''">{{chat.isread==0?'否':'是'}}</td>
                                 <td>
-                                    <a ng-href="#/customerservice/chat/{{chat.customer_id}}">回复</a>
-                                    <a ng-href="#/customerservice/histories/{{chat.customer_id}}">查看历史记录</a>
+                                    <a ng-click="checkChatCustomer()" ng-href="#/customerservice/chat/{{chat.customer_id}}">回复</a>
+                                    <a ng-click="checkChatCustomer()" ng-href="#/customerservice/histories/{{chat.customer_id}}">查看历史记录</a>
                                 </td>
                             </tr>
 

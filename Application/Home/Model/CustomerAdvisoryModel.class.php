@@ -21,9 +21,12 @@ class CustomerAdvisoryModel extends Model {
 				'customer_nickname' => $customer_nickname,
 				'isread' => $isread
 		);
+
+		$map['customer_id']=$customer_id;
 		// 注意判断条件使用恒等式
-		if(count($this->select(array('customer_id'=>$customer_id)))>0)
+		if(count($this->where($map)->select())>0)
 		{
+
 			$map['customer_id']=$customer_id;
 			if ($this->where ($map )->save ( $data ) !== false) {
 				$result->Error = ErrorType::Success;
@@ -104,14 +107,20 @@ class CustomerAdvisoryModel extends Model {
 		$result->Data = $this->where ($map )->select ();
 		return $result;
 	}
+	public function getModelByCustomerId($customer_id) {
+		$result = new DataResult ();
+		$map['customer_id']=$customer_id;
+		$result->Data = $this->where ($map )->select ();
+		return $result;
+	}
 	// 获取图片管理表中分页数据
 	public function searchByPage($customer_account,$customer_nickname,$begin_time,$end_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
 		$objects = $conn->query ( " select advisory_id,customer_id,customer_account,customer_nickname,create_time,isread from gogojp_customer_advisory where
- ('$customer_account'='' or customer_account like '%$customer_account%')
- and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+ (('$customer_account'='' or customer_account like '%$customer_account%')
+ or  ('$customer_nickname'='' or customer_nickname like '%$customer_nickname%'))
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
  order by isread asc,create_time desc
@@ -120,19 +129,19 @@ class CustomerAdvisoryModel extends Model {
  				   ':end_time' => date($end_time)
 			)  );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_customer_advisory where
-('$customer_account'='' or customer_account like '%$customer_account%')
- and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+(('$customer_account'='' or customer_account like '%$customer_account%')
+ or  ('$customer_nickname'='' or customer_nickname like '%$customer_nickname%'))
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
 ", array (
                    ':begin_time' => date($begin_time),
  				   ':end_time' => date($end_time)
 			)  );
-		$totalcount=$data[0]['totalcout'];
+		$totalcount = $data[0];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;
-		$result->totalcount = $totalcount;
+		$result->totalcount = $totalcount['totalcount'];
 		return $result;
 	}
 }

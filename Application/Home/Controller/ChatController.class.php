@@ -5,6 +5,7 @@ use Think\Controller;
 use Home\Model\CustomerAdvisoryModel;
 use Home\Model\MessageModel;
 use Common\Common\ErrorType;
+use Common\Common\NovComet;
 
 class ChatController extends Controller {
     public function index(){
@@ -22,7 +23,9 @@ class ChatController extends Controller {
 		$addResult = $messageModel->addModel($customer_id, 0, $content, time());
 		if($addResult->Error == ErrorType::Success)
 		{
-			$advisoryModel->addModel($customer_id, $customer_account, $customer_nickname, time(), 1);
+			$advisoryModel->addModel($customer_id, $customer_account, $customer_nickname, time(), 0);
+			$comet = new NovComet();
+			$comet->publish('customercomet',";$customer_id");
 		}
 		$this->ajaxReturn ($addResult);
     }
@@ -36,7 +39,7 @@ class ChatController extends Controller {
     	$addResult = $messageModel->addModel(0, $customer_id, $content, time());
     	if($addResult->Error == ErrorType::Success)
     	{
-    		$advisoryModel->updateReadState($customer_id, 0);
+    		$advisoryModel->updateReadState($customer_id, 1);
     	}
     	$this->ajaxReturn ($addResult);
     }
@@ -61,5 +64,39 @@ class ChatController extends Controller {
 		$pageIndex = I ('pageIndex', 0 );
 		$pageSize = I ('pageSize', 10 );
 		$this->ajaxReturn ($advisoryModel->searchByPage($keyname, $keyname, $begin_time, $end_time, $pageIndex, $pageSize) );
+    }
+
+    public function getCustomer()
+    {
+    	$customer_id=I('customerid',0);
+    	$advisoryModel = new CustomerAdvisoryModel();
+    	$advisoryModel->updateReadState($customer_id, 1);
+    	$this->ajaxReturn ($advisoryModel->getModelByCustomerId($customer_id));
+    }
+
+    public function advisoryObserve()
+    {
+
+    	$comet = new NovComet();
+    	$publish = I('publish','');
+    	$subscribed = I('subscribeds','');
+    	$timestamps = I('timestamps','');
+    	session_write_close();//防止session阻塞
+    	if ($publish != '') {
+    		echo $comet->publish($publish);
+    	} else {
+    		for($i=0;$i<count($subscribed);$i++)
+    		{
+    			$comet->setVar($subscribed[$i], $timestamps[$i]);
+    		}
+
+    		echo $comet->run();
+    		/*
+    		foreach (filter_var_array($subscribed, FILTER_SANITIZE_NUMBER_INT) as $key => $value) {
+    			var_dump("$key -> $value");
+    			$comet->setVar($key, $value);
+    		}
+*/
+    	}
     }
 }
