@@ -12,7 +12,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/order/:pageIndex?', { template: '', controller: function () { } })
     .when('/customerservice/list/:pageIndex?', { template: '', controller: function () { } })
     .when('/customerservice/chat/:customerId?', { template: '', controller: function () { } })
-    .when('/customerservice/histories/:customerId?', { template: '', controller: function () { } })
+    .when('/customerservice/histories/:customerId?/:pageIndex?', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
@@ -54,7 +54,8 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
           $rootScope.$stateParams = $stateParams;
       }]);;
 
-function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls) {
+function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls, $novcomet) {
+    $novcomet.stop();
     $scope.LoginOut = function () {
         $http.post($resturls["LoginOut"], {}).success(function (result) {
             if (result.Error == 0) {

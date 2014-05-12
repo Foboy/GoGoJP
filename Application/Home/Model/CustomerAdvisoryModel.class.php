@@ -119,8 +119,8 @@ class CustomerAdvisoryModel extends Model {
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
 		$objects = $conn->query ( " select advisory_id,customer_id,customer_account,customer_nickname,create_time,isread from gogojp_customer_advisory where
- ('$customer_account'='' or customer_account like '%$customer_account%')
- and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+ (('$customer_account'='' or customer_account like '%$customer_account%')
+ or  ('$customer_nickname'='' or customer_nickname like '%$customer_nickname%'))
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
  order by isread asc,create_time desc
@@ -129,19 +129,19 @@ class CustomerAdvisoryModel extends Model {
  				   ':end_time' => date($end_time)
 			)  );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_customer_advisory where
-('$customer_account'='' or customer_account like '%$customer_account%')
- and  ('$customer_nickname'='' or customer_nickname = '%$customer_nickname%')
+(('$customer_account'='' or customer_account like '%$customer_account%')
+ or  ('$customer_nickname'='' or customer_nickname like '%$customer_nickname%'))
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
 ", array (
                    ':begin_time' => date($begin_time),
  				   ':end_time' => date($end_time)
 			)  );
-		$totalcount=$data[0]['totalcout'];
+		$totalcount = $data[0];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;
-		$result->totalcount = $totalcount;
+		$result->totalcount = $totalcount['totalcount'];
 		return $result;
 	}
 }

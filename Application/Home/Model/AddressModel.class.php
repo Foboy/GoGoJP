@@ -77,7 +77,8 @@ class AddressModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($shipping_id) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'shipping_id=%d', $shipping_id )->select ();
+		$map['shipping_id']=$shipping_id;
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 根据主键id获取某个专辑信息
