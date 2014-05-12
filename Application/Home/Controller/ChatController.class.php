@@ -27,10 +27,36 @@ class ChatController extends Controller {
 		$this->ajaxReturn ($addResult);
     }
 
+    public function advisoryReply()
+    {
+    	$customer_id=I('customerid',0);
+    	$content = I('content','');
+    	$advisoryModel = new CustomerAdvisoryModel();
+    	$messageModel = new MessageModel();
+    	$addResult = $messageModel->addModel(0, $customer_id, $content, time());
+    	if($addResult->Error == ErrorType::Success)
+    	{
+    		$advisoryModel->updateReadState($customer_id, 0);
+    	}
+    	$this->ajaxReturn ($addResult);
+    }
+
+    public function messageList()
+    {
+    	$customer_id=I('customerid',0);
+    	$pageIndex = I ('pageIndex', 0 );
+    	$pageSize = I ('pageSize', 10 );
+    	$begin_time=I('begintime','');
+    	$end_time=I('endtime','');
+    	$keyname=I('searchkey','','htmlspecialchars');
+    	$messageModel = new MessageModel();
+    	$this->ajaxReturn ($messageModel->searchByPage($customer_id, $keyname, $begin_time, $end_time, $pageIndex, $pageSize) );
+    }
+
     public function chatList(){
 		$advisoryModel = new CustomerAdvisoryModel();
-		$begin_time=I('begintime',0);
-		$end_time=I('endtime',0);
+		$begin_time=I('begintime','');
+		$end_time=I('endtime','');
 		$keyname=I('searchkey','','htmlspecialchars');
 		$pageIndex = I ('pageIndex', 0 );
 		$pageSize = I ('pageSize', 10 );

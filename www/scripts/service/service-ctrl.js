@@ -1,5 +1,20 @@
 ﻿function ServiceMainCtrl($scope, $http, $location, $routeParams, $resturls) {
 
+    $scope.loadMessageList = function (pageIndex, customerid, searchkey, begintime, endtime, callback) {
+        var pageSize = 1;
+        if (pageIndex == 0) pageIndex = 1;
+        $http.post($resturls["MessageList"], { customerid:customerid,begintime: begintime || '', endtime: endtime || '', searchkey: searchkey || '', pageIndex: pageIndex - 1, pageSize: 20 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.msglist = result.Data;
+                $scope.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#customerservice/list/{0}');
+            } else {
+                $scope.msglist = [];
+                $scope.pages = utilities.paging(0, pageIndex, pageSize);
+            }
+            callback();
+        });
+    }
+
 }
 function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls) {
     $parent = $scope.$parent;
@@ -55,37 +70,36 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls) {
     $scope.loadChatList($routeParams.pageIndex || 0);
 }
 function ServiceChatCtrl($scope, $rootScope, $http, $location, $routeParams, $resturls, $timeout) {
-    console.log('ServiceChatCtrl');
-    $scope.aaaa = "dddd";
+    $parent = $scope.$parent;
+
     $('#service-chat-box').slimScrollAngular({
         height: '400px'
     });
     $scope.chat_customerid = $routeParams.customerId;
-    $scope.chatlist = [
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-        { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' }
-    ];
+
+    $parent.loadMessageList(0, $scope.chat_customerid, '', '', '', function () {
+        $scope.scrollToBottom();
+    });
 
     $scope.sendMsg = function () {
-        $scope.chatlist.push({ self: true, nickname: '客服', time: '14:23', msg: $scope.replyMessage });
+        $http.post($resturls["AdvisoryReply"], { customerid: $scope.chat_customerid, content: $scope.replyMessage || '', }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.msglist = result.Data;
+                $scope.scrollToBottom(); 
+            } else {
+                $scope.msglist = [];
+                $scope.pages = utilities.paging(0, pageIndex, pageSize);
+            }
+            
+        });
+    };
+
+    $scope.scrollToBottom = function () {
         setTimeout(function () {
             $('#service-chat-box').slimScrollAngular({ height: '400px', scrollTo: 10000 });
-        }, 500);
-        console.log($scope.chatlist);
-    };
-    setTimeout(function () {
-        $('#service-chat-box').slimScrollAngular({ height: '400px', scrollTo: 10000 });
-    }, 500);
+        }, 500);  
+    }
+ 
 }
 
 function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams, $resturls, $timeout) {

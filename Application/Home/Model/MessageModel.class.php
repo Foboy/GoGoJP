@@ -73,33 +73,29 @@ class MessageModel extends Model {
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($form_userid,$to_userid,$content,$create_time,$advisory_id, $pageindex, $pagesize) {
+	public function searchByPage($customer_id,$content,$begin_time,$end_time,  $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select messageid,form_userid,to_userid,content,create_time,advisory_id from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 )
- and  ( to_userid = :to_userid or :to_userid=0 )
- and  ( content = :content or :content='' )
- and  ( create_time = :create_time or :create_time='' )
- and  ( advisory_id = :advisory_id or :advisory_id=0 )
+		$objects = $conn->query ( " select messageid,form_userid,to_userid,content,create_time,advisory_id from gogojp_message
+				where  ( form_userid = :customer_id or to_userid =:customer_id )
+ and  ( create_time >= :begin_time or :begin_time='' )
+ and  ( create_time <= :end_time or :end_time='' )
+ and  ('$content'='' or content = '%$content%')
+ order by create_time asc
  limit $lastpagenum,$pagesize", array (
-':form_userid' => $form_userid,
-                   ':to_userid' => $to_userid,
-                   ':content' => $content,
-                   ':create_time' => $create_time,
-                   ':advisory_id' => $advisory_id
+				'customer_id' => $customer_id,
+ 		'begin_time' => date($begin_time),
+ 		'end_time' => date($end_time)
 			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_message where  ( form_userid = :form_userid or :form_userid=0 )
- and  ( to_userid = :to_userid or :to_userid=0 )
- and  ( content = :content or :content='' )
- and  ( create_time = :create_time or :create_time='' )
- and  ( advisory_id = :advisory_id or :advisory_id=0 )
-", array (
-':form_userid' => $form_userid,
-                   ':to_userid' => $to_userid,
-                   ':content' => $content,
-                   ':create_time' => $create_time,
-                   ':advisory_id' => $advisory_id
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_message
+				where  ( form_userid = :customer_id or to_userid=:customer_id )
+  and  ( create_time >= :begin_time or :begin_time='' )
+ and  ( create_time <= :end_time or :end_time='' )
+ and  ('$content'='' or content = '%$content%')
+", array ('customer_id' => $customer_id,
+		'begin_time' => date($begin_time),
+		'end_time' => date($end_time)
 			)  );
 		$totalcount=$data[0]['totalcout'];
 		$result->pageindex = $pageindex;
