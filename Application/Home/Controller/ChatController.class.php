@@ -23,7 +23,7 @@ class ChatController extends Controller {
 		$addResult = $messageModel->addModel($customer_id, 0, $content, time());
 		if($addResult->Error == ErrorType::Success)
 		{
-			$advisoryModel->addModel($customer_id, $customer_account, $customer_nickname, time(), 1);
+			$advisoryModel->addModel($customer_id, $customer_account, $customer_nickname, time(), 0);
 			$comet = new NovComet();
 			$comet->publish('customercomet',";$customer_id");
 		}
@@ -39,7 +39,7 @@ class ChatController extends Controller {
     	$addResult = $messageModel->addModel(0, $customer_id, $content, time());
     	if($addResult->Error == ErrorType::Success)
     	{
-    		$advisoryModel->updateReadState($customer_id, 0);
+    		$advisoryModel->updateReadState($customer_id, 1);
     	}
     	$this->ajaxReturn ($addResult);
     }
@@ -70,6 +70,7 @@ class ChatController extends Controller {
     {
     	$customer_id=I('customerid',0);
     	$advisoryModel = new CustomerAdvisoryModel();
+    	$advisoryModel->updateReadState($customer_id, 1);
     	$this->ajaxReturn ($advisoryModel->getModelByCustomerId($customer_id));
     }
 
