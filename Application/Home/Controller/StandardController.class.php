@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @author yangchao
  * @email:66954011@qq.com
  * @date: 2014/5/13 0:08:46
  */
 namespace Home\Controller;
+
 use Think\Controller;
 use Home\Model\StandardModel;
 use Common\Common\DataResult;
@@ -16,131 +18,128 @@ class StandardController extends Controller {
 	}
 	// 添加
 	public function addStandard() {
-    $result =new DataResult();
+		$result = new DataResult ();
 		$Standard = new StandardModel ();
-
-           $parent_name = I ( 'parent_name' );  
-$standard_parent_id = I ( 'standard_parent_id' );  
-$child_name = I ( 'child_name' );  
-$create_time = I ( 'create_time' );  
-
-          
-           if (! isset ( $parent_name ) or empty ( $parent_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-           $result->ErrorMessage="'parent_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-           $result->ErrorMessage="'standard_parent_id' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $child_name ) or empty ( $child_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-           $result->ErrorMessage="'child_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-           $result->ErrorMessage="'create_time' params error";
-			$this->ajaxReturn($result);
-		   }
-        $result= $Standard->addModel ( $parent_name,$standard_parent_id,$child_name,$create_time );
+		
+		$parent_name = I ( 'parent_name' );
+		$standard_parent_id = I ( 'standard_parent_id' );
+		$child_name = I ( 'child_name' );
+		$create_time = I ( 'create_time' );
+		
+		if (! isset ( $parent_name ) or empty ( $parent_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'parent_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_parent_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $child_name ) or empty ( $child_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'child_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $create_time ) or empty ( $create_time )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'create_time' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Standard->addModel ( $parent_name, $standard_parent_id, $child_name, $create_time );
 		$this->ajaxReturn ( $result );
 	}
 	// 删除
 	public function deleteStandard() {
-     $result =new DataResult();
-    		$Standard = new StandardModel ();
+		$result = new DataResult ();
+		$Standard = new StandardModel ();
 		$standard_id = I ( 'standard_id' );
-		           if (! isset ( $standard_id ) or empty ( $standard_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'standard_id' params error";
-			$this->ajaxReturn($result);
-		   }
-        $result=  $Standard->deleteModel ( $standard_id );
+		if (! isset ( $standard_id ) or empty ( $standard_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Standard->deleteModel ( $standard_id );
 		$this->ajaxReturn ( $result );
 	}
 	// 编辑
 	public function updateStandard() {
-    
-     $result =new DataResult();
+		$result = new DataResult ();
 		$Standard = new StandardModel ();
-      $parent_name = I ( 'parent_name' );  
-$standard_parent_id = I ( 'standard_parent_id' );  
-$child_name = I ( 'child_name' );  
-$create_time = I ( 'create_time' );  
-
-          
-           if (! isset ( $parent_name ) or empty ( $parent_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'parent_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'standard_parent_id' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $child_name ) or empty ( $child_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'child_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'create_time' params error";
-			$this->ajaxReturn($result);
-		   }
-        $result= $Standard->updateModel (  $parent_name,$standard_parent_id,$child_name,$create_time );
+		$parent_name = I ( 'parent_name' );
+		$standard_parent_id = I ( 'standard_parent_id' );
+		$child_name = I ( 'child_name' );
+		$create_time = I ( 'create_time' );
+		
+		if (! isset ( $parent_name ) or empty ( $parent_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'parent_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_parent_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $child_name ) or empty ( $child_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'child_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $create_time ) or empty ( $create_time )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'create_time' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Standard->updateModel ( $parent_name, $standard_parent_id, $child_name, $create_time );
 		$this->ajaxReturn ( $result );
 	}
-	//获取单个
-	public function getStandard(){
-      $result =new DataResult();
+	// 获取单个
+	public function getStandard() {
+		$result = new DataResult ();
 		$Standard = new StandardModel ();
-		$standard_id=I('standard_id');
-		           if (! isset ( $standard_id ) or empty ( $standard_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'standard_id' params error";
-			$this->ajaxReturn($result);
-		   }
-                $result= $Standard->getModel($standard_id);
+		$standard_id = I ( 'standard_id' );
+		if (! isset ( $standard_id ) or empty ( $standard_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Standard->getModel ( $standard_id );
 		$this->ajaxReturn ( $result );
 	}
-
+	
 	// 分页查询列表
 	public function searchStandard() {
-     $result =new DataResult();
+		$result = new DataResult ();
 		$Standard = new StandardModel ();
-           $parent_name = I ( 'parent_name' );  
-$standard_parent_id = I ( 'standard_parent_id' );  
-$child_name = I ( 'child_name' );  
-$create_time = I ( 'create_time' );  
-
-           if (! isset ( $parent_name ) or empty ( $parent_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'parent_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'standard_parent_id' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $child_name ) or empty ( $child_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'child_name' params error";
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-                $result->ErrorMessage="'create_time' params error";
-			$this->ajaxReturn($result);
-		   }
-		$pageIndex = I ('pageindex', 0 );
-		$pageSize = I ('pagesize', 10 );
-                   $result= $Standard->searchByPage ( $parent_name,$standard_parent_id,$child_name,$create_time,$pageIndex, $pageSize ) ;
+		$parent_name = I ( 'parent_name' );
+		$standard_parent_id = I ( 'standard_parent_id' );
+		$child_name = I ( 'child_name' );
+		$create_time = I ( 'create_time' );
+		
+		if (! isset ( $parent_name ) or empty ( $parent_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'parent_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $standard_parent_id ) or empty ( $standard_parent_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_parent_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $child_name ) or empty ( $child_name )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'child_name' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $create_time ) or empty ( $create_time )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'create_time' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$pageIndex = I ( 'pageindex', 0 );
+		$pageSize = I ( 'pagesize', 10 );
+		$result = $Standard->searchByPage ( $parent_name, $standard_parent_id, $child_name, $create_time, $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}
 }
