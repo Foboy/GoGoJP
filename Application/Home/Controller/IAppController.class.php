@@ -35,6 +35,7 @@ class IAppController extends Controller {
 	}
 	// 获取全部分类
 	public function searchTypes() {
+		
 	}
 	// 通过ID获取商品详情
 	public function getProductDetailByID() {
@@ -308,6 +309,9 @@ class IAppController extends Controller {
 		}
 
 		$result = $Order->addModel ( $order_no, $user_id, $user_account, $order_time, $order_freight, $order_totalprice, $order_payment, $order_status, $order_status_update_time, $order_receive_address, $order_receive_name, $order_receive_mobile, $order_receive_phone, $order_receive_postcode, $remark,$invoice );
+		
+		
+		
 		$this->ajaxReturn ( $result );
 	}
 	
