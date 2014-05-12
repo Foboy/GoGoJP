@@ -20,15 +20,15 @@
                                    <div class="box-body chat" id="service-chat-box">
                                     <!-- chat item -->
                                     <div class="item" ng-repeat="chatitem in msglist">
-                                        <img src="img/avatar.png" alt="user image" ng-class="chatitem.self?'offline':'online'"/>
+                                        <img ng-src="{{chatitem.form_userid==0?'img/user.jpg':'img/avatar.png'}}" alt="user image" ng-class="chatitem.form_userid==0?'online':'offline'"/>
                                         <p class="message">
                                             <a href="#" class="name">
-                                                <span>{{chatitem.nickname}}</span>
+                                                <span>{{chatitem.form_userid==0?'客服':chat_customer.customer_nickname}}</span>
                                                 <small class="text-muted"><i class="fa fa-clock-o"></i> <span>{{chatitem.create_time}}</span></small>
                                             </a>
                                         </p>
                                         <div class="attachment">
-                                            <p>
+                                            <p ng-class="chatitem.form_userid==0?'text-blue':''">
                                                   {{chatitem.content}}
                                             </p>
                                         </div><!-- /.attachment -->
