@@ -10,6 +10,8 @@ use Home\Model\AddressModel;
 use Home\Model\MessageModel;
 use Home\Model\CustomerAdvisoryModel;
 use Home\Model\OrderModel;
+use Home\Model\PictureModel;
+use Home\Model\ProductCategoryModel;
 
 class IAppController extends Controller {
 	public function index() {
@@ -17,28 +19,71 @@ class IAppController extends Controller {
 	}
 	// 获取首页海报
 	public function getPoster() {
+		$Pic = new PictureModel ();
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 10 );
+		$this->ajaxReturn ( $Pic->searchByPage ( $pageIndex, $pageSize ) );
 	}
-	// 分页获取套餐
+	// 分页获取合集
 	public function searchCombosByPage() {
 	}
 	// 通过关键词查询产品分类，产品名称，产品标签
 	public function searchKeysByKey() {
+
 	}
 	// 通过名称分页查询产品列表
 	public function searchProductsByName() {
+		$Product = new ProductModel ();
+		$result =new DataResult();
+		$pname=I('pname');
+		if (! isset ( $pname ) or empty ( $pname )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'catid' params error";
+			$this->ajaxReturn($result);
+		}
+		$pageIndex = I ('pageIndex', 0 );
+		$pageSize = I ('pageSize', 10 );
+		$this->ajaxReturn ( $Product->searchProductByCondition(0,$pname,$pageIndex,$pageSize));
 	}
 	// 通过分类分页查询产品列表
 	public function searchProductsByType() {
+		$Product = new ProductModel ();
+		$result =new DataResult();
+		$catid=I('catid');
+		if (! isset ( $catid ) or empty ( $catid )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'catid' params error";
+			$this->ajaxReturn($result);
+		}
+		$pageIndex = I ('pageIndex', 0 );
+		$pageSize = I ('pageSize', 10 );
+		$this->ajaxReturn ( $Product->searchProductByCondition($catid,'',$pageIndex,$pageSize));
 	}
 	// 通过标签分页查询产品
 	public function searchProductsByTag() {
 	}
 	// 获取全部分类
 	public function searchTypes() {
-		
+		$ProductCategory = new ProductCategoryModel ();
+		$this->ajaxReturn ( $ProductCategory->searchMainCategory () );
 	}
 	// 通过ID获取商品详情
 	public function getProductDetailByID() {
+		$Product = new ProductModel ();
+		$productid=I('productid');
+		$result =new DataResult();
+		if (! isset ( $productid ) or empty ( $productid )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'productid' params error";
+			$this->ajaxReturn($result);
+		}
+		$this->ajaxReturn ( $Product->getModel($productid));
+	}
+	
+	//通过产品ID数组获取收藏产品列表
+	public function searchProductListByPIDS()
+	{
+		
 	}
 	// 通过ID获取商品规格参数
 	public function getProductSpec() {
@@ -338,7 +383,9 @@ class IAppController extends Controller {
 		$this->ajaxReturn ( $result );
 	}
 
-
+	//获取用户订单列表
+	public function searchOrderListByUserId()
+	{}
 	public function test() {
 // 		echo "begin call getPoster ..... \r\n";
 // 		IAppController::getPoster ();
