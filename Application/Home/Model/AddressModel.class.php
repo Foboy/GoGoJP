@@ -9,7 +9,7 @@ use Think\Db\Driver\Pdo;
 use Common\Common\DataResult;
 use Common\Common\ErrorType;
 
-class ShippingaddressModel extends Model {
+class AddressModel extends Model {
 	protected $tableName = 'shippingaddress';
 	// 增加表中数据
 	public function addModel($receive_name,$receive_address,$receive_mobile,$user_id,$receive_postcode,$receive_phone,$province_id,$city_id,$county_id,$country_id,$create_time) {

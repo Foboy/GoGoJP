@@ -79,4 +79,21 @@ class ProductModel extends Model {
 		$result->totalcount = $data [0] ['totalcount'];
 		return $result;
 	}
+	// 更新某个商品信息
+	public function updateClickNum($productid) {
+		$result = new DataResult ();
+		$conn = new Pdo ();
+	 
+		$objects = $conn->query ( "update gogojp_productinfo set click_num=click_num+1 where productid = :productid", array (
+				':productid' => $productid 
+		) );
+		
+		if ($objects) {
+			$result->ErrorMessage = '更新成功';
+		} else {
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '更新成功';
+		}
+		return $result;
+	}
 }
