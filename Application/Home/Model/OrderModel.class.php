@@ -17,7 +17,7 @@ class OrderModel extends Model {
 	protected $tableName = 'order';
 
 	// 增加表中数据
-	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$order_pay_account,$logistics_status,$pay_time) {
+	public function addModel($order_no,$user_id,$user_account,$order_time,$order_freight,$order_totalprice,$order_payment,$order_status,$order_status_update_time,$order_receive_address,$order_receive_name,$order_receive_mobile,$order_receive_phone,$order_receive_postcode,$remark,$invoice) {
 		$result = new DataResult ();
 		$data = array (
 'order_no' => $order_no,
@@ -35,9 +35,7 @@ class OrderModel extends Model {
                    'order_receive_phone' => $order_receive_phone,
                    'order_receive_postcode' => $order_receive_postcode,
                    'remark' => $remark,
-                   'order_pay_account' => $order_pay_account,
-                   'logistics_status' => $logistics_status,
-				'pay_time'=>$pay_time
+				'invoice'=>$invoice
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -80,12 +78,13 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		}
 		return $result;
 	}
-	// 修改付款时间
-	public function updatePaytime($order_no,$pay_time) {
+	// 订单付款
+	public function PayOrder($order_no,$order_pay_account) {
 		$result = new DataResult ();
 		$data = array (
 				'order_status' => 2,
-				'pay_time' => $pay_time
+				‘order_pay_account’=>$order_pay_account,
+				'pay_time' => date( "Y-m-d H:i:s",time() )
 		);
 		$map['order_no']=$order_no;
 		// 注意判断条件使用恒等式
@@ -95,6 +94,24 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		} else {
 			$result->Error = ErrorType::Failed;
 			$result->ErrorMessage = '更新成功';
+		}
+		return $result;
+	}
+	// 修改付款时间
+	public function updatePayTime($order_no) {
+		$result = new DataResult ();
+		$data = array (
+				'order_status' => 2,
+				'pay_time' => date( "Y-m-d H:i:s",time() )
+		);
+		$map['order_no']=$order_no;
+		// 注意判断条件使用恒等式
+		if ($this->where ($map)->save ( $data ) !== false) {
+		$result->Data = $this->find ( $order_no );
+		$result->ErrorMessage = '更新成功';
+		} else {
+		$result->Error = ErrorType::Failed;
+		$result->ErrorMessage = '更新成功';
 		}
 		return $result;
 	}

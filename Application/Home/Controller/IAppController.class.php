@@ -7,6 +7,9 @@ use Home\Model\ProductModel;
 use Common\Common\ErrorType;
 use Common\Common\DataResult;
 use Home\Model\AddressModel;
+use Home\Model\MessageModel;
+use Home\Model\CustomerAdvisoryModel;
+use Home\Model\OrderModel;
 
 class IAppController extends Controller {
 	public function index() {
@@ -17,6 +20,36 @@ class IAppController extends Controller {
 	}
 	// 分页获取套餐
 	public function searchCombosByPage() {
+	}
+	// 通过关键词查询产品分类，产品名称，产品标签
+	public function searchKeysByKey() {
+	}
+	// 通过名称分页查询产品列表
+	public function searchProductsByName() {
+	}
+	// 通过分类分页查询产品列表
+	public function searchProductsByType() {
+	}
+	// 通过标签分页查询产品
+	public function searchProductsByTag() {
+	}
+	// 获取全部分类
+	public function searchTypes() {
+	}
+	// 通过ID获取商品详情
+	public function getProductDetailByID() {
+	}
+	// 通过ID获取商品规格参数
+	public function getProductSpec() {
+	}
+	// 添加产品到购物车
+	public function productToCart() {
+	}
+	// 获取购物车数据s
+	public function seachShoppingCartInfoByUserId() {
+	}
+	// 收藏产品
+	public function addFavorites() {
 	}
 	// 增加点击率
 	public function addClickNums() {
@@ -29,9 +62,7 @@ class IAppController extends Controller {
 		
 		$pmodel->updateClickNum ( $pid );
 	}
-	// 获取购物车数据s
-	public function seachShoppingCartInfoByUserId() {
-	}
+
 	// 添加收货地址
 	public function addAddress() {
 		$address = new AddressModel();
@@ -41,13 +72,12 @@ class IAppController extends Controller {
 		$receive_address = I ( 'receive_address' );
 		$receive_mobile = I ( 'receive_mobile' );
 		$user_id = I ( 'user_id' );
-		$receive_postcode = I ( 'receive_postcode' );
+		$receive_postcode = I ( 'receive_postcode','' );
 		$receive_phone = I ( 'receive_phone' );
 		$province_id = I ( 'province_id' );
 		$city_id = I ( 'city_id' );
 		$county_id = I ( 'county_id' );
 		$country_id = I ( 'country_id' );
-		$create_time = I ( 'create_time' );
 		
 		
 		if (! isset ( $receive_name ) or empty ( $receive_name )) {
@@ -70,11 +100,7 @@ class IAppController extends Controller {
 			$result->ErrorMessage="'user_id' params error";
 			$this->ajaxReturn($result);
 		}
-		if (! isset ( $receive_postcode ) or empty ( $receive_postcode )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$result->ErrorMessage="'receive_postcode' params error";
-			$this->ajaxReturn($result);
-		}
+
 		if (! isset ( $receive_phone ) or empty ( $receive_phone )) {
 			$result->Error=ErrorType::RequestParamsFailed;
 			$result->ErrorMessage="'receive_phone' params error";
@@ -100,11 +126,7 @@ class IAppController extends Controller {
 			$result->ErrorMessage="'country_id' params error";
 			$this->ajaxReturn($result);
 		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$result->ErrorMessage="'create_time' params error";
-			$this->ajaxReturn($result);
-		}
+
 		$result = $address->addModel ( $receive_name, $receive_address, $receive_mobile, $user_id, $receive_postcode, $receive_phone, $province_id, $city_id, $county_id, $country_id, time () );
 	}
 	// 获取身份信息
@@ -141,48 +163,187 @@ class IAppController extends Controller {
 	}
 	// 删除配送地址
 	public function delAddr() {
+		$Address = new AddressModel();
+		$aid = I ( 'aid' );
+		if (! isset ( $aid ) or empty ( $aid )) {
+			$this->ajaxReturn ( ErrorType::RequestParamsFailed );
+		}
+		$this->ajaxReturn ( $Address->deleteModel( $aid ) );
 	}
-	// 通过关键词查询产品分类，产品名称，产品标签
-	public function searchKeysByKey() {
-	}
-	// 通过名称分页查询产品列表
-	public function searchProductsByName() {
-	}
-	// 通过分类分页查询产品列表
-	public function searchProductsByType() {
-	}
-	// 通过标签分页查询产品
-	public function searchProductsByTag() {
-	}
-	// 获取全部分类
-	public function searchTypes() {
-	}
+	
 	// 获取用户咨询历史记录
 	public function searchConsultHistory() {
+		$result =new DataResult();
+		$customer_id=I('customerid');
+		$pageIndex = I ('pageIndex');
+		$pageSize = I ('pageSize', 10 );
+		$begin_time=I('begintime');
+		$end_time=I('endtime');
+		$keyname=I('searchkey','','htmlspecialchars');
+		
+		if (! isset ( $customer_id ) or empty ( $customer_id )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'customer_id' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $pageIndex ) or empty ( $pageIndex )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'pageIndex' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $begin_time ) or empty ( $begin_time )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'begin_time' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $end_time ) or empty ( $end_time )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'end_time' params error";
+			$this->ajaxReturn($result);
+		}
+		$messageModel = new MessageModel();
+		$result = $messageModel->searchByPage($customer_id, $keyname, $begin_time, $end_time, $pageIndex, $pageSize);
+		$this->ajaxReturn ($result);
 	}
 	// 用户咨询
 	public function consult() {
+		$result =new DataResult();
+		$customer_id=I('customerid');
+		$customer_account=I('account');
+		$customer_nickname=I('nickname');
+		$content = I('content');
+		
+		if (! isset ( $customer_id ) or empty ( $customer_id )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'customer_id' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $customer_account ) or empty ( $customer_account )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'customer_account' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $customer_nickname ) or empty ( $customer_nickname )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'customer_nickname' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $content ) or empty ( $content )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'content' params error";
+			$this->ajaxReturn($result);
+		}
+		$advisoryModel = new CustomerAdvisoryModel();
+		$messageModel = new MessageModel();
+		$addResult = $messageModel->addModel($customer_id, 0, $content, time());
+		if($addResult->Error == ErrorType::Success)
+		{
+			$advisoryModel->addModel($customer_id, $customer_account, $customer_nickname, time(), 1);
+		}
+		$this->ajaxReturn ($addResult);
 	}
-	// 通过ID获取商品详情
-	public function getProductDetailByID() {
-	}
-	// 通过ID获取商品规格参数
-	public function getProductSpec() {
-	}
-	// 添加产品到购物车
-	public function productToCart() {
-	}
+	
 	// 下单
 	public function addOrder() {
+		
+		$Order = new OrderModel ();
+		$result =new DataResult();
+		$order_no = 'SD'.date('Ymd') . str_pad(mt_rand(1, 9999999), 7, '0', STR_PAD_LEFT);
+	
+		$remark = I ( 'remark','');
+		$logistics_status = 1;
+		$order_time=time();
+		$order_status = 1;
+		$order_status_update_time = time();
+		
+		$aid = I ( 'aid' );
+		if (! isset ( $aid ) or empty ( $aid )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'content' params error";
+			$this->ajaxReturn($result);
+		}
+		$Address = new AddressModel();
+	   $addrmodule = $Address->getModel( $aid );
+		
+		$order_receive_address = $addrmodule->Data['receive_address'];
+		$order_receive_name = $addrmodule->Data['receive_name'];
+		$order_receive_mobile = $addrmodule->Data['receive_mobile'];
+		$order_receive_phone = $addrmodule->Data['receive_phone'];
+		$order_receive_postcode =$addrmodule->Data['receive_postcode'];
+		
+	
+
+		$invoice=I('invoice');
+		$user_id = I ( 'user_id' );
+		$user_account = I ( 'user_account' );
+		$order_freight = I ( 'order_freight' );
+		$order_totalprice = I ( 'order_totalprice' );
+		$order_payment = I ( 'order_payment' );
+		
+		if (! isset ( $user_id ) or empty ( $user_id )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'user_id' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $user_account ) or empty ( $user_account )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'user_account' params error";
+			$this->ajaxReturn($result);
+		}
+	
+		if (! isset ( $order_freight ) or empty ( $order_freight )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'order_freight' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $order_totalprice ) or empty ( $order_totalprice )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'order_totalprice' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $invoice ) or empty ( $invoice )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'invoice' params error";
+			$this->ajaxReturn($result);
+		}
+
+		$result = $Order->addModel ( $order_no, $user_id, $user_account, $order_time, $order_freight, $order_totalprice, $order_payment, $order_status, $order_status_update_time, $order_receive_address, $order_receive_name, $order_receive_mobile, $order_receive_phone, $order_receive_postcode, $remark,$invoice );
+		$this->ajaxReturn ( $result );
 	}
-	// 收藏产品
-	public function addFavorites() {
+	
+	//支付订单
+	public  function payOrder()
+	{
+		$Order = new OrderModel ();
+		$result =new DataResult();
+		
+		$order_no = I ( 'order_no' );
+		$order_pay_account = I ( 'order_pay_account' );
+		
+		if (! isset ( $order_pay_account ) or empty ( $order_pay_account )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'order_pay_account' params error";
+			$this->ajaxReturn($result);
+		}
+		if (! isset ( $order_no ) or empty ( $order_no )) {
+			$result->Error=ErrorType::RequestParamsFailed;
+			$result->ErrorMessage="'order_no' params error";
+			$this->ajaxReturn($result);
+		}
+		$result = $Order->PayOrder($order_no, $order_pay_account);
+		$this->ajaxReturn ( $result );
 	}
+
+
 	public function test() {
-		echo "begin call getPoster ..... \r\n";
-		IAppController::getPoster ();
-		echo "call getPoster 成功！\r\n";
-		$searchProvince = IAppController::searchProvince ();
-		echo json_encode ( $searchProvince );
+// 		echo "begin call getPoster ..... \r\n";
+// 		IAppController::getPoster ();
+// 		echo "call getPoster 成功！\r\n";
+// 		$searchProvince = IAppController::searchProvince ();
+// 		echo json_encode ( $searchProvince );
+		
+		$Address = new AddressModel();
+		$addrmodule = $Address->getModel( 1 );
+		echo json_encode (date( "Y-m-d H:i:s",time() ));
 	}
 }
