@@ -277,10 +277,18 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
             if (result.Error == 0) {
                 $scope.SubCategorys = result.Data;
+                $scope.showsubselect = true;
             } else {
                 $scope.SubCategorys = [];
+                $scope.showsubselect = false;
             }
         });
+    }
+    //下拉选中一级菜单
+    $scope.ChooseMainCategory = function (data) {
+        if (data != null) {
+            $scope.LoadSubCategory(data);
+        }
     }
     $scope.UpLoadImage = function () {
         $('#file_upload').uploadify({
@@ -314,10 +322,15 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
+
     $scope.AddProduct = function (data) {
         if ($scope.AddProductForm.$valid) {
             $scope.showerror = false;
-            $http.post($resturls["AddProduct"], { sign: data.sign, catid: data.Name, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
+            var catid = $scope.mainitem.catid;
+            if ($scope.subitem) {
+                catid = $scope.subitem.catid;
+            }
+            $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                 }
@@ -331,7 +344,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         }
     }
     $scope.InitEditor = function () {
-        var um = UM.getEditor('myEditor');
+        $scope.um = UM.getEditor('myEditor');
     }
     $scope.LoadMainCategory();
     $scope.UpLoadImage();
