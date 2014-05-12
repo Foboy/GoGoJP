@@ -149,6 +149,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //添加主分类
     $scope.AddMainCategory = function (data) {
         if ($scope.AddMainCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: 0, status: data.Status, level: data.level }).success(function (result) {
                 $("#maincatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -167,6 +168,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //添加子分类
     $scope.AddSubCategory = function (data) {
         if ($scope.AddSubCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status, level: data.level }).success(function (result) {
                 $("#subcatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -185,6 +187,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //编辑分类
     $scope.EidtCategory = function (data) {
         if ($scope.EditCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["EditCategory"], { catid: data.catid, cat_name: data.cat_name, status: data.status }).success(function (result) {
                 $("#editcatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -257,6 +260,23 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         var iTop = (window.screen.availHeight - 30 - iHeight) / 2;       //获得窗口的垂直位置;
         var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
         window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+    $scope.AddProduct = function (data) {
+        if ($scope.AddProductForm.$valid) {
+            $scope.showerror = false;
+            console.log(data);
+            //$http.post($resturls["AddProduct"], { sign: data.sign, catid: data.Name, product_name: data.ParentId, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
+            //    if (result.Error == 0) {
+            //        $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+            //    }
+            //    else {
+            //        $scope.showerror = true;
+            //        $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+            //    }
+            //})
+        } else {
+            $scope.showerror = true;
+        }
     }
 
 }

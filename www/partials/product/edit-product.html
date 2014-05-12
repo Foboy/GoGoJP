@@ -1,12 +1,116 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>编辑商品 
-                      
+    <h1>编辑商品  
     </h1>
-   
-</div>
 
+</div>
 <!-- Main content -->
 <div class="content">
+    <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="AddProductForm">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">商品编号:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">email@example.com</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品名称：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="商品名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品分类:
+            </label>
+            <div class="col-sm-4">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品原价：
+            </label>
+            <div class="col-sm-4">
+                <input type="test" class="form-control" placeholder="商品原价">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品现价：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="商品现价">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                库存数量：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="库存数量">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品图片：
+            </label>
+            <div class="col-sm-4">
+                <button class="btn btn-success btn-flat">上传</button>(图片800x800像素的效果最佳) 
+                <br />
+                <br />
+                <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" alt="..." class="img-thumbnail" style="width:200px;height:200px"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-3 control-label">
+                商品详情：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-3 control-label">
+                规格参数：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="规格参数">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                商品标签：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="商品标签">
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-9">
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenWindow()">预览</button>
+                <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat">保存</button>
+            </div>
+        </div>
+    </form>
+
 </div>
 <!-- /.content -->

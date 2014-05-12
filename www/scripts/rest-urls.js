@@ -31,6 +31,7 @@
           resturls.add("LoadSubCategory", "Home/ProductCategory/searchSubcategory");//根据主类id获取子分类
           resturls.add("AddCategory", "Home/ProductCategory/addProductCategory");//添加分类
           resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
+          resturls.add("AddProduct", "Home/Product/addProduct");//增加商品
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单

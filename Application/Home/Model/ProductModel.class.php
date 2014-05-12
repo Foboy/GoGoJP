@@ -11,20 +11,9 @@ use Think\Db\Driver\Pdo;
 class ProductModel extends Model {
 	protected $tableName = 'productinfo';
 	// 增加单个商品
-	public function addModel() {
+	public function addModel($data) {
 		$result = new DataResult ();
-		$data = array (
-				'catid' => I ( 'catid', 0 ),
-				'sign' => I ( 'sign', '', 'htmlspecialchars' ),
-				'product_name' => I ( 'product_name' ),
-				'old_price' => I ( 'old_price' ),
-				'new_price' => I ( 'new_price' ),
-				'small_pic' => I ( 'small_pic' ),
-				'big_pic' => I ( 'big_pic' ),
-				'product_description' => I ( 'product_description' ),
-				'product_count' => I ( 'product_count', 0 ),
-				'product_num' => time () 
-		);
+		
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
 			$result->Data = $this->find ( $pid );
