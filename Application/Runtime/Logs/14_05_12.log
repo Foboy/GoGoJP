@@ -14857,3 +14857,59 @@ INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
 SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.037002s ]
 
+[ 2014-05-12T19:09:39+08:00 ] ::1 /gogojp/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-05-12T19:09:43+08:00 ] ::1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.002000s ]
+
+[ 2014-05-12T19:11:48+08:00 ] ::1 /GoGoJP/index.php?url=Home/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `gogojp_user` WHERE ( `user_name` = 'test' ) AND ( `password` = '96e79218965eb72c92a549dd5a330112' ) LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [8] Trying to get property of non-object E:\Work\GitHub\GoGoJP\Application\Home\Model\UserModel.class.php 第 110 行.
+
+[ 2014-05-12T19:11:49+08:00 ] ::1 /GoGoJP/index.php?url=Home/Index/getCurrentUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `gogojp_user` [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 1 E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 68 行.
+NOTIC: [8] Undefined index: DB_DSN E:\Work\GitHub\GoGoJP\ThinkPHP\Library\Think\Db\Driver\Pdo.class.php 第 73 行.
+SQL: select *  from gogojp_user where user_id=:user_id[ Array
+(
+    [:user_id] => 1
+)
+ ] [ RunTime:0.001000s ]
+
