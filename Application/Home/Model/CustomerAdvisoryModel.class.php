@@ -21,9 +21,12 @@ class CustomerAdvisoryModel extends Model {
 				'customer_nickname' => $customer_nickname,
 				'isread' => $isread
 		);
+
+		$map['customer_id']=$customer_id;
 		// 注意判断条件使用恒等式
-		if(count($this->select(array('customer_id'=>$customer_id)))>0)
+		if(count($this->where($map)->select())>0)
 		{
+
 			$map['customer_id']=$customer_id;
 			if ($this->where ($map )->save ( $data ) !== false) {
 				$result->Error = ErrorType::Success;
@@ -101,6 +104,12 @@ class CustomerAdvisoryModel extends Model {
 	public function getModel($advisory_id) {
 		$result = new DataResult ();
         $map['advisory_id']=$advisory_id;
+		$result->Data = $this->where ($map )->select ();
+		return $result;
+	}
+	public function getModelByCustomerId($customer_id) {
+		$result = new DataResult ();
+		$map['customer_id']=$customer_id;
 		$result->Data = $this->where ($map )->select ();
 		return $result;
 	}

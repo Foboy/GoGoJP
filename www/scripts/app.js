@@ -1,4 +1,4 @@
-angular.module('gogojp', ['ngRoute', 'ui.router', 'ngRestUrls']).
+angular.module('gogojp', ['ngRoute', 'ui.router', 'ngRestUrls', 'ngNovComet']).
 config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRouterProvider', '$resturls', function ($provide, $httpProvider, $routeProvider, $stateProvider, $urlRouterProvider, $resturls) {
     $routeProvider
     .when('/recommend', { template: '', controller: function () { } })

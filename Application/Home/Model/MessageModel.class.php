@@ -82,7 +82,7 @@ class MessageModel extends Model {
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
  and  ('$content'='' or content = '%$content%')
- order by create_time asc
+ order by create_time desc
  limit $lastpagenum,$pagesize", array (
 				'customer_id' => $customer_id,
  		'begin_time' => date($begin_time),

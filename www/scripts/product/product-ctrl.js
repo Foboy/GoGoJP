@@ -253,13 +253,34 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
 
 function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     $scope.OpenWindow = function (url, name, iWidth, iHeight) {
-        var url = 'partials/product/product-preview.html';  //转向网页的地址;
-        var name;                           //网页名称，可为空;
-        var iWidth = '200';                         //弹出窗口的宽度;
-        var iHeight = '200';                      //弹出窗口的高度;
+        var url = url; //转向网页的地址;
+        var name = name;                          //网页名称，可为空;
+        var iWidth = iWidth;                         //弹出窗口的宽度;
+        var iHeight = iHeight;                      //弹出窗口的高度;
         var iTop = (window.screen.availHeight - 30 - iHeight) / 2;       //获得窗口的垂直位置;
         var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
         window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+    //获取一级分类
+    $scope.LoadMainCategory = function () {
+        $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
+            if (result.Error == 0) {
+                $scope.MainCategorys = result.Data;
+            } else {
+                $scope.MainCategorys = [];
+            }
+        });
+    }
+   
+    //获取二级分类
+    $scope.LoadSubCategory = function (ParentCategory) {
+        $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.SubCategorys = result.Data;
+            } else {
+                $scope.SubCategorys = [];
+            }
+        });
     }
     $scope.UpLoadImage = function () {
         $('#file_upload').uploadify({
@@ -312,7 +333,11 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.InitEditor = function () {
         var um = UM.getEditor('myEditor');
     }
+    $scope.LoadMainCategory();
     $scope.UpLoadImage();
     $scope.InitEditor();
 }
+
+
+
 
