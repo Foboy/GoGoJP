@@ -41,8 +41,11 @@ class AlbumModel extends Model {
 				'album_description' => I ( 'album_description' ),
 				'album_sign' => I ( 'album_sign', '' ) 
 		);
+		$map = array (
+				'album_id' => $album_id 
+		);
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'album_id=%d', $album_id )->save ( $data ) !== false) {
+		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $album_id );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -54,7 +57,10 @@ class AlbumModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($album_id) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'album_id=%d', $album_id )->select ();
+		$map = array (
+				'album_id' => $album_id 
+		);
+		$result->Data = $this->where ( $map )->select ();
 		return $result;
 	}
 	// 根据条件模糊分页查询专辑列表信息
@@ -64,27 +70,27 @@ class AlbumModel extends Model {
 		$likename = " '%" . $album_name . "%'  ";
 		$conn = new Pdo ();
 		if (! empty ( $start_time )) {
-			$start_time=date('Y-m-d h:i:s',$start_time);
-			$end_time=date('Y-m-d h:i:s',$end_time);
+			$start_time = date ( 'Y-m-d h:i:s', $start_time );
+			$end_time = date ( 'Y-m-d h:i:s', $end_time );
 			$objects = $conn->query ( "select * from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
-					':album_name' => $album_name
+					':album_name' => $album_name 
 			) );
 			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) ", array (
-					':album_name' => $album_name
+					':album_name' => $album_name 
 			) );
-			$totalcount=$data[0]['totalcout'];
+			$totalcount = $data [0] ['totalcout'];
 			$result->pageindex = $pageIndex;
 			$result->pagesize = $pageSize;
 			$result->Data = $objects;
 			$result->totalcount = $totalcount;
 		} else {
 			$objects = $conn->query ( "select * from gogojp_album where (album_name like $likename or ''=:album_name) limit $lastPageNum,$pageSize", array (
-					':album_name' => $album_name
+					':album_name' => $album_name 
 			) );
 			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (album_name like $likename or ''=:album_name)", array (
-					':album_name' => $album_name
+					':album_name' => $album_name 
 			) );
-			$totalcount=$data[0]['totalcout'];
+			$totalcount = $data [0] ['totalcout'];
 			$result->pageindex = $pageIndex;
 			$result->pagesize = $pageSize;
 			$result->Data = $objects;

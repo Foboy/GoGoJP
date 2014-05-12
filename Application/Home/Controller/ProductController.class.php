@@ -12,6 +12,18 @@ class ProductController extends Controller {
 	// 新增商品
 	public function addProduct() {
 		$Product = new ProductModel ();
+		$data = array (
+				'catid' => I ( 'catid', 0 ),
+				'sign' => I ( 'sign', '', 'htmlspecialchars' ),
+				'product_name' => I ( 'product_name' ),
+				'old_price' => I ( 'old_price' ),
+				'new_price' => I ( 'new_price' ),
+				'small_pic' => I ( 'small_pic' ),
+				'big_pic' => I ( 'big_pic' ),
+				'product_description' => I ( 'product_description' ),
+				'product_count' => I ( 'product_count', 0 ),
+				'product_num' => time ()
+		);
 		$this->ajaxReturn($Product->addModel ());
 	}
 	// 删除商品

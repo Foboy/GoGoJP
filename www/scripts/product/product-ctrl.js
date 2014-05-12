@@ -149,6 +149,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //添加主分类
     $scope.AddMainCategory = function (data) {
         if ($scope.AddMainCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: 0, status: data.Status, level: data.level }).success(function (result) {
                 $("#maincatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -167,6 +168,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //添加子分类
     $scope.AddSubCategory = function (data) {
         if ($scope.AddSubCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["AddCategory"], { cat_name: data.Name, parent_id: data.ParentId, status: data.Status, level: data.level }).success(function (result) {
                 $("#subcatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -185,6 +187,7 @@ function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $ro
     //编辑分类
     $scope.EidtCategory = function (data) {
         if ($scope.EditCategoryForm.$valid) {
+            $scope.showerror = false;
             $http.post($resturls["EditCategory"], { catid: data.catid, cat_name: data.cat_name, status: data.status }).success(function (result) {
                 $("#editcatmodal").modal('hide');
                 if (result.Error == 0) {
@@ -258,6 +261,58 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
         window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
     }
-
+    $scope.UpLoadImage = function () {
+        $('#file_upload').uploadify({
+            'swf': 'js/plugins/uploadify/uploadify.swf',
+            'uploader': $resturls['UpLoadImage'],
+            'buttonText': '上传',
+            'width': 60,
+            'height': 40,
+            'buttonClass': 'btn btn-success btn-flat',
+            'fileSizeLimit': '2048kB',
+            'fileTypeExts': '*.jpg;*.gif;*.png',
+            'fileTypeDesc': 'Web Image Files (.JPG, .GIF, .PNG)',
+            onUploadSuccess: function (fileObj, data, response) {
+                var result = $.parseJSON(data);
+                if (result.status == 1) {
+                    $.scojs_message('上传完成!', $.scojs_message.TYPE_OK);
+                    $("#imagezone").attr('src', $.trim(result.data.uploadResult.url));
+                } else {
+                    $.scojs_message('服务器忙，请稍后重试!', $.scojs_message.TYPE_ERROR);
+                }
+            },
+            onSelectError: function (file, errorCode, errorMsg) {
+                switch (errorCode) {
+                    case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+                        $.scojs_message('上传文件不能超过2MB', $.scojs_message.TYPE_ERROR);
+                        break;
+                    case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+                        $.scojs_message('不能上传空文件', $.scojs_message.TYPE_ERROR);
+                        break;
+                }
+            }
+        });
+    }
+    $scope.AddProduct = function (data) {
+        if ($scope.AddProductForm.$valid) {
+            $scope.showerror = false;
+            $http.post($resturls["AddProduct"], { sign: data.sign, catid: data.Name, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
+                if (result.Error == 0) {
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    $scope.InitEditor = function () {
+        var um = UM.getEditor('myEditor');
+    }
+    $scope.UpLoadImage();
+    $scope.InitEditor();
 }
 

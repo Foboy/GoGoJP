@@ -7,7 +7,7 @@
     angular.module('ngRestUrls', ['ng']).
       config(['$provide', function ($provide) {
           var resturls = {};
-          resturls.base = "/index.php";
+          resturls.base = "/GoGoJP/index.php";
          // resturls.base="http://118.122.112.187:3333/GoGoJP/index.php";
           resturls.add = function (name, url) {
               resturls[name] = resturls.base + "?url=" + url;
@@ -35,6 +35,9 @@
           resturls.add("LoadSubCategory", "Home/ProductCategory/searchSubcategory");//根据主类id获取子分类
           resturls.add("AddCategory", "Home/ProductCategory/addProductCategory");//添加分类
           resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
+          resturls.add("AddProduct", "Home/Product/addProduct");//增加商品
+          resturls.add("UpLoadImage", "Home/PictureManagement/upLoadImage");//上传图片
+          
           
           // 订单模块
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
