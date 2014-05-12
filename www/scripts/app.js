@@ -12,7 +12,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/order/:pageIndex?', { template: '', controller: function () { } })
     .when('/customerservice/list/:pageIndex?', { template: '', controller: function () { } })
     .when('/customerservice/chat/:customerId?', { template: '', controller: function () { } })
-    .when('/customerservice/histories/:customerId?', { template: '', controller: function () { } })
+    .when('/customerservice/histories/:customerId?/:pageIndex?', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })

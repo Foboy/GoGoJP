@@ -81,7 +81,7 @@ class MessageModel extends Model {
 				where  ( form_userid = :customer_id or to_userid =:customer_id )
  and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
- and  ('$content'='' or content = '%$content%')
+ and  ('$content'='' or content like '%$content%')
  order by create_time desc
  limit $lastpagenum,$pagesize", array (
 				'customer_id' => $customer_id,
@@ -92,16 +92,16 @@ class MessageModel extends Model {
 				where  ( form_userid = :customer_id or to_userid=:customer_id )
   and  ( create_time >= :begin_time or :begin_time='' )
  and  ( create_time <= :end_time or :end_time='' )
- and  ('$content'='' or content = '%$content%')
+ and  ('$content'='' or content like '%$content%')
 ", array ('customer_id' => $customer_id,
 		'begin_time' => date($begin_time),
 		'end_time' => date($end_time)
 			)  );
-		$totalcount=$data[0]['totalcout'];
+		$totalcount = $data[0];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;
-		$result->totalcount = $totalcount;
+		$result->totalcount = $totalcount['totalcount'];
 		return $result;
 	}
 }

@@ -1,19 +1,19 @@
 ﻿function ServiceMainCtrl($scope, $http, $location, $routeParams, $resturls, $novcomet) {
 
-    $scope.loadMessageList = function (pageIndex, customerid, searchkey, begintime, endtime, callback) {
-        var pageSize = 1;
+    $scope.loadMessageList = function (pageIndex, pageSize, customerid, searchkey, begintime, endtime, callback) {
         if (pageIndex == 0) pageIndex = 1;
-        $http.post($resturls["MessageList"], { customerid:customerid,begintime: begintime || '', endtime: endtime || '', searchkey: searchkey || '', pageIndex: pageIndex - 1, pageSize: 20 }).success(function (result) {
+        console.log(searchkey);
+        $http.post($resturls["MessageList"], { customerid: customerid, begintime: begintime || '', endtime: endtime || '', searchkey: searchkey || '', pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 if (angular.isArray(result.Data)) {
                     $scope.msglist = result.Data.reverse();
                 }
-                $scope.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#customerservice/list/{0}');
+                callback(result);
             } else {
                 $scope.msglist = [];
                 $scope.pages = utilities.paging(0, pageIndex, pageSize);
             }
-            callback();
+            
         });
     }
     $novcomet.subscribe('customercomet', function (data) {
@@ -64,9 +64,13 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls, $nov
         });
 
     $scope.loadChatList = function (pageIndex) {
-        var pageSize = 1;
+        var pageSize = 16;
         if (pageIndex == 0) pageIndex = 1;
-        $http.post($resturls["ChatList"], { begintime: create_time1 || '', endtime: create_time2 || '', searchkey: $scope.chatlistsearchkey || '', pageIndex: pageIndex - 1, pageSize: 20 }).success(function (result) {
+        if ($scope.chathistorydaterange == '') {
+            create_time1 = '';
+            create_time2 = '';
+        }
+        $http.post($resturls["ChatList"], { begintime: create_time1 || '', endtime: create_time2 || '', searchkey: $scope.chatlistsearchkey || '', pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.chatlist = result.Data;
                 $scope.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#customerservice/list/{0}');
@@ -92,21 +96,22 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls, $nov
 }
 function ServiceChatCtrl($scope, $rootScope, $http, $location, $routeParams, $resturls, $timeout, $novcomet) {
     $parent = $scope.$parent;
+    var pageSize = 16;
 
     $('#service-chat-box').slimScrollAngular({
         height: '400px'
     });
     $scope.chat_customerid = $routeParams.customerId;
 
-    $parent.loadMessageList(0, $scope.chat_customerid, '', '', '', function () {
+    $parent.loadMessageList(0, pageSize, $scope.chat_customerid, '', '', '', function () {
         $scope.scrollToBottom();
     });
 
     $scope.sendMsg = function () {
         $http.post($resturls["AdvisoryReply"], { customerid: $scope.chat_customerid, content: $scope.replyMessage || '', }).success(function (result) {
             if (result.Error == 0) {
-                $scope.msglist = $scope.msglist || [];
-                $scope.msglist.push(result.Data);
+                $parent.msglist = $parent.msglist || [];
+                $parent.msglist.push(result.Data);
                 $scope.scrollToBottom();
                 $scope.replyMessage = '';
             } else {
@@ -121,10 +126,8 @@ function ServiceChatCtrl($scope, $rootScope, $http, $location, $routeParams, $re
             $('#service-chat-box').slimScrollAngular({ height: '400px', scrollTo: 10000 });
         }, 500);  
     }
-    if (!$scope.chat_customer)
-    {
-        $parent.loadChatCustomer($scope.chat_customerid);
-    }
+
+    $parent.loadChatCustomer($scope.chat_customerid);
 
     $novcomet.subscribe('customercomet', function (data) {
         console.log(data);
@@ -138,7 +141,9 @@ function ServiceChatCtrl($scope, $rootScope, $http, $location, $routeParams, $re
                 if (id && id.length) {
                     console.log($scope.chat_customerid);
                     if (id == $scope.chat_customerid) {
-                        $parent.loadMessageList(0, $scope.chat_customerid, '', '', '', function () {
+                        console.log("update chat message list");
+                        $parent.loadMessageList(0, pageSize, $scope.chat_customerid, '', '', '', function () {
+                            console.log("update chat message list success");
                             $scope.scrollToBottom();
                         });
                     }
@@ -151,7 +156,16 @@ function ServiceChatCtrl($scope, $rootScope, $http, $location, $routeParams, $re
     });
 }
 
-function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams, $resturls, $timeout) {
+function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams, $resturls, $timeout, $novcomet) {
+
+    $parent = $scope.$parent;
+    var create_time1, create_time2;
+
+    create_time1 = $parent.history_begin_time || '';
+    create_time2 = $parent.history_end_time || '';
+    $scope.chathistorydaterange = $parent.history_date_range || '';
+    $scope.chathistorysearchkey = $parent.history_search_key || '';
+
     $('#service-chat-box').slimScrollAngular({
         height: '400px'
     });
@@ -178,22 +192,42 @@ function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams
             create_time2 = end / 1000;
         });
     $scope.chat_customerid = $routeParams.customerId;
-    $scope.chatlist = [
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: false, nickname: '小张', time: '14:23', msg: '  您好！我有问题想要咨询！' },
-    { self: true, nickname: '客服', time: '14:23', msg: '  您好！我有问题想要咨询！' }
-    ];
-    $scope.pages = utilities.paging(050, 1, 20);
-    setTimeout(function () {
-        $('#service-chat-box').slimScrollAngular({ height: '400px', scrollTo: 10000 });
-    }, 500);
+
+    $scope.loadHistoryList = function (pageIndex) {
+        var pageSize = 16;
+        if (pageIndex == 0) pageIndex = 1;
+        if ($scope.chathistorydaterange == '')
+        {
+            create_time1 = '';
+            create_time2 = '';
+        }
+        $parent.loadMessageList(pageIndex, pageSize, $scope.chat_customerid, $scope.chathistorysearchkey || '', create_time1 || '', create_time2 || '', function (result) {
+            console.log(result)
+            $scope.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#customerservice/histories/' + $scope.chat_customerid + '/{0}');
+            $scope.scrollToBottom();
+        });
+    }
+    $scope.searchHistory = function () {
+        $parent.history_begin_time = create_time1;
+        $parent.history_end_time = create_time2;
+        $parent.history_date_range = $scope.chathistorydaterange;
+        $parent.history_search_key = $scope.chathistorysearchkey;
+        $scope.loadHistoryList(0);
+    }
+    $scope.loadHistoryList($routeParams.pageIndex || 0);
+
+
+
+    $scope.scrollToBottom = function () {
+        setTimeout(function () {
+            $('#service-chat-box').slimScrollAngular({ height: '400px', scrollTo: 10000 });
+        }, 200);
+    }
+
+    $novcomet.subscribe('customercomet', function (data) {
+        console.log(data);
+        if (data.d) {
+            $.scojs_message('您有新的消息', $.scojs_message.TYPE_OK);
+        }
+    });
 }
