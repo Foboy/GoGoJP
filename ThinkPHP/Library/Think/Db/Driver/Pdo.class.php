@@ -33,6 +33,11 @@ class Pdo extends Db {
 				'DB_PWD' => 111111,
 				'DB_DSN' => 'mysql:host=localhost;port=3306;dbname=gogojp;charset=utf8'
 		) );
+// 		$config=array( array (
+// 				'DB_USER' => 'crm',
+// 				'DB_PWD' => 'crm123',
+// 				'DB_DSN' => 'mysql:host=192.168.0.62;port=3366;dbname=gogojp;charset=utf8'
+// 		) );
 		if (! empty ( $config )) {
 			$this->config = $config;
 			if (empty ( $this->config ['params'] )) {

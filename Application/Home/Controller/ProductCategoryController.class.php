@@ -15,7 +15,8 @@ class ProductCategoryController extends Controller {
 		$cat_name = I ( 'cat_name', '', 'htmlspecialchars' );
 		$parent_id = I ( 'parent_id', 0 );
 		$status = I ( 'status', 1 ); // 默认启用
-		$this->ajaxReturn ( $ProductCategory->addModel ( $cat_name, $parent_id, $status ) );
+		$level = I ( 'level', 0);
+		$this->ajaxReturn ( $ProductCategory->addModel ( $cat_name, $parent_id, $status, $level ) );
 	}
 	// 删除分类
 	public function deleteProductCategory() {
@@ -24,32 +25,32 @@ class ProductCategoryController extends Controller {
 	public function updateProductCategory() {
 		$ProductCategory = new ProductCategoryModel ();
 		$catid = I ( 'catid' );
-		$cat_name = I ( 'cat_name', '', 'htmlspecialchars' );//必填字段
-		$status = I ( 'status',1 ); // 默认启用
+		$cat_name = I ( 'cat_name', '', 'htmlspecialchars' ); // 必填字段
+		$status = I ( 'status', 1 ); // 默认启用
 		$this->ajaxReturn ( $ProductCategory->updateModel ( $catid, $cat_name, $status ) );
 	}
-	//获取摸个分类信息
-	public function getProductCategory(){
+	// 获取摸个分类信息
+	public function getProductCategory() {
 		$ProductCategory = new ProductCategoryModel ();
-		$catid=I('catid');
-		$this->ajaxReturn($ProductCategory->getModel($catid));
+		$catid = I ( 'catid' );
+		$this->ajaxReturn ( $ProductCategory->getModel ( $catid ) );
 	}
 	/* 获取主分类列表信息 */
-	public function searchMainCategory(){
+	public function searchMainCategory() {
 		$ProductCategory = new ProductCategoryModel ();
-		$this->ajaxReturn($ProductCategory->searchMainCategory());
+		$this->ajaxReturn ( $ProductCategory->searchMainCategory () );
 	}
-	//根据主类id获取子分类
-	public function searchSubcategory(){
+	// 根据主类id获取子分类
+	public function searchSubcategory() {
 		$ProductCategory = new ProductCategoryModel ();
-		$catid=I('catid');
-		$this->ajaxReturn($ProductCategory->searchSubcategory($catid));
+		$catid = I ( 'catid' );
+		$this->ajaxReturn ( $ProductCategory->searchSubcategory ( $catid ) );
 	}
 	// 分页查询分类列表(包括上下级关系)
 	public function searchProductCategory() {
 		$ProductCategory = new ProductCategoryModel ();
-		$pageIndex = I ('pageIndex', 0 );
-		$pageSize = I ('pageSize', 10 );
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 10 );
 		$this->ajaxReturn ( $ProductCategory->searchByPage ( $pageIndex, $pageSize ) );
 	}
 }

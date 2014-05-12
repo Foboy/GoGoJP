@@ -10,6 +10,9 @@
 .margin_top {
 	margin-top: 15px;
 }
+.margin_bottom{
+	margin-bottom: 15px;
+}
 
 .margin_left {
 	margin-left: 15px;
@@ -34,6 +37,12 @@ a {
 .titlefont {
 	font-weight: 200;
 	color: #428BCA;
+}
+.bg-logo{
+	background-color: #2E3239;
+}
+.lable-top{
+	padding-top: 7px;
 }
 
 @font-face {

@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -175,7 +175,7 @@ CREATE TABLE `gogojp_customer_advisory` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `isread` tinyint(4) DEFAULT '0' COMMENT '是否已读 (0:未读 1:已读)',
   PRIMARY KEY (`advisory_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户咨询';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='客户咨询';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,6 +184,7 @@ CREATE TABLE `gogojp_customer_advisory` (
 
 LOCK TABLES `gogojp_customer_advisory` WRITE;
 /*!40000 ALTER TABLE `gogojp_customer_advisory` DISABLE KEYS */;
+INSERT INTO `gogojp_customer_advisory` VALUES (1,1,'3243','test','2014-05-11 05:49:16',0);
 /*!40000 ALTER TABLE `gogojp_customer_advisory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +203,7 @@ CREATE TABLE `gogojp_message` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `advisory_id` int(11) DEFAULT NULL COMMENT '咨询表相关的外键',
   PRIMARY KEY (`messageid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户聊天记录';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='客户聊天记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,6 +212,7 @@ CREATE TABLE `gogojp_message` (
 
 LOCK TABLES `gogojp_message` WRITE;
 /*!40000 ALTER TABLE `gogojp_message` DISABLE KEYS */;
+INSERT INTO `gogojp_message` VALUES (1,1,0,'对方是否','2014-05-11 05:47:41',1);
 /*!40000 ALTER TABLE `gogojp_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +253,7 @@ CREATE TABLE `gogojp_order` (
 
 LOCK TABLES `gogojp_order` WRITE;
 /*!40000 ALTER TABLE `gogojp_order` DISABLE KEYS */;
-INSERT INTO `gogojp_order` VALUES (1,'dd34343545',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(2,'dd12314356',1,'123213213','2014-05-09 03:03:27',8.00,324.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(3,'dd67577657',1,'123213213','2014-05-09 03:03:27',8.00,22.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(4,'dd56765756',1,'123213213','2014-05-09 03:03:27',8.00,54.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(5,'dd87787875',1,'123213213','2014-05-09 03:03:27',8.00,567.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(6,'dd54654654',1,'123213213','2014-05-09 03:03:27',8.00,56.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(7,'dd54645645',1,'123213213','2014-05-09 03:03:27',8.00,86.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(8,'dd56756765',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(9,'dd34535435',1,'123213213','2014-05-09 03:03:27',8.00,686.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(10,'dd67585855',1,'123213213','2014-05-09 03:03:27',8.00,7879.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(11,'dd98394298',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(12,'dd49835000',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(13,'dd09070699',1,'123213213','2014-05-09 03:03:27',8.00,98.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(14,'dd86054022',1,'123213213','2014-05-09 03:03:27',8.00,45.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(15,'dd45894088',1,'123213213','2014-05-09 03:03:27',8.00,34.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00');
+INSERT INTO `gogojp_order` VALUES (1,'dd34343545',1,'123213213','2014-04-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(2,'dd12314356',1,'123213213','2014-04-10 03:03:27',8.00,324.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(3,'dd67577657',1,'123213213','2014-05-09 03:03:27',8.00,22.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(4,'dd56765756',1,'123213213','2014-05-09 03:03:27',8.00,54.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(5,'dd87787875',1,'123213213','2014-05-09 03:03:27',8.00,567.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(6,'dd54654654',1,'123213213','2014-05-09 03:03:27',8.00,56.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(7,'dd54645645',1,'123213213','2014-05-09 03:03:27',8.00,86.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(8,'dd56756765',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(9,'dd34535435',1,'123213213','2014-05-09 03:03:27',8.00,686.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(10,'dd67585855',1,'123213213','2014-05-09 03:03:27',8.00,7879.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(11,'dd98394298',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(12,'dd49835000',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(13,'dd09070699',1,'123213213','2014-05-09 03:03:27',8.00,98.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(14,'dd86054022',1,'123213213','2014-05-09 03:03:27',8.00,45.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(15,'dd45894088',1,'123213213','2014-05-09 03:03:27',8.00,34.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `gogojp_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,8 +302,9 @@ CREATE TABLE `gogojp_productcategory` (
   `parentid` int(11) DEFAULT NULL COMMENT '父级类别',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `status` tinyint(4) DEFAULT '1' COMMENT '类别是否禁用 （ 1:启用 2：禁用）',
+  `level` int(11) NOT NULL COMMENT '分类层级',
   PRIMARY KEY (`catid`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='商品类别信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +313,7 @@ CREATE TABLE `gogojp_productcategory` (
 
 LOCK TABLES `gogojp_productcategory` WRITE;
 /*!40000 ALTER TABLE `gogojp_productcategory` DISABLE KEYS */;
-INSERT INTO `gogojp_productcategory` VALUES (1,'服饰内衣',0,'2014-05-05 06:25:25',1),(2,'运动户外',0,'2014-05-05 06:25:54',1),(3,'女士上装',1,'2014-05-05 06:26:24',1),(4,'男士内裤',1,'2014-05-05 06:29:51',1),(5,'女士碎花上装',3,'2014-05-05 07:57:24',1);
+INSERT INTO `gogojp_productcategory` VALUES (10,'女装',0,'2014-05-11 18:02:59',1,1),(9,'男装',0,'2014-05-11 18:02:29',1,1),(12,'女装上衣',10,'2014-05-11 18:03:34',1,2),(11,'儿童装',0,'2014-05-11 18:03:13',1,1),(19,'男装外套',9,'2014-05-11 18:05:35',1,2),(14,'那幢',9,'2014-05-11 18:03:55',1,2),(15,'外套',9,'2014-05-11 18:04:03',1,2),(16,'小学生',11,'2014-05-11 18:04:11',1,2),(17,'什么',10,'2014-05-11 18:04:20',1,2),(18,'搞不懂',9,'2014-05-11 18:04:32',1,2),(20,'喜爱',10,'2014-05-11 18:05:51',1,2),(21,'伸进病',10,'2014-05-11 18:06:00',1,2),(22,'什么飞机',9,'2014-05-11 18:06:11',1,2),(23,'jb',11,'2014-05-11 18:06:25',1,2),(24,'人妖装',0,'2014-05-11 18:06:46',1,1),(25,'官人',24,'2014-05-11 18:06:54',1,2),(26,'少妇',10,'2014-05-11 18:08:35',1,2),(27,'控件',10,'2014-05-11 18:09:11',1,2);
 /*!40000 ALTER TABLE `gogojp_productcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,7 +349,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,1,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-08 12:53:59','1399270425',1);
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1),(2,2,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-11 08:43:33','1399270425',1);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,6 +444,63 @@ LOCK TABLES `gogojp_user` WRITE;
 INSERT INTO `gogojp_user` VALUES (1,'test','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-27 13:42:01'),(2,'ThinkPHP','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-29 07:13:33'),(14,'小李子','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-04-30 05:56:06'),(12,'ThinkPHP','96e79218965eb72c92a549dd5a330112','ThinkPHP@gmail.com',2,'小强2',1,'15828670324','2014-04-29 08:17:02'),(13,'小李子','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-04-30 05:55:40'),(15,'ppt','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-05-03 09:06:18'),(16,'ppt','96e79218965eb72c92a549dd5a330112','653260669@qq.com',0,NULL,1,NULL,'2014-05-03 09:25:15');
 /*!40000 ALTER TABLE `gogojp_user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tmplst`
+--
+
+DROP TABLE IF EXISTS `tmplst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tmplst` (
+  `catid` int(11) DEFAULT NULL,
+  `nLevel` int(11) DEFAULT NULL,
+  `sCort` varchar(8000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tmplst`
+--
+
+LOCK TABLES `tmplst` WRITE;
+/*!40000 ALTER TABLE `tmplst` DISABLE KEYS */;
+INSERT INTO `tmplst` VALUES (1,0,'0'),(2,0,'0'),(5,1,'05'),(4,1,'04'),(3,1,'03'),(6,2,'056');
+/*!40000 ALTER TABLE `tmplst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'gogojp'
+--
+/*!50003 DROP FUNCTION IF EXISTS `getChildLst` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `getChildLst`(rootId int) RETURNS varchar(1000) CHARSET utf8
+BEGIN
+   DECLARE sTemp VARCHAR(1000);
+   DECLARE sTempChd VARCHAR(1000);
+
+   SET sTemp = '$';
+  SET sTempChd =cast(rootId as CHAR);
+
+  WHILE sTempChd is not null DO
+     SET sTemp = concat(sTemp,',',sTempChd);
+    SELECT group_concat(catid) INTO sTempChd FROM gogojp_productcategory where FIND_IN_SET(parentid,sTempChd)>0 ;
+   END WHILE;
+  RETURN sTemp;
+ END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -451,4 +511,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-09 16:29:36
+-- Dump completed on 2014-05-12 10:23:16

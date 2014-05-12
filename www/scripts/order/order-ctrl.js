@@ -6,8 +6,9 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 	if (!$scope.orderlistinfo)
 		$scope.orderlistinfo = [];
 
-	// $scope.orderlistinfo.daterange = "";
-	$scope.orderlistinfo.skey = "";
+	 $scope.orderlistinfo.daterange = "";
+	 if(!$scope.orderlistinfo)
+	   $scope.orderlistinfo.skey = "";
 
 	$scope.stime = "";
 	$scope.etime = "";
@@ -30,16 +31,28 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 				
 				$scope.stime = start / 1000;
 				$scope.etime = end / 1000;
+				$scope.SearchOrderList($routeParams.pageIndex || 1);
 			});
 	$scope.SearchOrderList = function(pageIndex) {
 		if (!$scope.orderlistinfo)
 			$scope.orderlistinfo = [];
 	    var pageSize = 10;
         if (pageIndex == 0) pageIndex = 1;
-
+   
+        var stime="";
+        var etime="";
+  
+        stime = $scope.timestamptostr($scope.stime);
+        if($scope.etime!="")
+        	{
+        	etime = $scope.timestamptostr($scope.etime+24*3600);
+        	}
+	
+	
+        
 		$http.post($resturls["LoadOrder"], {
-			stime : $scope.stime,
-			etime : $scope.etime,
+			stime :stime,
+			etime :etime,
 			keyname : $scope.orderlistinfo.skey,
 			order_status : $scope.status_id,
 			pageindex : pageIndex-1,
@@ -47,10 +60,13 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}).success(
 				function(result) {
 					if (result.Error == 0) {
-						//console.log(result.Data);
+						//console.log(pageIndex);
 						$scope.orderList = result.Data;
 		                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#order'  + '/{0}');
-				
+		            	
+		                
+		                $rootScope.orderlistinfo = $scope.orderlistinfo;
+		            	//console.log($rootScope.orderlistinfo);
 					} else {
 						$scope.orderList = [];
 					       $parent.pages = utilities.paging(0, pageIndex, pageSize);					}
@@ -84,6 +100,7 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 			$scope.order_status = data.name;
 		}
 		$scope.status_id = data.id;
+		$scope.SearchOrderList($routeParams.pageIndex || 1);
 	};
 	$scope.ChangeOrderStatusIDtoName = function(id) {
 		var name = "未知";
@@ -103,8 +120,13 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 		}
 		return name;
 	}
-	if ($routeParams.pageIndex)
+	$scope.cleantime = function()
+	{
+		$scope.stime = "";
+		$scope.etime = "";
+		$("#reservation").val("");
 		$scope.SearchOrderList($routeParams.pageIndex || 1);
-	else
-		$scope.SearchOrderList();
+	}
+	$scope.SearchOrderList($routeParams.pageIndex || 1);
+
 }
