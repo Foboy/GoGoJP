@@ -20,10 +20,15 @@
                 商品分类:
             </label>
             <div class="col-sm-4">
-                <select class="form-control" ng-options="a.name group by ProdcutCategory.type  for ProdcutCategory in ProdcutCategorys"  ng-change="update()">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
                 </select>
             </div>
-            <div class="col-sm-4" ng-show="false">
+            <div class="col-sm-4">
                 <select class="form-control">
                     <option>1</option>
                     <option>2</option>
@@ -73,7 +78,7 @@
                 商品详情：
             </label>
             <div class="col-sm-8">
-                <script type="text/plain" id="myEditor" style="width: auto; height: 240px;">
+                <script type="text/plain" id="myEditor" style="width:auto; height: 240px;">
                 </script>
             </div>
         </div>
@@ -90,7 +95,7 @@
                 商品标签：
             </label>
             <div class="col-sm-4">
-                <select class="form-control">
+                 <select class="form-control">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -102,7 +107,7 @@
         <br />
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <a type="submit" class="btn btn-primary btn-flat" href="partials/product/product-preview.html">预览</a>
+                <a type="submit" class="btn btn-primary btn-flat" href="partials/product/product-preview.html" target="_blank">预览</a>
                 <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="AddProduct(Product)">保存</button>
             </div>
         </div>
