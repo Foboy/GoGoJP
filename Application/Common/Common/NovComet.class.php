@@ -11,7 +11,7 @@ class NovComet {
     private $_ids = array();
     private $_callback = null;
 
-    public function  __construct($tries = 10, $sleep = 2)
+    public function  __construct($tries = 10, $sleep = 1)
     {
         $this->_tries = $tries;
         $this->_sleep = $sleep;

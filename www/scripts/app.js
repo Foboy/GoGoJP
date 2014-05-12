@@ -54,7 +54,8 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
           $rootScope.$stateParams = $stateParams;
       }]);;
 
-function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls) {
+function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls, $novcomet) {
+    $novcomet.stop();
     $scope.LoginOut = function () {
         $http.post($resturls["LoginOut"], {}).success(function (result) {
             if (result.Error == 0) {

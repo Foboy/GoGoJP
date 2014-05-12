@@ -18,7 +18,7 @@
     }
     $novcomet.subscribe('customercomet', function (data) {
         console.log(data);
-    }).run();
+    }).start();
 
     $scope.loadChatCustomer = function (customerid)
     {
@@ -66,7 +66,7 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls, $nov
     $scope.loadChatList = function (pageIndex) {
         var pageSize = 16;
         if (pageIndex == 0) pageIndex = 1;
-        if ($scope.chathistorydaterange == '') {
+        if ( $.trim($('#reservation').val()) == '') {
             create_time1 = '';
             create_time2 = '';
         }
@@ -83,7 +83,7 @@ function ServiceListCtrl($scope, $http, $location, $routeParams, $resturls, $nov
     $scope.searchChat = function () {
         $parent.list_begin_time = create_time1;
         $parent.list_end_time = create_time2;
-        $parent.list_date_range = $scope.chatlistdaterange;
+        $parent.list_date_range = $('#reservation').val();
         $parent.list_search_key = $scope.chatlistsearchkey;
         $scope.loadChatList(0);
     }
@@ -196,7 +196,7 @@ function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams
     $scope.loadHistoryList = function (pageIndex) {
         var pageSize = 16;
         if (pageIndex == 0) pageIndex = 1;
-        if ($scope.chathistorydaterange == '')
+        if ($.trim($('#reservation').val()) == '')
         {
             create_time1 = '';
             create_time2 = '';
@@ -210,7 +210,7 @@ function ServiceHistoriesCtrl($scope, $rootScope, $http, $location, $routeParams
     $scope.searchHistory = function () {
         $parent.history_begin_time = create_time1;
         $parent.history_end_time = create_time2;
-        $parent.history_date_range = $scope.chathistorydaterange;
+        $parent.history_date_range = $('#reservation').val();
         $parent.history_search_key = $scope.chathistorysearchkey;
         $scope.loadHistoryList(0);
     }
