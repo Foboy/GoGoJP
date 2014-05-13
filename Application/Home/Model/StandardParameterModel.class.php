@@ -2,7 +2,7 @@
 /**
  * @author yangchao
  * @email:66954011@qq.com
- * @date: 2014/5/13 22:04:05
+ * @date: 2014/5/13 22:04:44
  */
 namespace Home\Model;
 use Think\Model;
@@ -11,13 +11,14 @@ use Think\Db\Driver\Pdo;
 use Common\Common\DataResult;
 use Common\Common\ErrorType;
 
-class StandardModel extends Model {
-	protected $tableName = 'standard';
+class StandardParameterModel extends Model {
+	protected $tableName = 'standard_parameter';
 	// 增加表中数据
-	public function addModel($standard_name,$create_time) {
+	public function addModel($parameter_name,$belong_standard_id,$create_time) {
 		$result = new DataResult ();
 		$data = array (
-'standard_name' => $standard_name,
+'parameter_name' => $parameter_name,
+                   'belong_standard_id' => $belong_standard_id,
                    'create_time' => $create_time
 		);
 		$pid = $this->add ( $data );
@@ -31,9 +32,9 @@ class StandardModel extends Model {
 		return $result;
 	}
 	// 删除表中数据
-	public function deleteModel($standard_id) {
+	public function deleteModel($standard_parameter_id) {
 		$result = new DataResult ();
-        $map['standard_id']=$standard_id;
+        $map['standard_parameter_id']=$standard_parameter_id;
 		if ($this->where ($map)->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
@@ -43,17 +44,18 @@ class StandardModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($standard_id,$standard_name,$create_time) {
+	public function updateModel($standard_parameter_id,$parameter_name,$belong_standard_id,$create_time) {
 		$result = new DataResult ();
 		$data = array (
-'standard_id' => $standard_id,
-                   'standard_name' => $standard_name,
+'standard_parameter_id' => $standard_parameter_id,
+                   'parameter_name' => $parameter_name,
+                   'belong_standard_id' => $belong_standard_id,
                    'create_time' => $create_time
 		);
 		// 注意判断条件使用恒等式
-        $map['standard_id']=$standard_id;
+        $map['standard_parameter_id']=$standard_parameter_id;
 		if ($this->where ($map )->save ( $data ) !== false) {
-			$result->Data = $this->find ( $standard_id );
+			$result->Data = $this->find ( $standard_parameter_id );
 			$result->ErrorMessage = '更新成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -62,27 +64,31 @@ class StandardModel extends Model {
 		return $result;
 	}
 	// 根据主键id获取某个专辑信息
-	public function getModel($standard_id) {
+	public function getModel($standard_parameter_id) {
 		$result = new DataResult ();
-        $map['standard_id']=$standard_id;
+        $map['standard_parameter_id']=$standard_parameter_id;
 		$result->Data = $this->where ($map )->find ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($standard_name,$create_time, $pageindex, $pagesize) {
+	public function searchByPage($parameter_name,$belong_standard_id,$create_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select standard_id,standard_name,create_time from gogojp_standard where  ( standard_name = :standard_name or :standard_name='' ) 
+		$objects = $conn->query ( " select standard_parameter_id,parameter_name,belong_standard_id,create_time from gogojp_standard_parameter where  ( parameter_name = :parameter_name or :parameter_name='' ) 
+ and  ( belong_standard_id = :belong_standard_id or :belong_standard_id=0 ) 
  and  ( create_time = :create_time or :create_time='' ) 
  limit $lastpagenum,$pagesize", array (
-':standard_name' => $standard_name,
+':parameter_name' => $parameter_name,
+                   ':belong_standard_id' => $belong_standard_id,
                    ':create_time' => $create_time
 			)  );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_standard where  ( standard_name = :standard_name or :standard_name='' ) 
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_standard_parameter where  ( parameter_name = :parameter_name or :parameter_name='' ) 
+ and  ( belong_standard_id = :belong_standard_id or :belong_standard_id=0 ) 
  and  ( create_time = :create_time or :create_time='' ) 
 ", array (
-':standard_name' => $standard_name,
+':parameter_name' => $parameter_name,
+                   ':belong_standard_id' => $belong_standard_id,
                    ':create_time' => $create_time
 			)  );
 		$totalcount=$data[0]['totalcount'];
