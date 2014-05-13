@@ -29,9 +29,9 @@ CREATE TABLE `gogojp_album` (
   `album_name` varchar(80) NOT NULL COMMENT '合辑名称',
   `album_cover` varchar(120) DEFAULT NULL COMMENT '合辑封面',
   `album_description` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
-  `album_sign` varchar(30) DEFAULT NULL COMMENT '合辑标签',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_status` tinyint(4) DEFAULT '1' COMMENT '专辑状态 1:显示可用 2：禁用',
+  `album_tag_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`album_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -42,7 +42,7 @@ CREATE TABLE `gogojp_album` (
 
 LOCK TABLES `gogojp_album` WRITE;
 /*!40000 ALTER TABLE `gogojp_album` DISABLE KEYS */;
-INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-07 06:56:00',1),(2,'韩国重口味合辑',NULL,'重口味系列','鞭打','2014-05-07 13:30:22',1);
+INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','2014-05-07 06:56:00',1,NULL),(2,'韩国重口味合辑',NULL,'重口味系列','2014-05-07 13:30:22',1,NULL);
 /*!40000 ALTER TABLE `gogojp_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +184,7 @@ CREATE TABLE `gogojp_customer_advisory` (
 
 LOCK TABLES `gogojp_customer_advisory` WRITE;
 /*!40000 ALTER TABLE `gogojp_customer_advisory` DISABLE KEYS */;
-INSERT INTO `gogojp_customer_advisory` VALUES (1,1,'3243','test','2014-05-11 05:49:16',0);
+INSERT INTO `gogojp_customer_advisory` VALUES (1,1,'3243','test','2014-05-13 08:46:48',1);
 /*!40000 ALTER TABLE `gogojp_customer_advisory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,9 +455,9 @@ CREATE TABLE `gogojp_sys_picture_management` (
   `small_pic` varchar(50) DEFAULT NULL COMMENT '缩率图',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_id` int(11) DEFAULT NULL COMMENT '合辑id',
-  `istop` tinyint(4) DEFAULT '0' COMMENT '是否置顶 0:取消置顶 1:置顶',
+  `istop` tinyint(4) DEFAULT '1' COMMENT '是否置顶 1:置顶  2:取消置顶',
   PRIMARY KEY (`picid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,6 +466,7 @@ CREATE TABLE `gogojp_sys_picture_management` (
 
 LOCK TABLES `gogojp_sys_picture_management` WRITE;
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` DISABLE KEYS */;
+INSERT INTO `gogojp_sys_picture_management` VALUES (1,'日本原单正品',NULL,NULL,'2014-05-13 09:32:17',1,1),(2,'韩国原单正品',NULL,NULL,'2014-05-13 09:32:17',2,2),(3,'美国原单',NULL,NULL,'2014-05-13 09:32:17',3,1);
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -477,12 +478,12 @@ DROP TABLE IF EXISTS `gogojp_tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_tags` (
-  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(90) NOT NULL,
-  `tag_decription` varchar(400) DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '标签表',
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增id',
+  `tag_name` varchar(90) NOT NULL COMMENT '标签名字',
+  `tag_description` varchar(400) DEFAULT NULL COMMENT '标签描述',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品标签表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -491,7 +492,7 @@ CREATE TABLE `gogojp_tags` (
 
 LOCK TABLES `gogojp_tags` WRITE;
 /*!40000 ALTER TABLE `gogojp_tags` DISABLE KEYS */;
-INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好','2014-05-13 06:24:27'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27');
+INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好3','2014-05-13 07:10:06'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27');
 /*!40000 ALTER TABLE `gogojp_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,4 +569,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-13 14:25:25
+-- Dump completed on 2014-05-13 17:44:28

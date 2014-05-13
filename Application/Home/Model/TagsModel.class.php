@@ -16,10 +16,11 @@ use Common\Common\ErrorType;
 class TagsModel extends Model {
 	protected $tableName = 'tags';
 	// 增加表中数据
-	public function addModel($tag_name) {
+	public function addModel($tag_name,$tag_description) {
 		$result = new DataResult ();
 		$data = array (
-				'tag_name' => $tag_name 
+				'tag_name' => $tag_name ,
+				'tag_description'=>$tag_description
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -44,12 +45,12 @@ class TagsModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($tag_id, $tag_name, $create_time) {
+	public function updateModel($tag_id, $tag_name, $tag_description) {
 		$result = new DataResult ();
 		$data = array (
 				'tag_id' => $tag_id,
 				'tag_name' => $tag_name,
-				'create_time' => $create_time 
+				'tag_description' => $tag_description 
 		);
 		// 注意判断条件使用恒等式
 		$map ['tag_id'] = $tag_id;
@@ -74,7 +75,7 @@ class TagsModel extends Model {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select tag_id,tag_name,create_time from gogojp_tags  limit $lastpagenum,$pagesize" );
+		$objects = $conn->query ( " select * from gogojp_tags  limit $lastpagenum,$pagesize" );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_tags ");
 		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;

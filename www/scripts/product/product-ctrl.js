@@ -269,6 +269,16 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         }
         window.open('partials/product/product-preview.html');
     }
+    //获取标签
+    $scope.LoadTags = function () {
+        $http.post($resturls["LoadTags"], { pageIndex:0, pageSize: 50 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+            } else {
+                $scope.ProductTags = [];
+            }
+        });
+    }
     //获取一级分类
     $scope.LoadMainCategory = function () {
         $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
@@ -330,7 +340,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
-
+    //添加商品
     $scope.AddProduct = function (data) {
         if ($scope.AddProductForm.$valid) {
             $scope.showerror = false;
@@ -355,6 +365,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         $scope.um = UM.getEditor('myEditor');
     }
     $scope.LoadMainCategory();
+    $scope.LoadTags();
     $scope.UpLoadImage();
     $scope.InitEditor();
 }
@@ -365,7 +376,7 @@ function ProductTagsCtrl($scope, $http, $location, $routeParams, $resturls, $roo
     $scope.LoadTags = function (pageIndex) {
         var pageSize = 20;
         if (pageIndex == 0) pageIndex = 1;
-        $http.post($resturls["LoadTags"], {}).success(function (result) {
+        $http.post($resturls["LoadTags"], { pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.ProductTags = result.Data;
                 $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#tags' + '/{0}');
@@ -375,7 +386,76 @@ function ProductTagsCtrl($scope, $http, $location, $routeParams, $resturls, $roo
             }
         });
     }
+    //弹出新增标签模态框
+    $scope.ShowEditTagModal = function (data) {
+        $scope.Tag = data;
+        $("#edittagsmodal").modal('show');
+    }
+    //弹出新增标签模态框
+    $scope.ShowAddTagsModal = function () {
+        $("#addtagsmodal").modal('show');
+    }
+    //弹出确认删除标签模态框
+    $scope.DeleteTagsModal = function (data) {
+        $scope.DeTag = data;
+        $("#detagsmodal").modal('show');
+    }
     $scope.LoadTags($routeParams.pageIndex || 1);
+
+}
+
+function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    //新增标签
+    $scope.AddTags = function (data) {
+        if ($scope.AddTagsForm.$valid) {
+            $scope.showerror = false;
+            $http.post($resturls["AddTags"], { tag_name: data.tag_name, tag_description: data.tag_description }).success(function (result) {
+                if (result.Error == 0) {
+                    $("#addtagsmodal").modal('hide');
+                    $scope.LoadTags($routeParams.pageIndex || 1);
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //编辑标签
+    $scope.EditTags = function (data) {
+        if ($scope.EditTagsForm.$valid) {
+            $scope.showerror = false;
+            $http.post($resturls["EditTags"], { tag_id: data.tag_id, tag_name: data.tag_name, tag_description: data.tag_description }).success(function (result) {
+                if (result.Error == 0) {
+                    $("#edittagsmodal").modal('hide');
+                    $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //删除标签
+    $scope.DeleteTag = function (data) {
+        $http.post($resturls["DeleteTags"], { tag_id: data.tag_id }).success(function (result) {
+            if (result.Error == 0) {
+                $("#detagsmodal").modal('hide');
+                $scope.LoadTags($routeParams.pageIndex || 1);
+                $.scojs_message('删除成功', $.scojs_message.TYPE_OK);
+            }
+            else {
+                $scope.showerror = true;
+                $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+            }
+        })
+    }
 }
 
 
