@@ -361,7 +361,21 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
 
 //商品标签
 function ProductTagsCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
-
+    var $parent = $scope.$parent;
+    $scope.LoadTags = function (pageIndex) {
+        var pageSize = 20;
+        if (pageIndex == 0) pageIndex = 1;
+        $http.post($resturls["LoadTags"], {}).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#tags' + '/{0}');
+            } else {
+                $scope.ProductTags = [];
+                $parent.pages = utilities.paging(0, pageIndex, pageSize);
+            }
+        });
+    }
+    $scope.LoadTags($routeParams.pageIndex || 1);
 }
 
 

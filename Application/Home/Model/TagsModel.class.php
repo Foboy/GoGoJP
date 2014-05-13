@@ -70,22 +70,12 @@ class TagsModel extends Model {
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($tag_name, $create_time, $pageindex, $pagesize) {
+	public function searchByPage($pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select tag_id,tag_name,create_time from gogojp_tags where  ( tag_name = :tag_name or :tag_name='' ) 
- and  ( create_time = :create_time or :create_time=0 )  
- limit $lastpagenum,$pagesize", array (
-				':tag_name' => $tag_name,
-				':create_time' => $create_time 
-		) );
-		$data = $conn->query ( " select count(*) totalcount  from gogojp_tags where  ( tag_name = :tag_name or :tag_name='' ) 
- and  ( create_time = :create_time or :create_time=0 ) 
-", array (
-				':tag_name' => $tag_name,
-				':create_time' => $create_time 
-		) );
+		$objects = $conn->query ( " select tag_id,tag_name,create_time from gogojp_tags  limit $lastpagenum,$pagesize" );
+		$data = $conn->query ( " select count(*) totalcount  from gogojp_tags ");
 		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;

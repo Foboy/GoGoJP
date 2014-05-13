@@ -479,9 +479,10 @@ DROP TABLE IF EXISTS `gogojp_tags`;
 CREATE TABLE `gogojp_tags` (
   `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(90) NOT NULL,
+  `tag_decription` varchar(400) DEFAULT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '标签表',
   PRIMARY KEY (`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,6 +491,7 @@ CREATE TABLE `gogojp_tags` (
 
 LOCK TABLES `gogojp_tags` WRITE;
 /*!40000 ALTER TABLE `gogojp_tags` DISABLE KEYS */;
+INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好','2014-05-13 06:24:27'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27');
 /*!40000 ALTER TABLE `gogojp_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,4 +568,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-13  0:13:50
+-- Dump completed on 2014-05-13 14:25:25

@@ -75,22 +75,10 @@ class TagsController extends Controller {
 	
 	// 分页查询列表
 	public function searchTags() {
-		$result = new DataResult ();
 		$Tags = new TagsModel ();
-		$tag_name = I ( 'tag_name' );
-		$create_time = I ( 'create_time' );
-		
-		if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
 		$pageIndex = I ( 'pageindex', 0 );
-		$pageSize = I ( 'pagesize', 10 );
-		$result = $Tags->searchByPage ( $tag_name, $create_time, $pageIndex, $pageSize );
+		$pageSize = I ( 'pagesize', 20 );
+		$result = $Tags->searchByPage ( $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}
 }

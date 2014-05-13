@@ -27,7 +27,7 @@
           resturls.add("AdvisoryObserve", "Home/Chat/advisoryObserve"); 
           resturls.add("GetChatCustomer", "Home/Chat/getCustomer");
 
-          // 产品模块（产品，产品合辑，产品分类）
+          // 产品模块（产品，产品合辑，产品分类,产品标签）
           resturls.add("LoadProdcut", "Home/Product/searchProductByCondition");//根据筛选条件分页查询商品列表
           resturls.add("LoadProdcutAlbum", "Home/Album/searchAlbumByCondition");//根据筛选条件分页插叙商品专辑列表
           resturls.add("LoadProdcutCategory", "Home/ProductCategory/searchProductCategory");//分页查询分类列表(包括上下级关系)
@@ -37,6 +37,7 @@
           resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
           resturls.add("AddProduct", "Home/Product/addProduct");//增加商品
           resturls.add("UpLoadImage", "Home/PictureManagement/upLoadImage");//上传图片
+          resturls.add("LoadTags", "Home/Tags/searchTags");//分页查询标签
           
           
           // 订单模块
