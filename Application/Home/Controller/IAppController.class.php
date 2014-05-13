@@ -500,7 +500,41 @@ class IAppController extends Controller {
 	
 	// 获取用户订单列表
 	public function searchOrderListByUserId() {
+		$result = new DataResult ();
+		$Order = new OrderModel ();
+		$user_id = I ( 'user_id' );
 		
+		if (! isset ( $user_id ) or empty ( $user_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'user_id' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Order->searchUserOrder($user_id);
+		$this->ajaxReturn ( $result );
+	}
+	// 通过订单号获取订单信息
+	public function getOrder() {
+		$result = new DataResult ();
+		$Order = new OrderModel ();
+		$order_no = I ( 'order_no' );
+		if (! isset ( $order_no ) or empty ( $order_no )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Order->getModel ( $order_no );
+		$this->ajaxReturn ( $result );
+	}
+	// 通过订单号获取订单详情
+	public function searchOrderItem() {
+		$result = new DataResult ();
+		$OrderItem = new OrderitemModel();
+		$order_no = I ( 'order_no' );
+		if (! isset ( $order_no ) or empty ( $order_no )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $OrderItem->searchItemByOrderNO ( $order_no );
+		$this->ajaxReturn ( $result );
 	}
 	public function test() {
 		// echo "begin call getPoster ..... \r\n";
