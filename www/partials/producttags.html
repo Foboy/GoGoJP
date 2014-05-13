@@ -1,0 +1,45 @@
+﻿<div class="content-header">
+    <h1>商品标签
+    </h1>
+    <ul class="nav nav-tabs">
+        <li class="pull-right"><a ng-click="ShowAddTagsModal()" class=" btn btn-primary btn-flat"><i class="fa fa-fw fa-plus"></i>添加标签</a></li>
+    </ul>
+</div>
+<div class="content">
+   
+    <div class="row margin_bottom ">
+        <div class="col-xs-12 margin_bottom">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <th>标签名称</th>
+                        <th>添加时间</th>
+                        <th>标签描述</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr ng-repeat="ProductTag in ProductTags">
+                        <td>{{$index+1}}</td>
+                         <td>{{ProductTag.tag_name}}</td>
+                        <td>{{ProductTag.create_time}}</td>
+                        <td>{{ProductTag.tag_description}}</td>
+                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a  ng-click="DeleteTagsModal(ProductTag)">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="row" style="margin-right: 0">
+        <ul class="pagination pagination-sm no-margin pull-right">
+            <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
+            <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
+            <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
+        </ul>
+    </div>
+    
+</div>
+<div ng-include="'partials/product/add-tags-modal.html'"></div>
+<div ng-include="'partials/product/edit-tags-modal.html'"></div>
+<div ng-include="'partials/product/delete-tags-modal.html'"></div>
+

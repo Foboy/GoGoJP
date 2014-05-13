@@ -33,7 +33,10 @@ class PictureModel extends Model {
 	// 删除表中数据
 	public function deleteModel($picId) {
 		$result = new DataResult ();
-		if ($this->where ( 'picid=%d', $picId )->delete () == 1) {
+		$map = array (
+				"picid" => $picId 
+		);
+		if ($this->where ( $map )->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -50,8 +53,11 @@ class PictureModel extends Model {
 				'small_pic' => $smallPic,
 				'album_id' => $albumId 
 		);
+		$map = array (
+				"picid" => $picId 
+		);
 		// 注意判断条件使用恒等式
-		if ($this->where ( 'picid=%d', $picId )->save ( $data ) !== false) {
+		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $picId );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -63,7 +69,10 @@ class PictureModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($picId) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'picid=%d', $picId )->select ();
+		$map = array (
+				'picid' => $picId 
+		);
+		$result->Data = $this->where ( $map )->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
@@ -71,9 +80,9 @@ class PictureModel extends Model {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by create_time desc limit $lastPageNum,$pageSize" );
-		$data = $conn->query ( "select count(*) totalcout from gogojp_sys_picture_management order by create_time" );
-		$totalcount=$data[0]['totalcout'];
+		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by istop asc limit $lastPageNum,$pageSize" );
+		$data = $conn->query ( "select count(*) totalcout from gogojp_sys_picture_management " );
+		$totalcount = $data [0] ['totalcout'];
 		$result->pageindex = $pageIndex;
 		$result->pagesize = $pageSize;
 		$result->Data = $objects;

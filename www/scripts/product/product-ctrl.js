@@ -252,7 +252,7 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
 }
 
 function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
-    $scope.OpenWindow = function (url, name, iWidth, iHeight) {
+    $scope.OpenWindowDialog = function (url, name, iWidth, iHeight) {
         var url = url; //转向网页的地址;
         var name = name;                          //网页名称，可为空;
         var iWidth = iWidth;                         //弹出窗口的宽度;
@@ -260,6 +260,24 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         var iTop = (window.screen.availHeight - 30 - iHeight) / 2;       //获得窗口的垂直位置;
         var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
         window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+    $scope.OpenPreview = function (data) {
+        //验证填写了才能跳转
+        if (data) {
+            var result = { product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, picsrc: $("#imagezone").attr("src"), editconent: $scope.um.getContent() };
+            $("#PageContent").val(angular.toJson(result));
+        }
+        window.open('partials/product/product-preview.html');
+    }
+    //获取标签
+    $scope.LoadTags = function () {
+        $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+            } else {
+                $scope.ProductTags = [];
+            }
+        });
     }
     //获取一级分类
     $scope.LoadMainCategory = function () {
@@ -271,16 +289,24 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
-   
+
     //获取二级分类
     $scope.LoadSubCategory = function (ParentCategory) {
         $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
             if (result.Error == 0) {
                 $scope.SubCategorys = result.Data;
+                $scope.showsubselect = true;
             } else {
                 $scope.SubCategorys = [];
+                $scope.showsubselect = false;
             }
         });
+    }
+    //下拉选中一级菜单
+    $scope.ChooseMainCategory = function (data) {
+        if (data != null) {
+            $scope.LoadSubCategory(data);
+        }
     }
     $scope.UpLoadImage = function () {
         $('#file_upload').uploadify({
@@ -314,10 +340,15 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
+    //添加商品
     $scope.AddProduct = function (data) {
         if ($scope.AddProductForm.$valid) {
             $scope.showerror = false;
-            $http.post($resturls["AddProduct"], { sign: data.sign, catid: data.Name, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
+            var catid = $scope.mainitem.catid;
+            if ($scope.subitem) {
+                catid = $scope.subitem.catid;
+            }
+            $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                 }
@@ -331,11 +362,101 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         }
     }
     $scope.InitEditor = function () {
-        var um = UM.getEditor('myEditor');
+
+        $scope.um = UM.createEditor('myEditor');
     }
     $scope.LoadMainCategory();
+    $scope.LoadTags();
     $scope.UpLoadImage();
     $scope.InitEditor();
+}
+
+//商品标签
+function ProductTagsCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    var $parent = $scope.$parent;
+    $scope.LoadTags = function (pageIndex) {
+        var pageSize = 20;
+        if (pageIndex == 0) pageIndex = 1;
+        $http.post($resturls["LoadTags"], { pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#tags' + '/{0}');
+            } else {
+                $scope.ProductTags = [];
+                $parent.pages = utilities.paging(0, pageIndex, pageSize);
+            }
+        });
+    }
+    //弹出新增标签模态框
+    $scope.ShowEditTagModal = function (data) {
+        $scope.Tag = data;
+        $("#edittagsmodal").modal('show');
+    }
+    //弹出新增标签模态框
+    $scope.ShowAddTagsModal = function () {
+        $("#addtagsmodal").modal('show');
+    }
+    //弹出确认删除标签模态框
+    $scope.DeleteTagsModal = function (data) {
+        $scope.DeTag = data;
+        $("#detagsmodal").modal('show');
+    }
+    $scope.LoadTags($routeParams.pageIndex || 1);
+
+}
+
+function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    //新增标签
+    $scope.AddTags = function (data) {
+        if ($scope.AddTagsForm.$valid) {
+            $scope.showerror = false;
+            $http.post($resturls["AddTags"], { tag_name: data.tag_name, tag_description: data.tag_description }).success(function (result) {
+                if (result.Error == 0) {
+                    $("#addtagsmodal").modal('hide');
+                    $scope.LoadTags($routeParams.pageIndex || 1);
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //编辑标签
+    $scope.EditTags = function (data) {
+        if ($scope.EditTagsForm.$valid) {
+            $scope.showerror = false;
+            $http.post($resturls["EditTags"], { tag_id: data.tag_id, tag_name: data.tag_name, tag_description: data.tag_description }).success(function (result) {
+                if (result.Error == 0) {
+                    $("#edittagsmodal").modal('hide');
+                    $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
+    //删除标签
+    $scope.DeleteTag = function (data) {
+        $http.post($resturls["DeleteTags"], { tag_id: data.tag_id }).success(function (result) {
+            if (result.Error == 0) {
+                $("#detagsmodal").modal('hide');
+                $scope.LoadTags($routeParams.pageIndex || 1);
+                $.scojs_message('删除成功', $.scojs_message.TYPE_OK);
+            }
+            else {
+                $scope.showerror = true;
+                $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+            }
+        })
+    }
 }
 
 

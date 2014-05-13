@@ -5,8 +5,10 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/product/:sort?/:pageIndex?', { template: '', controller: function () { } })
     .when('/order', { template: '', controller: function () { } })
     .when('/addproduct', { template: '', controller: function () { } })
-    .when('/category/:pageIndex?', { template: '', controller: function () { } })
     .when('/editproduct/:prodcutid', { template: '', controller: function () { } })
+    .when('/category/:pageIndex?', { template: '', controller: function () { } })
+    .when('/tags/:pageIndex?', { template: '', controller: function () { } })
+    .when('/addslideshow', { template: '', controller: function () { } })
     .when('/customerservice', { template: '', controller: function () { } })
     .when('/oitem/:order_no?/:order_time?', { template: '', controller: function () { } })
     .when('/order/:pageIndex?', { template: '', controller: function () { } })
@@ -15,19 +17,21 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     .when('/customerservice/histories/:customerId?/:pageIndex?', { template: '', controller: function () { } })
     .otherwise({ redirectTo: '/home' });
     $stateProvider
-         .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
-         .state('main.home', { url: '/home', templateUrl: 'partials/home.html', controller: DataStatisticsCtrl })
-         .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: function () { } })
-         .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: ProductMainCtrl })
-         .state('main.category', { url: '/category*path', templateUrl: 'partials/productcategory.html', controller: ProductCategoryCtrl })
-         .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add-product.html', controller: AddProductCtrl })
-         .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit-product.html', controller: function () { } })
-         .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
-         .state('main.orderitem', { url: '/oitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
-         .state('main.customerservice', { url: '/customerservice', templateUrl: 'partials/customerservice.html', controller: ServiceMainCtrl })
-         .state('main.customerservice.list', { url: "/list*path", templateUrl: 'partials/service/list.html', controller: ServiceListCtrl })
-         .state('main.customerservice.chat', { url: "/chat*path", templateUrl: 'partials/service/chat.html', controller: ServiceChatCtrl })
-         .state('main.customerservice.histories', { url: "/histories*path", templateUrl: 'partials/service/histories.html', controller: ServiceHistoriesCtrl });
+    .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
+    .state('main.home', { url: '/home', templateUrl: 'partials/home.html', controller: DataStatisticsCtrl })
+    .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: SlideShowMainCtrl })
+    .state('main.addslideshow', { url: '/addslideshow*path', templateUrl: 'partials/recommend/add-slideshow.html', controller: SlideShowMainCtrl })
+    .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: ProductMainCtrl })
+    .state('main.category', { url: '/category*path', templateUrl: 'partials/productcategory.html', controller: ProductCategoryCtrl })
+    .state('main.tags', { url: '/tags*path', templateUrl: 'partials/producttags.html', controller: ProductTagsCtrl })
+    .state('main.addproduct', { url: '/addproduct*path', templateUrl: 'partials/product/add-product.html', controller: AddProductCtrl })
+    .state('main.editproduct', { url: '/editproduct*path', templateUrl: 'partials/product/edit-product.html', controller: function () { } })
+    .state('main.order', { url: '/order*path', templateUrl: 'partials/order.html', controller: OrderCtrl })
+    .state('main.orderitem', { url: '/oitem*path', templateUrl: 'partials/orderitem.html', controller: OrderItemCtrl })
+    .state('main.customerservice', { url: '/customerservice', templateUrl: 'partials/customerservice.html', controller: ServiceMainCtrl })
+    .state('main.customerservice.list', { url: "/list*path", templateUrl: 'partials/service/list.html', controller: ServiceListCtrl })
+    .state('main.customerservice.chat', { url: "/chat*path", templateUrl: 'partials/service/chat.html', controller: ServiceChatCtrl })
+    .state('main.customerservice.histories', { url: "/histories*path", templateUrl: 'partials/service/histories.html', controller: ServiceHistoriesCtrl });
 
 
 
@@ -54,7 +58,8 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
           $rootScope.$stateParams = $stateParams;
       }]);;
 
-function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls) {
+function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls, $novcomet) {
+    $novcomet.stop();
     $scope.LoginOut = function () {
         $http.post($resturls["LoginOut"], {}).success(function (result) {
             if (result.Error == 0) {

@@ -9,12 +9,29 @@
 
           $provide.service('$novcomet', function () {
               var NovComet = {
-                  sleepTime: 1,
+                  stoped: true,
+                  timestamp: 0,
+                  sleepTime: 100,
                   _subscribed: {},
                   _timeout: undefined,
                   _baseurl: $resturls['AdvisoryObserve'],
                   _args: '',
                   _urlParam: 'subscribed',
+
+                  stop: function () {
+                      NovComet.stoped = true;
+                      clearTimeout(NovComet._timeout);
+                  },
+
+                  start: function () {
+                      clearTimeout(NovComet._timeout);
+                      NovComet.stoped = false;
+                      var timestamp = Math.round(new Date().getTime());
+                      NovComet.timestamp = timestamp;
+                      NovComet._timeout = setTimeout(function () {
+                          NovComet.run(timestamp)
+                      }, NovComet.sleepTime);
+                  },
 
                   subscribe: function (id, callback) {
                       NovComet._subscribed[id] = {
@@ -24,10 +41,14 @@
                       return NovComet;
                   },
 
-                  _refresh: function () {
+                  _refresh: function (timestamp) {
                       console.log("refresh");
+                      if (NovComet.stoped)
+                          return;
+                      if (timestamp != NovComet.timestamp)
+                          return;
                       NovComet._timeout = setTimeout(function () {
-                          NovComet.run()
+                          NovComet.run(timestamp)
                       }, NovComet.sleepTime);
                   },
 
@@ -41,7 +62,7 @@
                       return Math.round(new Date().getTime() / 1000);
                   },
 
-                  run: function () {
+                  run: function (timestamp) {
                       var cometCheckUrl = NovComet._baseurl + '?' + NovComet._args;
                       var subscribeds = [],timestamps = [];
                       for (var id in NovComet._subscribed) {
@@ -57,14 +78,14 @@
                           console.log(data);
                           switch (data.s) {
                               case 0: // sin cambios
-                                  NovComet._refresh();
+                                  NovComet._refresh(timestamp);
                                   break;
                               case 1: // trigger
                                   for (var id in data['k']) {
                                       NovComet._subscribed[id]['timestamp'] = data['k'][id];
                                       NovComet._subscribed[id].cbk(data);
                                   }
-                                  NovComet._refresh();
+                                  NovComet._refresh(timestamp);
                                   break;
                           }
                       },'json');

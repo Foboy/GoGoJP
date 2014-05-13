@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @author yangchao
  * @email:66954011@qq.com
  * @date: 2014/5/12 14:13:43
  */
 namespace Home\Controller;
+
 use Think\Controller;
 use Home\Model\TagsModel;
 use Common\Common\DataResult;
@@ -16,87 +18,52 @@ class TagsController extends Controller {
 	}
 	// 添加
 	public function addTags() {
-    $result =new DataResult();
 		$Tags = new TagsModel ();
-
-           $tag_name = I ( 'tag_name' );  
-$create_time = I ( 'create_time' );  
-
-          
-           if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-        $result= $Tags->addModel ( $tag_name,$create_time );
+		$tag_name = I ( 'tag_name' );
+		$tag_description=I('tag_description','','htmlspecialchars');
+		$result = $Tags->addModel ( $tag_name,$tag_description);
 		$this->ajaxReturn ( $result );
 	}
 	// 删除
 	public function deleteTags() {
-     $result =new DataResult();
-    		$Tags = new TagsModel ();
+		$result = new DataResult ();
+		$Tags = new TagsModel ();
 		$tag_id = I ( 'tag_id' );
-		           if (! isset ( $tag_id ) or empty ( $tag_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-        $result=  $Tags->deleteModel ( $tag_id );
+		if (! isset ( $tag_id ) or empty ( $tag_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Tags->deleteModel ( $tag_id );
 		$this->ajaxReturn ( $result );
 	}
 	// 编辑
 	public function updateTags() {
-    
-     $result =new DataResult();
-		$Tags = new TagsModel ();
-      $tag_name = I ( 'tag_name' );  
-$create_time = I ( 'create_time' );  
-
-          
-           if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-        $result= $Tags->updateModel (  $tag_name,$create_time );
-		$this->ajaxReturn ( $result );
-	}
-	//获取单个
-	public function getTags(){
-      $result =new DataResult();
 		$Tags = new TagsModel ();
 		$tag_id=I('tag_id');
-		           if (! isset ( $tag_id ) or empty ( $tag_id )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-                $result= $Tags->getModel($tag_id);
+		$tag_name = I ( 'tag_name' );
+		$tag_description=I('tag_description','','htmlspecialchars');
+		$result = $Tags->updateModel ($tag_id, $tag_name, $tag_description );
 		$this->ajaxReturn ( $result );
 	}
-
+	// 获取单个
+	public function getTags() {
+		$result = new DataResult ();
+		$Tags = new TagsModel ();
+		$tag_id = I ( 'tag_id' );
+		if (! isset ( $tag_id ) or empty ( $tag_id )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$this->ajaxReturn ( $result );
+		}
+		$result = $Tags->getModel ( $tag_id );
+		$this->ajaxReturn ( $result );
+	}
+	
 	// 分页查询列表
 	public function searchTags() {
-     $result =new DataResult();
 		$Tags = new TagsModel ();
-           $tag_name = I ( 'tag_name' );  
-$create_time = I ( 'create_time' );  
-
-           if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-           if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error=ErrorType::RequestParamsFailed;
-			$this->ajaxReturn($result);
-		   }
-		$pageIndex = I ('pageindex', 0 );
-		$pageSize = I ('pagesize', 10 );
-                   $result= $Tags->searchByPage ( $tag_name,$create_time,$pageIndex, $pageSize ) ;
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 20 );
+		$result = $Tags->searchByPage ( $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}
 }

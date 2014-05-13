@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `gogojp` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `gogojp`;
--- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: gogojp
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,9 +29,9 @@ CREATE TABLE `gogojp_album` (
   `album_name` varchar(80) NOT NULL COMMENT '合辑名称',
   `album_cover` varchar(120) DEFAULT NULL COMMENT '合辑封面',
   `album_description` varchar(2000) DEFAULT NULL COMMENT '合辑描述',
-  `album_sign` varchar(30) DEFAULT NULL COMMENT '合辑标签',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_status` tinyint(4) DEFAULT '1' COMMENT '专辑状态 1:显示可用 2：禁用',
+  `album_tag_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`album_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品合辑表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -42,7 +42,7 @@ CREATE TABLE `gogojp_album` (
 
 LOCK TABLES `gogojp_album` WRITE;
 /*!40000 ALTER TABLE `gogojp_album` DISABLE KEYS */;
-INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','清新','2014-05-07 06:56:00',1),(2,'韩国重口味合辑',NULL,'重口味系列','鞭打','2014-05-07 13:30:22',1);
+INSERT INTO `gogojp_album` VALUES (1,'日本小清新合辑',NULL,'小清新系列，不错哦','2014-05-07 06:56:00',1,NULL),(2,'韩国重口味合辑',NULL,'重口味系列','2014-05-07 13:30:22',1,NULL);
 /*!40000 ALTER TABLE `gogojp_album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,6 +161,33 @@ INSERT INTO `gogojp_area_street` VALUES (1,'一品天下美食街',1,248,502,0,1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gogojp_category_r_standard_parameter`
+--
+
+DROP TABLE IF EXISTS `gogojp_category_r_standard_parameter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gogojp_category_r_standard_parameter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `standard_id` int(11) NOT NULL COMMENT '规格id',
+  `parameter_id` int(11) NOT NULL COMMENT '参数id',
+  `category_id` int(11) DEFAULT NULL COMMENT '商品种类id',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='商品类别规格关系表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gogojp_category_r_standard_parameter`
+--
+
+LOCK TABLES `gogojp_category_r_standard_parameter` WRITE;
+/*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` DISABLE KEYS */;
+INSERT INTO `gogojp_category_r_standard_parameter` VALUES (1,1,1,9,'2014-05-13 12:44:15'),(2,1,2,9,'2014-05-13 12:44:15'),(3,1,3,9,'2014-05-13 12:44:15'),(4,2,11,9,'2014-05-13 12:44:15'),(5,2,15,9,'2014-05-13 12:44:15'),(6,2,16,9,'2014-05-13 12:44:15');
+/*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gogojp_customer_advisory`
 --
 
@@ -184,7 +211,7 @@ CREATE TABLE `gogojp_customer_advisory` (
 
 LOCK TABLES `gogojp_customer_advisory` WRITE;
 /*!40000 ALTER TABLE `gogojp_customer_advisory` DISABLE KEYS */;
-INSERT INTO `gogojp_customer_advisory` VALUES (1,1,'3243','test','2014-05-11 05:49:16',0);
+INSERT INTO `gogojp_customer_advisory` VALUES (1,1,'3243','test','2014-05-13 08:46:48',1);
 /*!40000 ALTER TABLE `gogojp_customer_advisory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,10 +267,9 @@ CREATE TABLE `gogojp_order` (
   `order_receive_phone` varchar(20) DEFAULT NULL COMMENT '订单接收人座机',
   `order_receive_postcode` varchar(10) DEFAULT NULL COMMENT '订单接受人邮编',
   `remark` varchar(100) DEFAULT NULL COMMENT '备注',
-  `order_pay_account` varchar(45) DEFAULT NULL COMMENT '支付账号',
+  `order_pay_account` varchar(45) NOT NULL COMMENT '支付账号',
   `logistics_status` int(11) NOT NULL DEFAULT '1' COMMENT '物流状态：1：未发货 2：国外代购中 3：国外物流中转中 4：已到达国内 5：国内物流转运中 6：已签收',
   `pay_time` datetime DEFAULT '0000-00-00 00:00:00' COMMENT '付款时间',
-  `invoice` varchar(45) DEFAULT NULL COMMENT '发票',
   PRIMARY KEY (`orderid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='用户订单';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -254,7 +280,7 @@ CREATE TABLE `gogojp_order` (
 
 LOCK TABLES `gogojp_order` WRITE;
 /*!40000 ALTER TABLE `gogojp_order` DISABLE KEYS */;
-INSERT INTO `gogojp_order` VALUES (1,'dd34343545',1,'123213213','2014-04-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00',NULL),(2,'dd12314356',1,'123213213','2014-04-10 03:03:27',8.00,324.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00',NULL),(3,'dd67577657',1,'123213213','2014-05-09 03:03:27',8.00,22.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00',NULL),(4,'dd56765756',1,'123213213','2014-05-09 03:03:27',8.00,54.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00',NULL),(5,'dd87787875',1,'123213213','2014-05-09 03:03:27',8.00,567.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00',NULL),(6,'dd54654654',1,'123213213','2014-05-09 03:03:27',8.00,56.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00',NULL),(7,'dd54645645',1,'123213213','2014-05-09 03:03:27',8.00,86.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00',NULL),(8,'dd56756765',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00',NULL),(9,'dd34535435',1,'123213213','2014-05-09 03:03:27',8.00,686.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00',NULL),(10,'dd67585855',1,'123213213','2014-05-09 03:03:27',8.00,7879.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00',NULL),(11,'dd98394298',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00',NULL),(12,'dd49835000',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00',NULL),(13,'dd09070699',1,'123213213','2014-05-09 03:03:27',8.00,98.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00',NULL),(14,'dd86054022',1,'123213213','2014-05-09 03:03:27',8.00,45.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00',NULL),(15,'dd45894088',1,'123213213','2014-05-09 03:03:27',8.00,34.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00',NULL);
+INSERT INTO `gogojp_order` VALUES (1,'dd34343545',1,'123213213','2014-04-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(2,'dd12314356',1,'123213213','2014-04-10 03:03:27',8.00,324.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(3,'dd67577657',1,'123213213','2014-05-09 03:03:27',8.00,22.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00'),(4,'dd56765756',1,'123213213','2014-05-09 03:03:27',8.00,54.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(5,'dd87787875',1,'123213213','2014-05-09 03:03:27',8.00,567.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(6,'dd54654654',1,'123213213','2014-05-09 03:03:27',8.00,56.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(7,'dd54645645',1,'123213213','2014-05-09 03:03:27',8.00,86.00,1,3,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(8,'dd56756765',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(9,'dd34535435',1,'123213213','2014-05-09 03:03:27',8.00,686.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',2,'0000-00-00 00:00:00'),(10,'dd67585855',1,'123213213','2014-05-09 03:03:27',8.00,7879.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',3,'0000-00-00 00:00:00'),(11,'dd98394298',1,'123213213','2014-05-09 03:03:27',8.00,123.00,1,2,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(12,'dd49835000',1,'123213213','2014-05-09 03:03:27',8.00,76.00,1,4,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',5,'0000-00-00 00:00:00'),(13,'dd09070699',1,'123213213','2014-05-09 03:03:27',8.00,98.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',6,'0000-00-00 00:00:00'),(14,'dd86054022',1,'123213213','2014-05-09 03:03:27',8.00,45.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',1,'0000-00-00 00:00:00'),(15,'dd45894088',1,'123213213','2014-05-09 03:03:27',8.00,34.00,1,1,'0000-00-00 00:00:00','1','1',1,NULL,'1','12','1',4,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `gogojp_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,6 +314,33 @@ LOCK TABLES `gogojp_orderitem` WRITE;
 /*!40000 ALTER TABLE `gogojp_orderitem` DISABLE KEYS */;
 INSERT INTO `gogojp_orderitem` VALUES (1,'dd34343545',1,1,333.01,'阿迪达斯运动鞋',NULL,'2014-05-09 07:42:30','35码白色','ad3423432'),(2,'dd34343545',2,2,444.22,'乔丹运动鞋',NULL,'2014-05-09 07:42:30','35码撞色','qd234235');
 /*!40000 ALTER TABLE `gogojp_orderitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gogojp_product_r_standard_parameter`
+--
+
+DROP TABLE IF EXISTS `gogojp_product_r_standard_parameter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gogojp_product_r_standard_parameter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `product_id` int(11) NOT NULL COMMENT '商品id',
+  `standard_id` int(11) NOT NULL COMMENT '规格iid',
+  `standard_parameter_id` int(11) NOT NULL COMMENT '规格参数id',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='商品与规格参数关联表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gogojp_product_r_standard_parameter`
+--
+
+LOCK TABLES `gogojp_product_r_standard_parameter` WRITE;
+/*!40000 ALTER TABLE `gogojp_product_r_standard_parameter` DISABLE KEYS */;
+INSERT INTO `gogojp_product_r_standard_parameter` VALUES (1,1,4,1,'2014-05-12 15:13:32'),(2,1,7,2,'2014-05-12 15:13:32'),(3,1,12,3,'2014-05-12 15:13:32');
+/*!40000 ALTER TABLE `gogojp_product_r_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -340,7 +393,8 @@ CREATE TABLE `gogojp_productinfo` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `product_num` varchar(50) NOT NULL COMMENT '商品货号',
   `product_status` tinyint(4) DEFAULT '1' COMMENT '商品上架状态 1：上架 2：下架',
-  `click_num` int(11) NOT NULL DEFAULT '0',
+  `product_tag_id` int(11) NOT NULL COMMENT '商品标签id',
+  `product_sale_count` int(11) DEFAULT NULL COMMENT '产品售出数量',
   PRIMARY KEY (`productid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -351,7 +405,7 @@ CREATE TABLE `gogojp_productinfo` (
 
 LOCK TABLES `gogojp_productinfo` WRITE;
 /*!40000 ALTER TABLE `gogojp_productinfo` DISABLE KEYS */;
-INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-12 08:49:01','1399280425',1,6),(2,2,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-12 07:57:37','1399270425',1,1);
+INSERT INTO `gogojp_productinfo` VALUES (1,1,'流行','韩国名牌内衣',NULL,1200.00,1100.00,NULL,NULL,'好质量',11,'2014-05-05 09:00:37','1399280425',1,0,0),(2,2,'古典','日本古典内衣',NULL,1300.00,1000.00,NULL,NULL,'古典美',10,'2014-05-11 08:43:33','1399270425',1,0,0);
 /*!40000 ALTER TABLE `gogojp_productinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +430,7 @@ CREATE TABLE `gogojp_shippingaddress` (
   `country_id` int(11) DEFAULT NULL COMMENT '国家id',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`shipping_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='收货地址管理';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='收货地址管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,8 +439,58 @@ CREATE TABLE `gogojp_shippingaddress` (
 
 LOCK TABLES `gogojp_shippingaddress` WRITE;
 /*!40000 ALTER TABLE `gogojp_shippingaddress` DISABLE KEYS */;
-INSERT INTO `gogojp_shippingaddress` VALUES (1,'test','chengdu',123213,1,'12312','123',1,1,1,1,'2014-05-12 11:43:25');
 /*!40000 ALTER TABLE `gogojp_shippingaddress` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gogojp_standard`
+--
+
+DROP TABLE IF EXISTS `gogojp_standard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gogojp_standard` (
+  `standard_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键规格id',
+  `standard_name` varchar(45) NOT NULL COMMENT '规格名字：面料，尺寸，颜色',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`standard_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='商品规格参数基本数据表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gogojp_standard`
+--
+
+LOCK TABLES `gogojp_standard` WRITE;
+/*!40000 ALTER TABLE `gogojp_standard` DISABLE KEYS */;
+INSERT INTO `gogojp_standard` VALUES (1,'尺寸','2014-05-13 12:26:17'),(2,'颜色','2014-05-13 12:26:17');
+/*!40000 ALTER TABLE `gogojp_standard` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gogojp_standard_parameter`
+--
+
+DROP TABLE IF EXISTS `gogojp_standard_parameter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gogojp_standard_parameter` (
+  `standard_parameter_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的主键自增id',
+  `parameter_name` varchar(45) NOT NULL COMMENT '参数名称',
+  `belong_standard_id` int(11) NOT NULL COMMENT '所属规格id',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`standard_parameter_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='规格参数表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gogojp_standard_parameter`
+--
+
+LOCK TABLES `gogojp_standard_parameter` WRITE;
+/*!40000 ALTER TABLE `gogojp_standard_parameter` DISABLE KEYS */;
+INSERT INTO `gogojp_standard_parameter` VALUES (1,'S',1,'2014-05-13 12:30:13'),(2,'M',1,'2014-05-13 12:30:13'),(3,'L',1,'2014-05-13 12:30:13'),(4,'XL',1,'2014-05-13 12:30:13'),(5,'XXL',1,'2014-05-13 12:30:13'),(6,'32',1,'2014-05-13 12:30:13'),(7,'33',1,'2014-05-13 12:30:13'),(8,'34',1,'2014-05-13 12:30:13'),(9,'35',1,'2014-05-13 12:30:13'),(10,'36',1,'2014-05-13 12:30:13'),(11,'红',2,'2014-05-13 12:33:14'),(12,'黄',2,'2014-05-13 12:33:14'),(13,'蓝',2,'2014-05-13 12:33:14'),(14,'青',2,'2014-05-13 12:33:14'),(15,'绿',2,'2014-05-13 12:33:14'),(16,'紫',2,'2014-05-13 12:33:14');
+/*!40000 ALTER TABLE `gogojp_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -403,9 +507,9 @@ CREATE TABLE `gogojp_sys_picture_management` (
   `small_pic` varchar(50) DEFAULT NULL COMMENT '缩率图',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_id` int(11) DEFAULT NULL COMMENT '合辑id',
-  `istop` tinyint(4) DEFAULT '0' COMMENT '是否置顶 0:取消置顶 1:置顶',
+  `istop` tinyint(4) DEFAULT '1' COMMENT '是否置顶 1:置顶  2:取消置顶',
   PRIMARY KEY (`picid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -414,6 +518,7 @@ CREATE TABLE `gogojp_sys_picture_management` (
 
 LOCK TABLES `gogojp_sys_picture_management` WRITE;
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` DISABLE KEYS */;
+INSERT INTO `gogojp_sys_picture_management` VALUES (1,'日本原单正品',NULL,NULL,'2014-05-13 09:32:17',1,1),(2,'韩国原单正品',NULL,NULL,'2014-05-13 09:32:17',2,2),(3,'美国原单',NULL,NULL,'2014-05-13 09:32:17',3,1);
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,11 +530,12 @@ DROP TABLE IF EXISTS `gogojp_tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_tags` (
-  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(90) NOT NULL,
-  `create_time` bigint(64) DEFAULT NULL COMMENT '标签表',
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增id',
+  `tag_name` varchar(90) NOT NULL COMMENT '标签名字',
+  `tag_description` varchar(400) DEFAULT NULL COMMENT '标签描述',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='商品标签表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,6 +544,7 @@ CREATE TABLE `gogojp_tags` (
 
 LOCK TABLES `gogojp_tags` WRITE;
 /*!40000 ALTER TABLE `gogojp_tags` DISABLE KEYS */;
+INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好3','2014-05-13 07:10:06'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27');
 /*!40000 ALTER TABLE `gogojp_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -473,28 +580,37 @@ INSERT INTO `gogojp_user` VALUES (1,'test','96e79218965eb72c92a549dd5a330112','T
 UNLOCK TABLES;
 
 --
--- Table structure for table `tmplst`
+-- Dumping routines for database 'gogojp'
 --
+/*!50003 DROP FUNCTION IF EXISTS `getChildLst` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `getChildLst`(rootId int) RETURNS varchar(1000) CHARSET utf8
+BEGIN
+   DECLARE sTemp VARCHAR(1000);
+   DECLARE sTempChd VARCHAR(1000);
 
-DROP TABLE IF EXISTS `tmplst`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tmplst` (
-  `catid` int(11) DEFAULT NULL,
-  `nLevel` int(11) DEFAULT NULL,
-  `sCort` varchar(8000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+   SET sTemp = '$';
+  SET sTempChd =cast(rootId as CHAR);
 
---
--- Dumping data for table `tmplst`
---
-
-LOCK TABLES `tmplst` WRITE;
-/*!40000 ALTER TABLE `tmplst` DISABLE KEYS */;
-INSERT INTO `tmplst` VALUES (1,0,'0'),(2,0,'0'),(5,1,'05'),(4,1,'04'),(3,1,'03'),(6,2,'056');
-/*!40000 ALTER TABLE `tmplst` ENABLE KEYS */;
-UNLOCK TABLES;
+  WHILE sTempChd is not null DO
+     SET sTemp = concat(sTemp,',',sTempChd);
+    SELECT group_concat(catid) INTO sTempChd FROM gogojp_productcategory where FIND_IN_SET(parentid,sTempChd)>0 ;
+   END WHILE;
+  RETURN sTemp;
+ END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -505,4 +621,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-12 20:52:03
+-- Dump completed on 2014-05-13 20:55:57

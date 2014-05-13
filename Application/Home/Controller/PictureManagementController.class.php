@@ -107,13 +107,7 @@ class PictureManagementController extends Controller {
 		curl_close ( $curl );
 		return $result;
 	}
-	// 获取幻灯片列表信息
-	public function searchSlideShow() {
-		$Pic = new PictureModel ();
-		$pageIndex = I ( 'pageIndex', 0 );
-		$pageSize = I ( 'pageSize', 10 );
-		$this->ajaxReturn ( $Pic->searchByPage ( $pageIndex, $pageSize ) );
-	}
+	
 	// 增加幻灯片
 	public function addSlideShow() {
 		$Pic = new PictureModel ();
@@ -138,5 +132,18 @@ class PictureManagementController extends Controller {
 		$Pic = new PictureModel ();
 		$picId = I ( 'picId' );
 		$this->ajaxReturn ( $Pic->deleteModel ( $picId ) );
+	}
+	// 获取摸个幻灯片相信
+	public function getSlideShow(){
+		$Pic = new PictureModel ();
+		$picid = I ( 'picid' );
+		$this->ajaxReturn ( $Pic->getModel ( $picid ) );
+	}
+	// 获取幻灯片列表信息
+	public function searchSlideShow() {
+		$Pic = new PictureModel ();
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 10 );
+		$this->ajaxReturn ( $Pic->searchByPage ( $pageIndex, $pageSize ) );
 	}
 }

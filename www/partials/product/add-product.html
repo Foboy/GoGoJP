@@ -20,21 +20,11 @@
                 商品分类:
             </label>
             <div class="col-sm-4">
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" ng-required="true" ng-options="MainCategory.cat_name for MainCategory in MainCategorys" ng-model="mainitem" ng-change="ChooseMainCategory(mainitem)">
                 </select>
             </div>
-            <div class="col-sm-4">
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+            <div class="col-sm-4" ng-show="showsubselect">
+                <select class="form-control" ng-options="SubCategory.cat_name for SubCategory in  SubCategorys" ng-model="subitem">
                 </select>
             </div>
         </div>
@@ -43,7 +33,7 @@
                 商品原价：
             </label>
             <div class="col-sm-4">
-                <input type="test" class="form-control" ng-model="Product.old_price" ng-required="true" placeholder="商品原价">
+                <input type="test" class="form-control" ng-model="Product.old_price" ng-pattern="/\d{1,10}\.*\d{0,2}/" ng-required="true" placeholder="商品原价">
             </div>
         </div>
         <div class="form-group">
@@ -51,7 +41,7 @@
                 商品现价：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Product.new_price" ng-required="true" placeholder="商品现价">
+                <input type="text" class="form-control" ng-model="Product.new_price" ng-pattern="/\d{1,10}\.*\d{0,2}/" ng-required="true" placeholder="商品现价">
             </div>
         </div>
         <div class="form-group">
@@ -59,7 +49,7 @@
                 库存数量：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Product.product_count" ng-required="true" placeholder="库存数量">
+                <input type="text" class="form-control" ng-model="Product.product_count" ng-pattern="/^\d+$/" ng-required="true" placeholder="库存数量">
             </div>
         </div>
         <div class="form-group">
@@ -78,7 +68,7 @@
                 商品详情：
             </label>
             <div class="col-sm-8">
-                <script type="text/plain" id="myEditor" style="width:auto; height: 240px;">
+                <script type="text/plain" id="myEditor" style="width: auto; height: 240px;">
                 </script>
             </div>
         </div>
@@ -95,7 +85,7 @@
                 商品标签：
             </label>
             <div class="col-sm-4">
-                 <select class="form-control">
+                <select class="form-control"  ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -107,11 +97,11 @@
         <br />
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <a type="submit" class="btn btn-primary btn-flat" href="partials/product/product-preview.html" target="_blank">预览</a>
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)" >预览</button>
                 <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="AddProduct(Product)">保存</button>
             </div>
         </div>
     </form>
-
+    <textarea id="PageContent" style="display:none"></textarea>
 </div>
 <!-- /.content -->
