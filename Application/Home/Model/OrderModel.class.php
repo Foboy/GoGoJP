@@ -122,6 +122,13 @@ public function updateModel($order_no,$order_status,$order_status_update_time,$l
 		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
+	// 查询用户订单列表
+	public function searchUserOrder($user_id) {
+		$result = new DataResult ();
+		$map['user_id']=$user_id;
+		$result->Data = $this->where ( $map )->select ();
+		return $result;
+	}
 	// 获取图片管理表中分页数据
 	public function searchByPage($keyname, $order_time1, $order_time2, $order_status, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
