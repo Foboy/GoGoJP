@@ -479,7 +479,7 @@ DROP TABLE IF EXISTS `gogojp_tags`;
 CREATE TABLE `gogojp_tags` (
   `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(90) NOT NULL,
-  `tag_decription` varchar(400) DEFAULT NULL,
+  `tag_description` varchar(400) DEFAULT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '标签表',
   PRIMARY KEY (`tag_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -568,4 +568,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-13 14:25:25
+-- Dump completed on 2014-05-13 14:28:00

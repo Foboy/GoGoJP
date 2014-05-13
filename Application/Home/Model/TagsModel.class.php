@@ -74,7 +74,7 @@ class TagsModel extends Model {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( " select tag_id,tag_name,create_time from gogojp_tags  limit $lastpagenum,$pagesize" );
+		$objects = $conn->query ( " select * from gogojp_tags  limit $lastpagenum,$pagesize" );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_tags ");
 		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
