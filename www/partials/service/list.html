@@ -1,81 +1,60 @@
-﻿    <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary collapsed-box">
-                <div class="box-header form-group">
-                    <div class=" margin_top col-sm-4">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-4">时间范围</label>
-                                <div class="input-group  col-md-8">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" id="reservation"
-                                        ng-model="chatlistdaterange" class="form-control ">
-                                </div>
-                            </div>
-                        </div>
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="col-sm-3 padding_leftnull ">
+            <div class="form-group">
+                <div class="input-group col-sm-12">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
                     </div>
-                    <div class="margin_top col-sm-4">
-                        <div class="input-group pull-left">
-                            <input type="text" ng-model="chatlistsearchkey"
-                                placeholder="模糊查询(账户或昵称)" class="form-control "
-                                name="table_search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btn-flat"
-                                    ng-click="searchChat()">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- /.box-header -->
-
-                <!-- body -->
-                <div class="box-footer" style="display: none;">
+                    <input type="text" id="reservation" ng-model="chatlistdaterange" class="form-control input-sm">
                 </div>
             </div>
-
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th>用户账号</th>
-                                <th>用户昵称</th>
-                                <th>最后留言时间</th>
-                                <th>是否已读</th>
-                                <th>操作</th>
-                            </tr>
-                            <tr ng-repeat="chat in chatlist">
-                                <td>{{chat.customer_account}}</td>
-                                <td>{{chat.customer_nickname}}</td>
-                                <td>{{chat.create_time}}</td>
-                                <td ng-class="chat.isread==0?'text-red':''">{{chat.isread==0?'否':'是'}}</td>
-                                <td>
-                                    <a ng-click="checkChatCustomer()" ng-href="#/customerservice/chat/{{chat.customer_id}}">回复</a>
-                                    <a ng-click="checkChatCustomer()" ng-href="#/customerservice/histories/{{chat.customer_id}}">查看历史记录</a>
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                        <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
-                        <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
-                        <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
-                    </ul>
+        <div class="col-sm-3 pull-right">
+            <div class="input-group">
+                <input type="text" ng-model="chatlistsearchkey" placeholder="账户/昵称" class="form-control input-sm"
+                    name="table_search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-sm btn-flat" ng-click="searchChat()">
+                        <i class="fa fa-search"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>用户账号</th>
+                    <th>用户昵称</th>
+                    <th>最后留言时间</th>
+                    <th>是否已读</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat="chat in chatlist">
+                    <td>{{chat.customer_account}}</td>
+                    <td>{{chat.customer_nickname}}</td>
+                    <td>{{chat.create_time}}</td>
+                    <td ng-class="chat.isread==0?'text-red':''">{{chat.isread==0?'否':'是'}}</td>
+                    <td>
+                        <a ng-click="checkChatCustomer()" ng-href="#/customerservice/chat/{{chat.customer_id}}">回复</a>
+                        <a ng-click="checkChatCustomer()" ng-href="#/customerservice/histories/{{chat.customer_id}}">查看历史记录</a>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+            <!-- /.box-body -->
+        <div class="row">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
+                <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
+                <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
