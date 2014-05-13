@@ -500,6 +500,7 @@ class IAppController extends Controller {
 	
 	// 获取用户订单列表
 	public function searchOrderListByUserId() {
+		
 	}
 	public function test() {
 		// echo "begin call getPoster ..... \r\n";
