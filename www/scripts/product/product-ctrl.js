@@ -271,7 +271,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     }
     //获取标签
     $scope.LoadTags = function () {
-        $http.post($resturls["LoadTags"], { pageIndex:0, pageSize: 50 }).success(function (result) {
+        $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (result) {
             if (result.Error == 0) {
                 $scope.ProductTags = result.Data;
             } else {
@@ -362,7 +362,8 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         }
     }
     $scope.InitEditor = function () {
-        $scope.um = UM.getEditor('myEditor');
+
+        $scope.um = UM.createEditor('myEditor');
     }
     $scope.LoadMainCategory();
     $scope.LoadTags();

@@ -2,7 +2,7 @@
 function SlideShowMainCtrl($scope, $http, $location, $routeParams, $resturls) {
     var $parent = $scope.$parent;
     $scope.LoadSlideShow = function (pageIndex) {
-        var pageSize = 1;
+        var pageSize = 10;
         if (pageIndex == 0) pageIndex = 1;
         var AlbumKey = '';
         if ($scope.AlbumKey) {
