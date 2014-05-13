@@ -348,10 +348,14 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
+            console.log(data);
             $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
-                    window.location.href = "#/addproduct";
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
+                    
                 }
                 else {
                     $scope.showerror = true;
