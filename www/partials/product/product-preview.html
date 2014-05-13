@@ -10,34 +10,17 @@
     <!-- Ionicons -->
     <link href="../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="../../css/gogojp.css" rel="stylesheet" type="text/css" />
-    <script src="../../js/jquery.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var parentobj = $("#PageContent", window.opener.document);
-            if (parentobj) {
-                var result = $.parseJSON(parentobj.val());
-                console.log(result);
-                if (result != null) {
-                    $("#prodcutname").html(result.product_name);
-                    $("#productpic").attr('src', result.picsrc);
-                    $("#newprice").html('￥'+ (result.new_price?result.new_price:'XX:XX'));
-                    $("#oldprice").html('￥' + (result.old_price ? result.old_price : 'XX:XX'));
-                    $("#productcontent").html(result.editconent);
-                }
-            }
-        })
-    </script>
 </head>
 <body class="pv_bg">
 	<div class="content_mobile">
-	 	<img src="../../img/bar.png"  />
+	 	<img src="../../img/bar.png" />
 	 	<div class="nav_mobile">商品详情</div>
-	 	<div class="moblie_title" id="prodcutname">夏日日式连衣裙</div>
-	 	<div class="mobile_img" style="overflow:hidden;"><img id="productpic" style="width:100%;margin:auto;"/></div>
+	 	<div class="moblie_title">夏日日式连衣裙</div>
+	 	<div class="mobile_img"></div>
 	 	<div class="mobile_content">
 	 		<div class="mobile_price clearfix">
-	 			<h4 class="pull-left mobile_font h_margin" id="newprice">￥400.00</h4>
-	 			<span class="tm-price" id="oldprice">￥819.00</span>
+	 			<h4 class="pull-left mobile_font h_margin">￥475.00</h4>
+	 			<span class="tm-price">￥819.00</span>
 	 			<span class="pull-right by_color">全国包邮</span>
 	 		</div>
 	 		<div class="mobile_attribute">
@@ -46,7 +29,8 @@
 	 		</div>
 	 		<div class="mobile_product">
 	 			<h5 class="h_margin">商品详情</h5>
-	 			<div class="product_content" id="productcontent">
+	 			<div class="product_content">
+	 				双方都所发生的
 	 			</div>
 	 		</div>
 	 	</div>

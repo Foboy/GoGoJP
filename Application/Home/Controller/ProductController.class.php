@@ -20,12 +20,11 @@ class ProductController extends Controller {
 				'new_price' => I ( 'new_price' ),
 				'small_pic' => I ( 'small_pic' ),
 				'big_pic' => I ( 'big_pic' ),
-				'product_description' =>$_POST ['product_description'] ,
+				'product_description' => I ( 'product_description' ),
 				'product_count' => I ( 'product_count', 0 ),
-				'product_sale_count'=>0,
 				'product_num' => time ()
 		);
-		$this->ajaxReturn($Product->addModel ($data));
+		$this->ajaxReturn($Product->addModel ());
 	}
 	// 删除商品
 	public function deleteProdcut() {

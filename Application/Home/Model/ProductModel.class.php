@@ -13,6 +13,7 @@ class ProductModel extends Model {
 	// 增加单个商品
 	public function addModel($data) {
 		$result = new DataResult ();
+		
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
 			$result->Data = $this->find ( $pid );
