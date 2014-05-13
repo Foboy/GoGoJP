@@ -24,6 +24,10 @@
 a {
 	cursor: pointer;
 }
+.marginmodal{
+	margin-top: 5px;
+	margin-right: 7px;
+}
 
 .padding_null {
 	padding: 0px;
