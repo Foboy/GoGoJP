@@ -136,8 +136,8 @@ class PictureManagementController extends Controller {
 	// 获取摸个幻灯片相信
 	public function getSlideShow(){
 		$Pic = new PictureModel ();
-		$catid = I ( 'catid' );
-		$this->ajaxReturn ( $Pic->getModel ( $catid ) );
+		$picid = I ( 'picid' );
+		$this->ajaxReturn ( $Pic->getModel ( $picid ) );
 	}
 	// 获取幻灯片列表信息
 	public function searchSlideShow() {

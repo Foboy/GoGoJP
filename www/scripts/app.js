@@ -18,7 +18,7 @@ config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRo
     $stateProvider
          .state("main", { url: "", templateUrl: 'partials/menu.html', controller: MenuCtrl })
          .state('main.home', { url: '/home', templateUrl: 'partials/home.html', controller: DataStatisticsCtrl })
-         .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: function () { } })
+         .state('main.recommend', { url: '/recommend*path', templateUrl: 'partials/recommend.html', controller: SlideShowMainCtrl })
          .state('main.product', { url: '/product*path', templateUrl: 'partials/product.html', controller: ProductMainCtrl })
          .state('main.category', { url: '/category*path', templateUrl: 'partials/productcategory.html', controller: ProductCategoryCtrl })
          .state('main.tags', { url: '/tags*path', templateUrl: 'partials/producttags.html', controller: ProductTagsCtrl })

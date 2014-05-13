@@ -455,9 +455,9 @@ CREATE TABLE `gogojp_sys_picture_management` (
   `small_pic` varchar(50) DEFAULT NULL COMMENT '缩率图',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `album_id` int(11) DEFAULT NULL COMMENT '合辑id',
-  `istop` tinyint(4) DEFAULT '0' COMMENT '是否置顶 0:取消置顶 1:置顶',
+  `istop` tinyint(4) DEFAULT '1' COMMENT '是否置顶 1:置顶  2:取消置顶',
   PRIMARY KEY (`picid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='系统幻灯片，首页推荐图片管理';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,6 +466,7 @@ CREATE TABLE `gogojp_sys_picture_management` (
 
 LOCK TABLES `gogojp_sys_picture_management` WRITE;
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` DISABLE KEYS */;
+INSERT INTO `gogojp_sys_picture_management` VALUES (1,'日本原单正品',NULL,NULL,'2014-05-13 09:32:17',1,1),(2,'韩国原单正品',NULL,NULL,'2014-05-13 09:32:17',2,2),(3,'美国原单',NULL,NULL,'2014-05-13 09:32:17',3,1);
 /*!40000 ALTER TABLE `gogojp_sys_picture_management` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,4 +569,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-13 17:19:55
+-- Dump completed on 2014-05-13 17:44:28
