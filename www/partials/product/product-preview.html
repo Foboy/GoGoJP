@@ -20,8 +20,8 @@
                 if (result != null) {
                     $("#prodcutname").html(result.product_name);
                     $("#productpic").attr('src', result.picsrc);
-                    $("#newprice").html('￥'+ result.new_price);
-                    $("#oldprice").html('￥' + result.old_price);
+                    $("#newprice").html('￥'+ (result.new_price?result.new_price:'XX:XX'));
+                    $("#oldprice").html('￥' + (result.old_price ? result.old_price : 'XX:XX'));
                     $("#productcontent").html(result.editconent);
                 }
             }
@@ -47,7 +47,6 @@
 	 		<div class="mobile_product">
 	 			<h5 class="h_margin">商品详情</h5>
 	 			<div class="product_content" id="productcontent">
-	 				
 	 			</div>
 	 		</div>
 	 	</div>
