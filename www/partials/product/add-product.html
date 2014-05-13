@@ -97,11 +97,11 @@
         <br />
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <a type="submit" class="btn btn-primary btn-flat" href="partials/product/product-preview.html" target="_blank">预览</a>
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)" >预览</button>
                 <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="AddProduct(Product)">保存</button>
             </div>
         </div>
     </form>
-
+    <textarea id="PageContent" style="display:none"></textarea>
 </div>
 <!-- /.content -->

@@ -1,8 +1,8 @@
 ﻿<div class="content-header">
-    <h1>商品分类
+    <h1>商品标签
     </h1>
     <ul class="nav nav-tabs">
-        <li  class="pull-right"><a ng-click="ShowAddMainCategoryMoadl()" class=" btn btn-primary btn-flat"><i class="fa fa-fw fa-plus"></i>添加主分类</a></li>
+        <li class="pull-right"><a ng-click="ShowAddTagsModal()" class=" btn btn-primary btn-flat"><i class="fa fa-fw fa-plus"></i>添加标签</a></li>
     </ul>
 </div>
 <div class="content">
@@ -12,14 +12,18 @@
             <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th>商品类别</th>
-                        <th>是否启用</th>
+                        <th>ID</th>
+                        <th>标签名称</th>
+                        <th>添加时间</th>
+                        <th>标签描述</th>
                         <th>操作</th>
                     </tr>
-                    <tr ng-repeat="ProdcutCategory in ProdcutCategorys">
-                        <td>{{CatNameFormat(ProdcutCategory)}}</td>
-                        <td>{{ProdcutCategory.status==1?'启用':'禁用'}}</td>
-                        <td><a ng-click="ShowEditCategoryModal(ProdcutCategory)">编辑</a> {{ProdcutCategory.level==1?'|':''}} <a ng-show="ProdcutCategory.level==1?true:false" ng-click="ShowAddSubCategoryModal(ProdcutCategory)">添加子类</a></td>
+                    <tr ng-repeat="ProductTag in ProductTags">
+                        <td>{{$index+1}}</td>
+                         <td>{{ProductTag.tag_name}}</td>
+                        <td>{{ProductTag.create_time}}</td>
+                        <td>{{ProductTag.tag_description}}</td>
+                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a  ng-click="DeleteTagModal(ProductTag)">删除</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -35,6 +39,6 @@
     </div>
     <!--商品分类end-->
 </div>
-<div ng-include="'partials/product/add-maincategory-modal.html'"></div>
-<div ng-include="'partials/product/add-subcategory-modal.html'"></div>
-<div ng-include="'partials/product/edit-category-modal.html'"></div>
+<div ng-include="'partials/product/add-tags-modal.html'"></div>
+<div ng-include="'partials/product/edit-tags-modal.html'"></div>
+

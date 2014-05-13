@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @author yangchao
  * @email:66954011@qq.com
  * @date: 2014/5/12 14:12:43
  */
 namespace Home\Model;
+
 use Think\Model;
 use Common\Common\PageDataResult;
 use Think\Db\Driver\Pdo;
@@ -14,11 +16,10 @@ use Common\Common\ErrorType;
 class TagsModel extends Model {
 	protected $tableName = 'tags';
 	// 增加表中数据
-	public function addModel($tag_name,$create_time) {
+	public function addModel($tag_name) {
 		$result = new DataResult ();
 		$data = array (
-'tag_name' => $tag_name,
-                   'create_time' => $create_time
+				'tag_name' => $tag_name 
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -33,8 +34,8 @@ class TagsModel extends Model {
 	// 删除表中数据
 	public function deleteModel($tag_id) {
 		$result = new DataResult ();
-        $map['tag_id']=$tag_id;
-		if ($this->where ($map)->delete () == 1) {
+		$map ['tag_id'] = $tag_id;
+		if ($this->where ( $map )->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -43,16 +44,16 @@ class TagsModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($tag_id,$tag_name,$create_time) {
+	public function updateModel($tag_id, $tag_name, $create_time) {
 		$result = new DataResult ();
 		$data = array (
-'tag_id' => $tag_id,
-                   'tag_name' => $tag_name,
-                   'create_time' => $create_time
+				'tag_id' => $tag_id,
+				'tag_name' => $tag_name,
+				'create_time' => $create_time 
 		);
 		// 注意判断条件使用恒等式
-        $map['tag_id']=$tag_id;
-		if ($this->where ($map )->save ( $data ) !== false) {
+		$map ['tag_id'] = $tag_id;
+		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $tag_id );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -64,28 +65,28 @@ class TagsModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($tag_id) {
 		$result = new DataResult ();
-        $map['tag_id']=$tag_id;
-		$result->Data = $this->where ($map )->find ();
+		$map ['tag_id'] = $tag_id;
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($tag_name,$create_time, $pageindex, $pagesize) {
+	public function searchByPage($tag_name, $create_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
 		$objects = $conn->query ( " select tag_id,tag_name,create_time from gogojp_tags where  ( tag_name = :tag_name or :tag_name='' ) 
  and  ( create_time = :create_time or :create_time=0 )  
  limit $lastpagenum,$pagesize", array (
-':tag_name' => $tag_name,
-                   ':create_time' => $create_time
-			)  );
+				':tag_name' => $tag_name,
+				':create_time' => $create_time 
+		) );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_tags where  ( tag_name = :tag_name or :tag_name='' ) 
  and  ( create_time = :create_time or :create_time=0 ) 
 ", array (
-':tag_name' => $tag_name,
-                   ':create_time' => $create_time
-			)  );
-		$totalcount=$data[0]['totalcount'];
+				':tag_name' => $tag_name,
+				':create_time' => $create_time 
+		) );
+		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;

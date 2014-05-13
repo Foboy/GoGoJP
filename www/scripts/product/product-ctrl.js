@@ -252,7 +252,7 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
 }
 
 function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
-    $scope.OpenWindow = function (url, name, iWidth, iHeight) {
+    $scope.OpenWindowDialog = function (url, name, iWidth, iHeight) {
         var url = url; //转向网页的地址;
         var name = name;                          //网页名称，可为空;
         var iWidth = iWidth;                         //弹出窗口的宽度;
@@ -260,6 +260,14 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         var iTop = (window.screen.availHeight - 30 - iHeight) / 2;       //获得窗口的垂直位置;
         var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
         window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+    $scope.OpenPreview = function (data) {
+        //验证填写了才能跳转
+        if (data) {
+            var result = { product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, picsrc: $("#imagezone").attr("src"), editconent: $scope.um.getContent() };
+            $("#PageContent").val(angular.toJson(result));
+        }
+        window.open('partials/product/product-preview.html');
     }
     //获取一级分类
     $scope.LoadMainCategory = function () {
@@ -271,7 +279,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
-   
+
     //获取二级分类
     $scope.LoadSubCategory = function (ParentCategory) {
         $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
@@ -349,6 +357,11 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.LoadMainCategory();
     $scope.UpLoadImage();
     $scope.InitEditor();
+}
+
+//商品标签
+function ProductTagsCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+
 }
 
 

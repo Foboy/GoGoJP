@@ -22,17 +22,12 @@ class TagsController extends Controller {
 		$Tags = new TagsModel ();
 		
 		$tag_name = I ( 'tag_name' );
-		$create_time = I ( 'create_time' );
 		
 		if (! isset ( $tag_name ) or empty ( $tag_name )) {
 			$result->Error = ErrorType::RequestParamsFailed;
 			$this->ajaxReturn ( $result );
 		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Tags->addModel ( $tag_name, $create_time );
+		$result = $Tags->addModel ( $tag_name);
 		$this->ajaxReturn ( $result );
 	}
 	// 删除

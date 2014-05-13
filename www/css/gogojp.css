@@ -145,8 +145,7 @@ a {
 	text-align: center;
 }
 .mobile_img{
-	width: 320px;
-	height: 255px;
+	width: 100%;
 	background-color: #fff;
 }
 .mobile_content{
