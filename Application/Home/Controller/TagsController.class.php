@@ -18,16 +18,10 @@ class TagsController extends Controller {
 	}
 	// 添加
 	public function addTags() {
-		$result = new DataResult ();
 		$Tags = new TagsModel ();
-		
 		$tag_name = I ( 'tag_name' );
-		
-		if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Tags->addModel ( $tag_name);
+		$tag_description=I('tag_description','','htmlspecialchars');
+		$result = $Tags->addModel ( $tag_name,$tag_description);
 		$this->ajaxReturn ( $result );
 	}
 	// 删除
@@ -44,20 +38,11 @@ class TagsController extends Controller {
 	}
 	// 编辑
 	public function updateTags() {
-		$result = new DataResult ();
 		$Tags = new TagsModel ();
+		$tag_id=I('tag_id');
 		$tag_name = I ( 'tag_name' );
-		$create_time = I ( 'create_time' );
-		
-		if (! isset ( $tag_name ) or empty ( $tag_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Tags->updateModel ( $tag_name, $create_time );
+		$tag_description=I('tag_description','','htmlspecialchars');
+		$result = $Tags->updateModel ($tag_id, $tag_name, $tag_description );
 		$this->ajaxReturn ( $result );
 	}
 	// 获取单个
@@ -76,8 +61,8 @@ class TagsController extends Controller {
 	// 分页查询列表
 	public function searchTags() {
 		$Tags = new TagsModel ();
-		$pageIndex = I ( 'pageindex', 0 );
-		$pageSize = I ( 'pagesize', 20 );
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 20 );
 		$result = $Tags->searchByPage ( $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}

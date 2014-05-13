@@ -63,7 +63,8 @@ class PictureModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($picId) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'picid=%d', $picId )->select ();
+		$map=array('picid'=>$picId);
+		$result->Data = $this->where ()->select ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据

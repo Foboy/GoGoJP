@@ -23,7 +23,7 @@
                          <td>{{ProductTag.tag_name}}</td>
                         <td>{{ProductTag.create_time}}</td>
                         <td>{{ProductTag.tag_description}}</td>
-                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a  ng-click="DeleteTagModal(ProductTag)">删除</a></td>
+                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a  ng-click="DeleteTagsModal(ProductTag)">删除</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -41,4 +41,5 @@
 </div>
 <div ng-include="'partials/product/add-tags-modal.html'"></div>
 <div ng-include="'partials/product/edit-tags-modal.html'"></div>
+<div ng-include="'partials/product/delete-tags-modal.html'"></div>
 
