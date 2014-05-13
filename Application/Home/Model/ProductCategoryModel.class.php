@@ -52,7 +52,7 @@ class ProductCategoryModel extends Model {
 	public function getModel($catid) {
 		$result = new DataResult ();
 		$map ['catid'] = $catid;
-		$result->Data = $this->where ( $map )->select ();
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 获取主类信息

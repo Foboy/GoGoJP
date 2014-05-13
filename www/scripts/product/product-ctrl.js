@@ -251,6 +251,7 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
     }
 }
 
+//新增商品
 function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     $scope.OpenWindowDialog = function (url, name, iWidth, iHeight) {
         var url = url; //转向网页的地址;
@@ -355,7 +356,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
                     setTimeout(function () {
                         window.location.reload();
                     }, 2000);
-                    
+
                 }
                 else {
                     $scope.showerror = true;
@@ -373,6 +374,122 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.LoadTags();
     $scope.UpLoadImage();
     $scope.InitEditor();
+}
+
+//修改商品
+function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.GetProduct = function () {
+        $http.post($resturls["GetProduct"], { productid: $routeParams.productid }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.Product = result.Data.product;
+                $scope.um = UM.createEditor('myEditor');
+                for (var i = 0; i < $scope.MainCategorys.length; i++) {
+                    if (result.Data.maincategory.catid == $scope.MainCategorys[i].catid) {
+                        $scope.mainitem = $scope.MainCategorys[i];
+                    }
+                }
+                if (result.Data.subcategory) {
+                    $http.post($resturls["LoadSubCategory"], { catid: result.Data.subcategory.parentid }).success(function (call) {
+                        if (call.Error == 0) {
+                            $scope.SubCategorys = call.Data;
+                            if ($scope.SubCategorys) {
+                                for (var i = 0; i < $scope.SubCategorys.length; i++) {
+                                    if (result.Data.subcategory.catid == $scope.SubCategorys[i].catid) {
+                                        $scope.subitem = $scope.SubCategorys[i];
+                                    }
+                                }
+                                $scope.showsubselect = true;
+                            } else {
+                                $scope.SubCategorys = [];
+                                $scope.showsubselect = false;
+                            }
+                        }
+                    });
+                }
+                $scope.um.setContent($scope.Product.product_description);
+            } else {
+                $scope.Product = {};
+            }
+        });
+    }
+    //获取一级分类
+    $scope.LoadMainCategory = function () {
+        $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
+            if (result.Error == 0) {
+                $scope.MainCategorys = result.Data;
+            } else {
+                $scope.MainCategorys = [];
+            }
+        });
+    }
+
+    //获取二级分类
+    $scope.LoadSubCategory = function (ParentCategory) {
+        if (ParentCategory) {
+            $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
+                if (result.Error == 0) {
+                    $scope.SubCategorys = result.Data;
+                    $scope.showsubselect = true;
+                } else {
+                    $scope.SubCategorys = [];
+                    $scope.showsubselect = false;
+                }
+            });
+        }
+    }
+    //下拉选中一级菜单
+    $scope.ChooseMainCategory = function (data) {
+        if (data != null) {
+            $scope.LoadSubCategory(data);
+        }
+    }
+    //获取标签
+    $scope.LoadTags = function () {
+        $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+            } else {
+                $scope.ProductTags = [];
+            }
+        });
+    }
+    $scope.UpLoadImage = function () {
+        $('#file_upload').uploadify({
+            'swf': 'js/plugins/uploadify/uploadify.swf',
+            'uploader': $resturls['UpLoadImage'],
+            'buttonText': '上传',
+            'width': 60,
+            'height': 40,
+            'buttonClass': 'btn btn-success btn-flat',
+            'fileSizeLimit': '2048kB',
+            'fileTypeExts': '*.jpg;*.gif;*.png',
+            'fileTypeDesc': 'Web Image Files (.JPG, .GIF, .PNG)',
+            onUploadSuccess: function (fileObj, data, response) {
+                var result = $.parseJSON(data);
+                if (result.status == 1) {
+                    $.scojs_message('上传完成!', $.scojs_message.TYPE_OK);
+                    $("#imagezone").attr('src', $.trim(result.data.uploadResult.url));
+                } else {
+                    $.scojs_message('服务器忙，请稍后重试!', $.scojs_message.TYPE_ERROR);
+                }
+            },
+            onSelectError: function (file, errorCode, errorMsg) {
+                switch (errorCode) {
+                    case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+                        $.scojs_message('上传文件不能超过2MB', $.scojs_message.TYPE_ERROR);
+                        break;
+                    case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+                        $.scojs_message('不能上传空文件', $.scojs_message.TYPE_ERROR);
+                        break;
+                }
+            }
+        });
+    }
+    $scope.LoadMainCategory();
+    $scope.LoadTags();
+    $scope.UpLoadImage();
+    $scope.GetProduct();
+   
 }
 
 //商品标签
@@ -466,10 +583,10 @@ function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls,
 //商品规格参数
 function ProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     $scope.LoadStandardAboutSizeList = function () {
-
+        console.log(123);
     }
     $scope.LoadStandardAboutColorList = function () {
-
+        console.log(456);
     }
     var $parent = $scope.$parent;
     $scope.sort = $routeParams.sort;

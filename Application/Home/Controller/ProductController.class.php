@@ -4,6 +4,8 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Home\Model\ProductModel;
+use Home\Model\ProductCategoryModel;
+use Common\Common\DataResult;
 
 class ProductController extends Controller {
 	public function index() {
@@ -20,12 +22,12 @@ class ProductController extends Controller {
 				'new_price' => I ( 'new_price' ),
 				'small_pic' => I ( 'small_pic' ),
 				'big_pic' => I ( 'big_pic' ),
-				'product_description' => $_POST ['product_description'] ,
+				'product_description' => $_POST ['product_description'],
 				'product_count' => I ( 'product_count', 0 ),
-				'product_sale_count'=>0,
-				'product_num' => time ()
+				'product_sale_count' => 0,
+				'product_num' => time () 
 		);
-		$this->ajaxReturn($Product->addModel ($data));
+		$this->ajaxReturn ( $Product->addModel ( $data ) );
 	}
 	// 删除商品
 	public function deleteProdcut() {
@@ -33,22 +35,46 @@ class ProductController extends Controller {
 	// 编辑商品
 	public function updateProduct() {
 		$Product = new ProductModel ();
-		$productid=I('productid');
-		$this->ajaxReturn ( $Product->updateModel($productid));
+		$productid = I ( 'productid' );
+		$this->ajaxReturn ( $Product->updateModel ( $productid ) );
 	}
-	//获取摸个商品信息
-	public function getProduct(){
+	// 获取摸个商品信息
+	public function getProduct() {
+		$result = new DataResult ();
 		$Product = new ProductModel ();
-		$productid=I('productid');
-		$this->ajaxReturn ( $Product->getModel($productid));
+		$Categroy = new ProductCategoryModel ();
+		$productid = I ( 'productid' );
+		$product = array ();
+		$maincategory = array ();
+		$subcategory = array ();
+		if ($Product->getModel ( $productid )->Error == 0) {
+			$product = $Product->getModel ( $productid )->Data;
+			if ($product ['catid'] > 0) {
+				$cat = $Categroy->getModel ( $product ['catid'] )->Data;
+				if (count ( $cat ) > 0) {
+					if ($cat ['level'] > 1) {
+						$subcategory = $cat;
+						$maincategory = $Categroy->getModel ( $cat ['parentid'] )->Data;
+					} else {
+						$maincategory = $cat;
+					}
+				}
+			}
+		}
+		$result->Data = array (
+				"product" => $product,
+				"maincategory" => $maincategory,
+				"subcategory" => $subcategory 
+		);
+		$this->ajaxReturn ( $result );
 	}
 	// 模糊分页查询商品
 	public function searchProductByCondition() {
 		$Product = new ProductModel ();
-		$catid=I('catid',0);
-		$keyname=I('keyname','','htmlspecialchars');
-		$pageIndex = I ('pageIndex', 0 );
-		$pageSize = I ('pageSize', 10 );
-		$this->ajaxReturn ( $Product->searchProductByCondition($catid,$keyname,$pageIndex,$pageSize));
+		$catid = I ( 'catid', 0 );
+		$keyname = I ( 'keyname', '', 'htmlspecialchars' );
+		$pageIndex = I ( 'pageIndex', 0 );
+		$pageSize = I ( 'pageSize', 10 );
+		$this->ajaxReturn ( $Product->searchProductByCondition ( $catid, $keyname, $pageIndex, $pageSize ) );
 	}
 }

@@ -36,6 +36,7 @@
           resturls.add("AddCategory", "Home/ProductCategory/addProductCategory");//添加分类
           resturls.add("EditCategory", "Home/ProductCategory/updateProductCategory");//编辑分类
           resturls.add("AddProduct", "Home/Product/addProduct");//增加商品
+          resturls.add("GetProduct", "Home/Product/getProduct");//获取某商品详细
           resturls.add("UpLoadImage", "Home/PictureManagement/upLoadImage");//上传图片
           resturls.add("LoadTags", "Home/Tags/searchTags");//分页查询标签
           resturls.add("AddTags", "Home/Tags/addTags");//新增标签

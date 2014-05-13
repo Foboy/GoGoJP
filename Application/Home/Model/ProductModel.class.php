@@ -13,7 +13,6 @@ class ProductModel extends Model {
 	// 增加单个商品
 	public function addModel($data) {
 		$result = new DataResult ();
-		
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
 			$result->Data = $this->find ( $pid );
@@ -51,10 +50,13 @@ class ProductModel extends Model {
 		}
 		return $result;
 	}
-	// 获取单个商品信息
+	// 获取单个商品商品表信息
 	public function getModel($productid) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'productid=%d', $productid )->select ();
+		$map = array (
+				'productid' => $productid 
+		);
+		$result->Data = $this->where ($map)->find ();
 		return $result;
 	}
 	// 根据条件分页模糊查询商品列表
@@ -66,7 +68,7 @@ class ProductModel extends Model {
 			$skey = " ( ( t.product_name like '%$keyname%' )  or  ( t.product_num  like '%$keyname%' ) )";
 		}
 		$conn = new Pdo ();
-	 
+		
 		$objects = $conn->query ( "select * from(SELECT p.*,c.cat_name as category_name FROM gogojp_productinfo as p left join gogojp_productcategory as c on p.catid=c.catid) as t where (t.catid=:catid or 0=:catid) and $skey order by t.create_time desc limit $lastPageNum,$pageSize", array (
 				':catid' => $catid 
 		) );
@@ -83,7 +85,7 @@ class ProductModel extends Model {
 	public function updateClickNum($productid) {
 		$result = new DataResult ();
 		$conn = new Pdo ();
-	 
+		
 		$objects = $conn->query ( "update gogojp_productinfo set click_num=click_num+1 where productid = :productid", array (
 				':productid' => $productid 
 		) );
