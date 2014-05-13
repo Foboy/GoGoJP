@@ -348,9 +348,10 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
-            $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.Status, new_price: data.level, product_description: data.product_description, product_count: data.product_count }).success(function (result) {
+            $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                    window.location.href = "#/product";
                 }
                 else {
                     $scope.showerror = true;
@@ -362,7 +363,6 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
         }
     }
     $scope.InitEditor = function () {
-
         $scope.um = UM.createEditor('myEditor');
     }
     $scope.LoadMainCategory();
@@ -456,6 +456,29 @@ function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls,
                 $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
             }
         })
+    }
+}
+
+//商品规格参数
+function ProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.LoadStandardAboutSizeList = function () {
+
+    }
+    $scope.LoadStandardAboutColorList = function () {
+
+    }
+    var $parent = $scope.$parent;
+    $scope.sort = $routeParams.sort;
+    if (!$scope.sort) {
+        $scope.sort = "size";
+    }
+    switch ($scope.sort) {
+        case 'size':
+            $scope.LoadStandardAboutSizeList($routeParams.pageIndex || 1);
+            break;
+        case 'color':
+            $scope.LoadStandardAboutColorList($routeParams.pageIndex || 1);
+            break;
     }
 }
 
