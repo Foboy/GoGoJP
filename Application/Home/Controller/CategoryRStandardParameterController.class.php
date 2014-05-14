@@ -19,7 +19,7 @@ class CategoryRStandardParameterController extends Controller {
 	// 添加
 	public function addCategoryRStandardParameter() {
 		$result = new DataResult ();
-		$CategoryRStandardParameter = new CategoryRStandardParameterModel ();
+		$CategoryRStandardParameter = new CategoryRStandardParameterModel() ;
 		
 		$standard_id = I ( 'standard_id' );
 		$parameter_id = I ( 'parameter_id' );
