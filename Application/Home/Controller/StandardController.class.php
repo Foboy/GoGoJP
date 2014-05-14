@@ -1,109 +1,47 @@
 <?php
 
 /**
- * @author yangchao
- * @email:66954011@qq.com
- * @date: 2014/5/13 22:06:38
+ * @author zhengrunqiang
+ * @email:653260669@qq.com
+ * @date: 2014/5/14 22:06:38
  */
 namespace Home\Controller;
 
 use Think\Controller;
 use Home\Model\StandardModel;
-use Common\Common\DataResult;
-use Common\Common\ErrorType;
 
 class StandardController extends Controller {
-	public function index() {
-		$this->show ( '<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>[ 您现在访问的是Home模块的Standard控制器 ]</div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>', 'utf-8' );
+	//根据规格id查询分类
+	public function searchCategoryByStandardId(){
+		$standard_id=I('standard_id',0);
+		$pageindex=I('pageIndex',0);
+		$pagesize=I('pageSize',20);
+		$standardmodel=new StandardModel();
+		$this->ajaxReturn($standardmodel->searchCategoryByStandardId($standard_id, $pageindex, $pagesize));
 	}
-	// 添加
-	public function addStandard() {
-		$result = new DataResult ();
-		$Standard = new StandardModel ();
-		
-		$standard_name = I ( 'standard_name' );
-		$create_time = I ( 'create_time' );
-		
-		if (! isset ( $standard_name ) or empty ( $standard_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'standard_name' params error";
-			$this->ajaxReturn ( $result );
-		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'create_time' params error";
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Standard->addModel ( $standard_name, $create_time );
-		$this->ajaxReturn ( $result );
+	// 根据规格id和分类id查询参数值
+	public function searchParamterBySidAndCatid(){
+		$standard_id=I('standard_id');
+		$category_id=I('category_id');
+		$standardmodel=new StandardModel();
+		$this->ajaxReturn($standardmodel->searchParamterBySidAndCatid($standard_id, $category_id));
 	}
-	// 删除
-	public function deleteStandard() {
-		$result = new DataResult ();
-		$Standard = new StandardModel ();
-		$standard_id = I ( 'standard_id' );
-		if (! isset ( $standard_id ) or empty ( $standard_id )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'standard_id' params error";
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Standard->deleteModel ( $standard_id );
-		$this->ajaxReturn ( $result );
+	// 根据规格id和查询参数值列表（和分类无关）
+	public function searchParamterBySid(){
+		$standard_id=I('standard_id');
+		$standardmodel=new StandardModel();
+		$this->ajaxReturn($standardmodel->searchParamterBySid($standard_id));
 	}
-	// 编辑
-	public function updateStandard() {
-		$result = new DataResult ();
-		$Standard = new StandardModel ();
-		$standard_name = I ( 'standard_name' );
-		$create_time = I ( 'create_time' );
-		
-		if (! isset ( $standard_name ) or empty ( $standard_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'standard_name' params error";
-			$this->ajaxReturn ( $result );
-		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'create_time' params error";
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Standard->updateModel ( $standard_name, $create_time );
-		$this->ajaxReturn ( $result );
+	//批量添加分类规格参数
+	public function AddCatagoryStandardParameter($standard_id,$category_id,$parameter_names) {
 	}
-	// 获取单个
-	public function getStandard() {
-		$result = new DataResult ();
-		$Standard = new StandardModel ();
-		$standard_id = I ( 'standard_id' );
-		if (! isset ( $standard_id ) or empty ( $standard_id )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'standard_id' params error";
-			$this->ajaxReturn ( $result );
-		}
-		$result = $Standard->getModel ( $standard_id );
-		$this->ajaxReturn ( $result );
-	}
+	//批量添加通用规格参数
+	public function AddCommonStandardParameter($parameter_names){
 	
-	// 分页查询列表
-	public function searchStandard() {
-		$result = new DataResult ();
-		$Standard = new StandardModel ();
-		$standard_name = I ( 'standard_name' );
-		$create_time = I ( 'create_time' );
-		
-		if (! isset ( $standard_name ) or empty ( $standard_name )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'standard_name' params error";
-			$this->ajaxReturn ( $result );
-		}
-		if (! isset ( $create_time ) or empty ( $create_time )) {
-			$result->Error = ErrorType::RequestParamsFailed;
-			$result->ErrorMessage = "'create_time' params error";
-			$this->ajaxReturn ( $result );
-		}
-		$pageIndex = I ( 'pageindex', 0 );
-		$pageSize = I ( 'pagesize', 10 );
-		$result = $Standard->searchByPage ( $standard_name, $create_time, $pageIndex, $pageSize );
-		$this->ajaxReturn ( $result );
+	}
+	//批量跟新规格参数状态
+	public function UpdateStandardParameterStatus($standard_parameter_ids,$parameter_statuses){
+		$standard_parameter_ids=I('standard_parameter_ids');
+		$parameter_statuses=I('parameter_statuses');
 	}
 }

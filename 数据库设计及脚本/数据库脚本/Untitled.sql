@@ -174,7 +174,7 @@ CREATE TABLE `gogojp_category_r_standard_parameter` (
   `category_id` int(11) DEFAULT NULL COMMENT '商品种类id',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='商品类别规格关系表';
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='商品类别规格关系表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `gogojp_category_r_standard_parameter` (
 
 LOCK TABLES `gogojp_category_r_standard_parameter` WRITE;
 /*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` DISABLE KEYS */;
-INSERT INTO `gogojp_category_r_standard_parameter` VALUES (1,1,1,9,'2014-05-13 12:44:15'),(2,1,2,9,'2014-05-13 12:44:15'),(3,1,3,9,'2014-05-13 12:44:15'),(4,2,11,9,'2014-05-13 12:44:15'),(5,2,15,9,'2014-05-13 12:44:15'),(6,2,16,9,'2014-05-13 12:44:15');
+INSERT INTO `gogojp_category_r_standard_parameter` VALUES (1,1,1,9,'2014-05-13 12:44:15'),(2,1,2,9,'2014-05-13 12:44:15'),(3,1,3,9,'2014-05-13 12:44:15'),(4,2,11,9,'2014-05-13 12:44:15'),(5,2,15,9,'2014-05-13 12:44:15'),(6,2,16,9,'2014-05-13 12:44:15'),(7,1,1,10,'2014-05-14 05:34:36'),(8,1,2,10,'2014-05-14 05:34:36'),(9,1,3,10,'2014-05-14 05:34:36'),(10,2,11,10,'2014-05-14 05:34:36'),(11,2,15,10,'2014-05-14 05:34:36'),(12,2,12,10,'2014-05-14 05:34:36');
 /*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +367,7 @@ CREATE TABLE `gogojp_productcategory` (
 
 LOCK TABLES `gogojp_productcategory` WRITE;
 /*!40000 ALTER TABLE `gogojp_productcategory` DISABLE KEYS */;
-INSERT INTO `gogojp_productcategory` VALUES (10,'女装',0,'2014-05-11 18:02:59',1,1),(9,'男装',0,'2014-05-11 18:02:29',1,1),(12,'女装上衣',10,'2014-05-11 18:03:34',1,2),(11,'儿童装',0,'2014-05-11 18:03:13',1,1),(19,'男装外套',9,'2014-05-11 18:05:35',1,2),(14,'那幢',9,'2014-05-11 18:03:55',1,2),(15,'外套',9,'2014-05-11 18:04:03',1,2),(16,'小学生',11,'2014-05-11 18:04:11',1,2),(17,'什么',10,'2014-05-11 18:04:20',1,2),(18,'搞不懂',9,'2014-05-11 18:04:32',1,2),(20,'喜爱',10,'2014-05-11 18:05:51',1,2),(21,'伸进病',10,'2014-05-11 18:06:00',1,2),(22,'什么飞机',9,'2014-05-11 18:06:11',1,2),(23,'jb',11,'2014-05-11 18:06:25',1,2),(24,'人妖装',0,'2014-05-11 18:06:46',1,1),(25,'官人',24,'2014-05-11 18:06:54',1,2),(26,'少妇',10,'2014-05-11 18:08:35',1,2),(27,'控件',10,'2014-05-11 18:09:11',1,2),(28,'什么东西',0,'2014-05-13 15:08:17',1,1),(29,'123',0,'2014-05-13 15:24:54',1,1),(30,'女主',10,'2014-05-13 15:25:17',1,2);
+INSERT INTO `gogojp_productcategory` VALUES (10,'女装',0,'2014-05-14 15:07:55',1,1),(9,'男装',0,'2014-05-11 18:02:29',1,1),(12,'女装上衣',10,'2014-05-11 18:03:34',1,2),(19,'男装外套',9,'2014-05-11 18:05:35',1,2),(14,'那幢',9,'2014-05-11 18:03:55',1,2),(15,'外套',9,'2014-05-11 18:04:03',1,2),(18,'搞不懂',9,'2014-05-11 18:04:32',1,2),(20,'喜爱',10,'2014-05-14 15:08:13',1,2),(21,'伸进病',10,'2014-05-11 18:06:00',1,2),(22,'什么飞机',9,'2014-05-11 18:06:11',1,2),(26,'少妇',10,'2014-05-11 18:08:35',1,2),(27,'控件',10,'2014-05-11 18:09:11',1,2),(30,'女主',10,'2014-05-13 15:25:17',1,2);
 /*!40000 ALTER TABLE `gogojp_productcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,7 +476,7 @@ CREATE TABLE `gogojp_standard_parameter` (
   `standard_parameter_id` int(11) NOT NULL COMMENT '表的主键自增id',
   `parameter_name` varchar(45) NOT NULL COMMENT '参数名称',
   `belong_standard_id` int(11) NOT NULL COMMENT '所属规格id',
-  `belong_cat_id` int(11) NOT NULL COMMENT '所属分类id',
+  `parameter_status` tinyint(4) DEFAULT '1' COMMENT '参数状态 1：启用 2：禁用',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`standard_parameter_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='规格参数表';
@@ -488,7 +488,7 @@ CREATE TABLE `gogojp_standard_parameter` (
 
 LOCK TABLES `gogojp_standard_parameter` WRITE;
 /*!40000 ALTER TABLE `gogojp_standard_parameter` DISABLE KEYS */;
-INSERT INTO `gogojp_standard_parameter` VALUES (1,'S',1,9,'2014-05-14 03:37:36'),(2,'M',1,9,'2014-05-14 03:37:36'),(3,'L',1,9,'2014-05-14 03:37:36'),(4,'XL',1,9,'2014-05-14 03:37:36'),(5,'XXL',1,9,'2014-05-14 03:37:36'),(6,'32',1,10,'2014-05-14 03:37:36'),(7,'33',1,10,'2014-05-14 03:37:36'),(8,'34',1,10,'2014-05-14 03:37:36'),(9,'35',1,10,'2014-05-14 03:37:36'),(10,'36',1,10,'2014-05-14 03:37:36'),(11,'红',2,9,'2014-05-14 03:37:36'),(12,'黄',2,9,'2014-05-14 03:37:36'),(13,'蓝',2,9,'2014-05-14 03:37:36'),(14,'青',2,10,'2014-05-14 03:37:36'),(15,'绿',2,10,'2014-05-14 03:37:36'),(16,'紫',2,10,'2014-05-14 03:37:36');
+INSERT INTO `gogojp_standard_parameter` VALUES (1,'S',1,1,'2014-05-14 03:37:36'),(2,'M',1,1,'2014-05-14 03:37:36'),(3,'L',1,1,'2014-05-14 03:37:36'),(4,'XL',1,1,'2014-05-14 03:37:36'),(5,'XXL',1,1,'2014-05-14 03:37:36'),(6,'32',1,1,'2014-05-14 03:37:36'),(7,'33',1,1,'2014-05-14 03:37:36'),(8,'34',1,1,'2014-05-14 03:37:36'),(9,'35',1,1,'2014-05-14 03:37:36'),(10,'36',1,1,'2014-05-14 03:37:36'),(11,'红',2,2,'2014-05-14 16:48:06'),(12,'黄',2,1,'2014-05-14 03:37:36'),(13,'蓝',2,1,'2014-05-14 03:37:36'),(14,'青',2,2,'2014-05-14 16:48:24'),(15,'绿',2,1,'2014-05-14 03:37:36'),(16,'紫',2,1,'2014-05-14 03:37:36');
 /*!40000 ALTER TABLE `gogojp_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,7 +543,7 @@ CREATE TABLE `gogojp_tags` (
 
 LOCK TABLES `gogojp_tags` WRITE;
 /*!40000 ALTER TABLE `gogojp_tags` DISABLE KEYS */;
-INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好3','2014-05-13 07:10:06'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27'),(6,'是那么','123','2014-05-13 15:11:49');
+INSERT INTO `gogojp_tags` VALUES (1,'时尚','好好3','2014-05-13 07:10:06'),(2,'淑女','婉约','2014-05-13 06:24:27'),(3,'熟女','热辣','2014-05-13 06:24:27');
 /*!40000 ALTER TABLE `gogojp_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -620,4 +620,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-14 11:38:14
+-- Dump completed on 2014-05-15  1:15:25

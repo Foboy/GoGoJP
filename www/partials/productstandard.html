@@ -6,8 +6,9 @@
 <div class="content">
     <ul class="nav nav-tabs margin_bottom">
         <li ng-class="sort=='size'?'active':''"><a ng-href="#/standard/size/">尺寸</a></li>
-        <li ng-class="sort=='color'?'active':''"><a ng-href="#/standard/color/">颜色</a></li>
-        <li ng-show="sort=='size'?true:false" class="pull-right"><a href="#" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
+        <li ng-class="sort=='color'?'active':''"><a ng-href="#/standard/color">颜色</a></li>
+        <li ng-show="sort=='size'?true:false" class="pull-right"><a ng-click="AddSizeStandardModal()" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
+        <li ng-show="sort=='color'?true:false" class="pull-right"><a href="#" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
     </ul>
 
     <div class="row margin_bottom" ng-show="sort=='size'?true:false">
@@ -16,12 +17,14 @@
                 <tbody>
                     <tr>
                         <th>分类</th>
-                        <th>对应参数</th>
+                        <th>可用参数</th>
+                        <th>禁用参数</th>
                         <th>操作</th>
                     </tr>
-                    <tr ng-repeat="Prodcut in Prodcuts">
-                        <td>{{Prodcut.category_name}}</td>
-                        <td>{{Prodcut.product_status==1?'上架':'下架'}}</td>
+                    <tr ng-repeat="SizeCategory in SizeCategorys">
+                        <td>{{SizeCategory.cat_name}}</td>
+                        <td>{{SizeCategory.IsableParamters}}</td>
+                        <td>{{SizeCategory.DisableParamters}}</td>
                         <td><a ng-click="edit()">编辑</a></td>
                     </tr>
                 </tbody>
@@ -34,19 +37,20 @@
             <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th>对应参数</th>
+                        <th>可用参数</th>
+                        <th>禁用参数</th>
                         <th>操作</th>
                     </tr>
-                    <tr ng-repeat="Album in Albums">
-                        <td>{{Album.album_status==1?'显示':'禁用'}}</td>
+                    <tr>
+                        <td>{{IsableColorParamtersFormat}}</td>
+                        <td>{{DisableColorParamtersFormat}}</td>
                         <td><a ng-click="edit()">编辑</a></td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row" style="margin-right: 0">
+    <div class="row" style="margin-right: 0" ng-show="sort=='color'?false:true">
         <ul class="pagination pagination-sm no-margin pull-right">
             <li ng-repeat="page in pages | filter:'pre'"><a ng-href="{{page.url}}">«</a></li>
             <li ng-class="{{page.active}}?'active':''" ng-repeat="page in pages | filter:'page'"><a ng-href="{{page.url}}">{{page.index}}</a></li>
@@ -54,4 +58,5 @@
         </ul>
     </div>
 </div>
+<div ng-include="'partials/standard/add-sizestandard-modal.html'"></div>
 

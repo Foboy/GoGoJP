@@ -142,4 +142,5 @@ class CategoryRStandardParameterController extends Controller {
 		$result = $CategoryRStandardParameter->searchByPage ( $standard_id, $parameter_id, $category_id, $create_time, $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}
+	
 }

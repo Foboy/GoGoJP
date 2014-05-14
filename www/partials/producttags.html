@@ -4,8 +4,7 @@
 <div class="content">
     <div class="row margin_bottom">
         <div class="col-md-12">
-           <a ng-click="ShowAddTagsModal()" class=" btn btn-sm btn-primary btn-flat"><i class="fa fa-fw fa-plus"></i>添加标签</a
-            >
+            <a ng-click="ShowAddTagsModal()" class=" btn btn-sm btn-primary btn-flat"><i class="fa fa-fw fa-plus"></i>添加标签</a>
         </div>
     </div>
     <div class="row margin_bottom ">
@@ -21,10 +20,10 @@
                     </tr>
                     <tr ng-repeat="ProductTag in ProductTags">
                         <td>{{$index+1}}</td>
-                         <td>{{ProductTag.tag_name}}</td>
+                        <td>{{ProductTag.tag_name}}</td>
                         <td>{{ProductTag.create_time}}</td>
                         <td>{{ProductTag.tag_description}}</td>
-                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a  ng-click="DeleteTagsModal(ProductTag)">删除</a></td>
+                        <td><a ng-click="ShowEditTagModal(ProductTag)">编辑</a> | <a ng-click="DeleteTagsModal(ProductTag)">删除</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -38,7 +37,6 @@
             <li ng-repeat="page in pages | filter:'next'"><a ng-href="{{page.url}}">»</a></li>
         </ul>
     </div>
-    
 </div>
 <div ng-include="'partials/product/add-tags-modal.html'"></div>
 <div ng-include="'partials/product/edit-tags-modal.html'"></div>

@@ -489,7 +489,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
     $scope.LoadTags();
     $scope.UpLoadImage();
     $scope.GetProduct();
-   
+
 }
 
 //商品标签
@@ -580,28 +580,7 @@ function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls,
     }
 }
 
-//商品规格参数
-function ProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
-    $scope.LoadStandardAboutSizeList = function () {
-        console.log(123);
-    }
-    $scope.LoadStandardAboutColorList = function () {
-        console.log(456);
-    }
-    var $parent = $scope.$parent;
-    $scope.sort = $routeParams.sort;
-    if (!$scope.sort) {
-        $scope.sort = "size";
-    }
-    switch ($scope.sort) {
-        case 'size':
-            $scope.LoadStandardAboutSizeList($routeParams.pageIndex || 1);
-            break;
-        case 'color':
-            $scope.LoadStandardAboutColorList($routeParams.pageIndex || 1);
-            break;
-    }
-}
+
 
 
 

@@ -42,6 +42,9 @@
           resturls.add("AddTags", "Home/Tags/addTags");//新增标签
           resturls.add("EditTags", "Home/Tags/updateTags");//编辑标签
           resturls.add("DeleteTags", "Home/Tags/deleteTags");//删除标签
+          resturls.add("searchCategoryByStandardId", "Home/Standard/searchCategoryByStandardId");//根据规格id查询分类
+          resturls.add("searchParamterBySidAndCatid", "Home/Standard/searchParamterBySidAndCatid");// 根据规格id和分类id查询参数值列表（和分类相关）
+          resturls.add("searchParamterBySid", "Home/Standard/searchParamterBySid");//// 根据规格id和查询参数值列表（和分类无关）
 
           //推荐位
           resturls.add("AddSlideShow", "Home/PictureManagement/addSlideShow");//新增幻灯片
