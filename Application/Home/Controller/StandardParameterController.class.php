@@ -19,7 +19,7 @@ class StandardParameterController extends Controller {
 	// 添加
 	public function addStandardParameter() {
 		$result = new DataResult ();
-		$StandardParameter = new StandardParameterModel ();
+		$StandardParameter = new StandardParameterModel() ;
 		
 		$parameter_name = I ( 'parameter_name' );
 		$belong_standard_id = I ( 'belong_standard_id' );
