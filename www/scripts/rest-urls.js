@@ -58,6 +58,7 @@
           
           
           // 订单模块
+          resturls.add("searchIndexOrderInfo", "Home/Order/searchIndexOrderInfo");//查询订单
           resturls.add("LoadOrder", "Home/Order/searchOrder");//查询订单
           resturls.add("getOrder", "Home/Order/getOrder");//获取单个订单
           resturls.add("searchOrderItem", "Home/Order/searchOrderItem");//查询订单

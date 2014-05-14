@@ -138,4 +138,10 @@ class OrderController extends Controller {
 		$result = $Order->searchByPage ($keyname, $order_time1, $order_time2, $order_status, $pageIndex, $pageSize );
 		$this->ajaxReturn ( $result );
 	}
+	public function searchIndexOrderInfo() {
+		$result = new DataResult ();
+		$Order = new OrderModel ();
+		$result = $Order->searchIndexOrderInfo ();
+		$this->ajaxReturn ( $result );
+	}
 }
