@@ -1,5 +1,5 @@
-﻿<!--新增尺寸参数Modal -->
-<div class="modal fade" id="addsizemodal" tabindex="-1" role="dialog"
+﻿<!--新增颜色参数Modal -->
+<div class="modal fade" id="addcolormodal" tabindex="-1" role="dialog"
     aria-hidden="true" ng-controller="AddProductStandardCtrl">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -9,20 +9,11 @@
                 <h4 class="titlefont modal-title">参数添加</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" ng-class="showerror?'showerror':''" name="AddSizeStandardForm">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            请选择分类：
-                        </label>
-                        <div class="col-sm-4">
-                            <select class="form-control" ng-options="MainCategory.cat_name for MainCategory in  MainCategorys" ng-model="mainitem" ng-required="true">
-                            </select>
-                        </div>
-                    </div>
+                <form class="form-horizontal"  name="AddColorStandardForm">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">参数</label>
                         <div class="col-sm-3">
-                            <input class="form-control"   ng-model="ParamerterName" name="name">
+                            <input class="form-control"  ng-model="ParamerterName" name="name">
                         </div>
                         <div class="col-sm-2">
                             <a ng-click="ParamerterName?AddStandardParameterMark(ParamerterName):''">添加</a>
@@ -35,7 +26,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ng-click="AddSizeStandard(mainitem,ParameterMarks)">
+                <button type="button" class="btn btn-primary" ng-click="AddColorStandard(ParameterMarks)">
                     保 存</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
             </div>

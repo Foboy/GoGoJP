@@ -8,7 +8,7 @@
         <li ng-class="sort=='size'?'active':''"><a ng-href="#/standard/size/">尺寸</a></li>
         <li ng-class="sort=='color'?'active':''"><a ng-href="#/standard/color">颜色</a></li>
         <li ng-show="sort=='size'?true:false" class="pull-right"><a ng-click="AddSizeStandardModal()" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
-        <li ng-show="sort=='color'?true:false" class="pull-right"><a href="#" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
+        <li ng-show="sort=='color'?true:false" class="pull-right"><a ng-click="AddColorStandardModal()" class="text-muted"><i class="fa fa-fw fa-plus"></i>添加参数</a></li>
     </ul>
 
     <div class="row margin_bottom" ng-show="sort=='size'?true:false">
@@ -59,4 +59,5 @@
     </div>
 </div>
 <div ng-include="'partials/standard/add-sizestandard-modal.html'"></div>
+<div ng-include="'partials/standard/add-colorstandard-modal.html'"></div>
 

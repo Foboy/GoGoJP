@@ -69,7 +69,7 @@ class StandardController extends Controller {
 		}
 	}
 	// 批量添加通用规格参数
-	public function AddCommonStandardParameter() {
+	public function AddCommonStandardParameters() {
 		$result = new DataResult ();
 		$parameter_names=I('parameter_names');
 		$standard_id=I('standard_id');
