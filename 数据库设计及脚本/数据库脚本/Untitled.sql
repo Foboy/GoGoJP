@@ -174,7 +174,7 @@ CREATE TABLE `gogojp_category_r_standard_parameter` (
   `category_id` int(11) DEFAULT NULL COMMENT '商品种类id',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='商品类别规格关系表';
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='商品类别规格关系表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `gogojp_category_r_standard_parameter` (
 
 LOCK TABLES `gogojp_category_r_standard_parameter` WRITE;
 /*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` DISABLE KEYS */;
-INSERT INTO `gogojp_category_r_standard_parameter` VALUES (1,1,1,9,'2014-05-13 12:44:15'),(2,1,2,9,'2014-05-13 12:44:15'),(3,1,3,9,'2014-05-13 12:44:15'),(4,2,11,9,'2014-05-13 12:44:15'),(5,2,15,9,'2014-05-13 12:44:15'),(6,2,16,9,'2014-05-13 12:44:15'),(7,1,1,10,'2014-05-14 05:34:36'),(8,1,2,10,'2014-05-14 05:34:36'),(9,1,3,10,'2014-05-14 05:34:36'),(10,2,11,10,'2014-05-14 05:34:36'),(11,2,15,10,'2014-05-14 05:34:36'),(12,2,12,10,'2014-05-14 05:34:36');
+INSERT INTO `gogojp_category_r_standard_parameter` VALUES (17,1,20,9,'2014-05-15 07:20:47'),(15,1,18,9,'2014-05-15 07:18:21'),(16,1,19,9,'2014-05-15 07:20:47'),(4,1,5,9,'2014-05-15 07:14:50'),(3,1,4,9,'2014-05-15 07:14:50'),(2,1,3,9,'2014-05-15 07:14:50'),(1,1,2,9,'2014-05-15 07:14:50');
 /*!40000 ALTER TABLE `gogojp_category_r_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -473,13 +473,13 @@ DROP TABLE IF EXISTS `gogojp_standard_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gogojp_standard_parameter` (
-  `standard_parameter_id` int(11) NOT NULL COMMENT '表的主键自增id',
+  `standard_parameter_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表的主键自增id',
   `parameter_name` varchar(45) NOT NULL COMMENT '参数名称',
   `belong_standard_id` int(11) NOT NULL COMMENT '所属规格id',
   `parameter_status` tinyint(4) DEFAULT '1' COMMENT '参数状态 1：启用 2：禁用',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`standard_parameter_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='规格参数表';
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='规格参数表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,7 +488,7 @@ CREATE TABLE `gogojp_standard_parameter` (
 
 LOCK TABLES `gogojp_standard_parameter` WRITE;
 /*!40000 ALTER TABLE `gogojp_standard_parameter` DISABLE KEYS */;
-INSERT INTO `gogojp_standard_parameter` VALUES (1,'S',1,1,'2014-05-14 03:37:36'),(2,'M',1,1,'2014-05-14 03:37:36'),(3,'L',1,1,'2014-05-14 03:37:36'),(4,'XL',1,1,'2014-05-14 03:37:36'),(5,'XXL',1,1,'2014-05-14 03:37:36'),(6,'32',1,1,'2014-05-14 03:37:36'),(7,'33',1,1,'2014-05-14 03:37:36'),(8,'34',1,1,'2014-05-14 03:37:36'),(9,'35',1,1,'2014-05-14 03:37:36'),(10,'36',1,1,'2014-05-14 03:37:36'),(11,'红',2,2,'2014-05-14 16:48:06'),(12,'黄',2,1,'2014-05-14 03:37:36'),(13,'蓝',2,1,'2014-05-14 03:37:36'),(14,'青',2,2,'2014-05-14 16:48:24'),(15,'绿',2,1,'2014-05-14 03:37:36'),(16,'紫',2,1,'2014-05-14 03:37:36');
+INSERT INTO `gogojp_standard_parameter` VALUES (18,'T',1,1,'2014-05-15 07:18:21'),(2,'M',1,1,'2014-05-14 03:37:36'),(3,'L',1,1,'2014-05-14 03:37:36'),(4,'XL',1,1,'2014-05-14 03:37:36'),(5,'XXL',1,2,'2014-05-15 07:14:17'),(6,'32',1,1,'2014-05-14 03:37:36'),(7,'33',1,1,'2014-05-14 03:37:36'),(8,'34',1,1,'2014-05-14 03:37:36'),(9,'35',1,1,'2014-05-14 03:37:36'),(10,'36',1,1,'2014-05-14 03:37:36'),(11,'红',2,2,'2014-05-14 16:48:06'),(12,'黄',2,1,'2014-05-14 03:37:36'),(13,'蓝',2,1,'2014-05-14 03:37:36'),(14,'青',2,2,'2014-05-14 16:48:24'),(15,'绿',2,1,'2014-05-14 03:37:36'),(16,'紫',2,1,'2014-05-14 03:37:36'),(19,'H',1,1,'2014-05-15 07:20:47'),(20,'P',1,1,'2014-05-15 07:20:47');
 /*!40000 ALTER TABLE `gogojp_standard_parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -534,7 +534,7 @@ CREATE TABLE `gogojp_tags` (
   `tag_description` varchar(400) DEFAULT NULL COMMENT '标签描述',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='商品标签表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='商品标签表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -620,4 +620,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-15  1:15:25
+-- Dump completed on 2014-05-15 16:16:26
