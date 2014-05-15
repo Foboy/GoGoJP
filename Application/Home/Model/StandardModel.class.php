@@ -107,6 +107,16 @@ class StandardModel extends Model {
 	}
 	//跟新规格参数状态
 	public function UpdateStandardParameterStatus($standard_parameter_id,$parameter_status){
-		
+		$result=new DataResult();
+		$StandardParameter=new StandardParameterModel();
+		$value=$StandardParameter->updateModelStatus($standard_parameter_id, $parameter_status);
+		if($value>0){
+			$result->ErrorMessage='新增成功';
+		}else
+		{
+			$result->ErrorMessage='新增失败';
+			$result->Error=ErrorType::Failed;
+		}
+		return $result;
 	}
 }

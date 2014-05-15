@@ -62,17 +62,23 @@ function ProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, 
             }
         });
     }
-    $scope.GetParamters = function (data) {
-        $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: data.standard_id, category_id: data.catid }).success(function (result) {
+    // 根据规格id和分类id查询参数值
+    $scope.SearchParamterBySidAndCatid = function (standard_id, data) {
+        $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: standard_id, category_id: data.catid }).success(function (result) {
             if (result.Error == 0) {
-                $scope.Paramters = result.Data;
-                if (result.Data) {
-                    for (var i = 0; i < result.Data.length; i++) {
-                        Paramters = result.Data[i];
-                    }
-                }
+                $scope.Parameters = result.Data;
             } else {
-                $scope.Paramters = [];
+                $scope.Parameters = [];
+            }
+        });
+    }
+    //根据规格id查询参数值
+    $scope.SearchParamterBySid = function (standard_id) {
+        $http.post($resturls['searchParamterBySid'], { standard_id: standard_id }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.Parameters = result.Data;
+            } else {
+                $scope.Parameters = [];
             }
         });
     }
@@ -108,12 +114,22 @@ function ProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, 
     $scope.AddColorStandardModal = function () {
         $("#addcolormodal").modal('show');
     }
+    //编辑规格参数模态框
+    $scope.EditStandardParamterModal = function (data) {
+        $scope.kind = standard_id;
+        switch (standard_id) {
+            case 1:
+                $scope.SearchParamterBySidAndCatid(standard_id, data);
+                break;
+            case 2:
+                $scope.SearchParamterBySid(standard_id);
+                break;
+        }
+        $("#editparmodal").modal('show');
+    }
 }
 function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     $scope.ParameterMarks = [];
-    $scope.show = function (data) {
-        console.log(data);
-    }
     //添加规格参数标签（并未保存到数据库）
     $scope.AddStandardParameterMark = function (ParamerterName) {
         $scope.ParameterMarks.push({ name: ParamerterName, id: Math.random() });
@@ -183,4 +199,41 @@ function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturl
             $.scojs_message('请添加参数', $.scojs_message.TYPE_ERROR);
         }
     }
+    //改变参数禁用启用状态
+    $scope.ChangeStandardParameterSatus = function (data) {
+        if (data.parameter_status == 1) {
+            data.parameter_status = 2
+        } else {
+            data.parameter_status = 1;
+        }
+    }
+    //批量更新规格参数状态
+    $scope.UpdateStandardParameterStatus = function (dataArray, kind) {
+        var parameter_ids = '';
+        var parameter_statuses = '';
+        if (angular.isArray(dataArray)) {
+            for (var i = 0; i < dataArray.length; i++) {
+                parameter_statuses = parameter_statuses + dataArray[i].parameter_status + ',';
+                parameter_ids = parameter_ids + dataArray[i].standard_parameter_id + ',';
+
+            }
+            parameter_statuses = $scope.trimEnd(parameter_statuses, ',');
+            parameter_ids = $scope.trimEnd(parameter_ids, ',');
+            $http.post($resturls["UpdateStandardParameterStatus"], { standard_parameter_ids: parameter_ids, parameter_statuses: parameter_statuses }).success(function (result) {
+                if (result.Error == 0) {
+                    $("#editparmodal").modal('hide');
+                    if (kind == 1) {
+                        $scope.LoadStandardAboutSizeList($routeParams.pageIndex || 1);
+                    } else {
+                        $scope.LoadStandardAboutColorList();
+                    }
+                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                } else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            });
+        }
+    }
+
 }

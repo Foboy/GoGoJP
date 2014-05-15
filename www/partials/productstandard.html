@@ -25,7 +25,7 @@
                         <td>{{SizeCategory.cat_name}}</td>
                         <td>{{SizeCategory.IsableParamters}}</td>
                         <td>{{SizeCategory.DisableParamters}}</td>
-                        <td><a ng-click="edit()">编辑</a></td>
+                        <td><a ng-click="EditStandardParamterModal(SizeCategory)">编辑</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -44,7 +44,7 @@
                     <tr>
                         <td>{{IsableColorParamtersFormat}}</td>
                         <td>{{DisableColorParamtersFormat}}</td>
-                        <td><a ng-click="edit()">编辑</a></td>
+                        <td><a ng-click="EditStandardParamterModal(Parameters)">编辑</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -60,4 +60,5 @@
 </div>
 <div ng-include="'partials/standard/add-sizestandard-modal.html'"></div>
 <div ng-include="'partials/standard/add-colorstandard-modal.html'"></div>
+<div ng-include="'partials/standard/edit-standardparmeter-modal.html'"></div>
 

@@ -36,6 +36,19 @@ class StandardParameterModel extends Model {
 		}
 		return $result;
 	}
+	//跟新表中参数状态
+	public function updateModelStatus($standard_parameter_id,$parameter_status){
+		$data = array (
+				'parameter_status'=>$parameter_status
+		);
+		// 注意判断条件使用恒等式
+		$map ['standard_parameter_id'] = $standard_parameter_id;
+		if ($this->where ( $map )->save ( $data ) !== false) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 	// 编辑表中数据
 	public function updateModel($standard_parameter_id, $parameter_name, $belong_standard_id, $create_time) {
 		$result = new DataResult ();

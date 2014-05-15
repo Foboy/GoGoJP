@@ -1,0 +1,31 @@
+﻿<!--编辑参数Modal -->
+<div class="modal fade" id="editparmodal" tabindex="-1" role="dialog"
+    aria-hidden="true" ng-controller="AddProductStandardCtrl" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+                <i class="titlefont glyphicon glyphicon-plus pull-left marginmodal"></i>
+                <h4 class="titlefont modal-title">编辑参数</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal"  name="EidtParameterForm">
+                    <button class="btn btn-primary btn-flat btn-sm" data-toggle="dropdown" ng-repeat="Parameter in Parameters" ng-click="ChangeStandardParameterSatus(Parameter)">
+                       {{Parameter.parameter_name}}
+                        <span ng-class="Parameter.parameter_status==1?'fa fa-check-circle-o':'fa fa-ban'" ></span>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer" ng-model="kind">
+                <button type="button" class="btn btn-primary" ng-click="UpdateStandardParameterStatus(Parameters,kind)">
+                    保 存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+

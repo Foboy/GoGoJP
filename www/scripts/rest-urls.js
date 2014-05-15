@@ -47,6 +47,7 @@
           resturls.add("searchParamterBySid", "Home/Standard/searchParamterBySid");//// 根据规格id和查询参数值列表（和分类无关）
           resturls.add("AddCatagoryStandardParameters", "Home/Standard/AddCatagoryStandardParameters");// 批量添加分类规格参数
           resturls.add("AddCommonStandardParameters", "Home/Standard/AddCommonStandardParameters"); // 批量添加通用规格参数
+          resturls.add("UpdateStandardParameterStatus", "Home/Standard/UpdateStandardParameterStatus");// 批量更新规格参数状态
 
           //推荐位
           resturls.add("AddSlideShow", "Home/PictureManagement/addSlideShow");//新增幻灯片

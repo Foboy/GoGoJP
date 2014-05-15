@@ -11,6 +11,7 @@ use Think\Controller;
 use Home\Model\StandardModel;
 use Common\Common\ErrorType;
 use Common\Common\DataResult;
+use Home\Model\StandardParameterModel;
 
 class StandardController extends Controller {
 	// 根据规格id查询分类
@@ -71,8 +72,8 @@ class StandardController extends Controller {
 	// 批量添加通用规格参数
 	public function AddCommonStandardParameters() {
 		$result = new DataResult ();
-		$parameter_names=I('parameter_names');
-		$standard_id=I('standard_id');
+		$parameter_names = I ( 'parameter_names' );
+		$standard_id = I ( 'standard_id' );
 		if (! isset ( $parameter_names ) or empty ( $parameter_names )) {
 			$result->Error = ErrorType::RequestParamsFailed;
 			$result->ErrorMessage = "'parameter_names' params error";
@@ -87,7 +88,7 @@ class StandardController extends Controller {
 		$parameterArray = explode ( ',', $parameter_names );
 		if (count ( $parameterArray ) > 0) {
 			for($i = 0; $i < count ( $parameterArray ); $i ++) {
-				$standardmodel->AddCommonStandardParameter($parameterArray [$i] , $standard_id);
+				$standardmodel->AddCommonStandardParameter ( $parameterArray [$i], $standard_id );
 			}
 			$this->ajaxReturn ( $result );
 		} else {
@@ -96,9 +97,33 @@ class StandardController extends Controller {
 			$this->ajaxReturn ( $result );
 		}
 	}
-	// 批量跟新规格参数状态
+	// 批量更新规格参数状态
 	public function UpdateStandardParameterStatus($standard_parameter_ids, $parameter_statuses) {
+		$result = new DataResult ();
 		$standard_parameter_ids = I ( 'standard_parameter_ids' );
 		$parameter_statuses = I ( 'parameter_statuses' );
+		if (! isset ( $standard_parameter_ids ) or empty ( $standard_parameter_ids )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'standard_parameter_ids' params error";
+			$this->ajaxReturn ( $result );
+		}
+		if (! isset ( $parameter_statuses ) or empty ( $parameter_statuses )) {
+			$result->Error = ErrorType::RequestParamsFailed;
+			$result->ErrorMessage = "'parameter_statuses' params error";
+			$this->ajaxReturn ( $result );
+		}
+		$parameterIdArray = explode ( ',', $standard_parameter_ids );
+		$parameterStatusArray = explode ( ',', $parameter_statuses );
+		$standardmodel = new StandardModel ();
+		if (count ( $parameterIdArray ) > 0) {
+			for($i = 0; $i < count ( $parameterIdArray ); $i ++) {
+				$standardmodel->UpdateStandardParameterStatus ( $parameterIdArray [$i], $parameterStatusArray [$i] );
+			}
+			$this->ajaxReturn ( $result );
+		} else {
+			$result->Error = ErrorType::Failed;
+			$result->ErrorMessage = '添加失败';
+			$this->ajaxReturn ( $result );
+		}
 	}
 }
