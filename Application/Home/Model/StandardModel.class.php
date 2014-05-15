@@ -11,6 +11,7 @@ use Think\Model;
 use Think\Db\Driver\Pdo;
 use Common\Common\PageDataResult;
 use Common\Common\DataResult;
+use Common\Common\ErrorType;
 
 class StandardModel extends Model {
 	// 根据规格id获取此规格下的商品分类
@@ -68,14 +69,43 @@ class StandardModel extends Model {
 		$result->Data = $data;
 		return $result;
 	}
-	//批量添加分类规格参数
+	//添加分类规格参数
 	public function AddCatagoryStandardParameter($standard_id,$category_id,$parameter_name) {
-	}
-	//批量添加通用规格参数
-	public function AddCommonStandardParameter($parameter_name){
+		$result=new DataResult();
+		$StandardParameter=new StandardParameterModel();
+		$parameter_id=$StandardParameter->addModel($parameter_name, $standard_id);
+		if($parameter_id>0){
+			$CategoryRStandardParameter=new CategoryRStandardParameterModel();
+			if($CategoryRStandardParameter->addModel($standard_id, $parameter_id, $category_id)->Error==0){
+				$result->ErrorMessage='新增成功';
+			}else 
+			{
+				$result->ErrorMessage='新增失败';
+				$result->Error=ErrorType::Failed;
+			}
+		}else 
+		{
+			$result->ErrorMessage='新增失败';
+			$result->Error=ErrorType::Failed;
+		}
+		return $result;
 		
 	}
-	//批量跟新规格参数状态
+	//添加通用规格参数
+	public function AddCommonStandardParameter($parameter_name,$standard_id){
+		$result=new DataResult();
+		$StandardParameter=new StandardParameterModel();
+		$parameter_id=$StandardParameter->addModel($parameter_name, $standard_id);
+		if($parameter_id>0){
+			$result->ErrorMessage='新增成功';
+		}else
+		{
+			$result->ErrorMessage='新增失败';
+			$result->Error=ErrorType::Failed;
+		}
+		return $result;
+	}
+	//跟新规格参数状态
 	public function UpdateStandardParameterStatus($standard_parameter_id,$parameter_status){
 		
 	}

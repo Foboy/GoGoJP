@@ -1,10 +1,12 @@
 <?php
+
 /**
  * @author yangchao
  * @email:66954011@qq.com
  * @date: 2014/5/13 22:02:50
  */
 namespace Home\Model;
+
 use Think\Model;
 use Common\Common\PageDataResult;
 use Think\Db\Driver\Pdo;
@@ -14,13 +16,12 @@ use Common\Common\ErrorType;
 class CategoryRStandardParameterModel extends Model {
 	protected $tableName = 'category_r_standard_parameter';
 	// 增加表中数据
-	public function addModel($standard_id,$parameter_id,$category_id,$create_time) {
+	public function addModel($standard_id, $parameter_id, $category_id) {
 		$result = new DataResult ();
 		$data = array (
-'standard_id' => $standard_id,
-                   'parameter_id' => $parameter_id,
-                   'category_id' => $category_id,
-                   'create_time' => $create_time
+				'standard_id' => $standard_id,
+				'parameter_id' => $parameter_id,
+				'category_id' => $category_id 
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -35,8 +36,8 @@ class CategoryRStandardParameterModel extends Model {
 	// 删除表中数据
 	public function deleteModel($id) {
 		$result = new DataResult ();
-        $map['id']=$id;
-		if ($this->where ($map)->delete () == 1) {
+		$map ['id'] = $id;
+		if ($this->where ( $map )->delete () == 1) {
 			$result->ErrorMessage = '删除成功';
 		} else {
 			$result->Error = ErrorType::Failed;
@@ -45,18 +46,18 @@ class CategoryRStandardParameterModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($id,$standard_id,$parameter_id,$category_id,$create_time) {
+	public function updateModel($id, $standard_id, $parameter_id, $category_id, $create_time) {
 		$result = new DataResult ();
 		$data = array (
-'id' => $id,
-                   'standard_id' => $standard_id,
-                   'parameter_id' => $parameter_id,
-                   'category_id' => $category_id,
-                   'create_time' => $create_time
+				'id' => $id,
+				'standard_id' => $standard_id,
+				'parameter_id' => $parameter_id,
+				'category_id' => $category_id,
+				'create_time' => $create_time 
 		);
 		// 注意判断条件使用恒等式
-        $map['id']=$id;
-		if ($this->where ($map )->save ( $data ) !== false) {
+		$map ['id'] = $id;
+		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $id );
 			$result->ErrorMessage = '更新成功';
 		} else {
@@ -68,12 +69,12 @@ class CategoryRStandardParameterModel extends Model {
 	// 根据主键id获取某个专辑信息
 	public function getModel($id) {
 		$result = new DataResult ();
-        $map['id']=$id;
-		$result->Data = $this->where ($map )->find ();
+		$map ['id'] = $id;
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
-	public function searchByPage($standard_id,$parameter_id,$category_id,$create_time, $pageindex, $pagesize) {
+	public function searchByPage($standard_id, $parameter_id, $category_id, $create_time, $pageindex, $pagesize) {
 		$result = new PageDataResult ();
 		$lastpagenum = $pageindex * $pagesize;
 		$conn = new Pdo ();
@@ -82,22 +83,22 @@ class CategoryRStandardParameterModel extends Model {
  and  ( category_id = :category_id or :category_id=0 ) 
  and  ( create_time = :create_time or :create_time='' ) 
  limit $lastpagenum,$pagesize", array (
-':standard_id' => $standard_id,
-                   ':parameter_id' => $parameter_id,
-                   ':category_id' => $category_id,
-                   ':create_time' => $create_time
-			)  );
+				':standard_id' => $standard_id,
+				':parameter_id' => $parameter_id,
+				':category_id' => $category_id,
+				':create_time' => $create_time 
+		) );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_category_r_standard_parameter where  ( standard_id = :standard_id or :standard_id=0 ) 
  and  ( parameter_id = :parameter_id or :parameter_id=0 ) 
  and  ( category_id = :category_id or :category_id=0 ) 
  and  ( create_time = :create_time or :create_time='' ) 
 ", array (
-':standard_id' => $standard_id,
-                   ':parameter_id' => $parameter_id,
-                   ':category_id' => $category_id,
-                   ':create_time' => $create_time
-			)  );
-		$totalcount=$data[0]['totalcount'];
+				':standard_id' => $standard_id,
+				':parameter_id' => $parameter_id,
+				':category_id' => $category_id,
+				':create_time' => $create_time 
+		) );
+		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
 		$result->Data = $objects;

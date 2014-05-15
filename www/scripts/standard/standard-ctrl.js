@@ -128,4 +128,7 @@ function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturl
     $scope.AddSizeStandard = function (data) {
 
     }
+    $scope.AddColorStandard = function (data) {
+    }
+
 }
