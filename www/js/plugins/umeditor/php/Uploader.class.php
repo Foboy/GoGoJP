@@ -102,8 +102,13 @@ class Uploader {
 		}
 		
 		$this->fullName = $folder . '/' . $this->getName ();
-		
-		if ($this->stateInfo == $this->stateMap [0]) {
+		if ( $this->stateInfo == $this->stateMap[ 0 ] ) {
+			if ( !move_uploaded_file( $file[ "tmp_name" ] , $this->fullName ) ) {
+				$this->stateInfo = $this->getStateInfo( "MOVE" );
+			}
+		}
+		//调用图片服务器的接口（需要的时候开启）
+		/* if ($this->stateInfo == $this->stateMap [0]) {
 			if (! move_uploaded_file ( $file ["tmp_name"], $this->fullName )) {
 				$this->stateInfo = $this->getStateInfo ( "MOVE" );
 			}else 
@@ -117,7 +122,7 @@ class Uploader {
 				$result=$this::UploadByCURL ( $data, $url );
 				$this->fullName= json_decode($result)->data->uploadResult->url;
 			}
-		}
+		} */
 	}
 	
 	/* 手动post提交 */

@@ -31,13 +31,13 @@ class ProductModel extends Model {
 		$result = new DataResult ();
 		$data = array (
 				'catid' => I ( 'catid', 0 ),
-				'sign' => I ( 'sign', '', 'htmlspecialchars' ),
+				'product_tag_id' => I ( 'product_tag_id', 0),
 				'product_name' => I ( 'product_name' ),
 				'old_price' => I ( 'old_price' ),
 				'new_price' => I ( 'new_price' ),
 				'small_pic' => I ( 'small_pic' ),
 				'big_pic' => I ( 'big_pic' ),
-				'product_description' => I ( 'product_description' ),
+				'product_description' => $_POST ['product_description'],
 				'product_count' => I ( 'product_count', 0 ) 
 		);
 		// 注意判断条件使用恒等式

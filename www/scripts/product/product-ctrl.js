@@ -349,8 +349,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
-            console.log(data);
-            $http.post($resturls["AddProduct"], { sign: data.sign, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
+            $http.post($resturls["AddProduct"], { product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -378,6 +377,47 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
 
 //修改商品
 function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.OpenWindowDialog = function (url, name, iWidth, iHeight) {
+        var url = url; //转向网页的地址;
+        var name = name;                          //网页名称，可为空;
+        var iWidth = iWidth;                         //弹出窗口的宽度;
+        var iHeight = iHeight;                      //弹出窗口的高度;
+        var iTop = (window.screen.availHeight - 30 - iHeight) / 2;       //获得窗口的垂直位置;
+        var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;           //获得窗口的水平位置;
+        window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
+    }
+    $scope.OpenPreview = function (data) {
+        //验证填写了才能跳转
+        if (data) {
+            var result = { product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, picsrc: $("#imagezone").attr("src"), editconent: $scope.um.getContent() };
+            $("#PageContent").val(angular.toJson(result));
+        }
+        window.open('partials/product/product-preview.html');
+    }
+    $scope.UpdateProduct = function (data) {
+        if ($scope.UpdateProductForm.$valid) {
+            $scope.showerror = false;
+            var catid = $scope.mainitem.catid;
+            if ($scope.subitem) {
+                catid = $scope.subitem.catid;
+            }
+            $http.post($resturls["UpdateProduct"], { productid: data.productid, product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
+                if (result.Error == 0) {
+                    $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
+
+                }
+                else {
+                    $scope.showerror = true;
+                    $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+                }
+            })
+        } else {
+            $scope.showerror = true;
+        }
+    }
     $scope.GetProduct = function () {
         $http.post($resturls["GetProduct"], { productid: $routeParams.productid }).success(function (result) {
             if (result.Error == 0) {
@@ -388,7 +428,12 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                         $scope.mainitem = $scope.MainCategorys[i];
                     }
                 }
-                if (result.Data.subcategory) {
+                for (var i = 0; i < $scope.ProductTags.length; i++) {
+                    if (result.Data.product.product_tag_id == $scope.ProductTags[i].tag_id) {
+                        $scope.tagitem = $scope.ProductTags[i];
+                    }
+                }
+                if (result.Data.subcategory.catid!=undefined) {
                     $http.post($resturls["LoadSubCategory"], { catid: result.Data.subcategory.parentid }).success(function (call) {
                         if (call.Error == 0) {
                             $scope.SubCategorys = call.Data;
@@ -405,6 +450,10 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                             }
                         }
                     });
+                } else {
+                    $scope.SubCategorys = [];
+                    $scope.showsubselect = false;
+
                 }
                 $scope.um.setContent($scope.Product.product_description);
             } else {
@@ -484,7 +533,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                 }
             }
         });
-    }
+    };
     $scope.LoadMainCategory();
     $scope.LoadTags();
     $scope.UpLoadImage();

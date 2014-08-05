@@ -5,7 +5,7 @@
 </div>
 <!-- Main content -->
 <div class="content">
-    <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="AddProductForm">
+    <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="UpdateProductForm">
         <div class="form-group">
             <label class="col-sm-3 control-label">
                 商品名称：
@@ -19,12 +19,10 @@
                 商品分类:
             </label>
             <div class="col-sm-4">
-                <select class="form-control" ng-required="true" ng-options="MainCategory.cat_name for MainCategory in MainCategorys" ng-model="mainitem" ng-change="ChooseMainCategory(mainitem)">
-                </select>
+                <select class="form-control" ng-required="true" ng-options="MainCategory.cat_name for MainCategory in MainCategorys" ng-model="mainitem" ng-change="ChooseMainCategory(mainitem)"></select>
             </div>
             <div class="col-sm-4" ng-show="showsubselect">
-                <select class="form-control" ng-options="SubCategory.cat_name for SubCategory in  SubCategorys" ng-model="subitem">
-                </select>
+                <select class="form-control" ng-options="SubCategory.cat_name for SubCategory in  SubCategorys" ng-model="subitem"></select>
             </div>
         </div>
         <div class="form-group">
@@ -56,7 +54,7 @@
                 商品图片：
             </label>
             <div class="col-sm-4">
-                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(图片800x800像素的效果最佳) 
+                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(图片800x800像素的效果最佳)
                 <br />
                 <br />
                 <img id="imagezone" ng-src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" alt="图片加载失败" ng-model="Product.pic_url" class="img-thumbnail" style="width: 200px; height: 200px" />
@@ -67,7 +65,7 @@
                 商品详情：
             </label>
             <div class="col-sm-8">
-                <script type="text/plain" id="myEditor" style="width: auto; height: 240px;">
+                <script type="text/plain" id="myEditor" style="width: 1000px; height: 240px;">
                 </script>
             </div>
         </div>
@@ -76,7 +74,7 @@
                 规格参数：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control"  ng-model="Product.sign" name="sign" placeholder="规格参数">
+                <input type="text" class="form-control" ng-model="Product.sign" name="sign" placeholder="规格参数">
             </div>
         </div>
         <div class="form-group">
@@ -84,7 +82,7 @@
                 商品标签：
             </label>
             <div class="col-sm-4">
-                <select class="form-control"  ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true">
+                <select class="form-control" ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -96,8 +94,8 @@
         <br />
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)" >预览</button>
-                <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="AddProduct(Product)">保存</button>
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)">预览</button>
+                <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="UpdateProduct(Product)">保存</button>
             </div>
         </div>
     </form>
