@@ -49,14 +49,20 @@
           resturls.add("AddCatagoryStandardParameters", "Home/Standard/AddCatagoryStandardParameters");// 批量添加分类规格参数
           resturls.add("AddCommonStandardParameters", "Home/Standard/AddCommonStandardParameters"); // 批量添加通用规格参数
           resturls.add("UpdateStandardParameterStatus", "Home/Standard/UpdateStandardParameterStatus");// 批量更新规格参数状态
+          resturls.add("GetProdcutAlbum", "Home/Album/getAlbum");//获取合辑详细
 
           //推荐位
           resturls.add("AddSlideShow", "Home/PictureManagement/addSlideShow");//新增幻灯片
-          resturls.add("EditSlideShow", "Home/PictureManagement/updateSlideShow");//编辑幻灯片
+          resturls.add("UpdateSlideShow", "Home/PictureManagement/updateSlideShow");//编辑幻灯片
           resturls.add("LoadSlideShow", "Home/PictureManagement/searchSlideShow");//分页查询幻灯片列表
           resturls.add("DeleteSlideShow", "Home/PictureManagement/deleteSlideShow");//删除幻灯片
           resturls.add("IsTopSlideShow", "Home/PictureManagement/isTopSlideShow");//置顶或取消置顶幻灯片
+          resturls.add("GetSlideShow", "Home/PictureManagement/getSlideShow");//获取幻灯片详细
 
+          //合辑
+          resturls.add("AddAlbum", "Home/Album/addAlbum");//新增幻灯片
+          resturls.add("AddAlbumProduct", "Home/Album/addAlbumProduct");//打包商品
+          resturls.add("IsShow", "Home/Album/isShow");//是否显示
 
 
           

@@ -24,6 +24,7 @@ class PictureManagementController extends Controller {
 			}
 			$fileName = time () . $_FILES ['Filedata'] ['name'];
 			$targetFile = rtrim ( $targetPath, '/' ) . '/' . $fileName;
+			var_dump($targetFile);
 			// Validate the file type
 			$fileTypes = array (
 					'jpg',
@@ -114,7 +115,7 @@ class PictureManagementController extends Controller {
 		$title = I ( 'title', '', 'htmlspecialchars' );
 		$bigPic = I ( 'bigPic' );
 		$smallPic = I ( 'smallPic' );
-		$albumId = I ( 'albumId' );
+		$albumId = I ( 'albumId' ,'0');
 		$this->ajaxReturn ( $Pic->addModel ( $title, $bigPic, $smallPic, $albumId ) );
 	}
 	// 编辑幻灯片
@@ -125,7 +126,7 @@ class PictureManagementController extends Controller {
 		$bigPic = I ( 'bigPic' );
 		$smallPic = I ( 'smallPic' );
 		$albumId = I ( 'albumId' );
-		$this->ajaxReturn ( $Pic->updateModel ( $picId, $title, $bigPic, $smallPic, $albumId ) );
+		$this->ajaxReturn ( $Pic->updateModel ( $picId, $title, $bigPic, $smallPic, $albumId,1 ) );
 	}
 	// 删除幻灯片
 	public function deleteSlideShow() {
@@ -145,5 +146,23 @@ class PictureManagementController extends Controller {
 		$pageIndex = I ( 'pageIndex', 0 );
 		$pageSize = I ( 'pageSize', 10 );
 		$this->ajaxReturn ( $Pic->searchByPage ( $pageIndex, $pageSize ) );
+	}
+	//是否置顶
+	public function isTopSlideShow()
+	{
+		$Pic = new PictureModel ();
+		$picId = I ('picId');
+		$title = I ( 'title', '', 'htmlspecialchars' );
+		$bigPic = I ( 'bigPic' );
+		$smallPic = I ( 'smallPic' );
+		$albumId = I ( 'albumId' );
+		$isTop=I('isTop');
+		if($isTop==1){
+			$isTop=2;
+		}else 
+		{
+			$isTop=1;
+		}
+		$this->ajaxReturn ( $Pic->updateModel ( $picId, $title, $bigPic, $smallPic, $albumId ,$isTop) );
 	}
 }

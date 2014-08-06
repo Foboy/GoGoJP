@@ -10,60 +10,60 @@ use Think\Db\Driver\Pdo;
 
 class AlbumModel extends Model {
 	protected $tableName = 'album';
-	// 新增model
+	// 鏂板model
 	public function addModel() {
 		$result = new DataResult ();
 		$data = array (
 				'album_name' => I ( 'album_name', '', 'htmlspecialchars' ),
 				'album_cover' => I ( 'album_cover' ),
-				'album_description' => I ( 'album_description' ),
-				'album_sign' => I ( 'album_sign', '' ) 
+				'album_description' => I ( 'album_description' )
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
 			$result->Data = $this->find ( $pid );
-			$result->ErrorMessage = '新增成功';
+			$result->ErrorMessage = '鏂板鎴愬姛';
 		} else {
 			$result->Error = ErrorType::Failed;
-			$result->ErrorMessage = '新增失败';
+			$result->ErrorMessage = '鏂板澶辫触';
 		}
 		return $result;
 	}
-	// 删除model
+	// 鍒犻櫎model
 	public function deleteModel() {
 	}
-	// 更新model
-	public function updateModel($album_id) {
+	// 鏇存柊model
+	public function updateModel($album_id,$album_name,$album_cover,$album_description,$album_status) {
 		$result = new DataResult ();
 		$data = array (
-				'album_name' => I ( 'album_name', '', 'htmlspecialchars' ),
-				'album_cover' => I ( 'album_cover' ),
-				'album_description' => I ( 'album_description' ),
-				'album_sign' => I ( 'album_sign', '' ) 
+				'album_name' => $album_name,
+				'album_cover' => $album_cover,
+				'album_description' => $album_description,
+				'album_status'=>$album_status
 		);
+		
 		$map = array (
 				'album_id' => $album_id 
 		);
-		// 注意判断条件使用恒等式
+		// 娉ㄦ剰鍒ゆ柇鏉′欢浣跨敤鎭掔瓑寮�
 		if ($this->where ( $map )->save ( $data ) !== false) {
 			$result->Data = $this->find ( $album_id );
-			$result->ErrorMessage = '更新成功';
+			$result->ErrorMessage = '鏇存柊鎴愬姛';
 		} else {
 			$result->Error = ErrorType::Failed;
-			$result->ErrorMessage = '更新成功';
+			$result->ErrorMessage = '鏇存柊澶辫触';
 		}
 		return $result;
 	}
-	// 根据主键id获取某个专辑信息
+	// 鏍规嵁涓婚敭id鑾峰彇鏌愪釜涓撹緫淇℃伅
 	public function getModel($album_id) {
 		$result = new DataResult ();
 		$map = array (
 				'album_id' => $album_id 
 		);
-		$result->Data = $this->where ( $map )->select ();
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
-	// 根据条件模糊分页查询专辑列表信息
+	// 鏍规嵁鏉′欢妯＄硦鍒嗛〉鏌ヨ涓撹緫鍒楄〃淇℃伅
 	public function searchAlbumByCondition($album_name, $start_time, $end_time, $pageIndex, $pageSize) {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;

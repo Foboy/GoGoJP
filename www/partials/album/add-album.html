@@ -1,29 +1,38 @@
 ﻿<!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>新增幻灯片
+    <h1>
+        新增商品合辑
     </h1>
 
 </div>
 <!-- Main content -->
 <div class="content">
-    <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="AddSlideShowForm">
+    <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="AddAlbumForm">
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                幻灯片标题：
+                合辑名称：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Picture.title" ng-required="true">
+                <input type="text" class="form-control" ng-model="Album.album_name" ng-required="true">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                幻灯片图片：
+                合辑图片：
             </label>
             <div class="col-sm-4">
-                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(推荐幻灯片尺寸为：600px ×400px) 
+                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(推荐幻灯片尺寸为：600px ×400px)
                 <br />
                 <br />
                 <img id="imagezone" src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" alt="图片加载失败" class="img-thumbnail" style="width: 200px; height: 200px" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                合辑描述：
+            </label>
+            <div class="col-sm-4">
+                <textarea rows="8" style="width:500px" ng-model="Album.album_description"></textarea>
             </div>
         </div>
         <!--<div class="form-group">
@@ -46,13 +55,13 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <th>合辑名称</th>
-                            <th>选中绑定跳转合辑</th>
+                            <th>商品名称</th>
+                            <th>选中绑定商品</th>
                         </tr>
-                        <tr ng-repeat="ProdcutAlbum in ProdcutAlbums">
-                            <td>{{ProdcutAlbum.album_name}}</td>
+                        <tr ng-repeat="Product in Products">
+                            <td>{{Product.product_name}}</td>
                             <td>
-                                <input type="radio" name="optionsRadios" id="{{ProdcutAlbum.album_id}}" ng-click="BindAlbum(ProdcutAlbum)" value="{{ProdcutAlbum.album_id}}">
+                                <input type="checkbox" name="optionsRadios" id="{{Product.productid}}" ng-click="toggle(Product)" value="{{Product.productid}}">
                             </td>
                         </tr>
                     </tbody>
@@ -61,7 +70,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <button type="submit" class="btn btn-primary btn-flat" ng-click="AddSlideShow(Picture)">保存</button>
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="AddAlbum(Album)">保存</button>
             </div>
         </div>
     </form>

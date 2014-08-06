@@ -45,13 +45,14 @@ class PictureModel extends Model {
 		return $result;
 	}
 	// 编辑表中数据
-	public function updateModel($picId, $title, $bigPic, $smallPic, $albumId) {
+	public function updateModel($picId, $title, $bigPic, $smallPic, $albumId,$isTop) {
 		$result = new DataResult ();
 		$data = array (
 				'pic_title' => $title,
 				'big_pic' => $bigPic,
 				'small_pic' => $smallPic,
-				'album_id' => $albumId 
+				'album_id' => $albumId ,
+				'istop'=>$isTop
 		);
 		$map = array (
 				"picid" => $picId 
@@ -72,7 +73,7 @@ class PictureModel extends Model {
 		$map = array (
 				'picid' => $picId 
 		);
-		$result->Data = $this->where ( $map )->select ();
+		$result->Data = $this->where ( $map )->find ();
 		return $result;
 	}
 	// 获取图片管理表中分页数据
@@ -80,7 +81,7 @@ class PictureModel extends Model {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select * from gogojp_sys_picture_management order by istop asc limit $lastPageNum,$pageSize" );
+		$objects = $conn->query ( "select t.* from (select * from gogojp_sys_picture_management order by create_time desc )as t order by t.istop asc   limit $lastPageNum,$pageSize" );
 		$data = $conn->query ( "select count(*) totalcout from gogojp_sys_picture_management " );
 		$totalcount = $data [0] ['totalcout'];
 		$result->pageindex = $pageIndex;

@@ -9,13 +9,11 @@ use Common\Common\ErrorType;
 class AlbumProductModel extends Model {
 	protected $tableName = 'album_product';
 	// 新增合辑商品
-	public function addModel() {
+	public function addModel($product_id,$album_id) {
 		$result = new DataResult ();
 		$data = array (
-				'product_id' => I ( 'product_id' ),
-				'product_name' => I ( 'product_name' ),
-				'album_description' => I ( 'album_description' ),
-				'album_sign' => I ( 'album_sign', '' ) 
+				'product_id' => $product_id,
+				'album_id'=>$album_id
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {

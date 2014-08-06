@@ -16,7 +16,7 @@
                     <tr>
                         <th >幻灯片标题</th>
                         <th>缩略图</th>
-                        <th>添加日期</th>
+                        <th>操作日期</th>
                         <th>置顶</th>
                         <th>编辑</th>
                     </tr>
@@ -26,7 +26,7 @@
                             <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40px" width="50px" /></td>
                         <td>{{SlideShow.create_time}}</td>
                         <td>{{SlideShow.istop==1?'已置顶':'未置顶'}}</td>
-                        <td><a>编辑</a>|<a>删除</a></td>
+                        <td><a ng-href="#/editslideshow/{{SlideShow.picid}}">编辑</a>|<a ng-click="DeleteSlideShow(SlideShow.picid)">删除</a>|<a ng-click="IsTop(SlideShow)">{{SlideShow.istop==1?'取消置顶':'置顶'}}</a></td>
                     </tr>
                 </tbody>
             </table>

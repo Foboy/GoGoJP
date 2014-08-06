@@ -27,7 +27,7 @@
     }
     //商品列表
     $scope.LoadProductList = function (pageIndex) {
-        var pageSize = 1;
+        var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         var catid = 0;
         if ($scope.Choose_MainCategory) {
@@ -69,7 +69,7 @@
                $rootScope.R_Choose_Album_StartTime = start / 1000;
                $rootScope.R_Choose_Album_EndTime = end / 1000;
            });
-        var pageSize = 1;
+        var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         var AlbumKey = '';
         if ($scope.AlbumKey) {
@@ -123,6 +123,22 @@
         $scope.LoadAlbumList(1);
     }
 
+    //前端是否显示合辑
+    $scope.IsShow = function (data) {
+        $http.post($resturls["IsShow"], { album_id: data.album_id, album_name: data.album_name, album_cover: data.album_cover, album_description: data.album_description, album_status: data.album_status }).success(function (result) {
+            if (result.Error == 0) {
+                $.scojs_message('操作成功', $.scojs_message.TYPE_OK);
+                setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+            }
+            else {
+                $scope.showerror = true;
+                $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
+            }
+        })
+    }
+
     var $parent = $scope.$parent;
     $scope.sort = $routeParams.sort;
     if (!$scope.sort) {
@@ -143,7 +159,6 @@
     $scope.AddProduct = function () {
         window.location.href = '#/addproduct';
     }
-
 }
 function PorductModalCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     //添加主分类
@@ -433,7 +448,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                         $scope.tagitem = $scope.ProductTags[i];
                     }
                 }
-                if (result.Data.subcategory.catid!=undefined) {
+                if (result.Data.subcategory.catid != undefined) {
                     $http.post($resturls["LoadSubCategory"], { catid: result.Data.subcategory.parentid }).success(function (call) {
                         if (call.Error == 0) {
                             $scope.SubCategorys = call.Data;
