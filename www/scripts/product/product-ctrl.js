@@ -10,6 +10,8 @@
         $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
             if (result.Error == 0) {
                 $scope.MainCategorys = result.Data;
+                var model={  catid:'0', cat_name:'全部', parentid:'0', status:'1', level:'1'};
+                $scope.MainCategorys.push(model);
             } else {
                 $scope.MainCategorys = [];
             }
@@ -89,29 +91,40 @@
 
     //选择父类别
     $scope.ChooseMainCategory = function (MainCategory) {
-        $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
-            if (result.Error == 0) {
-                $scope.SubCategorys = result.Data;
-                $scope.Choose_MainCategory = MainCategory;
-                $rootScope.R_Choose_MainCategory = MainCategory;
-                if ($scope.SubCategorys == null) {
+        if (MainCategory.catid == 0) {
+            $scope.Choose_MainCategory = MainCategory;
+            $scope.secondshow = false;
+            $rootScope.R_secondshow = false;
+            if ($scope.Choose_SubCategory) {
+                $scope.Choose_SubCategory.catid = 0;
+            }
+        } else {
+            $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
+                if (result.Error == 0) {
+                    $scope.SubCategorys = result.Data;
+                    $scope.Choose_MainCategory = MainCategory;
+                    $rootScope.R_Choose_MainCategory = MainCategory;
+                    if ($scope.SubCategorys == null) {
+                        $scope.secondshow = false;
+                        $rootScope.R_secondshow = false;
+                    } else {
+                        $scope.secondshow = true;
+                        $rootScope.R_secondshow = true;
+                    }
+                } else {
+                    $scope.SubCategorys = [];
                     $scope.secondshow = false;
                     $rootScope.R_secondshow = false;
-                } else {
-                    $scope.secondshow = true;
-                    $rootScope.R_secondshow = true;
                 }
-            } else {
-                $scope.SubCategorys = [];
-                $scope.secondshow = false;
-                $rootScope.R_secondshow = false;
-            }
-        });
+            });
+        }
+        $scope.LoadProductList();
     }
     //选择子类别
     $scope.ChooseSubCategory = function (SubCategory) {
         $scope.Choose_SubCategory = SubCategory;
         $rootScope.R_Choose_SubCategory = SubCategory;
+        $scope.LoadProductList();
     }
     //根据筛选条件模糊查询商品
     $scope.SearchProductList = function () {

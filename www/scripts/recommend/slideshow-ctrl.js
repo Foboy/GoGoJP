@@ -197,7 +197,7 @@ function EditSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
                 if (result.Error == 0) {
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
-                        window.location.reload();
+                        window.location.href = "#/recommend";
                     }, 2000);
 
                 }

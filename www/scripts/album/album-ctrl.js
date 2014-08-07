@@ -55,7 +55,7 @@ function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootSc
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
-                        window.location.reload();
+                        window.location.href = "#/product/album";
                     }, 2000);
                 }
                 else {
@@ -161,7 +161,7 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
                 if (call.Error == 0) {
                     $.scojs_message('更新成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
-                        window.location.reload();
+                        window.location.href = "#/product/album";;
                     }, 2000);
                 }
                 else {
