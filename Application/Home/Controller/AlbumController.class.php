@@ -27,7 +27,16 @@ class AlbumController extends Controller {
 	public function updateAlbum(){
 		$Album=new AlbumModel();
 		$album_id=I('album_id');
-		$this->ajaxReturn($Album->updateModel($album_id));
+		$album_name=I('album_name');
+		$album_cover=I('album_cover');
+		$album_description=I('album_description');
+		$album_status=I('album_status');
+		$productids=rtrim(I('productids'),',') ;
+		$albumproduct_ids=rtrim(I('albumproduct_ids'),',');
+		$result= $this->updateAlbumProduct($album_id,$productids,$albumproduct_ids);
+		if($result->Error==ErrorType::Success){
+		$this->ajaxReturn($Album->updateModel($album_id,$album_name,$album_cover,$album_description,$album_status));
+		}
 	}
 	//��������ȡĳ���ϼ���Ϣ
 	public function getAlbum(){
@@ -56,12 +65,11 @@ class AlbumController extends Controller {
 			for($i = 0; $i < count ( $productid_array ); $i ++) {
 				$AlbumProduct->addModel($productid_array[$i],$albumid);
 			}
-			
-			$this->ajaxReturn ( $result );
+			return $result;
 		} else {
 			$result->Error = ErrorType::Failed;
 			$result->ErrorMessage = '���ʧ��';
-			$this->ajaxReturn ( $result );
+			return $result;
 		}
 	}
 		// ǰ���Ƿ���ʾ�ϼ�
@@ -79,6 +87,30 @@ class AlbumController extends Controller {
 			$album_status=1;
 		}
 		$this->ajaxReturn ( $Album->updateModel ($album_id,$album_name,$album_cover,$album_description,$album_status) );
+	}
+	
+	public function searchAlbumProductByAlbumId(){
+		$album_id=I('album_id');
+		$AlbumProduct=new AlbumProductModel();
+		$this->ajaxReturn ( $AlbumProduct->searchAlbumProductByAlbumId($album_id));
+	}
+	
+	public function deleteAlbumProductList($albumproduct_ids)
+	{
+		$albumproductid_array=explode(',',trim($albumproduct_ids,'') );
+		$AlbumProduct=new AlbumProductModel();
+		if (count ($albumproductid_array ) > 0 && $albumproductid_array[0]!='') {
+			for($i = 0; $i < count ( $albumproductid_array ); $i ++) {
+				$AlbumProduct->deleteModel($albumproductid_array[$i]);
+			}
+		}
+	}
+	public function updateAlbumProduct($albumid,$productids,$albumproduct_ids)
+	{
+		$this->deleteAlbumProductList($albumproduct_ids);
+		$aresult= $this->addAlbumProduct($albumid, $productids);
+		$result=new DataResult();
+		return $result;
 	}
 }
 ?>

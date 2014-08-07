@@ -63,7 +63,9 @@
           resturls.add("AddAlbum", "Home/Album/addAlbum");//新增幻灯片
           resturls.add("AddAlbumProduct", "Home/Album/addAlbumProduct");//打包商品
           resturls.add("IsShow", "Home/Album/isShow");//是否显示
-          resturls.add("IsShow", "Home/Album/getAlbum");//合辑详细
+          resturls.add("GetAlbum", "Home/Album/getAlbum");//合辑详细
+          resturls.add("SearchAlbumProductByAlbumId", "Home/Album/searchAlbumProductByAlbumId");//合辑包含的商品
+          resturls.add("UpdateAlbum", "Home/Album/updateAlbum");//更新合辑
 
 
           
