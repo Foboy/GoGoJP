@@ -80,5 +80,22 @@ function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootSc
 }
 //编辑合辑
 function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.GetAlbum = function () {
+        $http.post($resturls["GetSlideShow"], { picid: $routeParams.picid }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.Picture = result.Data;
+                $("#imagezone").attr("src", $scope.Picture.small_pic);
+                $http.post($resturls["GetProdcutAlbum"], { album_id: $scope.Picture.album_id }).success(function (result) {
+                    if (result.Error == 0 && result.Data != null) {
+                        $scope.AlubmName = result.Data.album_name;
+                    } else {
+                        $scope.AlubmName = "";
+                    }
+                });
 
+            } else {
+                $scope.Picture = {};
+            }
+        });
+    }
 }
