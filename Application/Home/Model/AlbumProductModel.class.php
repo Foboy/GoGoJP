@@ -37,9 +37,9 @@ class AlbumProductModel extends Model {
 		return $result;
 	}
 	// 根据专辑id查询与专辑相关联的专辑商品列表
-	public function searchAlbumProductByAlbumId($product_id) {
+	public function searchAlbumProductByAlbumId($album_id) {
 		$result = new DataResult ();
-		$result->Data = $this->where ( 'product_id=%d', $product_id )->select ();
+		$result->Data = $this->where ( 'album_id=%d', $album_id)->select ();
 		return $result;
 	}
 }
