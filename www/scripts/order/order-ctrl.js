@@ -29,8 +29,8 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 				}
 			}, function(start, end) {
 				
-				$scope.stime = start / 1000;
-				$scope.etime = end / 1000;
+				$rootScope.stime = start / 1000;
+				$rootScope.etime = end / 1000;
 				$scope.SearchOrderList($routeParams.pageIndex || 1);
 			});
 	$scope.SearchOrderList = function(pageIndex) {
@@ -41,11 +41,13 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
    
         var stime="";
         var etime="";
-  
-        stime = $scope.timestamptostr($scope.stime);
-        if($scope.etime!="")
+        if($rootScope.stime!=null)
+    	{
+        stime = $scope.timestamptostr($rootScope.stime);
+    	}
+        if($rootScope.etime!=null)
         	{
-        	etime = $scope.timestamptostr($scope.etime+24*3600);
+        	etime = $scope.timestamptostr($rootScope.etime+24*3600);
         	}
 	
 	
@@ -61,6 +63,10 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 				function(result) {
 					if (result.Error == 0) {
 						//console.log(pageIndex);
+						if(stime!="")
+							{
+						$("#reservation").val(stime+'至'+etime);
+							}
 						$scope.orderList = result.Data;
 		                $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#order'  + '/{0}');
 		            	
@@ -122,8 +128,8 @@ function OrderCtrl($scope, $http, $location, $routeParams, $resturls,
 	}
 	$scope.cleantime = function()
 	{
-		$scope.stime = "";
-		$scope.etime = "";
+		$rootScope.stime = "";
+		$rootScope.etime = "";
 		$("#reservation").val("");
 		$scope.SearchOrderList($routeParams.pageIndex || 1);
 	}
