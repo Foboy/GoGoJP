@@ -194,3 +194,13 @@ a {
 .mobile_footer{
 	margin-top: 32px;
 }
+.gg-div {
+    float:left;
+    position:relative;
+}
+.shuxing-margin {
+    margin-bottom:8px;
+}
+.title-margin {
+    margin-left:10px;
+}

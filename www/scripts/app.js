@@ -1,7 +1,7 @@
 angular.module('gogojp', ['ngRoute', 'ui.router', 'ngRestUrls', 'ngNovComet']).
 config(['$provide', '$httpProvider', '$routeProvider', '$stateProvider', '$urlRouterProvider', '$resturls', function ($provide, $httpProvider, $routeProvider, $stateProvider, $urlRouterProvider, $resturls) {
     $routeProvider
-    .when('/recommend', { template: '', controller: function () { } })
+    .when('/recommend/:pageIndex?', { template: '', controller: function () { } })
     .when('/product/:sort?/:pageIndex?', { template: '', controller: function () { } })
     .when('/order', { template: '', controller: function () { } })
     .when('/addproduct', { template: '', controller: function () { } })
@@ -145,6 +145,9 @@ function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls, $n
         } else {
             return '';
         }
+    }
+    $scope.RefreshModal = function () {
+        window.location.reload();
     }
 }
 

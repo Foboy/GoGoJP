@@ -158,8 +158,10 @@ function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturl
                     $http.post($resturls["AddCatagoryStandardParameters"], { standard_id: 1, category_id: catitem.catid, parameter_names: parameter_names }).success(function (result) {
                         if (result.Error == 0) {
                             $("#addsizemodal").modal('hide');
-                            $scope.LoadStandardAboutSizeList($routeParams.pageIndex || 1);
                             $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2000);
                         } else {
                             $scope.showerror = true;
                             $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);
@@ -186,8 +188,10 @@ function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturl
                 $http.post($resturls["AddCommonStandardParameters"], { standard_id: 2, parameter_names: parameter_names }).success(function (result) {
                     if (result.Error == 0) {
                         $("#addcolormodal").modal('hide');
-                        $scope.LoadStandardAboutColorList();
                         $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
                     } else {
 
                         $scope.showerror = true;
@@ -227,7 +231,10 @@ function AddProductStandardCtrl($scope, $http, $location, $routeParams, $resturl
                     } else {
                         $scope.LoadStandardAboutColorList();
                     }
-                    $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                    $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
                 } else {
                     $scope.showerror = true;
                     $.scojs_message('服务器忙，请稍后重试', $.scojs_message.TYPE_ERROR);

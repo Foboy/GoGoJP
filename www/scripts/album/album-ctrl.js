@@ -49,6 +49,11 @@ function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootSc
                 productids = productids + $scope.Products[i].productid + ',';
             }
         }
+        if (productids == "")
+        {
+            $.scojs_message('请选择商品', $.scojs_message.TYPE_ERROR);
+            return;
+        }
         if ($scope.AddAlbumForm.$valid) {
             $scope.showerror = false;
             $http.post($resturls["AddAlbum"], { album_name: data.album_name, album_cover: $("#imagezone").attr("src"), album_description: data.album_description, productids: productids }).success(function (result) {
@@ -157,7 +162,7 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
                     productids = productids + $scope.Products[i].productid + ',';
                 }
             }
-            $http.post($resturls["UpdateAlbum"], { album_id: data.album_id, album_name: data.album_name, album_cover: $("#imagezone").attr("src"), album_description: data.album_description, productids: productids, albumproduct_ids: albumproduct_ids }).success(function (call) {
+            $http.post($resturls["UpdateAlbum"], { album_id: data.album_id, album_name: data.album_name,album_status:data.album_status, album_cover: $("#imagezone").attr("src"), album_description: data.album_description, productids: productids, albumproduct_ids: albumproduct_ids }).success(function (call) {
                 if (call.Error == 0) {
                     $.scojs_message('更新成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {

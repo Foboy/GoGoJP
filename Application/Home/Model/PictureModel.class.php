@@ -81,7 +81,7 @@ class PictureModel extends Model {
 		$result = new PageDataResult ();
 		$lastPageNum = $pageIndex * $pageSize;
 		$conn = new Pdo ();
-		$objects = $conn->query ( "select t.* from (select * from gogojp_sys_picture_management order by create_time desc )as t order by t.istop asc   limit $lastPageNum,$pageSize" );
+		$objects = $conn->query ( "select t.* from (select * from gogojp_sys_picture_management order by create_time desc )as t   limit $lastPageNum,$pageSize" );
 		$data = $conn->query ( "select count(*) totalcout from gogojp_sys_picture_management " );
 		$totalcount = $data [0] ['totalcout'];
 		$result->pageindex = $pageIndex;

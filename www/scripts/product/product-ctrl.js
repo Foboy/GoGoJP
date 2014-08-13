@@ -10,7 +10,7 @@
         $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
             if (result.Error == 0) {
                 $scope.MainCategorys = result.Data;
-                var model={  catid:'0', cat_name:'全部', parentid:'0', status:'1', level:'1'};
+                var model = { catid: '0', cat_name: '全部', parentid: '0', status: '1', level: '1' };
                 $scope.MainCategorys.push(model);
             } else {
                 $scope.MainCategorys = [];
@@ -54,7 +54,7 @@
     }
     //商品专辑
     $scope.LoadAlbumList = function (pageIndex) {
-        $("#albumtime").val($rootScope.R_choosetime);
+        $("#albumtime").val("");
         $("#albumtime").daterangepicker({
             showDropdowns: true,
             format: 'YYYY/MM/DD',
@@ -77,9 +77,12 @@
         if ($scope.AlbumKey) {
             AlbumKey = $scope.AlbumKey
         }
-        $http.post($resturls["LoadProdcutAlbum"], { start_time: '' || $rootScope.R_Choose_Album_StartTime, end_time: '' || $rootScope.R_Choose_Album_EndTime, album_name: AlbumKey, pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+        $http.post($resturls["LoadProdcutAlbum"], { start_time: $rootScope.R_Choose_Album_StartTime || '', end_time: $rootScope.R_Choose_Album_EndTime || '', album_name: AlbumKey, pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.Albums = result.Data;
+                if ($scope.Albums.length > 0) {
+                    $("#albumtime").val($rootScope.R_choosetime);
+                }
                 $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#product/' + $scope.sort + '/{0}');
             } else {
                 $scope.Albums = [];
@@ -263,7 +266,7 @@ function ProductCategoryCtrl($scope, $http, $location, $routeParams, $resturls, 
     //弹出编辑类别模态框
     $scope.ShowEditCategoryModal = function (data) {
         $("#editcatmodal").modal('show');
-        $scope.Categroy = data;
+        $scope.Categroy = angular.copy(data);
     }
     $scope.LoadProductCategoryList($routeParams.pageIndex || 1);
     $scope.CatNameFormat = function (data) {
@@ -381,7 +384,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
-                        window.location.reload();
+                        window.location.href = "#/product";
                     }, 2000);
 
                 }
@@ -433,7 +436,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                 if (result.Error == 0) {
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
-                        window.location.reload();
+                        window.location.href = "#/product"
                     }, 2000);
 
                 }
@@ -611,8 +614,10 @@ function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls,
             $http.post($resturls["AddTags"], { tag_name: data.tag_name, tag_description: data.tag_description }).success(function (result) {
                 if (result.Error == 0) {
                     $("#addtagsmodal").modal('hide');
-                    $scope.LoadTags($routeParams.pageIndex || 1);
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
                 }
                 else {
                     $scope.showerror = true;
@@ -631,6 +636,9 @@ function ProductTagsModalCtrl($scope, $http, $location, $routeParams, $resturls,
                 if (result.Error == 0) {
                     $("#edittagsmodal").modal('hide');
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2000);
                 }
                 else {
                     $scope.showerror = true;

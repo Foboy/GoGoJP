@@ -34,8 +34,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    取消</button><!--UserAccount.user_id==0?AddUserAccount(UserAccount):EditUserAccount(UserAccount)-->
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="RefreshModal()">
+                    取消
+                </button><!--UserAccount.user_id==0?AddUserAccount(UserAccount):EditUserAccount(UserAccount)-->
                 <button type="button" class="btn btn-primary" ng-click="AddUserAccount(UserAccount)">
                     保 存</button>
             </div>

@@ -53,6 +53,8 @@ class ChatController extends Controller {
     	$end_time=I('endtime','');
     	$keyname=I('searchkey','','htmlspecialchars');
     	$messageModel = new MessageModel();
+    	$begin_time=date ( 'Y-m-d h:i:s', $begin_time );
+    	$end_time=date ( 'Y-m-d h:i:s', $end_time );
     	$this->ajaxReturn ($messageModel->searchByPage($customer_id, $keyname, $begin_time, $end_time, $pageIndex, $pageSize) );
     }
 

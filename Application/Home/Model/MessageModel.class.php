@@ -85,8 +85,8 @@ class MessageModel extends Model {
  order by create_time desc
  limit $lastpagenum,$pagesize", array (
 				'customer_id' => $customer_id,
- 		'begin_time' => date($begin_time),
- 		'end_time' => date($end_time)
+ 		'begin_time' =>$begin_time,
+ 		'end_time' => $end_time
 			)  );
 		$data = $conn->query ( " select count(*) totalcount  from gogojp_message
 				where  ( form_userid = :customer_id or to_userid=:customer_id )
@@ -94,8 +94,8 @@ class MessageModel extends Model {
  and  ( create_time <= :end_time or :end_time='' )
  and  ('$content'='' or content like '%$content%')
 ", array ('customer_id' => $customer_id,
-		'begin_time' => date($begin_time),
-		'end_time' => date($end_time)
+		'begin_time' =>$begin_time,
+		'end_time' => $end_time
 			)  );
 		$totalcount = $data[0];
 		$result->pageindex = $pageindex;

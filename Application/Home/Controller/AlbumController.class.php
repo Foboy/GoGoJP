@@ -48,7 +48,7 @@ class AlbumController extends Controller {
 	public function searchAlbumByCondition(){
 		$Album=new AlbumModel();
 		$album_name=I('album_name','','htmlspecialchars');
-		$start_time=I('start_time');
+		$start_time=I('start_time','');
 		$end_time=I('end_time',time());
 		$pageIndex = I ('pageIndex', 0 );
 		$pageSize = I ('pageSize', 10 );
