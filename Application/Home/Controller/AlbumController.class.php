@@ -19,6 +19,13 @@ class AlbumController extends Controller {
 		$Album=new AlbumModel();
 		$this->ajaxReturn($this->addAlbumProduct($Album->addModel()->Data['album_id'],$productids)) ;
 	}
+	//删除合辑关联商品
+	public function deleteAlbumProduct(){
+		$album_product_id=I('album_product_id',0);
+		$AlbumProduct=new AlbumProductModel();
+		$this->ajaxReturn($AlbumProduct->deleteModel($album_product_id)) ;
+		
+	}
 	//ɾ��ϼ�
 	public function deleteAlbum(){
 		
@@ -107,7 +114,7 @@ class AlbumController extends Controller {
 	}
 	public function updateAlbumProduct($albumid,$productids,$albumproduct_ids)
 	{
-		$this->deleteAlbumProductList($albumproduct_ids);
+		/* $this->deleteAlbumProductList($albumproduct_ids); */
 		$aresult= $this->addAlbumProduct($albumid, $productids);
 		$result=new DataResult();
 		return $result;

@@ -35,6 +35,16 @@
                 <textarea rows="8" style="width:500px" ng-model="Album.album_description"></textarea>
             </div>
         </div>
+        <div class="col-md-4 col-md-offset-3 ">
+            <div class="input-group ">
+                <input type="text" ng-model="ProductKey" placeholder="商品名称或商品编号" class="form-control input-sm ng-pristine ng-valid" name="table_search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-flat btn-sm" ng-click="FuzzySearchPrduct(ProductKey)">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <!--<div class="form-group">
             <label class="col-sm-3 control-label">
                 跳转地址：
@@ -55,10 +65,14 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
+                            <th>商品图片</th>
                             <th>商品名称</th>
                             <th>选中绑定商品</th>
                         </tr>
                         <tr ng-repeat="Product in Products">
+                            <td>
+                                <img src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" height="40" width="50" />
+                            </td>
                             <td>{{Product.product_name}}</td>
                             <td>
                                 <input type="checkbox" name="optionsRadios" id="{{Product.productid}}" ng-click="toggle(Product)" value="{{Product.productid}}">

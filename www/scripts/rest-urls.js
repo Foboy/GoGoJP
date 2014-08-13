@@ -50,6 +50,7 @@
           resturls.add("AddCommonStandardParameters", "Home/Standard/AddCommonStandardParameters"); // 批量添加通用规格参数
           resturls.add("UpdateStandardParameterStatus", "Home/Standard/UpdateStandardParameterStatus");// 批量更新规格参数状态
           resturls.add("GetProdcutAlbum", "Home/Album/getAlbum");//获取合辑详细
+          resturls.add("SerachProductStandardParameters", "Home/Product/SerachProductStandardParameters");//获取产品关联的规格参数
 
           //推荐位
           resturls.add("AddSlideShow", "Home/PictureManagement/addSlideShow");//新增幻灯片
@@ -65,7 +66,8 @@
           resturls.add("IsShow", "Home/Album/isShow");//是否显示
           resturls.add("GetAlbum", "Home/Album/getAlbum");//合辑详细
           resturls.add("SearchAlbumProductByAlbumId", "Home/Album/searchAlbumProductByAlbumId");//合辑包含的商品
-          resturls.add("UpdateAlbum", "Home/Album/updateAlbum");//更新合辑
+          resturls.add("UpdateAlbum", "Home/Album/updateAlbum");//更新合辑 
+          resturls.add("deleteAlbumProduct", "Home/Album/deleteAlbumProduct");//删除合辑相关商品
 
 
           

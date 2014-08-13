@@ -338,7 +338,24 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.ChooseMainCategory = function (data) {
         if (data != null) {
             $scope.LoadSubCategory(data);
+            $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: 1, category_id: data.catid }).success(function (result) {
+                if (result.Error == 0) {
+                    $scope.Sizeparameters = result.Data;
+
+                } else {
+                    $scope.Sizeparameters = [];
+                }
+                console.log($scope.Sizeparameters);
+            });
         }
+
+    }
+    $scope.toggleSize = function (SizeParameter) {
+        SizeParameter.checked = !SizeParameter.checked;
+    }
+
+    $scope.toggleColor = function (ColorParameter) {
+        ColorParameter.checked = !ColorParameter.checked;
     }
     $scope.UpLoadImage = function () {
         $('#file_upload').uploadify({
@@ -372,6 +389,16 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             }
         });
     }
+    $scope.LoadColors = function () {
+        $http.post($resturls['searchParamterBySid'], { standard_id: 2 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.Colorparameters = result.Data;
+
+            } else {
+                $scope.Colorparameters = [];
+            }
+        });
+    }
     //添加商品
     $scope.AddProduct = function (data) {
         if ($scope.AddProductForm.$valid) {
@@ -380,13 +407,32 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
-            $http.post($resturls["AddProduct"], { product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
+            var sizeparametersids = '';
+            for (var i = 0; i < $scope.Sizeparameters.length; i++) {
+                if ($scope.Sizeparameters[i].checked) {
+                    sizeparametersids = sizeparametersids + $scope.Sizeparameters[i].standard_parameter_id + ',';
+                }
+            }
+            if (sizeparametersids == "") {
+                $.scojs_message('请选择尺寸', $.scojs_message.TYPE_ERROR);
+                return;
+            }
+            var colorparametersids = '';
+            for (var i = 0; i < $scope.Colorparameters.length; i++) {
+                if ($scope.Colorparameters[i].checked) {
+                    colorparametersids = colorparametersids + $scope.Colorparameters[i].standard_parameter_id + ',';
+                }
+            }
+            if (colorparametersids == "") {
+                $.scojs_message('请选择颜色', $.scojs_message.TYPE_ERROR);
+                return;
+            }
+            $http.post($resturls["AddProduct"], { product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
                         window.location.href = "#/product";
                     }, 2000);
-
                 }
                 else {
                     $scope.showerror = true;
@@ -404,6 +450,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.LoadTags();
     $scope.UpLoadImage();
     $scope.InitEditor();
+    $scope.LoadColors();
 }
 
 //修改商品
@@ -425,6 +472,12 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
         }
         window.open('partials/product/product-preview.html');
     }
+    $scope.toggleSize = function (Sizeparameter) {
+        Sizeparameter.checked = !Sizeparameter.checked;
+    }
+    $scope.toggleColor = function (Colorparameter) {
+        Colorparameter.checked = !Colorparameter.checked;
+    }
     $scope.UpdateProduct = function (data) {
         if ($scope.UpdateProductForm.$valid) {
             $scope.showerror = false;
@@ -432,7 +485,27 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
-            $http.post($resturls["UpdateProduct"], { productid: data.productid, product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent() }).success(function (result) {
+            var sizeparametersids = '';
+            for (var i = 0; i < $scope.Sizeparameters.length; i++) {
+                if ($scope.Sizeparameters[i].checked) {
+                    sizeparametersids = sizeparametersids + $scope.Sizeparameters[i].standard_parameter_id + ',';
+                }
+            }
+            if (sizeparametersids == "") {
+                $.scojs_message('请选择尺寸', $.scojs_message.TYPE_ERROR);
+                return;
+            }
+            var colorparametersids = '';
+            for (var i = 0; i < $scope.Colorparameters.length; i++) {
+                if ($scope.Colorparameters[i].checked) {
+                    colorparametersids = colorparametersids + $scope.Colorparameters[i].standard_parameter_id + ',';
+                }
+            }
+            if (colorparametersids == "") {
+                $.scojs_message('请选择颜色', $.scojs_message.TYPE_ERROR);
+                return;
+            }
+            $http.post($resturls["UpdateProduct"], { productid: data.productid, product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -454,20 +527,84 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
             if (result.Error == 0) {
                 $scope.Product = result.Data.product;
                 $scope.um = UM.createEditor('myEditor');
-                for (var i = 0; i < $scope.MainCategorys.length; i++) {
-                    if (result.Data.maincategory.catid == $scope.MainCategorys[i].catid) {
-                        $scope.mainitem = $scope.MainCategorys[i];
+                $http.post($resturls["LoadMainCategory"], {}).success(function (call) {
+                    if (call.Error == 0) {
+                        $scope.MainCategorys = call.Data;
+                        for (var i = 0; i < $scope.MainCategorys.length; i++) {
+                            if (result.Data.maincategory.catid == $scope.MainCategorys[i].catid) {
+                                $scope.mainitem = $scope.MainCategorys[i];
+                            }
+                        }
+                    } else {
+                        $scope.MainCategorys = [];
                     }
-                }
-                for (var i = 0; i < $scope.ProductTags.length; i++) {
-                    if (result.Data.product.product_tag_id == $scope.ProductTags[i].tag_id) {
-                        $scope.tagitem = $scope.ProductTags[i];
+                });
+                //获取商品关联的尺寸规格参数
+                $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: 1, category_id: result.Data.maincategory.catid }).success(function (sizeresult) {
+                    if (sizeresult.Error == 0) {
+                        $scope.Sizeparameters = sizeresult.Data;
+                        $http.post($resturls["SerachProductStandardParameters"], { pid: $routeParams.productid, stardard_id: 1 }).success(function (aresult) {
+                            if (aresult.Error == 0 && aresult.Data != null) {
+                                $scope.ChooseSizeParameters = aresult.Data;
+                                for (var i = 0; i < $scope.Sizeparameters.length; i++) {
+                                    $scope.Sizeparameters[i].checked = false;
+                                    for (var j = 0; j < $scope.ChooseSizeParameters.length; j++) {
+                                        if ($scope.Sizeparameters[i].standard_parameter_id == $scope.ChooseSizeParameters[j].standard_parameter_id) {
+                                            $scope.Sizeparameters[i].checked = true;
+                                        }
+                                    }
+                                }
+                            } else {
+                                $scope.ChooseSizeParameters = [];
+                            }
+                        });
+                       
+                    } else {
+                        $scope.Sizeparameters = [];
                     }
-                }
+                });
+                //获取商品关联的颜色规格参数
+                $http.post($resturls['searchParamterBySid'], { standard_id: 2 }).success(function (colorresult) {
+                    if (colorresult.Error == 0) {
+                        $scope.Colorparameters = colorresult.Data;
+                        $http.post($resturls["SerachProductStandardParameters"], { pid: $routeParams.productid, stardard_id: 2 }).success(function (presult) {
+                            if (presult.Error == 0 && presult.Data != null) {
+                                $scope.ChooseColorParameters = presult.Data;
+                                for (var i = 0; i < $scope.Colorparameters.length; i++) {
+                                    $scope.Colorparameters[i].checked = false;
+                                    for (var j = 0; j < $scope.ChooseColorParameters.length; j++) {
+                                        if ($scope.Colorparameters[i].standard_parameter_id == $scope.ChooseColorParameters[j].standard_parameter_id) {
+                                            $scope.Colorparameters[i].checked = true;
+                                        }
+                                    }
+                                }
+                            } else {
+                                $scope.ChooseColorParameters = [];
+                            }
+                        });
+
+
+                    } else {
+                        $scope.Colorparameters = [];
+                    }
+                });
+                
+                $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (resultTags) {
+                    if (resultTags.Error == 0) {
+                        $scope.ProductTags = resultTags.Data;
+                        for (var i = 0; i < $scope.ProductTags.length; i++) {
+                            if (result.Data.product.product_tag_id == $scope.ProductTags[i].tag_id) {
+                                $scope.tagitem = $scope.ProductTags[i];
+                            }
+                        }
+                    } else {
+                        $scope.ProductTags = [];
+                    }
+                });
                 if (result.Data.subcategory.catid != undefined) {
-                    $http.post($resturls["LoadSubCategory"], { catid: result.Data.subcategory.parentid }).success(function (call) {
-                        if (call.Error == 0) {
-                            $scope.SubCategorys = call.Data;
+                    $http.post($resturls["LoadSubCategory"], { catid: result.Data.subcategory.parentid }).success(function (resultSubCategory) {
+                        if (resultSubCategory.Error == 0) {
+                            $scope.SubCategorys = resultSubCategory.Data;
                             if ($scope.SubCategorys) {
                                 for (var i = 0; i < $scope.SubCategorys.length; i++) {
                                     if (result.Data.subcategory.catid == $scope.SubCategorys[i].catid) {

@@ -14,17 +14,7 @@
                 <input type="text" class="form-control" ng-model="Product.product_name" ng-required="true">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">
-                商品分类:
-            </label>
-            <div class="col-sm-4">
-                <select class="form-control" ng-required="true" ng-options="MainCategory.cat_name for MainCategory in MainCategorys" ng-model="mainitem" ng-change="ChooseMainCategory(mainitem)"></select>
-            </div>
-            <div class="col-sm-4" ng-show="showsubselect">
-                <select class="form-control" ng-options="SubCategory.cat_name for SubCategory in  SubCategorys" ng-model="subitem"></select>
-            </div>
-        </div>
+    
         <div class="form-group">
             <label class="col-sm-3 control-label">
                 商品原价：
@@ -65,17 +55,46 @@
                 商品详情：
             </label>
             <div class="col-sm-8">
-                <script type="text/plain" id="myEditor" style="width: 1000px; height: 240px;">
+                <script type="text/plain" id="myEditor" style="width: 700px; height: 240px;">
                 </script>
             </div>
         </div>
         <div class="form-group">
-            <label for="inputPassword" class="col-sm-3 control-label">
-                规格参数：
+            <label class="col-sm-3 control-label">
+                商品分类:
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Product.sign" name="sign" placeholder="规格参数">
+                <select class="form-control" ng-required="true" ng-options="MainCategory.cat_name for MainCategory in MainCategorys" ng-model="mainitem" ng-change="ChooseMainCategory(mainitem)"></select>
             </div>
+            <div class="col-sm-4" ng-show="showsubselect">
+                <select class="form-control" ng-options="SubCategory.cat_name for SubCategory in  SubCategorys" ng-model="subitem"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                规格参数：
+            </label>
+            <div class="col-sm-8 gg-div clearfix">
+                <div class="shuxing-margin clearfix">
+                    <label for="inputPassword" class="control-label pull-left">
+                        尺寸
+                    </label>
+                    <div class="pull-left title-margin " ng-repeat="Sizeparameter in Sizeparameters">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" ng-click="toggleSize(Sizeparameter)" ng-checked="Sizeparameter.checked" value="{{Sizeparameter.standard_parameter_id}}"> {{Sizeparameter.parameter_name}}
+                        </label>
+                    </div>
+                </div>
+                <label for="inputPassword" class="control-label  pull-left">
+                    颜色
+                </label>
+                <div class="pull-left title-margin " ng-repeat="Colorparameter in Colorparameters">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-click="toggleColor(Colorparameter)" ng-checked="Colorparameter.checked" value="{{Colorparameter.standard_parameter_id}}">{{Colorparameter.parameter_name}}
+                    </label>
+                </div>
+            </div>
+
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">

@@ -14,13 +14,12 @@ use Common\Common\ErrorType;
 class ProductRStandardParameterModel extends Model {
 	protected $tableName = 'product_r_standard_parameter';
 	// 增加表中数据
-	public function addModel($product_id,$standard_id,$standard_parameter_id,$create_time) {
+	public function addModel($product_id,$standard_id,$standard_parameter_id) {
 		$result = new DataResult ();
 		$data = array (
-'product_id' => $product_id,
+					'product_id' => $product_id,
                    'standard_id' => $standard_id,
-                   'standard_parameter_id' => $standard_parameter_id,
-                   'create_time' => $create_time
+                   'standard_parameter_id' => $standard_parameter_id
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -33,22 +32,17 @@ class ProductRStandardParameterModel extends Model {
 		return $result;
 	}
 	// 删除表中数据
-	public function deleteModel($id) {
+	public function deleteModel($pid) {
 		$result = new DataResult ();
-        $map['id']=$id;
-		if ($this->where ($map)->delete () == 1) {
-			$result->ErrorMessage = '删除成功';
-		} else {
-			$result->Error = ErrorType::Failed;
-			$result->ErrorMessage = '删除失败';
-		}
-		return $result;
+		$conn = new Pdo ();
+		$rows = $conn->execute("delete from gogojp_product_r_standard_parameter where  product_id = $pid and id>0");
+		return $rows;
 	}
 	// 编辑表中数据
 	public function updateModel($id,$product_id,$standard_id,$standard_parameter_id,$create_time) {
 		$result = new DataResult ();
 		$data = array (
-'id' => $id,
+					'id' => $id,
                    'product_id' => $product_id,
                    'standard_id' => $standard_id,
                    'standard_parameter_id' => $standard_parameter_id,

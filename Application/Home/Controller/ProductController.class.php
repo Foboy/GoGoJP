@@ -6,6 +6,8 @@ use Think\Controller;
 use Home\Model\ProductModel;
 use Home\Model\ProductCategoryModel;
 use Common\Common\DataResult;
+use Home\Model\ProductRStandardParameterModel;
+use Common\Common\ErrorType;
 
 class ProductController extends Controller {
 	public function index() {
@@ -13,6 +15,7 @@ class ProductController extends Controller {
 	}
 	// 新增商品
 	public function addProduct() {
+		$result = new DataResult();
 		$Product = new ProductModel ();
 		$data = array (
 				'catid' => I ( 'catid', 0 ),
@@ -26,7 +29,17 @@ class ProductController extends Controller {
 				'product_count' => I ( 'product_count', 0 ),
 				'product_num' => time () 
 		);
-		$this->ajaxReturn ( $Product->addModel ( $data ) );
+		$sizeparametersids=I('sizeparametersids','');
+		$colorparametersids=I('colorparametersids','');
+		$pid=$Product->addModel ($data );
+		if($pid>0){
+			$this->AddParameters($pid, 1, $sizeparametersids);
+			$this->AddParameters($pid, 2, $colorparametersids);
+		}else 
+		{
+			$result->Error=ErrorType::Failed;
+		}
+		$this->ajaxReturn($result);
 	}
 	// 删除商品
 	public function deleteProdcut() {
@@ -35,17 +48,27 @@ class ProductController extends Controller {
 	public function updateProduct() {
 		$Product = new ProductModel ();
 		$productid = I ( 'productid' );
-		$this->ajaxReturn ( $Product->updateModel ( $productid ) );
+		$sizeparametersids=I('sizeparametersids','');
+		$colorparametersids=I('colorparametersids','');
+		$rows= $this->DeleteProductStandardParameters($productid);
+		if($rows>0){
+			$this->AddParameters($productid, 1, $sizeparametersids);
+			$this->AddParameters($productid, 2, $colorparametersids);
+			$this->ajaxReturn ( $Product->updateModel ( $productid ));
+		}
 	}
 	// 获取摸个商品信息
 	public function getProduct() {
 		$result = new DataResult ();
 		$Product = new ProductModel ();
 		$Categroy = new ProductCategoryModel ();
+		$ProductRStandardParameterModel=new ProductRStandardParameterModel();
 		$productid = I ( 'productid' );
 		$product = array ();
 		$maincategory = array ();
 		$subcategory = array ();
+		$ChoosecolorParameters=array();
+		$ChoosesizeParameters=array();
 		if ($Product->getModel ( $productid )->Error == 0) {
 			$product = $Product->getModel ( $productid )->Data;
 			if ($product ['catid'] > 0) {
@@ -60,10 +83,14 @@ class ProductController extends Controller {
 				}
 			}
 		}
+		$ChoosecolorParameters=$ProductRStandardParameterModel->searchByPage($productid, 2, '', '', 0, 100)->Data;
+		$ChoosesizeParameters=$ProductRStandardParameterModel->searchByPage($productid, 1, '', '', 0, 100)->Data;
 		$result->Data = array (
 				"product" => $product,
 				"maincategory" => $maincategory,
-				"subcategory" => $subcategory 
+				"subcategory" => $subcategory ,
+				"ChoosecolorParameters" =>$ChoosecolorParameters,
+				"ChoosesizeParameters" =>$ChoosesizeParameters
 		);
 		$this->ajaxReturn ( $result );
 	}
@@ -75,5 +102,35 @@ class ProductController extends Controller {
 		$pageIndex = I ( 'pageIndex', 0 );
 		$pageSize = I ( 'pageSize', 10 );
 		$this->ajaxReturn ( $Product->searchProductByCondition ( $catid, $keyname, $pageIndex, $pageSize ) );
+	}
+	//关联商品规格参数
+	public  function AddParameters($pid,$standardid,$parameterids){
+		$ProductRStandardParameterModel=new ProductRStandardParameterModel();
+		$parameterid_array=explode(',',trim($parameterids,'') );
+		if (count ($parameterid_array ) > 0 && $parameterid_array[0]!='') {
+			for($i = 0; $i < count ( $parameterid_array ); $i ++) {
+				if($parameterid_array[$i]!=''){
+				$ProductRStandardParameterModel->addModel($pid, $standardid, $parameterid_array[$i]);
+				}
+			}
+		}
+	}
+	//删除商品关联的规格参数
+	public function DeleteProductStandardParameters($pid)
+	{
+		$result=new DataResult();
+		$ProductRStandardParameterModel=new ProductRStandardParameterModel();
+		$rows= $ProductRStandardParameterModel->deleteModel($pid);
+		return $result;
+	}
+	
+	//获取商品相关的关联参数
+	public function SerachProductStandardParameters()
+	{
+		$pid=I('pid',0);
+		$stardard_id=I('stardard_id',0);
+		$ProductRStandardParameterModel=new ProductRStandardParameterModel();
+		$this->ajaxReturn($ProductRStandardParameterModel->searchByPage($pid, $stardard_id, '', '', 0, 100)) ;
+		
 	}
 }

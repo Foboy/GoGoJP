@@ -126,7 +126,8 @@ class PictureManagementController extends Controller {
 		$bigPic = I ( 'bigPic' );
 		$smallPic = I ( 'smallPic' );
 		$albumId = I ( 'albumId' );
-		$this->ajaxReturn ( $Pic->updateModel ( $picId, $title, $bigPic, $smallPic, $albumId,1 ) );
+		$isTop=I('istop');
+		$this->ajaxReturn ( $Pic->updateModel ( $picId, $title, $bigPic, $smallPic, $albumId,$isTop ) );
 	}
 	// 删除幻灯片
 	public function deleteSlideShow() {

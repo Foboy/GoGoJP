@@ -12,16 +12,8 @@ class ProductModel extends Model {
 	protected $tableName = 'productinfo';
 	// 增加单个商品
 	public function addModel($data) {
-		$result = new DataResult ();
-		$pid = $this->add ( $data );
-		if ($pid > 0) {
-			$result->Data = $this->find ( $pid );
-			$result->ErrorMessage = '新增成功';
-		} else {
-			$result->Error = ErrorType::Failed;
-			$result->ErrorMessage = '新增失败';
-		}
-		return $result;
+		$pid = $this->add ($data );
+		return $pid;
 	}
 	// 删除单个商品
 	public function deleteModel($productid) {

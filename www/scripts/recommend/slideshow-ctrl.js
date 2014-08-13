@@ -90,6 +90,10 @@ function AddSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
             if ($scope.ChooseAlbum != undefined) {
                 albumId = $scope.ChooseAlbum.album_id;
             }
+            if (albumId == 0) {
+                $.scojs_message('请选择合辑', $.scojs_message.TYPE_ERROR);
+                return;
+            }
             $http.post($resturls["AddSlideShow"], { title: data.title, bigPic: data.bigPic, smallPic: data.smallPic, albumId: albumId }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
@@ -106,8 +110,8 @@ function AddSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
             $scope.showerror = true;
         }
     }
-    $scope.FuzzySearchAlbum = function () {
-        $http.post($resturls["LoadProdcutAlbum"], { pageIndex: 0, pageSize: 100 }).success(function (result) {
+    $scope.FuzzySearchAlbum = function (ProductKey) {
+        $http.post($resturls["LoadProdcutAlbum"], {album_name:ProductKey, pageIndex: 0, pageSize: 30 }).success(function (result) {
             if (result.Error == 0) {
                 $scope.ProdcutAlbums = result.Data;
             } else {
@@ -119,7 +123,6 @@ function AddSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
         $scope.ChooseAlbum = data;
     }
     $scope.UpLoadImage();
-    $scope.FuzzySearchAlbum();
 }
 
 
@@ -131,9 +134,9 @@ function EditSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
                 $("#imagezone").attr("src", $scope.Picture.small_pic);
                 $http.post($resturls["GetProdcutAlbum"], { album_id: $scope.Picture.album_id }).success(function (result) {
                     if (result.Error == 0 && result.Data != null) {
-                        $scope.AlubmName = result.Data.album_name;
+                        $scope.Alubm = result.Data;
                     } else {
-                        $scope.AlubmName = "";
+                        $scope.Alubm = {};
                     }
                 });
 
@@ -174,8 +177,8 @@ function EditSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
             }
         });
     };
-    $scope.FuzzySearchAlbum = function () {
-        $http.post($resturls["LoadProdcutAlbum"], { pageIndex: 0, pageSize: 100 }).success(function (result) {
+    $scope.FuzzySearchAlbum = function (ProductKey) {
+        $http.post($resturls["LoadProdcutAlbum"], {album_name:ProductKey, pageIndex: 0, pageSize: 100 }).success(function (result) {
             if (result.Error == 0) {
                 $scope.ProdcutAlbums = result.Data;
             } else {
@@ -193,7 +196,11 @@ function EditSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
             if ($scope.ChooseAlbum != undefined) {
                 albumId = $scope.ChooseAlbum.album_id;
             }
-            $http.post($resturls["UpdateSlideShow"], { picId: data.picid, title: data.pic_title, bigPic: data.bigPic, smallPic: data.small_pic, albumId: albumId }).success(function (result) {
+            if (albumId == 0) {
+                $.scojs_message('请选择合辑', $.scojs_message.TYPE_ERROR);
+                return;
+            }
+            $http.post($resturls["UpdateSlideShow"], { istop: data.istop, picId: data.picid, title: data.pic_title, bigPic: data.bigPic, smallPic: data.small_pic, albumId: albumId }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -213,5 +220,4 @@ function EditSlideShowCtrl($scope, $http, $location, $routeParams, $resturls) {
     }
     $scope.UpLoadImage();
     $scope.GetSlideShow();
-    $scope.FuzzySearchAlbum();
 }

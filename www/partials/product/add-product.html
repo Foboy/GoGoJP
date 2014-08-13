@@ -1,6 +1,7 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>新增商品  
+    <h1>
+        新增商品
     </h1>
 
 </div>
@@ -44,7 +45,7 @@
                 商品图片：
             </label>
             <div class="col-sm-4">
-                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(图片800x800像素的效果最佳) 
+                <button class="btn btn-success btn-flat" id="file_upload">上传</button>(图片800x800像素的效果最佳)
                 <br />
                 <br />
                 <img id="imagezone" ng-src="http://f.hiphotos.baidu.com/image/pic/item/9d82d158ccbf6c810d3b0274be3eb13533fa4019.jpg" alt="图片加载失败" ng-model="Product.pic_url" class="img-thumbnail" style="width: 200px; height: 200px" />
@@ -60,7 +61,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-3 control-label">
+            <label class="col-sm-3 control-label">
                 商品分类:
             </label>
             <div class="col-sm-4">
@@ -79,60 +80,35 @@
                     <label for="inputPassword" class="control-label pull-left">
                         尺寸
                     </label>
-                    <div class="pull-left title-margin ">
+                    <div class="pull-left title-margin " ng-repeat="Sizeparameter in Sizeparameters">
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                            <input type="checkbox" ng-click="toggleSize(Sizeparameter)" value="{{Sizeparameter.standard_parameter_id}}"> {{Sizeparameter.parameter_name}}
                         </label>
                     </div>
                 </div>
                 <label for="inputPassword" class="control-label  pull-left">
                     颜色
                 </label>
-                <div class="pull-left title-margin ">
+                <div class="pull-left title-margin " ng-repeat="Colorparameter in Colorparameters">
                     <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox1" value="option1"> 红
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox2" value="option2"> 黄
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> 蓝
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> 紫
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="inlineCheckbox3" value="option3"> 黑
+                        <input type="checkbox" ng-click="toggleColor(Colorparameter)" value="{{Colorparameter.standard_parameter_id}}">{{Colorparameter.parameter_name}}
                     </label>
                 </div>
             </div>
-          
+
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">
                 商品标签：
             </label>
             <div class="col-sm-4">
-                <select class="form-control"  ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true"> 
-                </select>
+                <select class="form-control" ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true"></select>
             </div>
         </div>
         <br />
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-9">
-                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)" >预览</button>
+                <button type="submit" class="btn btn-primary btn-flat" ng-click="OpenPreview(Product)">预览</button>
                 <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" ng-click="AddProduct(Product)">保存</button>
                 <button type="submit" class="col-sm-offset-2 btn btn-primary btn-flat" onclick="window.location.reload()">取消</button>
             </div>
