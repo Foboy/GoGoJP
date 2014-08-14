@@ -51,6 +51,7 @@
           resturls.add("UpdateStandardParameterStatus", "Home/Standard/UpdateStandardParameterStatus");// 批量更新规格参数状态
           resturls.add("GetProdcutAlbum", "Home/Album/getAlbum");//获取合辑详细
           resturls.add("SerachProductStandardParameters", "Home/Product/SerachProductStandardParameters");//获取产品关联的规格参数
+          resturls.add("GetProductCategory", "Home/ProductCategory/getProductCategory");//获取指定分类信息
 
           //推荐位
           resturls.add("AddSlideShow", "Home/PictureManagement/addSlideShow");//新增幻灯片

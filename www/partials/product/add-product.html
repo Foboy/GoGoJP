@@ -13,7 +13,7 @@
                 商品名称：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Product.product_name" ng-required="true">
+                <input type="text" class="form-control" ng-model="Product.product_name" ng-required="true" placeholder="商品名称">
             </div>
         </div>
         <div class="form-group">
@@ -99,7 +99,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                商品标签：
+                标签：
             </label>
             <div class="col-sm-4">
                 <select class="form-control" ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true"></select>

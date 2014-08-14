@@ -36,13 +36,14 @@ class AlbumController extends Controller {
 		$album_id=I('album_id');
 		$album_name=I('album_name');
 		$album_cover=I('album_cover');
-		$album_description=I('album_description');
+		$album_description=$_POST ['album_description'];
 		$album_status=I('album_status');
 		$productids=rtrim(I('productids'),',') ;
 		$albumproduct_ids=rtrim(I('albumproduct_ids'),',');
+		$album_tag_id=I('tagid',0);
 		$result= $this->updateAlbumProduct($album_id,$productids,$albumproduct_ids);
 		if($result->Error==ErrorType::Success){
-		$this->ajaxReturn($Album->updateModel($album_id,$album_name,$album_cover,$album_description,$album_status));
+		$this->ajaxReturn($Album->updateModel($album_id,$album_name,$album_cover,$album_description,$album_status,$album_tag_id));
 		}
 	}
 	//��������ȡĳ���ϼ���Ϣ

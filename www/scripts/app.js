@@ -149,6 +149,16 @@ function MainCtrl($scope, $routeParams, $http, $location, $filter, $resturls, $n
     $scope.RefreshModal = function () {
         window.location.reload();
     }
+    $scope.CancelProduct = function () {
+        window.location.href = "#/product";
+    }
+    $scope.CancelAlbum = function () {
+        window.location.href = "#/product/album/";
+    }
+    $scope.CancelSlideShow = function () {
+        window.location.href = "#/recommend";
+    }
+    
 }
 
 //菜单初始化化下拉

@@ -1,5 +1,20 @@
 ﻿//添加合辑
 function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+    $scope.Products = [];
+    $scope.ChooseProducts = [];
+    $scope.InitEditor = function () {
+        $scope.um = UM.createEditor('myEditor');
+    }
+    //标签
+    $scope.LoadTags = function () {
+        $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+            } else {
+                $scope.ProductTags = [];
+            }
+        });
+    }
     $scope.FuzzySearchPrduct = function (ProductKey) {
         $http.post($resturls["LoadProdcut"], { keyname: ProductKey, pageIndex: 0, pageSize: 20 }).success(function (result) {
             if (result.Error == 0) {
@@ -41,21 +56,43 @@ function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootSc
             }
         });
     }
-    //添加商品
-    $scope.AddAlbum = function (data) {
-        var productids = '';
-        for (var i = 0; i < $scope.Products.length; i++) {
-            if ($scope.Products[i].checked) {
-                productids = productids + $scope.Products[i].productid + ',';
+    $scope.toggle = function (product) {
+        product.checked = !product.checked;
+    }
+    $scope.BindProduct = function (Product) {
+        var flag = true;
+        for (var i = 0; i <$scope.ChooseProducts.length; i++) {
+            if ($scope.ChooseProducts[i].product_num == Product.product_num)
+            {
+                flag = false;
+                $.scojs_message('该商品已添加,请选择其他商品', $.scojs_message.TYPE_ERROR);
             }
         }
-        if (productids == "") {
-            $.scojs_message('请选择商品', $.scojs_message.TYPE_ERROR);
-            return;
+        if (flag) {
+            $scope.ChooseProducts.push(Product);
         }
+    }
+    $scope.UnBindProduct = function (Product) {
+        var array = [];
+        for (var i = 0; i < $scope.ChooseProducts.length; i++) {
+            if ($scope.ChooseProducts[i].product_num != Product.product_num) {
+                array.push($scope.ChooseProducts[i]);
+            }
+        }
+        $scope.ChooseProducts = array;
+    }
+    $scope.AddAlbum = function (data) {
         if ($scope.AddAlbumForm.$valid) {
+            var productids = '';
+            for (var i = 0; i < $scope.ChooseProducts.length; i++) {
+                productids = productids + $scope.ChooseProducts[i].productid + ',';
+            }
+            if (productids == "") {
+                $.scojs_message('请选择商品', $.scojs_message.TYPE_ERROR);
+                return;
+            }
             $scope.showerror = false;
-            $http.post($resturls["AddAlbum"], { album_name: data.album_name, album_cover: $("#imagezone").attr("src"), album_description: data.album_description, productids: productids }).success(function (result) {
+            $http.post($resturls["AddAlbum"], { album_name: data.album_name, album_cover: $("#imagezone").attr("src"), album_description: $scope.um.getContent(), productids: productids, tagid: $scope.tagitem.tag_id }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -71,14 +108,25 @@ function AddAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootSc
             $scope.showerror = true;
         }
     }
-    $scope.toggle = function (product) {
-        product.checked = !product.checked;
-    }
     $scope.UpLoadImage();
+    $scope.InitEditor();
+    $scope.LoadTags();
 }
 //编辑合辑
 function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
     $scope.Products = [];
+    $scope.ChooseProducts = [];
+    $scope.AlbumProducts = [];
+    //标签
+    $scope.LoadTags = function () {
+        $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (result) {
+            if (result.Error == 0) {
+                $scope.ProductTags = result.Data;
+            } else {
+                $scope.ProductTags = [];
+            }
+        });
+    }
     $scope.FuzzySearchPrduct = function (ProductKey) {
         $http.post($resturls["LoadProdcut"], { keyname: ProductKey, pageIndex: 0, pageSize: 20 }).success(function (result) {
             if (result.Error == 0) {
@@ -120,11 +168,26 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
             }
         });
     }
+    //获取合辑详细
     $scope.GetAlbum = function () {
         $http.post($resturls["GetAlbum"], { album_id: $routeParams.album_id }).success(function (result) {
             if (result.Error == 0) {
                 $scope.Album = result.Data;
+                $scope.um = UM.createEditor('myEditor');
                 $("#imagezone").attr("src", $scope.Album.album_cover);
+                $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (resultTags) {
+                    if (resultTags.Error == 0) {
+                        $scope.ProductTags = resultTags.Data;
+                        for (var i = 0; i < $scope.ProductTags.length; i++) {
+                            if ($scope.Album.album_tag_id == $scope.ProductTags[i].tag_id) {
+                                $scope.tagitem = $scope.ProductTags[i];
+                            }
+                        }
+                    } else {
+                        $scope.ProductTags = [];
+                    }
+                });
+                $scope.um.setContent($scope.Album.album_description);
                 $http.post($resturls["LoadProdcut"], { pageIndex: 0, pageSize: 100 }).success(function (presult) {
                     if (presult.Error == 0) {
                         $http.post($resturls["SearchAlbumProductByAlbumId"], { album_id: $scope.Album.album_id }).success(function (aresult) {
@@ -134,6 +197,7 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
                                     for (var j = 0; j < $scope.AlbumProducts.length; j++) {
                                         if (presult.Data[i].productid == $scope.AlbumProducts[j].product_id) {
                                             $scope.AlbumProducts[j].product_name = presult.Data[i].product_name;
+                                            $scope.AlbumProducts[j].product_num = presult.Data[i].product_num;
                                         }
                                     }
                                 }
@@ -153,22 +217,45 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
     $scope.toggle = function (product) {
         product.checked = !product.checked;
     }
+    $scope.BindProduct = function (Product) {
+        var flag = true;
+        for (var i = 0; i < $scope.ChooseProducts.length; i++) {
+            if ($scope.ChooseProducts[i].product_num == Product.product_num) {
+                flag = false;
+                $.scojs_message('该商品已添加,请选择其他商品', $.scojs_message.TYPE_ERROR);
+            }
+        }
+        for (var j = 0; j < $scope.AlbumProducts.length; j++) {
+            if ($scope.AlbumProducts[j].product_num == Product.product_num) {
+                flag = false;
+                $.scojs_message('该商品已添加,请选择其他商品', $.scojs_message.TYPE_ERROR);
+            }
+        }
+        if (flag) {
+            $scope.ChooseProducts.push(Product);
+        }
+    }
+    $scope.UnBindProduct = function (Product) {
+        var array = [];
+        for (var i = 0; i < $scope.ChooseProducts.length; i++) {
+            if ($scope.ChooseProducts[i].product_num != Product.product_num) {
+                array.push($scope.ChooseProducts[i]);
+            }
+        }
+        $scope.ChooseProducts = array;
+    }
     $scope.UpdateAlbum = function (data) {
         if ($scope.UpdateAlbumForm.$valid) {
             $scope.showerror = false;
-            var albumproduct_ids = "";
-            if ($scope.AlbumProducts.length > 0) {
-                for (var i = 0; i < $scope.AlbumProducts.length; i++) {
-                    albumproduct_ids = albumproduct_ids + $scope.AlbumProducts[i].album_product_id + ',';
-                }
+            if ($scope.AlbumProducts.length == 0 && $scope.ChooseProducts.length == 0) {
+                $.scojs_message('请选择商品', $.scojs_message.TYPE_ERROR);
+                return;
             }
             var productids = '';
-            for (var i = 0; i < $scope.Products.length; i++) {
-                if ($scope.Products[i].checked) {
-                    productids = productids + $scope.Products[i].productid + ',';
-                }
+            for (var i = 0; i < $scope.ChooseProducts.length; i++) {
+                productids = productids + $scope.ChooseProducts[i].productid + ',';
             }
-            $http.post($resturls["UpdateAlbum"], { album_id: data.album_id, album_name: data.album_name, album_status: data.album_status, album_cover: $("#imagezone").attr("src"), album_description: data.album_description, productids: productids, albumproduct_ids: albumproduct_ids }).success(function (call) {
+            $http.post($resturls["UpdateAlbum"], { album_id: data.album_id, album_name: data.album_name, album_status: data.album_status, album_cover: $("#imagezone").attr("src"), album_description: $scope.um.getContent(), productids: productids,  tagid: $scope.tagitem.tag_id }).success(function (call) {
                 if (call.Error == 0) {
                     $.scojs_message('更新成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -184,7 +271,6 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
             $scope.showerror = true;
         }
     }
-
     //删除合辑相关产品
     $scope.DeleteAlbumProduct = function (data) {
         $http.post($resturls["deleteAlbumProduct"], { album_product_id: data.album_product_id }).success(function (call) {
@@ -203,6 +289,7 @@ function EditAlbumCtrl($scope, $http, $location, $routeParams, $resturls, $rootS
             }
         });
     }
+    $scope.LoadTags();
     $scope.GetAlbum();
     $scope.UpLoadImage();
 }

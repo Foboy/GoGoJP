@@ -4,12 +4,16 @@
     $scope.ProductKey = $rootScope.R_ProductKey;
     $scope.secondshow = $rootScope.R_secondshow;
     $scope.AlbumKey = $rootScope.R_AlbumKey;
-
+    $scope.MainCategorys = [];
+    $scope.SubCategorys = [];
     //获取一级分类
     $scope.LoadMainCategory = function () {
         $http.post($resturls["LoadMainCategory"], {}).success(function (result) {
             if (result.Error == 0) {
                 $scope.MainCategorys = result.Data;
+                if ($scope.MainCategorys == null) {
+                    $scope.MainCategorys = [];
+                }
                 var model = { catid: '0', cat_name: '全部', parentid: '0', status: '1', level: '1' };
                 $scope.MainCategorys.push(model);
             } else {
@@ -33,19 +37,35 @@
         var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         var catid = 0;
+        var parent_catid = 0;
         if ($scope.Choose_MainCategory) {
-            catid = $scope.Choose_MainCategory.catid;
+            parent_catid = $scope.Choose_MainCategory.catid;
         }
-        if ($scope.Choose_SubCategory && $scope.Choose_SubCategory.catid != 0) {
+        if ($scope.Choose_SubCategory) {
             catid = $scope.Choose_SubCategory.catid;
         }
         var ProductKey = '';
         if ($scope.ProductKey) {
             ProductKey = $scope.ProductKey
         }
-        $http.post($resturls["LoadProdcut"], { catid: catid, keyname: ProductKey, pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
+        $http.post($resturls["LoadProdcut"], { parent_catid: parent_catid, catid: catid, keyname: ProductKey, pageIndex: pageIndex - 1, pageSize: pageSize }).success(function (result) {
             if (result.Error == 0) {
                 $scope.Prodcuts = result.Data;
+                $http.post($resturls["LoadProdcutCategory"], { pageIndex: 0, pageSize: 100 }).success(function (cresult) {
+                    if (cresult.Error == 0) {
+                        $scope.Categroys = cresult.Data;
+                        for (var i = 0; i < $scope.Prodcuts.length; i++) {
+                            $scope.Prodcuts[i].category_name='';
+                            for (var j = 0; j < $scope.Categroys.length; j++) {
+                                if ($scope.Prodcuts[i].catid == $scope.Categroys[j].catid) {
+                                    $scope.Prodcuts[i].category_name = $scope.Categroys[j].cat_name;
+                                } 
+                            }
+                        }
+                    } else {
+                        $scope.Categroys = [];
+                    }
+                });
                 $parent.pages = utilities.paging(result.totalcount, pageIndex, pageSize, '#product/' + $scope.sort + '/{0}');
             } else {
                 $scope.Prodcuts = [];
@@ -72,7 +92,7 @@
                $rootScope.R_Choose_Album_StartTime = start / 1000;
                $rootScope.R_Choose_Album_EndTime = end / 1000;
            });
-        var pageSize = 1;
+        var pageSize = 15;
         if (pageIndex == 0) pageIndex = 1;
         var AlbumKey = '';
         if ($scope.AlbumKey) {
@@ -98,34 +118,36 @@
         if (MainCategory != null) {
             $scope.Choose_MainCategory = MainCategory;
             $rootScope.R_Choose_MainCategory = MainCategory;
+            if ($scope.Choose_SubCategory) {
+                $scope.Choose_SubCategory.catid = 0;
+            }
             if (MainCategory.catid == 0) {
                 $scope.secondshow = false;
                 $rootScope.R_secondshow = false;
-                if ($scope.Choose_SubCategory) {
-                    $scope.Choose_SubCategory.catid = 0;
-                }
-            } else {
-                $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
-                    if (result.Error == 0) {
-                        $scope.SubCategorys = result.Data;
-                        $scope.SubCategorys.push({ catid: 0, cat_name: '全部', parentid: MainCategory.catid, status: '1', level: '2' });
-                        for (var i = 0; i < $scope.SubCategorys.length; i++) {
-                            if ($scope.SubCategorys[i].catid == 0) {
-                                $scope.Choose_SubCategory = $scope.SubCategorys[i];
-                                $rootScope.R_Choose_SubCategory = $scope.SubCategorys[i];
-                            }
-                        }
-                        if ($scope.SubCategorys.length > 0) {
-                            $scope.secondshow = true;
-                            $rootScope.R_secondshow = true;
-                        }
-                    } else {
-                        $scope.SubCategorys = [];
-                        $scope.secondshow = false;
-                        $rootScope.R_secondshow = false;
-                    }
-                });
             }
+            $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
+                if (result.Error == 0) {
+                    $scope.SubCategorys = result.Data;
+                    if ($scope.SubCategorys == null) {
+                        $scope.SubCategorys = [];
+                    }
+                    $scope.SubCategorys.push({ catid: 0, cat_name: '全部', parentid: MainCategory.catid, status: '1', level: '2' });
+                    for (var i = 0; i < $scope.SubCategorys.length; i++) {
+                        if ($scope.SubCategorys[i].catid == 0) {
+                            $scope.Choose_SubCategory = $scope.SubCategorys[i];
+                            $rootScope.R_Choose_SubCategory = $scope.SubCategorys[i];
+                        }
+                    }
+                    if ($scope.SubCategorys.length > 0) {
+                        $scope.secondshow = true;
+                        $rootScope.R_secondshow = true;
+                    }
+                } else {
+                    $scope.SubCategorys = [];
+                    $scope.secondshow = false;
+                    $rootScope.R_secondshow = false;
+                }
+            });
         }
         $scope.LoadProductList(1);
     }
@@ -347,6 +369,15 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
             $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: 1, category_id: data.catid }).success(function (result) {
                 if (result.Error == 0) {
                     $scope.Sizeparameters = result.Data;
+                    var array = [];
+                    if ($scope.Sizeparameters != null) {
+                        for (var i = 0; i < $scope.Sizeparameters.length; i++) {
+                            if ($scope.Sizeparameters[i].parameter_status == 1) {
+                                array.push($scope.Sizeparameters[i]);
+                            }
+                        }
+                        $scope.Sizeparameters = array;
+                    }
 
                 } else {
                     $scope.Sizeparameters = [];
@@ -398,7 +429,16 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.LoadColors = function () {
         $http.post($resturls['searchParamterBySid'], { standard_id: 2 }).success(function (result) {
             if (result.Error == 0) {
+                var array = [];
                 $scope.Colorparameters = result.Data;
+                if ($scope.Colorparameters != null) {
+                    for (var i = 0; i < $scope.Colorparameters.length; i++) {
+                        if ($scope.Colorparameters[i].parameter_status == 1) {
+                            array.push($scope.Colorparameters[i]);
+                        }
+                    }
+                    $scope.Colorparameters = array;
+                }
 
             } else {
                 $scope.Colorparameters = [];
@@ -409,7 +449,8 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
     $scope.AddProduct = function (data) {
         if ($scope.AddProductForm.$valid) {
             $scope.showerror = false;
-            var catid = $scope.mainitem.catid;
+            var parent_catid = $scope.mainitem.catid;
+            var catid = 0;
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
@@ -433,7 +474,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
                 $.scojs_message('请选择颜色', $.scojs_message.TYPE_ERROR);
                 return;
             }
-            $http.post($resturls["AddProduct"], { product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
+            $http.post($resturls["AddProduct"], { product_tag_id: $scope.tagitem.tag_id, parent_catid: parent_catid, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('新增成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -461,6 +502,7 @@ function AddProductCtrl($scope, $http, $location, $routeParams, $resturls, $root
 
 //修改商品
 function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $rootScope) {
+
     $scope.OpenWindowDialog = function (url, name, iWidth, iHeight) {
         var url = url; //转向网页的地址;
         var name = name;                          //网页名称，可为空;
@@ -487,7 +529,8 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
     $scope.UpdateProduct = function (data) {
         if ($scope.UpdateProductForm.$valid) {
             $scope.showerror = false;
-            var catid = $scope.mainitem.catid;
+            var parent_catid = $scope.mainitem.catid;
+            var catid = 0;
             if ($scope.subitem) {
                 catid = $scope.subitem.catid;
             }
@@ -511,7 +554,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                 $.scojs_message('请选择颜色', $.scojs_message.TYPE_ERROR);
                 return;
             }
-            $http.post($resturls["UpdateProduct"], { productid: data.productid, product_tag_id: $scope.tagitem.tag_id, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_description: data.product_description, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
+            $http.post($resturls["UpdateProduct"], { productid: data.productid, product_tag_id: $scope.tagitem.tag_id, parent_catid: parent_catid, catid: catid, product_name: data.product_name, old_price: data.old_price, new_price: data.new_price, product_count: data.product_count, small_pic: data.pic_url, product_description: $scope.um.getContent(), sizeparametersids: sizeparametersids, colorparametersids: colorparametersids }).success(function (result) {
                 if (result.Error == 0) {
                     $.scojs_message('编辑成功', $.scojs_message.TYPE_OK);
                     setTimeout(function () {
@@ -549,6 +592,15 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                 $http.post($resturls['searchParamterBySidAndCatid'], { standard_id: 1, category_id: result.Data.maincategory.catid }).success(function (sizeresult) {
                     if (sizeresult.Error == 0) {
                         $scope.Sizeparameters = sizeresult.Data;
+                        var array = [];
+                        if ($scope.Sizeparameters != null) {
+                            for (var i = 0; i < $scope.Sizeparameters.length; i++) {
+                                if ($scope.Sizeparameters[i].parameter_status == 1) {
+                                    array.push($scope.Sizeparameters[i]);
+                                }
+                            }
+                            $scope.Sizeparameters = array;
+                        }
                         $http.post($resturls["SerachProductStandardParameters"], { pid: $routeParams.productid, stardard_id: 1 }).success(function (aresult) {
                             if (aresult.Error == 0 && aresult.Data != null) {
                                 $scope.ChooseSizeParameters = aresult.Data;
@@ -573,6 +625,15 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                 $http.post($resturls['searchParamterBySid'], { standard_id: 2 }).success(function (colorresult) {
                     if (colorresult.Error == 0) {
                         $scope.Colorparameters = colorresult.Data;
+                        var array = [];
+                        if ($scope.Colorparameters != null) {
+                            for (var i = 0; i < $scope.Colorparameters.length; i++) {
+                                if ($scope.Colorparameters[i].parameter_status == 1) {
+                                    array.push($scope.Colorparameters[i]);
+                                }
+                            }
+                            $scope.Colorparameters = array;
+                        }
                         $http.post($resturls["SerachProductStandardParameters"], { pid: $routeParams.productid, stardard_id: 2 }).success(function (presult) {
                             if (presult.Error == 0 && presult.Data != null) {
                                 $scope.ChooseColorParameters = presult.Data;

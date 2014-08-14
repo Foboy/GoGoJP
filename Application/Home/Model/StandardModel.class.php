@@ -51,10 +51,10 @@ class StandardModel extends Model {
 		from
 		    gogojp_category_r_standard_parameter
 		where
-		    standard_id =:standard_id and category_id=:category_id ) as c left join gogojp_standard_parameter as sp on c.parameter_id=sp.standard_parameter_id
+		    standard_id =:standard_id and category_id=:category_id  ) as c left join gogojp_standard_parameter as sp on c.parameter_id=sp.standard_parameter_id
 		", array (
 				':standard_id' => $standard_id,
-				':category_id' => $category_id 
+				':category_id' => $category_id
 		) );
 		$result->Data = $data;
 		return $result;

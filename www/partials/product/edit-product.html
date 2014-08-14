@@ -1,6 +1,7 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
-    <h1>编辑商品  
+    <h1>
+        编辑商品
     </h1>
 </div>
 <!-- Main content -->
@@ -8,13 +9,21 @@
     <form class="form-horizontal" role="form" ng-class="showerror?'showerror':''" name="UpdateProductForm">
         <div class="form-group">
             <label class="col-sm-3 control-label">
+                商品货号：
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" readonly="readonly" ng-model="Product.product_num" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
                 商品名称：
             </label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="Product.product_name" ng-required="true">
+                <input type="text" class="form-control" ng-model="Product.product_name" ng-required="true" placeholder="商品名称">
             </div>
         </div>
-    
+
         <div class="form-group">
             <label class="col-sm-3 control-label">
                 商品原价：
@@ -98,7 +107,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                商品标签：
+                标签：
             </label>
             <div class="col-sm-4">
                 <select class="form-control" ng-options="ProductTag.tag_name for ProductTag in  ProductTags" ng-model="tagitem" ng-required="true">

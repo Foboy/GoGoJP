@@ -18,6 +18,7 @@ class ProductController extends Controller {
 		$result = new DataResult();
 		$Product = new ProductModel ();
 		$data = array (
+				'parent_catid'=>I('parent_catid'),
 				'catid' => I ( 'catid', 0 ),
 				'product_tag_id' => I ( 'product_tag_id', 0),
 				'product_name' => I ( 'product_name' ),
@@ -71,16 +72,9 @@ class ProductController extends Controller {
 		$ChoosesizeParameters=array();
 		if ($Product->getModel ( $productid )->Error == 0) {
 			$product = $Product->getModel ( $productid )->Data;
+			$maincategory = $Categroy->getModel ( $product ['parent_catid'] )->Data;
 			if ($product ['catid'] > 0) {
-				$cat = $Categroy->getModel ( $product ['catid'] )->Data;
-				if (count ( $cat ) > 0) {
-					if ($cat ['level'] > 1) {
-						$subcategory = $cat;
-						$maincategory = $Categroy->getModel ( $cat ['parentid'] )->Data;
-					} else {
-						$maincategory = $cat;
-					}
-				}
+				$subcategory = $Categroy->getModel ( $product ['catid'] )->Data;
 			}
 		}
 		$ChoosecolorParameters=$ProductRStandardParameterModel->searchByPage($productid, 2, '', '', 0, 100)->Data;
@@ -97,11 +91,12 @@ class ProductController extends Controller {
 	// 模糊分页查询商品
 	public function searchProductByCondition() {
 		$Product = new ProductModel ();
+		$parent_catid=I('parent_catid',0);
 		$catid = I ( 'catid', 0 );
 		$keyname = I ( 'keyname', '', 'htmlspecialchars' );
 		$pageIndex = I ( 'pageIndex', 0 );
 		$pageSize = I ( 'pageSize', 10 );
-		$this->ajaxReturn ( $Product->searchProductByCondition ( $catid, $keyname, $pageIndex, $pageSize ) );
+		$this->ajaxReturn ( $Product->searchProductByCondition ($parent_catid, $catid, $keyname, $pageIndex, $pageSize ) );
 	}
 	//关联商品规格参数
 	public  function AddParameters($pid,$standardid,$parameterids){

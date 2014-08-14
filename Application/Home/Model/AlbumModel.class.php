@@ -16,7 +16,8 @@ class AlbumModel extends Model {
 		$data = array (
 				'album_name' => I ( 'album_name', '', 'htmlspecialchars' ),
 				'album_cover' => I ( 'album_cover' ),
-				'album_description' => I ( 'album_description' )
+				'album_description' => $_POST ['album_description'] ,
+				'album_tag_id'=>I('tagid',0)
 		);
 		$pid = $this->add ( $data );
 		if ($pid > 0) {
@@ -32,13 +33,14 @@ class AlbumModel extends Model {
 	public function deleteModel() {
 	}
 	// 鏇存柊model
-	public function updateModel($album_id,$album_name,$album_cover,$album_description,$album_status) {
+	public function updateModel($album_id,$album_name,$album_cover,$album_description,$album_status,$album_tag_id) {
 		$result = new DataResult ();
 		$data = array (
 				'album_name' => $album_name,
 				'album_cover' => $album_cover,
 				'album_description' => $album_description,
-				'album_status'=>$album_status
+				'album_status'=>$album_status,
+				'album_tag_id'=>$album_tag_id
 		);
 		
 		$map = array (
