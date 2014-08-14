@@ -70,12 +70,12 @@ class AlbumModel extends Model {
 		$likename = " '%" . $album_name . "%'  ";
 		$conn = new Pdo ();
 		if (! empty ( $start_time )) {
-			$start_time = date ( 'Y-m-d h:i:s', $start_time );
-			$end_time = date ( 'Y-m-d h:i:s', $end_time );
-			$objects = $conn->query ( "select a.* from ( select * from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) ) as a order by a.create_time desc limit $lastPageNum,$pageSize", array (
+			$start_time = date ( 'Y-m-d H:i:s', $start_time );
+			$end_time = date ( 'Y-m-d H:i:s', $end_time );
+			$objects = $conn->query ( "select a.* from ( select * from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) ) as a order by a.create_time desc limit $lastPageNum,$pageSize", array (
 					':album_name' => $album_name 
 			) );
-			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between $start_time and $end_time ) and (album_name like $likename or ''=:album_name) ", array (
+			$data = $conn->query ( "select count(*) totalcout from gogojp_album where (create_time between '$start_time' and '$end_time' ) and (album_name like $likename or ''=:album_name) ", array (
 					':album_name' => $album_name 
 			) );
 			$totalcount = $data [0] ['totalcout'];

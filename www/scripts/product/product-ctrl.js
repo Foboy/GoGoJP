@@ -22,6 +22,7 @@
         $http.post($resturls["LoadSubCategory"], { catid: ParentCategory.catid }).success(function (result) {
             if (result.Error == 0) {
                 $scope.SubCategorys = result.Data;
+
             } else {
                 $scope.SubCategorys = [];
             }
@@ -35,7 +36,7 @@
         if ($scope.Choose_MainCategory) {
             catid = $scope.Choose_MainCategory.catid;
         }
-        if ($scope.Choose_SubCategory) {
+        if ($scope.Choose_SubCategory && $scope.Choose_SubCategory.catid != 0) {
             catid = $scope.Choose_SubCategory.catid;
         }
         var ProductKey = '';
@@ -54,7 +55,7 @@
     }
     //商品专辑
     $scope.LoadAlbumList = function (pageIndex) {
-        $("#albumtime").val("");
+        //$("#albumtime").val("");
         $("#albumtime").daterangepicker({
             showDropdowns: true,
             format: 'YYYY/MM/DD',
@@ -71,7 +72,7 @@
                $rootScope.R_Choose_Album_StartTime = start / 1000;
                $rootScope.R_Choose_Album_EndTime = end / 1000;
            });
-        var pageSize = 15;
+        var pageSize = 1;
         if (pageIndex == 0) pageIndex = 1;
         var AlbumKey = '';
         if ($scope.AlbumKey) {
@@ -94,40 +95,45 @@
 
     //选择父类别
     $scope.ChooseMainCategory = function (MainCategory) {
-        if (MainCategory.catid == 0) {
+        if (MainCategory != null) {
             $scope.Choose_MainCategory = MainCategory;
-            $scope.secondshow = false;
-            $rootScope.R_secondshow = false;
-            if ($scope.Choose_SubCategory) {
-                $scope.Choose_SubCategory.catid = 0;
-            }
-        } else {
-            $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
-                if (result.Error == 0) {
-                    $scope.SubCategorys = result.Data;
-                    $scope.Choose_MainCategory = MainCategory;
-                    $rootScope.R_Choose_MainCategory = MainCategory;
-                    if ($scope.SubCategorys == null) {
+            $rootScope.R_Choose_MainCategory = MainCategory;
+            if (MainCategory.catid == 0) {
+                $scope.secondshow = false;
+                $rootScope.R_secondshow = false;
+                if ($scope.Choose_SubCategory) {
+                    $scope.Choose_SubCategory.catid = 0;
+                }
+            } else {
+                $http.post($resturls["LoadSubCategory"], { catid: MainCategory.catid }).success(function (result) {
+                    if (result.Error == 0) {
+                        $scope.SubCategorys = result.Data;
+                        $scope.SubCategorys.push({ catid: 0, cat_name: '全部', parentid: MainCategory.catid, status: '1', level: '2' });
+                        for (var i = 0; i < $scope.SubCategorys.length; i++) {
+                            if ($scope.SubCategorys[i].catid == 0) {
+                                $scope.Choose_SubCategory = $scope.SubCategorys[i];
+                                $rootScope.R_Choose_SubCategory = $scope.SubCategorys[i];
+                            }
+                        }
+                        if ($scope.SubCategorys.length > 0) {
+                            $scope.secondshow = true;
+                            $rootScope.R_secondshow = true;
+                        }
+                    } else {
+                        $scope.SubCategorys = [];
                         $scope.secondshow = false;
                         $rootScope.R_secondshow = false;
-                    } else {
-                        $scope.secondshow = true;
-                        $rootScope.R_secondshow = true;
                     }
-                } else {
-                    $scope.SubCategorys = [];
-                    $scope.secondshow = false;
-                    $rootScope.R_secondshow = false;
-                }
-            });
+                });
+            }
         }
-        $scope.LoadProductList();
+        $scope.LoadProductList(1);
     }
     //选择子类别
     $scope.ChooseSubCategory = function (SubCategory) {
         $scope.Choose_SubCategory = SubCategory;
         $rootScope.R_Choose_SubCategory = SubCategory;
-        $scope.LoadProductList();
+        $scope.LoadProductList(1);
     }
     //根据筛选条件模糊查询商品
     $scope.SearchProductList = function () {
@@ -558,7 +564,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                                 $scope.ChooseSizeParameters = [];
                             }
                         });
-                       
+
                     } else {
                         $scope.Sizeparameters = [];
                     }
@@ -588,7 +594,7 @@ function EditProductCtrl($scope, $http, $location, $routeParams, $resturls, $roo
                         $scope.Colorparameters = [];
                     }
                 });
-                
+
                 $http.post($resturls["LoadTags"], { pageIndex: 0, pageSize: 50 }).success(function (resultTags) {
                     if (resultTags.Error == 0) {
                         $scope.ProductTags = resultTags.Data;
