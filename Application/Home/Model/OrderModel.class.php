@@ -145,21 +145,17 @@ class OrderModel extends Model {
 		$sql = " select * from gogojp_order 
 				where  $skey
  $timespan
- and  ( order_status = :order_status or :order_status=0 ) 
+ and  ( order_status = $order_status or $order_status=0 ) 
  limit $lastpagenum,$pagesize";
-		$objects = $conn->query ( $sql, array (
-				':order_status' => $order_status 
-		) );
-		// print $keyname;
+		$objects = $conn->query ( $sql );
+		// print $sql;
 		$totalsql = " select count(*) totalcount  from gogojp_order 
 				where  $skey
 $timespan
- and  ( order_status = :order_status or :order_status=0 ) 
+ and  ( order_status = $order_status or $order_status=0 ) 
 ";
 		// print $totalsql;
-		$data = $conn->query ( $totalsql, array (
-				':order_status' => $order_status 
-		) );
+		$data = $conn->query ( $totalsql );
 		$totalcount = $data [0] ['totalcount'];
 		$result->pageindex = $pageindex;
 		$result->pagesize = $pagesize;
