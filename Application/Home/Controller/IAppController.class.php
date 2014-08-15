@@ -13,7 +13,7 @@ use Home\Model\CustomerAdvisoryModel;
 use Home\Model\OrderModel;
 use Home\Model\PictureModel;
 use Home\Model\ProductCategoryModel;
-use Home\Model\OrderitemModel;
+use Home\Model\OrderItemModel;
 use Think\Log;
 use Home\Model\ShopcartModel;
 
@@ -447,7 +447,7 @@ class IAppController extends Controller {
 		$arr = json_decode ( $order_items );
 		
 		foreach ( $arr as $key => $value ) {
-			$OrderitemModel = new OrderitemModel ();
+			$OrderitemModel = new OrderItemModel ();
 			$productid = 0;
 			$product_name = "";
 			$buynumber = 0;
@@ -527,7 +527,7 @@ class IAppController extends Controller {
 	// 通过订单号获取订单详情
 	public function searchOrderItem() {
 		$result = new DataResult ();
-		$OrderItem = new OrderitemModel();
+		$OrderItem = new OrderItemModel();
 		$order_no = I ( 'order_no' );
 		if (! isset ( $order_no ) or empty ( $order_no )) {
 			$result->Error = ErrorType::RequestParamsFailed;

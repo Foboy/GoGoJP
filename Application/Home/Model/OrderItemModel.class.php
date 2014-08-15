@@ -13,7 +13,7 @@ use Think\Db\Driver\Pdo;
 use Common\Common\DataResult;
 use Common\Common\ErrorType;
 
-class OrderitemModel extends Model {
+class OrderItemModel extends Model {
 	protected $tableName = 'orderitem';
 	// 增加表中数据
 	public function addModel($order_no, $productid, $buynumber, $prodcut_price, $product_name, $pic_url, $create_time, $type_remark, $product_num) {

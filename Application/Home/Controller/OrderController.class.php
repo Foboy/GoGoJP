@@ -13,7 +13,7 @@ use Common\Common\DataResult;
 use Common\Common\ErrorType;
 use Common\Common\LogisticsStatus;
 use Common\Common\OrderStatus;
-use Home\Model\OrderitemModel;
+use Home\Model\OrderItemModel;
 
 class OrderController extends Controller {
 	public function index() {
@@ -98,7 +98,7 @@ class OrderController extends Controller {
 	// 获取单个
 	public function searchOrderItem() {
 		$result = new DataResult ();
-		$OrderItem = new OrderitemModel();
+		$OrderItem = new OrderItemModel();
 		$order_no = I ( 'order_no' );
 		if (! isset ( $order_no ) or empty ( $order_no )) {
 			$result->Error = ErrorType::RequestParamsFailed;
